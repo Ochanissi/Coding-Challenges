@@ -162,3 +162,54 @@ if (averageJohn > averageMike && averageJohn > averageMary) {
     console.log('TIE: John\'s team: ' + averageJohn + ' | Mike\'s team: ' 
     + averageMike + ' | Mary\'s team: ' + averageMary);
 }
+
+
+
+// ***************************************************************************
+
+
+/*****************************
+* CODING CHALLENGE 3
+*/
+
+/*
+John and his family went on a holiday and went to 3 different restaurants. 
+The bills were $124, $48 and $268.
+To tip the waiter a fair amount, John created a simple tip calculator 
+(as a function). He likes to tip 20% of the bill when the bill is less than $50, 
+15% when the bill is between $50 and $200, and 10% if the bill is more than $200.
+In the end, John would like to have 2 arrays:
+
+(NOTE: To calculate 20% of a value, simply multiply it with 20/100 = 0.2)
+GOOD LUCK 😀
+*/
+
+
+// 1) Containing all three tips (one for each bill)
+
+var bills = [124, 48, 268];
+
+console.log(bills);
+
+
+// 2) Containing all three final paid amounts (bill + tip).
+
+function tipCalculator(amount) {
+    if (amount < 50) {
+        return amount + (amount * 0.20);
+    } else if (amount >= 50 && amount <= 200) {
+        return amount + (amount * 0.15);
+    } else if (amount > 200) {
+        return amount + (amount * 0.10);
+    }
+} 
+
+//var paidAmounts = [];
+var paidAmounts = new Array;
+
+paidAmounts.push(tipCalculator(bills[0]));
+paidAmounts.push(tipCalculator(bills[1]));
+paidAmounts.push(tipCalculator(bills[2]));
+
+console.log(paidAmounts);
+
