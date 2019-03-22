@@ -256,8 +256,9 @@ var john = {
     lastName: 'Smith',
     mass: 92,
     height: 1.95,
-    bmi: function() {
-        this.bmi = this.mass / (this.height * 2)
+    calcBMI: function() {
+        this.bmi = this.mass / (this.height * this.height);
+        return this.bmi;
     }
 }
 
@@ -266,13 +267,14 @@ var mark = {
     lastName: 'Miller',
     mass: 78,
     height: 1.69,
-    bmi: function() {
-        this.bmi = this.mass / (this.height * 2)
+    calcBMI: function() {
+        this.bmi = this.mass / (this.height * this.height);
+        return this.bmi;
     }
 }
 
-john.bmi();
-mark.bmi();
+john.calcBMI();
+mark.calcBMI();
 
 console.log(john);
 console.log(mark);
