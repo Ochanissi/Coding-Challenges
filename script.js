@@ -44,9 +44,11 @@ console.log(bmi);
 
 console.log("Is Mark's BMI higher than John's? " + bmi);
 
-console.log('**************************************************************');
 
 // ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
 
 /*****************************
 * CODING CHALLENGE 2
@@ -164,8 +166,8 @@ if (averageJohn > averageMike && averageJohn > averageMary) {
     + averageMike + ' | Mary\'s team: ' + averageMary);
 }
 
+// ***************************************************************************
 console.log('**************************************************************');
-
 // ***************************************************************************
 
 
@@ -214,7 +216,9 @@ paidAmounts.push(tipCalculator(bills[2]));
 
 console.log(paidAmounts);
 
+// ***************************************************************************
 console.log('**************************************************************');
+// ***************************************************************************
 
 /*****************************
 * CODING CHALLENGE 4
@@ -294,7 +298,10 @@ if(john.bmi > mark.bmi) {
     console.log('They both have the same BMI!');
 }
 
+// ***************************************************************************
 console.log('**************************************************************');
+// ***************************************************************************
+
 
 /*****************************
 * CODING CHALLENGE 5
@@ -327,9 +334,9 @@ var john = {
     tips: [],
     calcTip: function() {
         for (var i = 0; i < this.bills.length; i++) {
-            if (bills[i] < 50) {
+            if (this.bills[i] < 50) {
                 this.tips[i] = this.bills[i] * .2;
-            } else if (bills[i] > 50 && bills[i] <= 200) {
+            } else if (this.bills[i] > 50 && this.bills[i] <= 200) {
                 this.tips[i] = this.bills[i] * .15;
             } else {
                 this.tips[i] = this.bills[i] * .1;
@@ -348,10 +355,10 @@ var john = {
     bills: [124, 48, 268, 180, 42],
     tips: [],
     calcTip: function() {
-        for (var i = 0; i < bills.length; i++) {
-            if (bills[i] < 50) {
+        for (var i = 0; i < this.bills.length; i++) {
+            if (this.bills[i] < 50) {
                 this.tips.push(this.bills[i] * .2);
-            } else if (bills[i] > 50 && bills[i] <= 200) {
+            } else if (this.bills[i] > 50 && this.bills[i] <= 200) {
                 this.tips.push(this.bills[i] * .15);
             } else {
                 this.tips.push(this.bills[i] * .1);
@@ -377,7 +384,7 @@ var john = {
     amounts: [],
     calcTip: function() {
         for (var i = 0; i < this.bills.length; i++) {
-            if (bills[i] < 50) {
+            if (this.bills[i] < 50) {
                 this.tips[i] = this.bills[i] * .2;
             } else if (bills[i] > 50 && bills[i] <= 200) {
                 this.tips[i] = this.bills[i] * .15;
@@ -406,9 +413,9 @@ var john = {
     amounts: [],
     calcTip: function() {
         for (var i = 0; i < this.bills.length; i++) {
-            if (bills[i] < 50) {
+            if (this.bills[i] < 50) {
                 this.tips.push(this.bills[i] * .2);
-            } else if (bills[i] > 50 && bills[i] <= 200) {
+            } else if (this.bills[i] > 50 && bills[i] <= 200) {
                 this.tips.push(this.bills[i] * .15);
             } else {
                 this.tips.push(this.bills[i] * .1);
@@ -434,22 +441,20 @@ Mark likes to tip 20% of the bill when the bill is less than $100,
 10% when the bill is between $100 and $300, and 25% if the bill is more than $300
  (different than John). */
 
-// 7. Calculate the average tip for each family
-// 8. Log to the console which family paid the highest tips on average
 
 
 // 5. Implement the same functionality as before, 
 // this time using Mark's tipping rules
 
 var mark = {
-    bills: [77, 375, 110, 45],
+    bills: [77, 475, 110, 45],
     tips: [],
     amounts: [],
     calcTip: function() {
         for (var i = 0; i < this.bills.length; i++) {
-            if (bills[i] < 100) {
+            if (this.bills[i] < 100) {
                 this.tips[i] = this.bills[i] * .2;
-            } else if (bills[i] > 100 && bills[i] <= 300) {
+            } else if (this.bills[i] > 100 && this.bills[i] <= 300) {
                 this.tips[i] = this.bills[i] * .1;
             } else {
                 this.tips[i] = this.bills[i] * .25;
@@ -471,14 +476,14 @@ console.log(mark);
 // -----------------------------
 
 var mark = {
-    bills: [77, 375, 110, 45],
+    bills: [77, 475, 110, 45],
     tips: [],
     amounts: [],
     calcTip: function() {
         for (var i = 0; i < this.bills.length; i++) {
-            if (bills[i] < 100) {
+            if (this.bills[i] < 100) {
                 this.tips.push(this.bills[i] * .2);
-            } else if (bills[i] > 100 && bills[i] <= 300) {
+            } else if (this.bills[i] > 100 && this.bills[i] <= 300) {
                 this.tips.push(this.bills[i] * .1);
             } else {
                 this.tips.push(this.bills[i] * .25);
@@ -506,8 +511,106 @@ console.log(mark);
 
 function calcAverage (tips) {
         var sum = 0;
-    for (var i = 0; i < mark.tips.length; i++) {
-        sum += mark.tips[i];
+    for (var i = 0; i < tips.length; i++) {
+        sum += tips[i];
     }
-    return sum / mark.tips.length;
+    return sum / tips.length;
 }
+
+// 7. Calculate the average tip for each family
+
+john.average = calcAverage(john.tips);
+mark.average = calcAverage(mark.tips);
+
+// 8. Log to the console which family paid the highest tips on average
+
+if (john.average > mark.average) {
+    console.log('John\'s family paid the higest tips with an amount of $' +
+    john.average);
+} else if (john.average < mark.average) {
+    console.log('Mark\'s family paid the higest tips with an amount of $' +
+    mark.average);
+}
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+// Another method of completing the 5th challenge
+
+
+var john = {
+    fullName: 'John Smith',
+    bills: [124, 48, 268, 180, 42],
+    calcTips: function() {
+        this.tips = [];
+        this.finalValues = [];
+                
+        for (var i = 0; i < this.bills.length; i++) {
+            // Determine percentage based on tipping rules
+            var percentage;
+            var bill = this.bills[i];
+            
+            if (bill < 50) {
+                percentage = .2;
+            } else if (bill >= 50 && bill < 200) {
+                percentage = .15;
+            } else {
+                percentage = .1;
+            }
+            
+            // Add results to the corresponing arrays
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill + bill * percentage;
+        }
+    }
+}
+var mark = {
+    fullName: 'Mark Miller',
+    bills: [77, 475, 110, 45],
+    calcTips: function() {
+        this.tips = [];
+        this.finalValues = [];
+                
+        for (var i = 0; i < this.bills.length; i++) {
+            // Determine percentage based on tipping rules
+            var percentage;
+            var bill = this.bills[i];
+            
+            if (bill < 100) {
+                percentage = .2;
+            } else if (bill >= 100 && bill < 300) {
+                percentage = .1;
+            } else {
+                percentage = .25;
+            }
+            
+            // Add results to the corresponing arrays
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill + bill * percentage;
+        }
+    }
+}
+function calcAverage(tips) {
+    var sum = 0;
+    for (var i = 0; i < tips.length; i++) {
+        sum = sum + tips[i];
+    }
+    return sum / tips.length;
+}
+// Do the calculations
+john.calcTips();
+mark.calcTips();
+john.average = calcAverage(john.tips);
+mark.average = calcAverage(mark.tips);
+console.log(john, mark);
+if (john.average > mark.average) {
+    console.log(john.fullName + '\'s family pays higher tips, with an average of $' + john.average);
+} else if (mark.average > john.average) {
+    console.log(mark.fullName + '\'s family pays higher tips, with an average of $' + mark.average);
+}
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
