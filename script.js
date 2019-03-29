@@ -621,9 +621,11 @@ console.log('**************************************************************');
 /*
 --- Let's build a fun quiz game in the console! ---
 
-1. Build a function constructor called Question to describe a question. A question should include:
+1. Build a function constructor called Question to describe a question. 
+A question should include:
 a) question itself
-b) the answers from which the player can choose the correct one (choose an adequate data structure here, array, object, etc.)
+b) the answers from which the player can choose the correct one 
+(choose an adequate data structure here, array, object, etc.)
 c) correct answer (I would use a number for this)
 
 2. Create a couple of questions using the constructor
@@ -641,3 +643,32 @@ c) correct answer (I would use a number for this)
 /*
 GOOD LUCK 😀
 */
+
+
+var question = 'What is the best programming language?';
+var answers = ['JAVA','JS', 'Python'];
+
+
+var Question = function (question, answers, correct) {
+    this.question = question;
+    this.answers = answers;
+    this.correct = correct;
+};
+
+
+Question.prototype.displayQuestion = function() {
+    console.log(this.question);
+
+    for (var i = 0; i < this.answers.length; i++) {
+        console.log(i + ': ' + this.answers[i]);
+    }
+}
+
+
+    Question.prototype.checkAnswer = function(ans) {
+        if (ans === this.correct) {
+            console.log('Correct answer!');
+        } else {
+            console.log('Wrong answer. Try again :)')
+        }
+    }
