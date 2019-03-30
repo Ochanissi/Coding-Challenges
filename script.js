@@ -645,9 +645,6 @@ GOOD LUCK 😀
 */
 
 
-var question = 'What is the best programming language?';
-var answers = ['JAVA','JS', 'Python'];
-
 
 var Question = function (question, answers, correct) {
     this.question = question;
@@ -661,14 +658,24 @@ Question.prototype.displayQuestion = function() {
 
     for (var i = 0; i < this.answers.length; i++) {
         console.log(i + ': ' + this.answers[i]);
+        questions.push(i + ': ' + this.answers[i]);
     }
 }
 
 
-    Question.prototype.checkAnswer = function(ans) {
-        if (ans === this.correct) {
-            console.log('Correct answer!');
-        } else {
-            console.log('Wrong answer. Try again :)')
-        }
-    }
+var question1 = new Question('What is the best programming language?', ['JAVA','JS', 'Python'], 1);
+var question2 = new Question('What is the color of my pet?', ['Red', 'Blue', 'White'], 2);
+var question3 = new Question('How bad do I want to become a developer?', ['Really fkin bad', 'Meh', 'I do'], 1);
+
+var questions = [];
+
+question1.displayQuestion();
+question2.displayQuestion();
+question3.displayQuestion();
+
+
+questions.push(question1);
+questions.push(question2);
+questions.push(question3);
+
+console.log(questions);
