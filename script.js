@@ -645,7 +645,7 @@ GOOD LUCK 😀
 */
 
 
-
+/*
 var Question = function (question, answers, correct) {
     this.question = question;
     this.answers = answers;
@@ -679,3 +679,8 @@ questions.push(question2);
 questions.push(question3);
 
 console.log(questions);
+
+*/
+
+////////////////////////////
+
