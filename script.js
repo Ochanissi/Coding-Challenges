@@ -719,9 +719,9 @@ var n = Math.floor(Math.random() * questions.length);
 
 questions[n].displayQuestion();
 
-var answer = parseInt(prompt('Please select the correct answer.'));
+// var answer = parseInt(prompt('Please select the correct answer.'));
 
-questions[n].checkAnswer(answer);
+// questions[n].checkAnswer(answer);
 
 
 /////////// 7.
@@ -762,9 +762,9 @@ questions[n].checkAnswer(answer);
     
     questions[n].displayQuestion();
     
-    var answer = parseInt(prompt('Please select the correct answer.'));
+    // var answer = parseInt(prompt('Please select the correct answer.'));
     
-    questions[n].checkAnswer(answer);
+    // questions[n].checkAnswer(answer);
     
 })();
 
@@ -851,9 +851,10 @@ console.log('**************************************************************');
         }
     }
     
-    nextQuestion();
+    // nextQuestion();
     
 })();
+
 
 // ***************************************************************************
 console.log('**************************************************************');
@@ -861,6 +862,53 @@ console.log('**************************************************************');
 
 /////////////////////////////////
 // CODING CHALLENGE 8
+
+/*
+Write a JavaScript function that reverse a string.
+*/
+
+// 1. Reverse a String With Built-In Functions
+
+
+function reverseString(str) {
+    // Step 1. Use the split() method to return a new array
+    var splitString = str.split(""); // var splitString = "hello".split("");
+    // ["h", "e", "l", "l", "o"]
+ 
+    // Step 2. Use the reverse() method to reverse the new created array
+    var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+    // ["o", "l", "l", "e", "h"]
+ 
+    // Step 3. Use the join() method to join all elements of the array into a string
+    var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+    // "olleh"
+    
+    //Step 4. Return the reversed string
+    return joinArray; // "olleh"
+}
+ 
+console.log(reverseString("hello"));
+
+
+// For a number & Compact version
+
+function reverseString(str2) {
+    return parseInt(str2.split("").reverse().join(""));
+}
+
+
+console.log(reverseString("0987654321"));
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 9
 
 /*
 Suppose that you're working in a small town administration, and you're in charge of two town elements:
