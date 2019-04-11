@@ -924,3 +924,63 @@ At an end-of-year meeting, your boss wants a final report with the following:
 All the report data should be printed to the console.
 HINT: Use some of the ES6 features: classes, subclasses, template strings, default parameters, maps, arrow functions, destructuring, etc.
 */
+
+class Park {
+    constructor (name, buildYear, numTree, parkArea) {
+        this.name = name;
+        this.buildYear = buildYear;
+        this.numTree = numTree;
+        this.parkArea = parkArea;
+    }
+    calcTreeDensity() {
+        var treeDensity = this.numTree / this.parkArea;
+        console.log(`The tree density of ${this.name} is ${treeDensity}.`);
+    }
+    calcAge() {
+        var age = new Date().getFullYear() - this.buildYear;
+        console.log(`The age of ${this.name} is ${age}.`);
+    }
+    treeRecord() {
+        if(this.numTree > 1000) {
+            console.log(`${this.name} has more than 1000 trees! It has ${this.numTree} trees!`);
+        }
+    }
+}
+
+class Street {
+    constructor (name, buildYear) {
+        this.name = name;
+        this.buildYear = buildYear;
+    }
+}
+
+
+const park1 = new Park('Central Park', 1972, 2475, 10445);
+const park2 = new Park('Cismigiu', 1955, 4322, 7655);
+const park3 = new Park('Herastrau', 1942, 1223, 7565);
+
+// console.log(park1);
+// console.log(park2);
+// console.log(park3);
+park1.calcTreeDensity();
+park2.calcTreeDensity();
+park3.calcTreeDensity();
+park1.calcAge();
+park2.calcAge();
+park3.calcAge();
+park1.treeRecord();
+park2.treeRecord();
+park3.treeRecord();
+
+var avgAge = 
+
+console.log('----');
+
+const street1 = new Street('Dorobanti', 1992);
+const street2 = new Street('Colentina', 2001);
+const street3 = new Street('Obor', 1988);
+
+console.log(street1);
+console.log(street2);
+console.log(street3);
+
