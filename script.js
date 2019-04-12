@@ -1053,3 +1053,116 @@ console.log(`The total length of the town's streets is ${totalStr}.`);
 avgStr = totalStr / streets.length;
 
 console.log(`The average length of the town's streets is ${parseInt(avgStr)}.`);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 9 v2
+
+
+class Element {
+    constructor(name, buildYear) {
+        this.name = name;
+        this.buildYear = buildYear;
+    }
+}
+
+class Parkk extends Element {
+    constructor(name, buildYear, area, numTrees) {
+        super(name, buildYear);
+        this.area = area; // km2
+        this.numTrees = numTrees;
+    }
+
+    treeDensity() {
+        const density = this.numTrees / this.area;
+        console.log(`${this.name} has a tree density of ${density} trees per square km.`);
+    }
+
+
+}
+
+class Streett extends Element {
+    constructor(name, buildYear, length, size = 3) {
+        super(name, buildYear);
+        this.length = length;
+        this.size = size;
+    }
+
+    classifyStreet() {
+        const classification = new Map();
+        classification.set(1, 'tiny');
+        classification.set(2, 'small');
+        classification.set(3, 'normal');
+        classification.set(4, 'big');
+        classification.set(5, 'huge');
+        console.log(`${this.name}, build in ${this.buildYear}, is a ${classification.get(this.size)} street.`);
+    }
+}
+
+const allParks = [new Parkk('Green Park', 1987, 0.2, 215), new Parkk('National Park', 1894, 2.9, 3541), new Parkk('Oak Park', 1953, 0.4, 949)];
+
+const allStreets = [new Streett('Ocean Avenue', 1999, 1.1, 4), new Streett('Evergreen Street', 2008, 2.7, 2), new Streett('4th Street', 2015, 0.8), new Streett('Sunset Boulevard', 1982, 2.5, 5)];
+
+
+
+function reportParks(p) {
+
+    console.log('-----PARKS REPORT-----');
+
+}
+
+function reportStreets(s) {
+
+    console.log('-----STREET REPORT-----');
+
+}
+
+
+reportParks(allParks);
+reportStreets(reportStreets);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
