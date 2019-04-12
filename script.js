@@ -926,20 +926,28 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 */
 
 class Park {
-    constructor (name, buildYear, numTree, parkArea) {
+    constructor (name, buildYear, numTree, parkArea, age) {
         this.name = name;
         this.buildYear = buildYear;
         this.numTree = numTree;
         this.parkArea = parkArea;
+        this.age = age;
     }
+
     calcTreeDensity() {
         var treeDensity = this.numTree / this.parkArea;
         console.log(`The tree density of ${this.name} is ${treeDensity}.`);
     }
+
     calcAge() {
-        var age = new Date().getFullYear() - this.buildYear;
-        console.log(`The age of ${this.name} is ${age}.`);
+        this.age = new Date().getFullYear() - this.buildYear;
+        console.log(`The age of ${this.name} is ${this.age}.`);
     }
+
+    calcAvgAge() {
+
+    }
+
     treeRecord() {
         if(this.numTree > 1000) {
             console.log(`${this.name} has more than 1000 trees! It has ${this.numTree} trees!`);
@@ -948,10 +956,12 @@ class Park {
 }
 
 class Street {
-    constructor (name, buildYear) {
+    constructor (name, buildYear, roads, size = 'normal') {
         this.name = name;
         this.buildYear = buildYear;
+        this.roads = roads;
     }
+
 }
 
 
@@ -965,22 +975,81 @@ const park3 = new Park('Herastrau', 1942, 1223, 7565);
 park1.calcTreeDensity();
 park2.calcTreeDensity();
 park3.calcTreeDensity();
+
+console.log('----');
+
+
 park1.calcAge();
 park2.calcAge();
 park3.calcAge();
+
+console.log('----');
+
+
 park1.treeRecord();
 park2.treeRecord();
 park3.treeRecord();
 
-var avgAge = 
+var parks = [];
+
+parks.push(park1);
+parks.push(park2);
+parks.push(park3);
+
+// console.log(parks);
+
+var totalAge = 0;
+var avgAge = 0
+
+
+for (var i = 0; i < parks.length; i++) {
+
+    totalAge += parks[i].age;
+}
 
 console.log('----');
 
-const street1 = new Street('Dorobanti', 1992);
-const street2 = new Street('Colentina', 2001);
-const street3 = new Street('Obor', 1988);
+// console.log(totalAge);
+console.log(`The total age of all town's park is ${totalAge}.`);
 
-console.log(street1);
-console.log(street2);
-console.log(street3);
 
+avgAge = totalAge / parks.length;
+
+// console.log(parseInt(avgAge));
+console.log(`The average age of each town's park is ${parseInt(avgAge)}.`);
+
+
+
+
+
+console.log('----');
+
+const street1 = new Street('Dorobanti', 1992, 43244);
+const street2 = new Street('Colentina', 2001, 53433, 'huge');
+const street3 = new Street('Obor', 1988, 27644, 'tiny');
+
+// console.log(street1);
+// console.log(street2);
+// console.log(street3);
+
+var streets = [];
+
+streets.push(street1);
+streets.push(street2);
+streets.push(street3);
+
+// console.log(streets);
+
+var totalStr = 0;
+var avgStr = 0;
+
+for(var i = 0; i < streets.length; i++) {
+    totalStr += streets[i].roads;
+}
+
+// console.log(totalStr);
+console.log(`The total length of the town's streets is ${totalStr}.`);
+
+avgStr = totalStr / streets.length;
+
+console.log(`The average length of the town's streets is ${parseInt(avgStr)}.`);
