@@ -1080,7 +1080,7 @@ class Parkk extends Element {
 
     treeDensity() {
         const density = this.numTrees / this.area;
-        console.log(`${this.name} has a tree density of ${density} trees per square km.`);
+        console.log(`${this.name} has a tree density of ${parseFloat(density).toFixed(2)} trees per square km.`);
     }
 
 
@@ -1109,22 +1109,51 @@ const allParks = [new Parkk('Green Park', 1987, 0.2, 215), new Parkk('National P
 const allStreets = [new Streett('Ocean Avenue', 1999, 1.1, 4), new Streett('Evergreen Street', 2008, 2.7, 2), new Streett('4th Street', 2015, 0.8), new Streett('Sunset Boulevard', 1982, 2.5, 5)];
 
 
+function calc(arr) {
+
+    const sum = arr.reduce((prev, cur, index) => prev + cur, 0);
+
+    return [sum, sum / arr.length];
+
+}
 
 function reportParks(p) {
 
     console.log('-----PARKS REPORT-----');
 
+    // Density
+    p.forEach(el => el.treeDensity());
+
+    // Average age
+    const ages = p.map(el => new Date().getFullYear() - el.buildYear);
+    const [totalAge, avgAge] = calc(ages);
+
+    console.log(`Our ${p.length} parks have an average of ${parseFloat(avgAge).toFixed(2)} years.`)
+
+    // Which park has more than 1000 trees
+    const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
+
+    console.log(`${p[i].name} has more than 1000 trees.`);
+
 }
 
 function reportStreets(s) {
 
-    console.log('-----STREET REPORT-----');
+    console.log('-----STREETS REPORT-----');
+
+    // Total and average length of the streets
+    const [totalLength, avgLength] = calc(s.map(el => el.length));
+    console.log(`Our ${s.length} streets have a total length of ${parseFloat(totalLength).toFixed(2)} km, with an average of ${parseFloat(avgLength).toFixed(2)} km.`);
+
+
+    // Classify sizes
+    s.forEach(el => el.classifyStreet())
 
 }
 
 
 reportParks(allParks);
-reportStreets(reportStreets);
+reportStreets(allStreets);
 
 
 
