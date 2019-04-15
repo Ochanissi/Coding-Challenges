@@ -1147,7 +1147,7 @@ function reportStreets(s) {
 
 
     // Classify sizes
-    s.forEach(el => el.classifyStreet())
+    s.forEach(el => el.classifyStreet());
 
 }
 
@@ -1158,10 +1158,62 @@ reportStreets(allStreets);
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 10
 
 
+/*
+Write a JavaScript function that generates all combinations of a string.
+*/
 
 
+function combString(str) {
+    //String length
+    var lenStr = str.length;
+    //Initially empty, where the results will be stored
+    var result = [];
+    //Currently selected letter
+    var indexCurrent = 0;
+
+    //Looping from 0 to the length of the string
+    //var char is selecting the character at this index. Ex: "a", then "b", then "c"
+    while (indexCurrent < lenStr) {
+        //Get the character at the index position. 
+        var char = str.charAt(indexCurrent);
+
+        var x;
+        var arrTemp = [char];
+        //For each previous result
+        for (x in result) {
+            //Add the current character to the index
+
+            arrTemp.push("" + result[x] + char);
+
+            /*
+             * Ex: "abc"
+             * First round: result is empty, so this code doesn't execute
+             * Second round: result contains "a". Adds "ab" to the result array
+             *  - Then. result array will contain "a","b" and "ab"
+             * Third round: result contains "a","b","ab"
+             *     For all of these results, add "c" to the resulting array
+             *     Ex: "ac","bc", "abc"
+             *  - Then add "c"
+             */
+        }
+        result = result.concat(arrTemp);
+
+        //Increment the current index to go to the next character 
+        indexCurrent++;
+    }
+
+    return result;
+}
+
+console.log(combString("zxc"));
 
 
 
