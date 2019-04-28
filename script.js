@@ -1216,10 +1216,64 @@ function combString(str) {
 console.log(combString("zxc"));
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 11
 
 
+/*
+Clean up user-entered phone numbers so that they can be sent SMS messages.
+*/
 
 
+'use strict';
+
+var PhoneNumber = function(number) {
+  this.digits = this.normalize(number);
+};
+
+PhoneNumber.prototype.number = function () {
+  return this.digits;
+};
+
+PhoneNumber.prototype.areaCode = function () {
+  return this.digits.substring(0,3);
+};
+
+PhoneNumber.prototype.localNumber = function () {
+  return this.digits.substring(3,6) + '-' + this.digits.substring(6,10);
+};
+
+PhoneNumber.prototype.toString = function () {
+  return '(' + this.areaCode() + ') ' + this.localNumber();
+};
+
+PhoneNumber.prototype.relevantDigits = function (number) {
+  return number.substring(number.length - 10, number.length)
+};
+
+PhoneNumber.prototype.isValid = function (number) {
+  return ((number.length === 10) ||
+          ((number.length === 11) && (number.charAt(0) === '1')));
+};
+
+PhoneNumber.prototype.normalize = function (numberString) {
+  var digits = this.stripFormatting(numberString);
+  if (this.isValid(digits)) {
+    return this.relevantDigits(digits);
+  } else {
+    return '0000000000';
+  }
+};
+
+PhoneNumber.prototype.stripFormatting = function (numberString) {
+  return numberString.replace(/\D/ig, '');
+}
+
+module.exports = PhoneNumber;
 
 
 
