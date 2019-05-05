@@ -1273,18 +1273,61 @@ PhoneNumber.prototype.stripFormatting = function (numberString) {
   return numberString.replace(/\D/ig, '');
 }
 
-module.exports = PhoneNumber;
+// module.exports = PhoneNumber;
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 12
 
 
+/*
+From a unsorted array of numbers 1 to 100 excluding one number, how will you find that number?
+*/
+
+function missingNumber(arr) {
+    var n = arr.length + 1,
+        sum = 0,
+        expectedSum = n * (n + 1) / 2;
+
+    for (var i = 0, len = arr.length; i < len; i++) {
+        sum += arr[i];
+    }
+
+    return expectedSum - sum;
+}
 
 
+// console.log(missingNumber(12));
 
+// Multiple missing numbers
 
+var someArr = [2, 5, 3, 1, 4, 7, 10, 15]
 
+function findMissingNumbers(arr) {
+    var missingNumbersCount;
+    var missingNumbers = [];
+    arr.sort(function(a, b) {
+        return a - b;
+    })  
+    for(var i = 0; i < arr.length; i++) {
+        if(arr[i+1] - arr[i] != 1 && arr[i+1] != undefined) {
+            missingNumbersCount = arr[i+1] - arr[i] - 1;
+            for(j = 1; j <= missingNumbersCount; j++) {
+                missingNumbers.push(arr[i] + j)
+            }
+        }
+    }
+    return missingNumbers
+}
 
+findMissingNumbers(someArr) // [6, 8, 9, 11, 12, 13, 14]
+
+console.log(findMissingNumbers(someArr));
 
 
 
