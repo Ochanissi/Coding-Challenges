@@ -1331,14 +1331,97 @@ console.log(findMissingNumbers(someArr));
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 13
+
+// Remove Duplicates from an Array
+
+// Create a function that takes an array of items, removes all duplicate items and returns a new array in the same sequential order as the old array (minus duplicates).
+
+/////////////////////////////////
+console.log('Version 1');
+// Uniq reduce while keeping existing order
+
+var names = ["Mike","Matt","Nancy","Adam","Jenny","Nancy","Carl"];
+
+var uniq = names.reduce(function(a,b){
+    if (a.indexOf(b) < 0 ) a.push(b);
+    return a;
+  },[]);
+
+console.log(uniq, names) // [ 'Mike', 'Matt', 'Nancy', 'Adam', 'Jenny', 'Carl' ]
 
 
 
+/////////////////////////////////
+console.log('Version 2');
+// Update 2015: ES6 version
+
+var uniq = [ ...new Set(names) ]
+
+console.log(uniq, names)
 
 
 
+/////////////////////////////////
+console.log('Version 3');
+// Sort based on occurrence
+
+var uniq = names
+  .map((name) => {
+    return {count: 1, name: name}
+  })
+  .reduce((a, b) => {
+    a[b.name] = (a[b.name] || 0) + b.count
+    return a
+  }, {})
+
+var sorted = Object.keys(uniq).sort((a, b) => uniq[a] < uniq[b])
+
+console.log(sorted, names)
 
 
+
+/////////////////////////////////
+console.log('Version 4');
+// Vanilla JS
+
+function remove_duplicates(arr) {
+    var obj = {};
+    var ret_arr = [];
+    for (var i = 0; i < arr.length; i++) {
+        obj[arr[i]] = true;
+    }
+    for (var key in obj) {
+        ret_arr.push(key);
+    }
+    return ret_arr;
+}
+
+console.log(remove_duplicates(names));
+console.log(names);
+
+/////////////////////////////////
+console.log('Version 5');
+// 
+
+var rmvDuplicates = names.filter((v,i) => names.indexOf(v) == i);
+
+console.log(rmvDuplicates);
+console.log(names);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 14
 
 
 
