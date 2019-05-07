@@ -1405,25 +1405,14 @@ function remove_duplicates(arr) {
 console.log(remove_duplicates(names));
 console.log(names);
 
+
+
+
 /////////////////////////////////
 console.log('Version 5');
-// 
+// Another alternative of the Version one using the filter method
 
 var rmvDuplicates = names.filter((v,i) => names.indexOf(v) == i);
 
 console.log(rmvDuplicates);
 console.log(names);
-
-
-
-// ***************************************************************************
-console.log('**************************************************************');
-// ***************************************************************************
-
-/////////////////////////////////
-// CODING CHALLENGE 14
-
-
-
-
-
