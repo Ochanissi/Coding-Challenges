@@ -1492,7 +1492,7 @@ function difference(arr1,arr2) {
   console.log(difference([1, 2, 3], [100, 2, 1, 10]));
 
 
-  // ***************************************************************************
+// ***************************************************************************
 console.log('**************************************************************');
 // ***************************************************************************
 
@@ -1535,3 +1535,45 @@ var sortedArray = quick_Sort(myArray);
 console.log("Sorted array: " + sortedArray);
 
 console.timeEnd('quick_Sort');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 17
+
+// Write a JavaScript program to sort a list of elements using Merge sort.
+
+/////////////////////////////////
+
+console.time('merge_sort');
+
+function merge_sort(left_part,right_part) 
+{
+	var i = 0;
+	var j = 0;
+	var results = [];
+
+	while (i < left_part.length || j < right_part.length) {
+		if (i === left_part.length) {
+			// j is the only index left_part
+			results.push(right_part[j]);
+			j++;
+		} 
+      else if (j === right_part.length || left_part[i] <= right_part[j]) {
+			results.push(left_part[i]);
+			i++;
+		} else {
+			results.push(right_part[j]);
+			j++;
+		}
+	}
+	return results;
+}
+
+
+console.log(merge_sort([1,3,4], [3,7,9]));
+
+console.timeEnd('merge_sort');
