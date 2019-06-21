@@ -1655,7 +1655,7 @@ console.log('**************************************************************');
 
 /////////////////////////////////
 
-console.time('heap_root');
+console.time('insertion_Sort');
 
 function insertion_Sort(arr)
 {
@@ -1687,7 +1687,7 @@ function insertion_Sort(arr)
 
 console.log(insertion_Sort([3, 0, 2, 5, -1, 4, 1]));
 
-console.timeEnd('heap_root');
+console.timeEnd('insertion_Sort');
 
 
 // ***************************************************************************
@@ -1701,7 +1701,7 @@ console.log('**************************************************************');
 
 /////////////////////////////////
 
-console.time('heap_root');
+console.time('Selection_Sort');
 
 function Selection_Sort(arr, compare_Function) {
 
@@ -1738,4 +1738,45 @@ function Selection_Sort(arr, compare_Function) {
   console.log(Selection_Sort([3, 0, 2, 5, -1, 4, 1], function(a, b) { return a - b; })); 
   console.log(Selection_Sort([3, 0, 2, 5, -1, 4, 1], function(a, b) { return b - a; }));
 
-console.timeEnd('heap_root');
+console.timeEnd('Selection_Sort');
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 20
+
+// Write a JavaScript program to sort a list of elements using Shell sort.
+
+/////////////////////////////////
+
+console.time('shellSort');
+
+function shellSort(arr) {
+    var increment = arr.length / 2;
+    while (increment > 0) {
+        for (i = increment; i < arr.length; i++) {
+            var j = i;
+            var temp = arr[i];
+    
+            while (j >= increment && arr[j-increment] > temp) {
+                arr[j] = arr[j-increment];
+                j = j - increment;
+            }
+    
+            arr[j] = temp;
+        }
+    
+        if (increment == 2) {
+            increment = 1;
+        } else {
+            increment = parseInt(increment*5 / 11);
+        }
+    }
+  return arr;
+}
+
+console.log(shellSort([3, 0, 2, 5, -1, 4, 1]));
+
+console.timeEnd('shellSort');
