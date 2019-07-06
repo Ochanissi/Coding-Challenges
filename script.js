@@ -1931,3 +1931,47 @@ console.log("Sorted Array Elements");
 console.log(gnomeSort(arra));
 
 console.timeEnd('gnomeSort');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 23
+
+// Write a JavaScript program to sort a list of elements using Counting sort.
+
+/////////////////////////////////
+
+console.time('countingSort');
+
+function countingSort(arr, min, max)
+  {
+    var i, z = 0, count = [];
+ 
+    for (i = min; i <= max; i++) {
+        count[i] = 0;
+    }
+ 
+    for (i=0; i < arr.length; i++) {
+        count[arr[i]]++;
+    }
+ 
+    for (i = min; i <= max; i++) {
+        while (count[i]-- > 0) {
+            arr[z++] = i;
+        }
+    }
+ return arr;
+}
+var arra = [3, 0, 2, 5, 4, 1]; 
+console.log(arra.length);
+console.log("Original Array Elements"); 
+console.log(arra); 
+console.log("Sorted Array Elements"); 
+console.log(countingSort(arra, 0, 5));
+
+console.timeEnd('countingSort');
+
