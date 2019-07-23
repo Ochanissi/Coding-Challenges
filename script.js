@@ -2246,3 +2246,35 @@ Array.prototype.merge_Sort = function () {
   console.log(a.merge_Sort());
 
 console.timeEnd('Coding Challenge 28');
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 29
+
+// Write a JavaScript function to extract unique characters from a string.
+
+/////////////////////////////////
+
+console.time('Coding Challenge 29');
+
+function unique_char(str1)
+{
+ var str=str1;
+ var uniql="";
+ for (var x=0;x < str.length;x++)
+ {
+
+ if(uniql.indexOf(str.charAt(x))==-1)
+  {
+  uniql += str[x];  
+  
+   }
+  }
+  return uniql;  
+}  
+console.log(unique_char("thequickbrownfoxjumpsoverthelazydog"));
+
+console.timeEnd('Coding Challenge 29');
