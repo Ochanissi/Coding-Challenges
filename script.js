@@ -2305,3 +2305,45 @@ function uppercase(str)
 console.log(uppercase("the quick brown fox"));
 
 console.timeEnd('Coding Challenge 30');
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 31
+
+// Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case.
+
+/////////////////////////////////
+
+function subset(arra, arra_size)
+ {
+    var result_set = [], 
+        result;
+    
+   
+for(var x = 0; x < Math.pow(2, arra.length); x++)
+  {
+    result = [];
+    i = arra.length - 1; 
+     do
+      {
+      if( (x & (1 << i)) !== 0)
+          {
+             result.push(arra[i]);
+           }
+        }  while(i--);
+
+    if( result.length >= arra_size)
+       {
+          result_set.push(result);
+        }
+    }
+
+    return result_set; 
+}
+
+console.log(subset([1, 2, 3], 2));
+
+console.timeEnd('Coding Challenge 31');
