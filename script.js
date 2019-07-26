@@ -2346,4 +2346,32 @@ for(var x = 0; x < Math.pow(2, arra.length); x++)
 
 console.log(subset([1, 2, 3], 2));
 
-console.timeEnd('Coding Challenge 31');
+console.timeEnd('Coding Challenge 32');
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 32
+
+// Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of occurrences of the specified letter within the string.
+
+/////////////////////////////////
+
+function char_count(str, letter) 
+{
+ var letter_Count = 0;
+ for (var position = 0; position < str.length; position++) 
+ {
+    if (str.charAt(position) == letter) 
+      {
+      letter_Count += 1;
+      }
+  }
+  return letter_Count;
+}
+
+console.log(char_count('w3resource.com', 'o'));
+
+console.timeEnd('Coding Challenge 32');
