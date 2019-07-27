@@ -2317,6 +2317,8 @@ console.log('**************************************************************');
 
 /////////////////////////////////
 
+console.time('Coding Challenge 31');
+
 function subset(arra, arra_size)
  {
     var result_set = [], 
@@ -2346,7 +2348,7 @@ for(var x = 0; x < Math.pow(2, arra.length); x++)
 
 console.log(subset([1, 2, 3], 2));
 
-console.timeEnd('Coding Challenge 32');
+console.timeEnd('Coding Challenge 31');
 
 // ***************************************************************************
 console.log('**************************************************************');
@@ -2358,6 +2360,9 @@ console.log('**************************************************************');
 // Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of occurrences of the specified letter within the string.
 
 /////////////////////////////////
+
+console.time('Coding Challenge 32');
+
 
 function char_count(str, letter) 
 {
@@ -2375,3 +2380,42 @@ function char_count(str, letter)
 console.log(char_count('w3resource.com', 'o'));
 
 console.timeEnd('Coding Challenge 32');
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 33
+
+// Write a JavaScript function to find the first not repeated character.
+
+/////////////////////////////////
+
+console.time('Coding Challenge 33');
+
+function find_FirstNotRepeatedChar(str) {
+    var arra1 = str.split('');
+    var result = '';
+    var ctr = 0;
+   
+    for (var x = 0; x < arra1.length; x++) {
+      ctr = 0;
+   
+      for (var y = 0; y < arra1.length; y++) 
+      {
+        if (arra1[x] === arra1[y]) {
+          ctr+= 1;
+        }
+      }
+   
+      if (ctr < 2) {
+        result = arra1[x];
+        break;
+      }
+    }
+    return result;
+  }
+  console.log(find_FirstNotRepeatedChar('abacddbec'));
+
+console.timeEnd('Coding Challenge 33');
