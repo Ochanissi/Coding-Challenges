@@ -2606,3 +2606,58 @@ for (var i=0;i<arr1.length;i++)
 console.log(arr2);
 
 console.timeEnd('Coding Challenge 37');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 38
+
+// Create a function that reverses a string.
+
+/////////////////////////////////
+
+console.time('Coding Challenge 38');
+
+function reverse(str) {
+    // Check input
+    if (!str || str.length < 2 || typeof str !== 'string')  {
+        return 'hmm that is not good.';
+    }
+
+    const backwards = [];
+    const totalItems = str.length - 1;
+
+    for(let i = totalItems; i >= 0; i--) {
+        backwards.push(str[i]);
+    }
+
+    console.log(backwards);
+    
+    return backwards.join('');
+}
+
+// -------------------------------------
+
+function reverse2(str) {
+    return str.split('').reverse().join('');
+}
+
+// -------------------------------------
+
+const reverse3 = str => str.split('').reverse().join('');
+
+// -------------------------------------
+
+const reverse3 = str => [...str].reverse().join('');
+
+
+reverse('Hi! My name is Mirel!');
+
+reverse2('Hi! My name is Mirel!');
+
+reverse3('Hi! My name is Mirel!');
+
+console.timeEnd('Coding Challenge 38');
