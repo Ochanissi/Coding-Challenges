@@ -2711,3 +2711,37 @@ function mergedSortedArray(array1, array2) {
 mergedSortedArray([0,3,4,31], [4,6,30]);
 
 console.timeEnd('Coding Challenge 39');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 40
+
+// Implement a hash table
+
+/////////////////////////////////
+
+console.time('Coding Challenge 40');
+
+class HashTable {
+    constructor(size) {
+        this.data = new Array(size);
+    }
+
+    _hash(key) {
+        let hash = 0;
+        for (let i = 0; i < key.length; i++) {
+            hash = (hash + key.charCodeAt(i) * i) % this.data.length
+        }
+        return hash;
+    }
+}
+
+const myHashTable = new HashTable(50);
+myHashTable.set('grapes', 10000);
+myHashTable.get('grapes');
+
+console.timeEnd('Coding Challenge 40');
