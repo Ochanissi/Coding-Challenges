@@ -2835,3 +2835,22 @@ function interviewQuestion(job) {
 interviewQuestion('designer')('Mirel');
 interviewQuestion('teacher')('Marcel');
 interviewQuestion('cacat')('Daniela');
+
+
+// ------------------------------------
+
+function interviewQuestion2(job) {
+    return function(name) {
+        if (job === 'designer') {
+            console.log(name + ', can you please say UX design is?');
+        } else if (job === 'teacher') {
+            console.log(name + ', what subject do you teach?');
+        } else  {
+            console.log('Hello ' + name + 'what do you do?');
+        }
+    }
+}
+
+interviewQuestion2('designer')('Mirel');
+interviewQuestion2('teacher')('Marcel');
+interviewQuestion2('cacat')('Daniela');
