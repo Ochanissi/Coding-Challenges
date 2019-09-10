@@ -2779,3 +2779,59 @@ for (var i=0; i<arr1.length; i++)
 console.log(item+" ( " +mf +" times ) ") ;
 
 console.timeEnd('Coding Challenge 41');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 42
+
+// Rewrite the following functions using closures
+
+/*
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you please say UX design is?');
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log(name + ', what subject do you teach?');
+        }
+    } else  {
+        return function (name) {
+            console.log('Hello ' + name + 'what do you do?');
+        }
+    }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+
+teacherQuestion('John');
+designerQuestion('Mark');
+
+interviewQuestion('teacher')('Mark');
+*/
+
+/////////////////////////////////
+
+function interviewQuestion(job) {
+    var a;
+    if (job === 'designer') {
+        a = ', can you please say UX design is?';
+    } else if (job === 'teacher') {
+        a = ', what subject do you teach?';
+    } else {
+        a = ', what do you do?';
+    }
+    return function(name) {
+        console.log(name + a);
+    }
+}
+
+interviewQuestion('designer')('Mirel');
+interviewQuestion('teacher')('Marcel');
+interviewQuestion('cacat')('Daniela');
