@@ -2875,3 +2875,34 @@ function pythagorean_theorem(x, y) {
   
   console.log(pythagorean_theorem(2, 4));
   console.log(pythagorean_theorem(3, 4));
+
+
+  // ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 44
+
+// Write a JavaScript function to get all prime numbers from 0 to a specified number
+
+function primeFactorsTo(max)
+{
+    var store  = [], i, j, primes = [];
+    for (i = 2; i <= max; ++i) 
+    {
+        if (!store [i]) 
+          {
+            primes.push(i);
+            for (j = i << 1; j <= max; j += i) 
+            {
+                store[j] = true;
+            }
+        }
+    }
+    return primes;
+}
+
+console.log(primeFactorsTo(5));
+
+console.log(primeFactorsTo(15));
