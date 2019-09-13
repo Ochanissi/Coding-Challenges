@@ -2877,7 +2877,7 @@ function pythagorean_theorem(x, y) {
   console.log(pythagorean_theorem(3, 4));
 
 
-  // ***************************************************************************
+// ***************************************************************************
 console.log('**************************************************************');
 // ***************************************************************************
 
@@ -2906,3 +2906,24 @@ function primeFactorsTo(max)
 console.log(primeFactorsTo(5));
 
 console.log(primeFactorsTo(15));
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 45
+
+// Write a JavaScript function to test if a number is a power of 2.
+
+function power_of_2(n) {
+    if (typeof n !== 'number') 
+         return 'Not a number'; 
+   
+       return n && (n & (n - 1)) === 0;
+   }
+   
+   console.log(power_of_2(16));
+   console.log(power_of_2(18));
+   console.log(power_of_2(256));
