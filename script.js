@@ -3081,6 +3081,98 @@ function roman_to_Int(str1) {
     case 'M': return 1000;
     default: return -1;
     }
+    }       
+
+console.log(roman_to_Int('XXVI'));
+console.log(roman_to_Int('CI'));
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 50
+
+/*
+Suppose that you're working in a small town administration, and you're in charge of two town elements:
+1. Parks
+2. Streets
+It's a very small town, so right now there are only 3 parks and 4 streets. All parks and streets have a name and a build year.
+At an end-of-year meeting, your boss wants a final report with the following:
+1. Tree density of each park in the town (forumla: number of trees/park area)
+2. Average age of each town's park (forumla: sum of all ages/number of parks)
+3. The name of the park that has more than 1000 trees
+4. Total and average length of the town's streets
+5. Size classification of all streets: tiny/small/normal/big/huge. If the size is unknown, the default is normal
+All the report data should be printed to the console.
+HINT: Use some of the ES6 features: classes, subclasses, template strings, default parameters, maps, arrow functions, destructuring, etc.
+*/
+
+class Street {
+    constructor (name, buildYear) {
+        this.name = name;
+        this.buildYear = buildYear;
     }
-    console.log(roman_to_Int('XXVI'));
-    console.log(roman_to_Int('CI'));
+}
+
+class Park {
+    constructor (name, buildYear, numTrees, parkArea) {
+        this.name = name;
+        this.buildYear = buildYear;
+        this.numTrees = numTrees;
+        this.parkArea = parkArea;
+    }
+
+    calcTreeDensity() {
+        const treeDensity = this.numTrees / this.parkArea;
+        return treeDensity.toFixed(2);
+        // console.log(`The tree density of ${this.name} is ${treeDensity.toFixed(2)}.`);
+    }
+
+    calcAge() {
+        const age = new Date().getFullYear() - this.buildYear;
+        return age;
+        // console.log(age);
+    }
+}
+
+const parks = [];
+const parksTreeDensity = [];
+const parksAge = [];
+let parksAvgAge = 0;
+
+const park1 = new Park('Cismigiu', 1990, 1440, 477);
+const park2 = new Park('Herastrau', 1964, 985, 366);
+const park3 = new Park('Yore', 1988, 764, 288);
+
+parks.push(park1, park2, park3);
+
+parksTreeDensity.push(park1.calcTreeDensity());
+parksTreeDensity.push(park2.calcTreeDensity());
+parksTreeDensity.push(park3.calcTreeDensity());
+
+parksAge.push(park1.calcAge());
+parksAge.push(park2.calcAge());
+parksAge.push(park3.calcAge());
+
+
+
+function avgAge(ages) {
+    let total = 0;
+
+    for (var i in parksAge) {
+        total += parksAge[i];
+    }
+    parksAvgAge = total / (parksAge.length + 1); 
+
+    return parksAvgAge;
+}
+
+avgAge(parksAge);
+
+
+
+
+
+console.log(parks, parksTreeDensity, parksAge, parksAvgAge);
