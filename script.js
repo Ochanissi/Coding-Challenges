@@ -3109,70 +3109,73 @@ All the report data should be printed to the console.
 HINT: Use some of the ES6 features: classes, subclasses, template strings, default parameters, maps, arrow functions, destructuring, etc.
 */
 
-class Street {
+class Element {
     constructor (name, buildYear) {
         this.name = name;
         this.buildYear = buildYear;
     }
 }
 
-class Park {
-    constructor (name, buildYear, numTrees, parkArea) {
-        this.name = name;
-        this.buildYear = buildYear;
+class Park extends Element {
+    constructor (name, buildYear, area, numTrees) {
+        super (name, buildYear);
+        this.area = area;
         this.numTrees = numTrees;
-        this.parkArea = parkArea;
     }
 
-    calcTreeDensity() {
-        const treeDensity = this.numTrees / this.parkArea;
-        return treeDensity.toFixed(2);
-        // console.log(`The tree density of ${this.name} is ${treeDensity.toFixed(2)}.`);
-    }
-
-    calcAge() {
-        const age = new Date().getFullYear() - this.buildYear;
-        return age;
-        // console.log(age);
+    treeDensity() {
+        const density = this.numTrees / this.area;
+        console.log(`${this.name} has a tree density of ${density} trees per square km.`);
     }
 }
 
-const parks = [];
-const parksTreeDensity = [];
-const parksAge = [];
-let parksAvgAge = 0;
-
-const park1 = new Park('Cismigiu', 1990, 1440, 477);
-const park2 = new Park('Herastrau', 1964, 985, 366);
-const park3 = new Park('Yore', 1988, 764, 288);
-
-parks.push(park1, park2, park3);
-
-parksTreeDensity.push(park1.calcTreeDensity());
-parksTreeDensity.push(park2.calcTreeDensity());
-parksTreeDensity.push(park3.calcTreeDensity());
-
-parksAge.push(park1.calcAge());
-parksAge.push(park2.calcAge());
-parksAge.push(park3.calcAge());
-
-
-
-function avgAge(ages) {
-    let total = 0;
-
-    for (var i in parksAge) {
-        total += parksAge[i];
+class Street extends Element {
+    constructor (name, buildYear, length, size = 3) {
+        super (name, buildYear);
+        this.length = length;
+        this.size = size;
     }
-    parksAvgAge = total / (parksAge.length + 1); 
 
-    return parksAvgAge;
+    classifyStreet {
+        const classification = new Map();
+        classification.set(1, 'tiny');
+        classification.set(2, 'small');
+        classification.set(3, 'normal');
+        classification.set(4, 'big');
+        classification.set(5, 'huge');
+
+        console.log(`${this.name}, build in ${this.buildYear}, is a ${classification.get(this.size)} street.`);
+    }
 }
 
-avgAge(parksAge);
+const allParks = [new Park('Cismigiu', 1954, 0.5, 212),
+                  new Park('Yore', 1855, 0.2, 198),
+                  new Park('Herastrau', 1877, 0.6, 352)];
+
+const allStreets = [new Street('Oituz', 1987, 1.3, 4),
+                    new Street('Andronache', 2001, 2.1, 5),
+                    new Street('Colentina', 1994, 1.9, 3),
+                    new Street('Fundeni', 1878, 2.3, 5)];
 
 
+function reportParks(p) {
+
+    console.log('----- PARKS REPORT -----');
+
+    // Density
+    p.forEach(el => el.treeDensity());
+
+    // Average age
+
+    // Which park has more than 1000 trees
+}
+
+function reportStreets(s) {
+
+    console.log('----- STREETS REPORT -----');
+
+}
 
 
-
-console.log(parks, parksTreeDensity, parksAge, parksAvgAge);
+reportParks(allParks);
+reportStreets(allStreets);
