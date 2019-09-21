@@ -3158,6 +3158,12 @@ const allStreets = [new Street('Oituz', 1987, 1.3, 4),
                     new Street('Fundeni', 1878, 2.3, 5)];
 
 
+function calc(arr) {
+    const sum = arr.reduce((prev, cur, index) => prev + cur, 0);
+
+    return [sum, sum / arr.length];
+}
+
 function reportParks(p) {
 
     console.log('----- PARKS REPORT -----');
@@ -3166,8 +3172,14 @@ function reportParks(p) {
     p.forEach(el => el.treeDensity());
 
     // Average age
+    const ages = p.map(el => new Date.getFullYear() - el.buildYear);
+    const [totalAge, avgAge] = calc(ages);
+    console.log(`Our ${p.length} parks have an average of ${avgAge} years.`);
+
 
     // Which park has more than 1000 trees
+    const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
+    console.log(`${p[i].name} has more than 1000 trees.`);
 }
 
 function reportStreets(s) {
