@@ -3186,6 +3186,13 @@ function reportStreets(s) {
 
     console.log('----- STREETS REPORT -----');
 
+    // Total and average length
+    const [totalLength, avgLength] = calc(s.map(el => el.length));
+    console.log(`Our ${s.length} streets have a total length of ${totalLength} km, with an average of ${avgLength} km.`);
+    
+    // Clasify sizes
+    s.forEach(el => el.classifyStreet());
+
 }
 
 
