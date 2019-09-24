@@ -3252,3 +3252,41 @@ minMax([13, 72, 98, 43, 24, 65, 31]);
 minMax([-54, -23, -54, -21]);
 minMax([-0.473, -0.6834, -0.1287, 0.5632]);
 minMax([0, 0, 0, 0]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 53
+
+// Create a function that returns true if the first array can be nested inside the second.
+
+// arr1 can be nested inside arr2 if:
+// arr1's min is greater than arr2's min.
+// arr1's max is less than arr2's max.
+
+
+function canNest(arr1, arr2) {
+	var minMax1 = [];
+	var minMax2 = [];
+	
+	minMax1.push(Math.min(...arr1));
+	minMax1.push(Math.max(...arr1));
+	
+	minMax2.push(Math.min(...arr2));
+	minMax2.push(Math.max(...arr2));
+	
+	if (minMax1[0] > minMax2[0] && minMax1[1] < minMax2[1]) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+canNest([1, 2, 3, 4], [0, 6]);
+canNest([3, 1], [4, 0]);
+canNest([9, 9, 8], [8, 9, 10]);
+canNest([9, 9, 8], [8, 9]);
+canNest([1, 2, 3, 4], [2, 3]);
