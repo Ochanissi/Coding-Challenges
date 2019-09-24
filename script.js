@@ -3290,3 +3290,32 @@ canNest([3, 1], [4, 0]);
 canNest([9, 9, 8], [8, 9, 10]);
 canNest([9, 9, 8], [8, 9]);
 canNest([1, 2, 3, 4], [2, 3]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 54
+
+// Write a function that returns true if a word can be found in between the start and end word in a dictionary.
+
+function isBetween(first, last, word) {
+	if (first < word && last > word) {
+		return true;
+	} else return false;
+}
+
+isBetween("apple", "banana", "azure");
+isBetween("bookcase", "zebra", "squid");
+isBetween("shrapnel", "tapenade", "tally");
+isBetween("monk", "monument", "monkey");
+isBetween("oath", "ostrich", "osteoporosis");
+isBetween("ostracize", "ostrich", "open");
+isBetween("bookend", "boolean", "boost");
+isBetween("tamer", "tanner", "timid");
+isBetween("rhino", "sorcerer", "quote");
+isBetween("body", "lung", "ace");
+
+
