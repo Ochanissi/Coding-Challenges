@@ -3319,3 +3319,28 @@ isBetween("rhino", "sorcerer", "quote");
 isBetween("body", "lung", "ace");
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 55
+
+// Create a function that takes a string and returns true or false, depending on whether the characters are in order or not.
+
+
+function isInOrder(str) {
+	if (str === (str.split('').sort().join(''))) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+isInOrder('abc');
+isInOrder('edabit');
+isInOrder('xyz');
+isInOrder('xyzz');
+isInOrder('123');
+isInOrder('321');
