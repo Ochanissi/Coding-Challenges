@@ -3344,3 +3344,27 @@ isInOrder('xyz');
 isInOrder('xyzz');
 isInOrder('123');
 isInOrder('321');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 56
+
+// Create a function that takes in an array and returns true if all its values are even, and false otherwise.
+
+function checkAllEven(arr) {
+	for (let i = 0; i <= arr.length; i++) {
+		  if (!isNaN(arr[i]) && arr[i] % 2 === 0) {
+		return true;
+	} else return false;
+	}
+}
+
+
+checkAllEven([1, 2, 3, 4]);
+checkAllEven([2, 4, 6]);
+checkAllEven([5, 6, 8, 10]);
+checkAllEven([-2, 2, -2, 2]);
