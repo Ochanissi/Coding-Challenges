@@ -3204,7 +3204,7 @@ console.log('**************************************************************');
 // ***************************************************************************
 
 /////////////////////////////////
-// CODING CHALLENGE 50
+// CODING CHALLENGE 51
 
 // Write a JavaScript program to find the most frequent item of an array.
 
@@ -3227,3 +3227,28 @@ for (var i=0; i<arr1.length; i++)
         m=0;
 }
 console.log(item+" ( " +mf +" times ) ") ;
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 52
+
+// Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.
+
+function minMax(arr) {
+	var minMax = [];
+	minMax.push(Math.min(...arr));
+	minMax.push(Math.max(...arr));
+	return minMax;
+}
+
+minMax([14, 35, 6, 1, 34, 54]);
+minMax([1.346, 1.6532, 1.8734, 1.8723]);
+minMax([0.432, 0.874, 0.523, 0.984, 0.327, 0.2345]);
+minMax([13, 72, 98, 43, 24, 65, 31]);
+minMax([-54, -23, -54, -21]);
+minMax([-0.473, -0.6834, -0.1287, 0.5632]);
+minMax([0, 0, 0, 0]);
