@@ -3368,3 +3368,176 @@ checkAllEven([1, 2, 3, 4]);
 checkAllEven([2, 4, 6]);
 checkAllEven([5, 6, 8, 10]);
 checkAllEven([-2, 2, -2, 2]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 57
+
+// Create a function that takes three number arguments — one number as an input and two additional numbers representing the endpoints of a closed range — and return the number limited to this range.
+
+// If the number falls within the range, the number should be returned.
+// If the number is less than the lower limit of the range, the lower limit should be returned.
+// If the number is greater than the upper limit of the range, the upper limit should be returned.
+
+
+function limitNumber(num, rangeLow, rangeHigh) {
+	if (num >= rangeLow && num <= rangeHigh) {
+		return num;
+	} else if (num < rangeLow) {
+		return rangeLow;
+	} else if (num > rangeHigh) {
+		return rangeHigh;
+	}
+}
+
+
+limitNumber(5, 1, 10)
+limitNumber(-3, 1, 10)
+limitNumber(14, 1, 10);
+limitNumber(4.6, 1, 10);
+limitNumber(-100, -73, -70);
+limitNumber(2, -73, -70);
+limitNumber(-71.5, -73, -70);
+limitNumber(7, 8, 8.1);limitNumber(9, 8, 8.1);
+limitNumber(8.05, 8, 8.1);
+limitNumber(16, 16, 16);
+limitNumber(-1, 16, 16);
+limitNumber(800, 16, 16);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 57
+
+// Given a sorted array of numbers, remove any numbers that are divisible by 13. Return the amended array.
+
+function unlucky13(nums) {
+	const a = [];
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] % 13 !== 0) {
+			a.push(nums[i]);
+		}
+	}
+	return a;
+}
+
+
+unlucky13([91, 286, 416, 884, 1229]);
+unlucky13([245, 518, 741, 824, 1092]);
+unlucky13([394, 447, 572, 832, 1105]);
+unlucky13([289, 406, 650, 791, 1079]);
+unlucky13([390, 438, 1014, 1067, 1091]);
+unlucky13([494, 1041, 1158, 1188, 1298]);
+unlucky13([43, 117, 169, 702, 1048]);
+unlucky13([195, 430, 845, 857, 874]);
+unlucky13([247, 510, 1144, 1164, 1206]);
+unlucky13([182, 520, 533, 923, 1196]);
+unlucky13([52, 144, 148, 1105, 1114]);
+unlucky13([130, 204, 364, 585, 679]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 58
+
+// A number added with its additive inverse equals zero. Create a function that returns an array of additive inverses.
+
+function additiveInverse(arr) {
+	const a = [];
+	
+	for(let i = 0; i < arr.length; i++) {
+		if (arr[i] < 0) {
+			a.push(Math.abs(arr[i]));
+		} else if (arr[i] > 0) {
+			a.push(-Math.abs(arr[i]));
+		}
+	}
+	return a;
+}
+
+
+function additiveInverse(arr) {
+	return arr.map(x => x = -x);
+}
+
+
+function additiveInverse(arr) {
+	return arr.map(x => x * -1);	
+}
+
+function additiveInverse(arr) {
+	newArr = [];
+	arr.forEach(num => {
+		console.log(num);
+		newArr.push(num * -1);
+	});
+	return newArr;
+}
+
+
+additiveInverse([5, -7, 8, 3]);
+additiveInverse([1, 1, 1, 1, 1]);
+additiveInverse([-5, -25, 35]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 59
+
+// Create a function that adds a string ending to each member in an array.
+
+function addEnding(arr, ending) {
+	const map = arr.map(x => x.concat(ending));
+	
+	return map;
+}
+
+addEnding(['clever', 'meek', 'hurried', 'nice'], 'ly');
+addEnding(['new', 'pander', 'scoop'], 'er');
+addEnding(['bend', 'sharpen', 'mean'], 'ing');
+addEnding(['bend', 'tooth', 'mint'], 'y');
+addEnding(['bend', 'tooth', 'mint'], 'ier');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 60
+
+// Create a function that returns the next element in an arithmetic sequence. In an arithmetic sequence, each element is formed by adding the same constant to the previous element.
+
+function nextElement(arr) {
+	return arr[arr.length - 1] + (arr[1] - arr[0]);
+}
+
+const nextElement = arr => {
+	const [secondLast, last] = arr.slice(-2);
+	return last + (last - secondLast);
+}
+
+function nextElement(arr) {
+	let s = arr.pop();
+	return s + (s - arr.pop());
+}
+
+nextElement([3, 5, 7, 9]);
+nextElement([-5, -6, -7]);
+nextElement([2, 2, 2, 2, 2]);
