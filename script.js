@@ -3541,3 +3541,94 @@ function nextElement(arr) {
 nextElement([3, 5, 7, 9]);
 nextElement([-5, -6, -7]);
 nextElement([2, 2, 2, 2, 2]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 61
+
+// Write a function that reverses a string. Make your function recursive.
+
+function reverse(str) {
+	return str.split("").reverse().join("");
+}
+
+reverse("hello");
+reverse("world");
+reverse("a");
+reverse("");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 62
+
+// Write a function that returns true if all integers in an array are factors of a number, and false otherwise.
+
+function checkFactors(factors, num) {
+	return factors.every(x => num % x === 0);
+}
+
+
+checkFactors([2, 3, 4], 12);
+checkFactors([1, 2, 3, 8], 12);
+checkFactors([1, 2, 50], 100);
+checkFactors([1, 9, 81], 81);
+checkFactors([5, 10, 50], 500);
+checkFactors([5, 10, 499], 500);
+checkFactors([3, 6], 9);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 63
+
+// Create a function that takes a number as an argument and returns an array of numbers counting down from this number to zero.
+
+function countdown(start) {
+	let a = [];
+	let b = start;
+	for (let i = 0; i <= start; i++) {
+		if (start >= 0) {
+			a.push(b);
+			b--;
+		}
+	}
+	return a;
+}
+
+const countdown = start => [...Array(start + 1).keys()].reverse();
+
+function countdown(start) {
+	let arr = []
+	for(let i=start; i>=0; i--){
+		arr.push(i)
+	}
+	return arr
+}
+
+function countdown(start) {
+	const result = [];
+  
+	for(let i = 0 ; i <= start ; i++){
+    result.push(i);
+  }
+  
+  return result.reverse();
+}
+
+countdown(3);
+countdown(20);
+countdown(1);
+countdown(0);
