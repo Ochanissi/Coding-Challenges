@@ -3632,3 +3632,193 @@ countdown(3);
 countdown(20);
 countdown(1);
 countdown(0);
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 64
+
+// Create a function that takes in an array (slot machine outcome) and returns true if all elements in the array are identical, and false otherwise. The array will contain 4 elements.
+
+function testJackpot(result) {
+	return new Set(result).size === 1
+}
+
+function testJackpot(result) {
+    return result.every(x => x === result[0]);	
+}
+
+const testJackpot = arr => new Set(arr).size === 1;
+
+function testJackpot(result) {
+	for (i in result){
+		if (result[0]!=result[i]){
+			return false
+		}
+	}
+	return true;
+}
+
+
+testJackpot(['@', '@', '@', '@']);
+testJackpot(['!', '!', '!', '!']);
+testJackpot(['abc', 'abc', 'abc', 'abc']);
+testJackpot(['karaoke', 'karaoke', 'karaoke', 'karaoke']);
+testJackpot(['SS', 'SS', 'SS', 'SS']);
+testJackpot([':(', ':)', ':|', ':|']);
+testJackpot(['&&', '&', '&&&', '&&&&']);
+testJackpot(['hee', 'heh', 'heh', 'heh']);
+testJackpot(['SS', 'SS', 'SS', 'Ss']);
+testJackpot(['SS', 'SS', 'Ss', 'Ss']);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 64
+
+// Create a function that takes an array of hurdle heights and a jumper's jump height, and determine whether or not the hurdler can clear all the hurdles.
+
+// A hurdler can clear a hurdle if their jump height is greater than or equal to the hurdle height.
+
+
+function hurdleJump(hurdles, jumpHeight) {
+	return Math.max(...hurdles) <= jumpHeight;
+}
+
+
+hurdleJump([1, 2, 3, 4, 5], 5);
+hurdleJump([5, 5, 3, 4, 5], 3);
+hurdleJump([5, 4, 5, 6], 10);
+hurdleJump([1,2,1], 1);
+hurdleJump([3,3,3], 4);
+hurdleJump([4,4], 3);
+hurdleJump([], 4);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 65
+
+//A palindrome is a word that is identical forward and backwards.
+
+// mom
+// racecar
+// kayak
+// Given a word, create a function that checks whether it is a palindrome.
+
+function checkPalindrome(str) {
+	return (str === str.split("").reverse().join(""));
+}
+
+function checkPalindrome(str) {
+    for (i = 0; i < str.length; i++) {
+        if (str[i] !== str[str.length - 1 - i]) {
+    return false;
+    }
+}
+return true;
+}
+
+function checkPalindrome(str) {
+    let removeChar = str.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+    let checkPalindrome = removeChar.split('').reverse().join('');
+    return (removeChar === checkPalindrome);
+}
+
+checkPalindrome('mom');
+checkPalindrome('scary');
+checkPalindrome('reviver');
+checkPalindrome('stressed');
+checkPalindrome('good');
+checkPalindrome('refer');
+checkPalindrome('something');
+checkPalindrome('redder');
+checkPalindrome('civic');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 66
+
+//Create a function that returns true if two arrays contain identical values, and false otherwise.
+
+// Fix this code
+function checkEquals(arr1, arr2) {
+	for (let i = 0; i < arr1.length; i++) {
+		if (arr1.sort()[i] !== arr2.sort()[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function checkEquals(arr1, arr2) {
+	return (arr1.toString() === arr2.toString());
+}
+
+function checkEquals(arr1, arr2) {
+	return arr1.every((x, i) => x === arr2[i])
+ 	
+}
+
+function checkEquals(arr1, arr2) {
+	if (arr1.join() === arr2.join()) {
+  	return true
+ 	} else {
+  	return false
+ 	}
+}
+
+checkEquals([1, 2], [1, 3]);
+checkEquals([11, 2], [1, 12]);
+checkEquals([34, 56, 98], [34, 56, 98]),
+checkEquals([1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 1, 7], [11, 12, 13, 14, 15, 16, 17]);
+checkEquals([11, 12, 15, 16, 19], [11, 13, 15, 1, 6, 19, 20]);
+checkEquals([11, 12, 13, 14, 15, 16], [11, 12, 13, 14, 15, 16]);
+checkEquals([123, 45, 6, 78, 90], [1234, 5678, 90]);
+checkEquals([23, 26, 78, 934], [94, 26, 78, 934]);
+checkEquals([], []);
+checkEquals([9, 87, 1, 23], [98, 7, 12, 3]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 67
+
+// Create a function that goes through the array, incrementing (+1) for each odd number and decrementing (-1) for each even number.
+
+
+function transform(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] % 2 === 0) {
+			a.push(arr[i] - 1);
+		} else a.push(arr[i] + 1)
+	}
+	return a;
+}
+
+function transform(arr) {
+    return arr.map(num => num % 2 === 0 ? num - 1 : num + 1)
+}
+
+
+transform([1, 2, 3, 4, 5]);
+transform([3, 3, 4, 3]);
+transform([2, 2, 0, 8, 10]);
+transform([9, 13, 15, 5, 2, 11]);
