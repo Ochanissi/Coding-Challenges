@@ -4093,3 +4093,59 @@ MultiplyByLength([2,6,4,9]);
 MultiplyByLength([4,1,1]);
 MultiplyByLength([1,0,3,3,7,2,1]);
 MultiplyByLength([0]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 76
+
+// Create a function that finds all even numbers from 1 to the given number.
+
+function findEvenNums(num) {
+    let a = [];
+    for (let i = 1; i <= num; i++)
+        if (i % 2 === 0) {
+            a.push(i);
+        }
+    return a;
+}
+
+const findEvenNums = num => [...Array(num).keys()].map(x => x + 1).filter(x => !(x % 2));
+
+findEvenNums(4);
+findEvenNums(8);
+findEvenNums(2);
+findEvenNums(1);
+findEvenNums(9);
+findEvenNums(11);
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 77
+
+// Create a function that filters out an array to include numbers who only have a certain number of digits.
+
+function filterDigitLength(arr, num) {
+	const a = arr.filter(x => x.toString().length === num);
+	return a;
+}
+
+function filterDigitLength(arr, num) {
+	return arr.filter(n => String(n).length === num);
+}
+
+filterDigitLength([88, 232, 4, 9721, 555], 3);
+filterDigitLength([2, 7, 8, 9, 1012], 1);
+filterDigitLength([32, 88, 74, 91, 300, 4050], 1);
+filterDigitLength([5, 6, 8, 9], 1);
+filterDigitLength([99, 838, 435, 7666, 989, 431], 3);
+filterDigitLength([99, 838, 435, 7666, 989, 431], 2);
+
+
