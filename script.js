@@ -3822,3 +3822,274 @@ transform([1, 2, 3, 4, 5]);
 transform([3, 3, 4, 3]);
 transform([2, 2, 0, 8, 10]);
 transform([9, 13, 15, 5, 2, 11]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 68
+
+// Write a function that turns a comma-delimited list into an array of strings.
+
+function toArray(str) {
+	const a = str.split(', ');
+	const b = [];
+	for (let i = 0; i < a.length; i++) {
+		if (str === undefined || str.length == 0) {
+			return b;
+		} else {
+			b.push(a[i]);
+		}
+	}
+	return b;
+}
+
+
+toArray("watermelon, raspberry, orange");
+toArray("x1, x2, x3, x4, x5");
+toArray("a, b, c, d");
+toArray("");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 69
+
+// A pair of strings form a strange pair if:
+
+// 1st string's first letter = 2nd string's last letter.
+// 1st string's last letter = 2nd string's first letter.
+
+
+function isStrangePair(str1, str2) {
+	return (str1[0] === str2[str2.length -1] && str1[str1.length -1] === str2[0]);
+}
+
+
+isStrangePair("ratio", "orator");
+isStrangePair("sparkling", "groups");
+isStrangePair("mentee", "eminem");
+isStrangePair("yahtzee", "easy");
+isStrangePair("bush", "hubris");
+isStrangePair("edit", "cheese");
+isStrangePair("false", "true");
+isStrangePair("cupid", "dionysus");
+isStrangePair("futile", "elephant");
+isStrangePair("", "");
+isStrangePair("", "abc");
+isStrangePair("a", "a");
+isStrangePair("a", "b");
+isStrangePair("&", "&");
+isStrangePair("&!", "!&");
+isStrangePair("5556", "65");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 70
+
+//You're in the midst of creating a typing game.
+
+// Create a function that takes in two arrays: the array of user-typed words, and the array of correctly-typed words and outputs an array containing 1s (correctly-typed words) and -1s (incorrectly-typed words).
+
+function correctStream(user, correct) {
+	const map = user.map((x, i) => {
+		if(x === correct[i]) {
+			return 1;
+		} else return -1
+	});
+	return map;
+}
+
+const correctStream = (answers, solutions) =>
+  answers.map((answer, i) => (answer === solutions[i] ? 1 : -1));
+
+
+correctStream = (u, c) => u.map(x => x == c[c.indexOf(x)] ? 1: -1)
+
+correctStream(["it", "is", "find"], ["it", "is", "fine"]);
+correctStream(["april", "showrs", "bring", "may", "flowers"], ["april", "showers", "bring", "may", "flowers"]);
+correctStream(["weird", "indicr", "moment"], ["weird", "indict", "moment"]);
+correctStream(["starry", "wind", "skies"], ["starry", "wind", "skies"]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 71
+
+// You're in the midst of creating a typing game.
+
+// Create a function that takes in an initial word and filters out an array to contain words that start with the same letters as the initial word.
+
+
+function dictionary(initial, words) {
+	const result = words.filter(word => word.startsWith(initial));
+	return result;
+}
+
+const dictionary = (init, words) => words.filter(x => x.startsWith(init))
+
+dictionary('bu', ['button', 'breakfast', 'border']);
+dictionary('beau', ['pastry', 'delicious', 'name', 'boring']);
+dictionary('there', ['there', 'here', 'everywhere']);
+dictionary('sno', ['snow', 'paper', 'ghost']);
+dictionary('ma', ['marriage', 'married', 'many', 'delight']);
+dictionary('no', ['inferno', 'notion', 'nominate', 'note', 'fairy']);
+dictionary('cre', ['creating', 'creature', 'creed', 'increasing']);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 72
+
+// Create a function that returns true if two arrays contain identical values, and false otherwise.
+
+
+function checkEquals(arr1, arr2) {
+	if (arr1.toString() === arr2.toString()) {
+  	return true 
+  } else {
+  	return false
+  }
+}
+
+function checkEquals(arr1, arr2) {
+	return arr1.every((x, i) => x == arr2[i])
+}
+
+function checkEquals(arr1, arr2) {
+	return arr1.toString() == arr2.toString();
+}
+
+function checkEquals(arr1, arr2) {
+	if (JSON.stringify(arr1) === JSON.stringify(arr2)) {
+  	return true 
+  } else {
+  	return false
+  }
+}
+
+function checkEquals(arr1, arr2) {
+	if (arr1.join() === arr2.join()) {
+  	return true 
+  } else {
+  	return false
+  }
+}
+
+checkEquals([1, 2], [1, 3]);
+checkEquals([1, 2], [1, 2]);
+checkEquals([4, 5, 6], [4, 5, 6]);
+checkEquals([4, 7, 6], [4, 5, 6]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 73
+
+// I am trying to filter out empty arrays from an array. In other words, I want to transform something that looks like this: ["a", "b", [], [], [1, 2, 3]] to look like ["a", "b", [1, 2, 3]].
+
+function removeEmptyArrays(arr) {
+	return arr.filter(x => x.length !== 0)
+}
+
+
+removeEmptyArrays(['a', 'b', []]);
+removeEmptyArrays([1, 2, [], 4]);
+removeEmptyArrays([[], [], [], []]);
+removeEmptyArrays([1, 2, 3, 4]);
+removeEmptyArrays([1, [], [], 4]);
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 73
+
+// Write a function that finds the sum of the first n natural numbers. Make your function recursive.
+
+
+function sum(n) {
+	let a = 0;
+	for (let i = 1; i <= n; i++) {
+		a +=i;
+	}
+	return a;
+}
+
+const sum = n => n === 1 ? n : n + sum(n-1);
+
+sum(1);
+sum(5);
+sum(7);
+sum(10);
+sum(12);
+sum(15);
+sum(20);
+sum(100);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 74
+
+// Create a function replaces all the vowels in a string with a specified character.
+
+
+function replaceVowels(str, ch) {
+	return str.replace(/[aeoiu]/g, ch);
+}
+
+replaceVowels("the aardvark", "#");
+replaceVowels("minnie mouse", "?");
+replaceVowels("shakespeare", "*");
+replaceVowels("all is fair in love and war", "<");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 75
+
+// Create a function to multiply all values in an array by the amount of values in that array.
+
+
+function MultiplyByLength(arr) {
+	const map = arr.map(x => x * arr.length);
+	return map;
+}
+
+
+MultiplyByLength([2,6,4,9]);
+MultiplyByLength([4,1,1]);
+MultiplyByLength([1,0,3,3,7,2,1]);
+MultiplyByLength([0]);
