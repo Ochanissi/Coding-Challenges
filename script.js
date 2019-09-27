@@ -4149,3 +4149,33 @@ filterDigitLength([99, 838, 435, 7666, 989, 431], 3);
 filterDigitLength([99, 838, 435, 7666, 989, 431], 2);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 78
+
+// Create a function that removes the first and last characters from a string.
+
+function removeFirstLast(str) {
+	if (str.length > 2) {
+		return str.slice(1, str.length - 1);
+	} else return str;
+}
+
+removeFirstLast = str => str.slice(1, -1) || str;
+
+function removeFirstLast(str) {
+	if (str.length <= 2) return str;
+	return str.replace(/(^\w|\w$)/g, '');
+}
+
+removeFirstLast("hello");
+removeFirstLast("benefit");
+removeFirstLast("wordy");
+removeFirstLast("maybe");
+removeFirstLast("to");
+removeFirstLast("a");
+removeFirstLast("");
+
