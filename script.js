@@ -4179,3 +4179,93 @@ removeFirstLast("to");
 removeFirstLast("a");
 removeFirstLast("");
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 79
+
+// Create a function that takes an array of numbers and return "Boom!" if the number 7 appears in the array. Otherwise, return "there is no 7 in the array".
+
+function sevenBoom(arr) {
+    if (arr.toString().includes("7")) {
+        return "Boom!";
+    }
+return "there is no 7 in the array";
+}
+
+
+sevenBoom([2, 6, 7, 9, 3]);
+sevenBoom([33, 68, 400, 5]);
+sevenBoom([86, 48, 100, 66]);
+sevenBoom([76, 55, 44, 32]);
+sevenBoom([35, 4, 9, 37]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 80
+
+// Create a function that reverses a boolean value and returns the string "boolean expected" if another variable type is given.
+
+function reverse(bool) {
+	if (typeof bool === "boolean" && bool) {
+		return false;
+	} else if (typeof bool === "boolean" && !bool) {
+		return true;
+	} else {
+		return "boolean expected";
+	}
+}
+
+function reverse(bool) {
+	return typeof bool === 'boolean' ? !bool : 'boolean expected'
+}
+
+const reverse = bool => typeof bool === 'boolean' ? !bool : 'boolean expected';
+
+reverse(false);
+reverse(true);
+reverse(0);
+reverse(null);
+reverse(undefined);
+reverse({});
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 81
+
+// Create a function that filters out an array of state names into two categories based on the second parameter.
+
+// Abbreviations - abb
+// Full names - full
+
+function filterStateNames(arr, type) {
+	return arr.filter(v => type === 'abb' ? v.length < 3 : v.length > 2);
+}
+
+function filterStateNames(arr, type) {
+	if(type == 'abb') {
+		return arr.filter(el => el.length <= 2);
+	}else if(type == 'full') {
+		return arr.filter(el => el.length > 2);
+	}
+}
+
+filterStateNames(['Arizona', 'CA', 'NY', 'Nevada'], 'abb');
+filterStateNames(['Arizona', 'CA', 'NY', 'Nevada'], 'full');
+filterStateNames(['MT', 'NJ', 'TX', 'ID', 'IL'], 'abb');
+filterStateNames(['MT', 'NJ', 'TX', 'ID', 'IL'], 'full');
+filterStateNames(['Montana', 'FL'], 'abb');
+filterStateNames(['Montana', 'FL'], 'full');
