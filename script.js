@@ -4269,3 +4269,121 @@ filterStateNames(['MT', 'NJ', 'TX', 'ID', 'IL'], 'abb');
 filterStateNames(['MT', 'NJ', 'TX', 'ID', 'IL'], 'full');
 filterStateNames(['Montana', 'FL'], 'abb');
 filterStateNames(['Montana', 'FL'], 'full');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 82
+
+// Create a function that takes a string, checks if it has the same number of x's and o's and returns either true or false.
+
+// Return a boolean value (true or false).
+// The string can contain any character.
+// When no x and no o are in the string, return true.
+
+
+function XO(str) {
+	let x = 0;
+	let o = 0;
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].toLowerCase() === "x") {
+			x++;
+		} else if (str[i].toLowerCase() === "o") {
+			o++;
+		}
+	}
+	if (x === o) {
+		return true;
+	} else return false;
+}
+
+function XO(str) {
+    return str.replace(/[^x]/ig, '').length === str.replace(/[^o]/ig, '').length
+}
+
+function XO(str) {
+    let x = str.toLowerCase().split('').filter(x => x === 'x').length;
+    let o = str.toLowerCase().split('').filter(x => x === 'o').length;
+    return x === o;
+}
+
+XO("ooxx");
+XO("xooxx");
+XO("ooxXm");
+XO("zpzpzpp");
+XO("zzoo");
+XO("Xo");
+XO("x");
+XO("o");
+XO("xxxoo");
+XO("");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 83
+
+// Create a function that takes an array of numbers and returns only the even values.
+
+function noOdds(arr) {
+	return arr.filter(x => x % 2 === 0);
+}
+
+noOdds([1, 2, 3, 4, 5, 6, 7, 8]);
+noOdds([43, 65, 23, 89, 53, 9, 6]);
+noOdds([718, 991, 449, 644, 380, 440]);
+noOdds([148, 6, 16, 85]);
+noOdds([9, 49, 23]);
+noOdds([34, 43, 32, 49, 40]);
+noOdds([1232, 1990, 1284, 1391, 1958]);
+noOdds([2766, 2651, 2373, 2916, 2397, 2539]);
+noOdds([53, 65, 52, 62, 59]);
+noOdds([393, 156, 14, 166, 129, 246]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 84
+
+// Sam and Frodo need to be close. If they are side by side in the array, your function should return true. If there is a name between them, return false.
+
+function middleEarth(arr) {
+	if ((arr.indexOf("Frodo") - arr.indexOf("Sam") === -1) || (arr.indexOf("Frodo") - arr.indexOf("Sam") === 1)) {
+		return true;
+	} else return false;
+}
+
+function middleEarth(arr) {
+	return Math.abs(arr.indexOf('Sam') - arr.indexOf('Frodo')) === 1
+}
+
+const middleEarth=r=>{
+	let a=r.indexOf('Sam'); 
+	let b=r.indexOf('Frodo');
+	return (a+1===b||a-1==b);
+}
+
+const middleEarth = arr => /samfrodo|frodosam/gi.test(arr.join(''));
+
+middleEarth(['Frodo', 'Sam', 'Gandalf']);
+middleEarth(['Orc', 'Sam', 'Gandalf', 'Frodo']);
+middleEarth(['Sam', 'Frodo', 'Saruman']);
+middleEarth(['Orc', 'Frodo', 'Legolas', 'Sam', 'Bilbo']);
+middleEarth(['Aragorn', 'Gandalf', 'Sam', 'Frodo', 'Gollum']);
+middleEarth(['Arwen', 'Sam', 'Gandalf', 'Frodo', 'Boromir']);
+middleEarth(['Faramir', 'Frodo', 'Sam', 'Galadriel']);
+middleEarth(['Eowin', 'Gimli', 'Bilbo', 'Frodo', 'Sam', 'Sauron']);
+middleEarth(['Gandalf', 'Sam', 'Bilbo', 'Legolas', 'Frodo']);
+middleEarth(['Legolas', 'Eowyn', 'Gandalf', 'Sam', 'Frodo', 'Gimli']);
