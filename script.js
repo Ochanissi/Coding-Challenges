@@ -4387,3 +4387,290 @@ middleEarth(['Faramir', 'Frodo', 'Sam', 'Galadriel']);
 middleEarth(['Eowin', 'Gimli', 'Bilbo', 'Frodo', 'Sam', 'Sauron']);
 middleEarth(['Gandalf', 'Sam', 'Bilbo', 'Legolas', 'Frodo']);
 middleEarth(['Legolas', 'Eowyn', 'Gandalf', 'Sam', 'Frodo', 'Gimli']);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 85
+
+// Write a function that returns true if the product of an array is divisible by the sum of that same array.
+
+function divisible(arr) {
+	let sum = 0;
+	let prod = 1;
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i];
+		prod *= arr[i];
+	}
+
+	if (prod % sum === 0) {
+		return true;			
+	} else return false;
+}
+
+function divisible(arr) {
+	return arr.reduce((a, c) => a * c, 1) % arr.reduce((a, c) => a + c) === 0
+}
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const multiply = arr => arr.reduce((total, num) => total * num, 1);
+
+const divisible = arr => multiply(arr) % sum(arr) === 0;
+
+divisible([3, 2, 4, 1]);
+divisible([4, 4, 4, 4]);
+divisible([4, 2, 6]);
+divisible([1, 1, 1, 1, 10]);
+divisible([10, 5, 10]);
+divisible([3, 5, 1]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 86
+
+// Write a function that partitions the array into two subarrays: one with all even integers, and the other with all odd integers. Return your result in the following format:
+
+// [[evens], [odds]]
+
+// Return two empty subarrays if the input is an empty array.
+// Keep the same relative ordering as the original array.
+
+function evenOddPartition(arr) {
+	let even = [];
+	let odd = [];
+	let _null = [];
+	
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] % 2 === 0) {
+			even.push(arr[i]);
+		} else if (arr[i] % 2 === 1) {
+			odd.push(arr[i]);
+		} else _null.push(arr[i]);
+	}
+	
+	if (_null.length < 1) {
+		return [even, odd];
+	} else {
+		return [even, odd, _null];
+	}
+	
+}
+
+const evenOddPartition = arr => [arr.filter(x => x % 2 == 0),arr.filter(y => y % 2 != 0) ];
+
+
+const isEven = num => num % 2 === 0;
+
+const evenOddPartition = arr => [
+  arr.filter(isEven),
+  arr.filter(num => !isEven(num)),
+];
+
+
+function evenOddPartition(arr) {
+	var evens = arr.filter(x=>x%2 === 0);
+	var odds = arr.filter(x=>x%2 === 1);
+	return [evens,odds];
+	
+}
+
+evenOddPartition([5, 8, 9, 2, 0]);
+evenOddPartition([1, 0, 1, 0, 1, 0]);
+evenOddPartition([8, 8, 4, 2]);
+evenOddPartition([1, 3, 5, 7, 9]);
+evenOddPartition([]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 87
+
+// Create a function that converts two arrays of x- and y- coordinates into an array of (x,y) coordinates.
+
+
+function convertCartesian(x, y) {
+	let a = [];
+	for (let i = 0; i < x.length; i++) {
+		a.push([x[i], y[i]]);
+	}
+	
+	return a;
+}
+
+function convertCartesian(x, y) {
+	return x.map((v, i) => [v, y[i]])
+}
+
+convertCartesian([1, 5, 3, 3, 4], [5, 8, 9, 1, 0]);
+convertCartesian([9, 8, 3], [1, 1, 1]);
+convertCartesian([2, 5, 1], [7, 8, 9]);
+convertCartesian([3, 2, 2], [6, 1, 7]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 88
+
+// Create a function to extract the name of the subreddit from its URL.
+
+
+function subReddit(link) {
+	const a = link.split("/");
+	
+	for (let i = 0; i < a.length; i++) {
+			if (a[i] === "r") {
+				return a[i + 1];
+			}
+	}
+}
+
+
+const subReddit= (link) => link.split('/r/')[1].split('/')[0]
+
+
+const subReddit = link => link.match(/\/r\/(\w+)/)[1];
+
+
+subReddit("https://www.reddit.com/r/relationships/");
+subReddit("https://www.reddit.com/r/mildlyinteresting/");
+subReddit("https://www.reddit.com/r/funny/");
+subReddit("https://www.reddit.com/r/CrappyDesign/");
+subReddit("https://www.reddit.com/r/confession/");
+subReddit("https://www.reddit.com/r/AskMen/");
+subReddit("https://www.reddit.com/r/comics/");
+subReddit("https://www.reddit.com/r/lifehacks/");
+subReddit("https://www.reddit.com/r/wholesomememes/");
+subReddit("https://www.reddit.com/r/iamverysmart/");
+subReddit("https://www.reddit.com/r/starterpacks/");
+subReddit("https://www.reddit.com/r/awww/");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 89
+
+// A word has been split into a left part and a right part. Re-form the word by adding both halves together, changing the first character to an uppercase letter.
+
+function getWord(left, right) {
+	const left1 = left.charAt(0).toUpperCase() + left.slice(1);
+	let a = [left1, right].join("");
+	return a;
+}
+
+
+function getWord(left, right) {
+	return left[0].toUpperCase() + left.slice(1) + right
+}
+
+
+
+getWord("maga", "zine");
+getWord("reli", "able");
+getWord("impl", "icit");
+getWord("docu", "ment");
+getWord("oppo", "site");
+getWord("offi", "cial");
+getWord("disa", "gree");
+getWord("acci", "dent");
+getWord("omis", "sion");
+getWord("vigo", "rous");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 90
+
+// Create a function that takes an array of students and returns an array of student names.
+
+function getStudentNames(students) {
+	return students.map( x => x.name);
+}
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 91
+
+// Create a function that returns the product of all odd integers in an array.
+
+function oddProduct(arr) {
+	let a = 1;
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] % 2 === 1) {
+			a *= arr[i];
+		}
+	}
+	return a;
+}
+
+function oddProduct(arr) {
+	return arr.filter(x => x % 2 !== 0).reduce((a,b) => a * b);
+}
+
+oddProduct([3, 4, 1, 1, 5]);
+oddProduct([5, 5, 8, 2, 4, 32]);
+oddProduct([1, 2, 1, 2, 1, 2, 1, 2]);
+oddProduct([0, 0, 0, 1]);
+oddProduct([1, 2, 2, 5, 2, 0]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 92
+
+// Create a function that takes a string and returns a string with its letters in alphabetical order.
+
+function AlphabetSoup(str) {
+	return str.split("").sort().join("");
+}
+
+function AlphabetSoup(str) {
+    return [...str].sort().join('');
+}
+
+AlphabetSoup("hello");
+AlphabetSoup("edabit");
+AlphabetSoup("hacker");
+AlphabetSoup("geek");
+AlphabetSoup("javascript");
+AlphabetSoup("credibility");
+AlphabetSoup("apostrophe");
+AlphabetSoup("determination");
+AlphabetSoup("win");
+AlphabetSoup("synthesis");
+
+
+
+
