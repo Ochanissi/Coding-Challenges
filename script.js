@@ -4749,3 +4749,364 @@ last([4, 3, 9, 9, 7, 6], 3);
 last([5, 1, 2], 3);
 last([], 1);
 last([1, 2, 3, 4, 5], 7);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 94
+
+// Write a function that returns the lexicographically first and lexicographically last rearrangements of a string. Output the results in the following manner:
+
+// firstAndLast(string) ➞ [first, last]
+
+
+function firstAndLast(s) {
+	return [s.split("").sort().join(""), s.split("").sort().reverse().join("")];
+}
+
+
+firstAndLast("marmite");
+firstAndLast("bench");
+firstAndLast("scoop");
+firstAndLast("fanatic");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 95
+
+// Write a function that returns true if an object is empty, and false otherwise.
+
+
+function isEmpty(obj) {
+	return Object.entries(obj).length === 0 && obj.constructor === Object
+}
+
+
+function isEmpty(obj) {
+	return !Object.keys(obj).length
+}
+
+isEmpty({});
+isEmpty({a: 1});
+isEmpty({z: 2, w: 4, y: 5});
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 96
+
+// Hamming distance is the number of characters that differ between two strings.
+
+function hammingDistance(str1, str2) {
+    let counter = 0;
+
+    for (let i = 0; i < str1.length; i++)
+        {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                counter++;
+            }
+        }
+
+    return counter;
+}
+
+const hammingDistance = (a, b) =>
+	[...a].filter((x, i) => x != b[i]).length
+
+
+hammingDistance("abcde", "bcdef");
+hammingDistance("abcde", "abcde");
+hammingDistance("strong", "strung");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 97
+
+// Write a function that returns true if all characters in a string are identical and false otherwise.
+
+function isIdentical(s) {
+	return s.split("").every(x => x === s[0]);
+}
+
+
+function isIdentical(s) {
+	return new Set([...s]).size === 1;
+}
+
+function isIdentical(s) {
+	let x = s[0];
+	for (let i of s) {
+		if (i !== x) { return false; }
+	}
+	return true;
+}
+
+const isIdentical = a =>{
+	for(i=0;i<=a.length-1;i++){
+		if(a[0]!==a[i])
+			return false
+	}
+	return true ;
+}
+
+function isIdentical(s) {
+	return /^(\w)\1*$/.test(s)
+}
+
+isIdentical("kkkkk");
+isIdentical("ckkkk");
+isIdentical("kkkkck");
+isIdentical("aabc");
+isIdentical("ccc");
+isIdentical("aabbbb");
+isIdentical("bbbbbb");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 98
+
+// Write a function that returns true if a number is a palindrome.
+
+
+function isPalindrome(n) {
+	return n.toString() === n.toString().split("").reverse().join("");
+}
+
+function isPalindrome(n) {
+	return [...String(n)].reverse().join('') === '' + n
+}
+
+isPalindrome(838);
+isPalindrome(77);
+isPalindrome(95159);
+isPalindrome(839);
+isPalindrome(4234);
+isPalindrome(13);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 99
+
+// In this exercise you will have to:
+
+// Take a list of names.
+// Add "Hello" to every name.
+// Make one big string with all greetings.
+// The solution should be one string with a comma in between every "Hello (Name)".
+
+
+function greetPeople(names) {
+	const a = [];
+	for (let i = 0; i < names.length; i++) {
+		a.push("Hello " + names[i]);
+	}
+	return a.join(", ");
+}
+
+
+function greetPeople(names) {
+	return names.map(n => `Hello ${n}`).join(', ');
+}
+
+greetPeople(["Kyrill"]);
+greetPeople(["Kyrill", "Mom", "Dad", "Zuzu"]);
+greetPeople([]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 100
+
+// Create a function that returns the minimum number of removals to make the sum of all elements in an array even.
+
+
+function minimumRemovals(arr) {
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i];
+	}
+	
+	return sum % 2;
+}
+
+const minimumRemovals = arr => arr.reduce((a, c) => a + c ) % 2;
+
+
+minimumRemovals([1, 2, 3, 4, 5]);
+minimumRemovals([5, 7, 9, 11]);
+minimumRemovals([5, 7, 9, 12]);
+minimumRemovals([5, 8, 8, 8]);
+minimumRemovals([5, 8, 8, 8, 9, 9]);
+minimumRemovals([9, 8, 8, 8, 9, 9]);
+minimumRemovals([5, 5, 4, 4, 3, 3]);
+minimumRemovals([5, 3, 4, 4, 3]);
+minimumRemovals([5, 3, 4, 4, 0]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 101
+
+// Create a function that takes two strings and returns true if the first string ends with the second string; otherewise return false.
+
+
+function checkEnding(str1, str2) {
+	return str1.endsWith(str2);
+}
+
+
+checkEnding("abc", "bc");
+checkEnding("abc", "d");
+checkEnding("samurai", "zi");
+checkEnding("feminine", "nine");
+checkEnding("convention", "tio");
+checkEnding("cooperative", "ooper");
+checkEnding("extraterrestrial", "xtraterrestrial");
+checkEnding("access", "ss");
+checkEnding("motorist", "is");
+checkEnding("landowner", "landowner");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 102
+
+// Write a function that finds the sum of an array. Make your function recursive.
+
+function sum(arr) {
+	if (arr.length > 0) {
+		return arr.reduce((acc, cur) => (acc + cur));
+	} return 0;
+}
+
+
+function sum(arr) {
+	const sum = arr.reduce((a, b) => a + b, 0);
+	return sum;
+}
+
+function sum(arr) {
+    return arr.length === 0 ? 0 : arr.pop() + sum(arr);
+}
+
+sum([1, 2, 3, 4]);
+sum([-1, -1, -1]);
+sum([1]);
+sum([]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 103
+
+// Write a function that maps files to their extension names.
+
+
+function getExtension(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		a.push(arr[i].split(".")[1]);
+	}
+	return a;
+}
+
+function getExtension(arr) {
+	return arr.map(x => x.split(".").pop())
+}
+
+function getExtension(arr) {
+	return arr.map(x => x.split('.')[1])
+}
+
+getExtension(["project1.jpg", "project1.pdf", "project1.mp3"]);
+getExtension(["ruby.rb", "cplusplus.cpp", "python.py", "javascript.js"]);
+getExtension(["code.html", "code.css"]);
+getExtension(["minesweeper.java", "game.java", "my_project.java"]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 104
+
+// Given an array, transform that array into a mirror.
+
+
+function mirror(arr) {
+	const a = arr;
+	for (let i = arr.length - 2; i >= 0; i--) {
+		a.push(arr[i]);
+	}
+	return a;
+}
+
+
+function mirror(arr) {
+	return [... arr, ... arr.splice(0, arr.length - 1).reverse()]
+}
+
+
+function mirror(arr) {
+	return arr.concat(arr.concat().reverse().slice(1));
+}
+
+
+const mirror = ar => {
+    let a = ar.slice().reverse().slice(1);
+    let b = ar.concat(a);
+    return b;
+}
+
+mirror([1,2,3,4,5]);
+mirror([0,2,4,6]);
+mirror([1,2,2,3,3,4]);
+
+
