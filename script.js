@@ -4674,3 +4674,78 @@ AlphabetSoup("synthesis");
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 93
+
+// Create a function that repeats each character in a string n times.
+
+function repeat(str, n) {
+	const a = [];
+	for (let i = 0; i < str.length; i++) {
+		a.push(str[i].repeat(n));
+	}
+	return a.join("");
+
+}
+
+function repeat(str, n) {
+	return [...str].map(x => x.repeat(n)).join('');
+}
+
+
+function repeat(str, n) {
+	return str
+        .split('')
+        .map(c => c.repeat(n))
+        .join('');
+}
+
+function repeat(str, n) {
+	return str.split('').map(x=>x.repeat(n)).join('');
+}
+
+repeat("mice", 5);
+repeat("hello", 3);
+repeat("stop", 1);
+repeat("tomato", 2);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 94
+
+// Write a function that retrieves the last n elements from an array.
+
+function last(a, n) {
+	if (n > a.length) {
+		return "invalid";
+	} else {
+		return a.slice(Math.max(a.length - n, 0));
+	}
+}
+
+
+function last(a, n) {
+	if(n > a.length){
+		return "invalid";
+	}
+	return a.slice(a.length-n);
+}
+
+const last = (a, n) => 
+	a.length >= n ? a.slice(a.length-n, a.length) : "invalid";
+
+last([1, 2, 3, 4, 5], 0);
+last([1, 2, 3, 4, 5], 1);
+last([4, 3, 9, 9, 7, 6], 3);
+last([5, 1, 2], 3);
+last([], 1);
+last([1, 2, 3, 4, 5], 7);
