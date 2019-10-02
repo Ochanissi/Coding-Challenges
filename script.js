@@ -5110,3 +5110,520 @@ mirror([0,2,4,6]);
 mirror([1,2,2,3,3,4]);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 105
+
+// To train for an upcoming marathon, Johnny goes on one long-distance run each Saturday. He wants to track how often the number of miles he runs this Saturday exceeds the number of miles run the previous Saturday. This is called a progress day.
+
+// Create a function that takes in an array of miles run every Saturday and returns Johnny's total number of progress days.
+
+function progressDays(runs) {
+	let a = 0;
+	for (let i = 0; i < runs.length - 1; i++) {
+		if (runs[i] - runs[i+1] < 0) {
+			a++;
+		}
+	}
+	return a;
+}
+
+function progressDays(runs) {
+	return runs.filter((e,i,a)=>e<a[i+1]).length;
+}
+
+const progressDays=(runs)=>
+runs.reduce((acc,next,index,arr)=>arr[index]-arr[index-1]>0?acc+1:acc,0)
+
+progressDays([3, 4, 1, 2]);
+progressDays([10, 11, 12, 9, 10]);
+progressDays([6, 5, 4, 3, 2, 9]);
+progressDays([9, 9]);
+progressDays([12, 11, 10, 12, 11, 13]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 106
+
+// Write a function that returns true if two arrays have the same number of unique elements, and false otherwise.
+
+
+function same(a1, a2) {
+	const uniqueItems1 = Array.from(new Set(a1));
+	const uniqueItems2 = Array.from(new Set(a2));
+	
+	return uniqueItems1.length === uniqueItems2.length;
+}
+
+const same = (a1, a2) => new Set(a1).size === new Set(a2).size;
+
+same([1, 3, 4, 4, 4], [2, 5, 7]);
+same([9, 8, 7, 6], [4, 4, 3, 1]);
+same([2], [3, 3, 3, 3, 3]);
+same([5, 6, 7, 9], [4, 1]);
+same([5, 9, 9], [9, 5]);
+same([1, 1, 1, 4], [1, 4, 4, 4, 4, 4]);
+same([], []);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 107
+
+// Create a function, that will for a given a, b, c, do the following:
+
+// Add a to itself b times.
+// Check if the result is divisible by c.
+
+function abcmath(a, b, c) {
+	return ((a * b) % c === 0);
+}
+
+function abcmath(a, b, c) {
+	let x = 0;
+	for (let i = 1; i <= b; i++) {
+		x += a;
+	}
+	
+	return x % c === 0
+}
+
+const abcmath = (a, b, c) => (a * Math.pow(2, b)) % c === 0;
+
+abcmath(1, 2, 3);
+abcmath(69, 15, 9);
+abcmath(9, 2, 52);
+abcmath(5, 2, 3);
+abcmath(5, 2, 1);
+abcmath(261, 2, 1);
+abcmath(22, 2, 22);
+abcmath(69, 12, 3);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 108
+
+// Write a function that removes any non-letters from a string, returning a well-known film title.
+
+
+function lettersOnly(str) {
+	return str.replace(/[^A-Za-z]/g, "");  
+}
+
+function lettersOnly(str) {
+	return str.replace(/[^a-z]/gi, '');
+}
+
+lettersOnly(',1|2)")A^1<[_)?^"]l[a`3+%!d@8-0_0d.*}i@&n?=');
+lettersOnly('^U)6$22>8p).');
+lettersOnly('I5n!449+c@e*}@@1]p{2@`,~t:i0o%n<3%8');
+lettersOnly('!)"P[s9)"69}yc3+?1]+33>3ho');
+lettersOnly(':~;G{o}o{+524<df~:>}e24{l8:_l]a:?@]%s7');
+lettersOnly('&&S~]@8>1-0!h#r),80<_>!}|e>_k:');
+lettersOnly(')^/|,!!09]=/1<G2?`=[l{a}d9]^i7a0|t6_o2*r');
+lettersOnly(']8;]V9e{=0r!.5t>i<^_g"4o"5~');
+lettersOnly('%%)?"?B#>/_4a#,;t8|m8675a(n');
+lettersOnly('97H^)~a8567ll*o?"6%)w63e37e<n?@=');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 109
+
+// Create a function that returns the number of hashes and pluses in a string.
+
+
+function hashPlusCount(str) {
+	let a = 0;
+	let b = 0;
+	
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === "#") {
+			a++
+		} else b++;
+	}
+	
+	return [a, b];
+}
+
+
+const hashPlusCount = str => [
+    (str.match(/#/g) || []).length,
+    (str.match(/\+/g) || []).length,
+];
+
+
+hashPlusCount("####");
+hashPlusCount("#");
+hashPlusCount("+++++++");
+hashPlusCount("++");
+hashPlusCount("#+#+");
+hashPlusCount("###+");
+hashPlusCount("##+++#");
+hashPlusCount("#+++#+#++#");
+hashPlusCount("");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 110
+
+// Create a function that takes two arguments (item, times). The first argument (item) is the item that needs repeating while the second argument (times) is the number of times the item is to be repeated. Return the result in an array.
+
+function repeat(item, times) {
+	const a = [];
+	
+	for (let i = 0; i < times; i++) {
+		a.push(item);
+	}
+	return a;
+}
+
+function repeat(item, times) {
+	return Array(times).fill(item);
+}
+
+
+repeat("edabit", 3);
+repeat(13, 5);
+repeat("7", 2);
+repeat("2 0 1 8", 1);
+repeat("tom dick and harry", 6);
+repeat(0, 1);
+repeat(0, 0);
+repeat("z", 0);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 111
+
+// The mean of a group of numbers is calculated by summing all numbers, and dividing this sum by the total count of numbers in the group. Given a sorted array of numbers, return the mean (rounded to one decimal place).
+
+
+function mean(nums) {
+	let a = 0;
+	for (let i = 0; i < nums.length; i++) {
+		a += nums[i];
+	}
+	
+	return parseFloat((a / nums.length).toFixed(1));
+}
+
+
+const mean = nums =>
++(nums.reduce((a,b)=> a+b) / nums.length).toFixed(1);
+
+mean([1, 1, 2, 2, 3, 5, 5, 5, 7]);
+mean([1, 2, 2, 3, 7, 9, 10]);
+mean([1, 2, 3, 4, 5, 6, 6, 10, 10]);
+mean([5, 5, 6, 7, 10, 10]);
+mean([1, 3, 3, 4, 5, 6, 7, 8]);
+mean([2, 4, 6, 6, 6, 8, 9]);
+mean([2, 4, 6, 6, 6, 7, 7, 8, 9]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 112
+
+// Write a function that takes a two-digit number and determines if it's the largest of two possible digit swaps.
+
+function largestSwap(num) {
+	if (num >= parseInt(num.toString().split("").reverse().join(""))) {
+		return true;
+	} else if (num < parseInt(num.toString().split("").reverse().join(""))) {
+		return false;
+	}
+}
+
+
+function largestSwap(num) {
+	return num / 10 > num % 10
+}
+
+
+const largestSwap = num => Math.floor(num / 10) >= num % 10;
+
+largestSwap(27);
+largestSwap(43);
+largestSwap(14);
+largestSwap(53);
+largestSwap(99);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 113
+
+// Create a function that returns the index of the first vowel in a string.
+
+function firstVowel(str) {
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].toLowerCase() === "a" || str[i].toLowerCase() === "e" || str[i].toLowerCase() === "i" || str[i].toLowerCase() === "o") {
+				return str.indexOf(str[i]);
+				}
+	}
+}
+
+
+function firstVowel(str) {
+	return str.search(/a|e|i|o|u/i);
+}
+
+firstVowel("hello");
+firstVowel("apple");
+firstVowel("string");
+firstVowel("STRAWBERRY");
+firstVowel("MELON");
+firstVowel("piNNEaPLE");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 114
+
+// Create a function that takes a number (step) as an argument and returns the amount of boxes in that step of the sequence.
+
+// Step 0: Start with 0
+// Step 1: Add 3
+// Step 2: Subtract 1
+// Repeat Step 1 & 2 ...
+
+
+function boxSeq(step) {
+	let x = 0;
+	let counter = step;
+	
+	for (let i = 1; i <= step; i++) {
+			if (step <= 0) {
+			x = 0;
+		} else if (counter % 2 === 1) {
+			x += 3;
+			counter--;
+		} else if (counter % 2 === 0) {
+			x -= 1;
+			counter--;
+		}
+	}
+	return x;
+}
+
+const boxSeq = step => (step % 2 === 0 ? step : step + 2);
+
+const boxSeq = step => step + (step % 2 ? 2 : 0);
+
+boxSeq(5);
+boxSeq(0);
+boxSeq(6);
+boxSeq(99);
+boxSeq(2);
+boxSeq(1);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 115
+
+// A value is omnipresent if it exists in every subarray inside the main array.
+
+function isOmnipresent(arr, val) {
+	if (arr.every(x => arr.includes(val))) {
+		return true;
+	} else if (arr.every(x => x.includes(val))) {
+		return true;
+	} else return false;
+									 
+}
+
+
+function isOmnipresent(arr, val) {
+	return arr.every(x => x.includes(val));
+}
+
+isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1);
+isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6);
+isOmnipresent([[5], [5], [5], [6, 5]], 5);
+isOmnipresent([[5], [5], [5], [6, 5]], 6);
+isOmnipresent([[5, 1], [5, 1], [5, 1], [6, 5, 1]], 1);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 116
+
+// Create a function that takes in an array of numbers and returns the sum of its cubes.
+
+
+function sumOfCubes(nums) {
+	let a = 0;
+	for (let i = 0; i < nums.length; i++) {
+		a += Math.pow(nums[i], 3);
+	}
+	return a;
+}
+
+function sumOfCubes(nums) {
+	return nums.reduce((p,c) => p + Math.pow(c, 3), 0);
+}
+
+
+sumOfCubes([1, 5, 9]);
+sumOfCubes([3, 4, 5]);
+sumOfCubes([1, 1, 1]);
+sumOfCubes([2]);
+sumOfCubes([5, 1, 2]);
+sumOfCubes([32]);
+sumOfCubes([5, 9, 4, 4, 9]);
+sumOfCubes([0, 1, 2]);
+sumOfCubes([]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 117
+
+// A set is a collection of unique items. A set can be formed from an array from removing all duplicate items.
+
+
+function set(arr) {
+	return [...new Set(arr)];
+}
+
+
+const set = arr => Array.from(new Set(arr));
+
+
+function set(arr) {
+	return arr.filter((n, index) => arr.indexOf(n) == index);
+}
+
+set([1, 3, 3, 5, 5]);
+set([4, 4, 4, 4]);
+set([5, 7, 8, 9, 10, 15]);
+set([5, 9, 9]);
+set([1, 2, 3, 4, 5, 5, 6, 6, 7]);
+set([1, 1, 2, 2, 2]);
+set(['A', 'A', 'A', 'A']);
+set(['A', 'B', 'C', 'D']);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 118
+
+// Create a function that takes an integer and returns an array from 1 to the given number, where:
+
+// If the number can be divided evenly by 4, amplify it by 10 (i.e. return 10 times the number).
+// If the number cannot be divided evenly by 4, simply return the number.
+
+
+function amplify(num) {
+	let a = [];
+	let c = num;
+	for (let i = 1; i <= num; i++) {
+		if (c % 4 === 0) {
+			a.push(c * 10);
+			c--;
+		} else {
+			a.push(c);
+			c--;
+		}
+	}
+	return a.reverse();
+}
+
+
+function amplify(num) {
+	var a = [];
+	for(var i = 1; i <= num; i++){
+		if(i % 4 == 0){
+			a.push(i*10);
+		}else{
+			a.push(i);
+		}
+	}
+	return a;
+}
+
+
+const amplify = num =>
+  Array.from({ length: num }, (_, i) => {
+    const num = i + 1;
+    return num % 4 === 0 ? num * 10 : num;
+});
+
+
+Test.assertSimilar(amplify(1));
+Test.assertSimilar(amplify(4));
+Test.assertSimilar(amplify(25));
+
