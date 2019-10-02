@@ -5377,8 +5377,253 @@ function largestSwap(num) {
 	}
 }
 
+
+function largestSwap(num) {
+	return num / 10 > num % 10
+}
+
+
+const largestSwap = num => Math.floor(num / 10) >= num % 10;
+
 largestSwap(27);
 largestSwap(43);
 largestSwap(14);
 largestSwap(53);
 largestSwap(99);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 113
+
+// Create a function that returns the index of the first vowel in a string.
+
+function firstVowel(str) {
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].toLowerCase() === "a" || str[i].toLowerCase() === "e" || str[i].toLowerCase() === "i" || str[i].toLowerCase() === "o") {
+				return str.indexOf(str[i]);
+				}
+	}
+}
+
+
+function firstVowel(str) {
+	return str.search(/a|e|i|o|u/i);
+}
+
+firstVowel("hello");
+firstVowel("apple");
+firstVowel("string");
+firstVowel("STRAWBERRY");
+firstVowel("MELON");
+firstVowel("piNNEaPLE");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 114
+
+// Create a function that takes a number (step) as an argument and returns the amount of boxes in that step of the sequence.
+
+// Step 0: Start with 0
+// Step 1: Add 3
+// Step 2: Subtract 1
+// Repeat Step 1 & 2 ...
+
+
+function boxSeq(step) {
+	let x = 0;
+	let counter = step;
+	
+	for (let i = 1; i <= step; i++) {
+			if (step <= 0) {
+			x = 0;
+		} else if (counter % 2 === 1) {
+			x += 3;
+			counter--;
+		} else if (counter % 2 === 0) {
+			x -= 1;
+			counter--;
+		}
+	}
+	return x;
+}
+
+const boxSeq = step => (step % 2 === 0 ? step : step + 2);
+
+const boxSeq = step => step + (step % 2 ? 2 : 0);
+
+boxSeq(5);
+boxSeq(0);
+boxSeq(6);
+boxSeq(99);
+boxSeq(2);
+boxSeq(1);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 115
+
+// A value is omnipresent if it exists in every subarray inside the main array.
+
+function isOmnipresent(arr, val) {
+	if (arr.every(x => arr.includes(val))) {
+		return true;
+	} else if (arr.every(x => x.includes(val))) {
+		return true;
+	} else return false;
+									 
+}
+
+
+function isOmnipresent(arr, val) {
+	return arr.every(x => x.includes(val));
+}
+
+isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1);
+isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6);
+isOmnipresent([[5], [5], [5], [6, 5]], 5);
+isOmnipresent([[5], [5], [5], [6, 5]], 6);
+isOmnipresent([[5, 1], [5, 1], [5, 1], [6, 5, 1]], 1);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 116
+
+// Create a function that takes in an array of numbers and returns the sum of its cubes.
+
+
+function sumOfCubes(nums) {
+	let a = 0;
+	for (let i = 0; i < nums.length; i++) {
+		a += Math.pow(nums[i], 3);
+	}
+	return a;
+}
+
+function sumOfCubes(nums) {
+	return nums.reduce((p,c) => p + Math.pow(c, 3), 0);
+}
+
+
+sumOfCubes([1, 5, 9]);
+sumOfCubes([3, 4, 5]);
+sumOfCubes([1, 1, 1]);
+sumOfCubes([2]);
+sumOfCubes([5, 1, 2]);
+sumOfCubes([32]);
+sumOfCubes([5, 9, 4, 4, 9]);
+sumOfCubes([0, 1, 2]);
+sumOfCubes([]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 117
+
+// A set is a collection of unique items. A set can be formed from an array from removing all duplicate items.
+
+
+function set(arr) {
+	return [...new Set(arr)];
+}
+
+
+const set = arr => Array.from(new Set(arr));
+
+
+function set(arr) {
+	return arr.filter((n, index) => arr.indexOf(n) == index);
+}
+
+set([1, 3, 3, 5, 5]);
+set([4, 4, 4, 4]);
+set([5, 7, 8, 9, 10, 15]);
+set([5, 9, 9]);
+set([1, 2, 3, 4, 5, 5, 6, 6, 7]);
+set([1, 1, 2, 2, 2]);
+set(['A', 'A', 'A', 'A']);
+set(['A', 'B', 'C', 'D']);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 118
+
+// Create a function that takes an integer and returns an array from 1 to the given number, where:
+
+// If the number can be divided evenly by 4, amplify it by 10 (i.e. return 10 times the number).
+// If the number cannot be divided evenly by 4, simply return the number.
+
+
+function amplify(num) {
+	let a = [];
+	let c = num;
+	for (let i = 1; i <= num; i++) {
+		if (c % 4 === 0) {
+			a.push(c * 10);
+			c--;
+		} else {
+			a.push(c);
+			c--;
+		}
+	}
+	return a.reverse();
+}
+
+
+function amplify(num) {
+	var a = [];
+	for(var i = 1; i <= num; i++){
+		if(i % 4 == 0){
+			a.push(i*10);
+		}else{
+			a.push(i);
+		}
+	}
+	return a;
+}
+
+
+const amplify = num =>
+  Array.from({ length: num }, (_, i) => {
+    const num = i + 1;
+    return num % 4 === 0 ? num * 10 : num;
+});
+
+
+Test.assertSimilar(amplify(1));
+Test.assertSimilar(amplify(4));
+Test.assertSimilar(amplify(25));
+
