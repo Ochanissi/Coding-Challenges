@@ -5627,3 +5627,201 @@ Test.assertSimilar(amplify(1));
 Test.assertSimilar(amplify(4));
 Test.assertSimilar(amplify(25));
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 119
+
+// Given a word, write a function that returns the first index and the last index of a character.
+
+
+function charIndex(word, char) {
+	if(!word.includes(char)) {
+		return undefined;
+	} else return [word.indexOf(char), word.lastIndexOf(char)];
+}
+
+
+const charIndex = (word, char) =>
+  word.includes(char)
+    ? [word.indexOf(char), word.lastIndexOf(char)]
+    : undefined;
+
+
+charIndex('hello', 'l');
+charIndex('circumlocution', 'r');
+charIndex('circumlocution', 'i');
+charIndex('circumlocution', 'c');
+charIndex('happy', 'h');
+charIndex('happy', 'p');
+charIndex('happy', 'e');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 120
+
+// Given two strings, create a function that returns the total number of unique characters from the combined string.
+
+
+function countUnique(s1, s2) {
+	return [...new Set(s1.concat(s2))].length;
+}
+
+
+function countUnique(s1, s2) {
+	return new Set(s1 + s2).size;
+}
+
+
+function countUnique(s1, s2) {
+	return new Set([...s1,...s2]).size
+}
+
+countUnique("apple", "play");
+countUnique("sore", "zebra");
+countUnique("pip", "geeks");
+countUnique("a", "soup");
+countUnique("maniac", "maniac");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 120
+
+// Create a function to convert an array of percentages to their decimal equivalents.
+
+
+function convertToDecimal(perc) {
+	return perc.map(x => parseFloat(x) / 100);
+}
+
+
+convertToDecimal(["33%", "98.1%", "56.44%", "100%"]);
+convertToDecimal(["45%", "32%", "97%", "33%"]);
+convertToDecimal(["1%", "2%", "3%"]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 120
+
+// Create a function that takes two strings as arguments and returns the number of times the first string is found in the second string.
+
+
+function charCount(myChar, str) {
+	let a = 0;
+	
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === myChar) {
+			a++;
+		}
+	}
+	return a;
+}
+
+
+function charCount(myChar, str) {
+	return [...str].filter(x => x===myChar).length;
+}
+
+
+function charCount(myChar, str) {
+	
+	return (str.split("").filter(char => char === myChar)).length;
+}
+
+charCount('a', 'edabit');
+charCount('b', 'big fat bubble');
+charCount('c', 'Chamber of secrets');
+charCount('f', 'frank and his friends have offered five foxes for sale');
+charCount('x', 'edabit');
+charCount('a', 'Adam and Eve bit the apple and found a snake');
+charCount('s', 'sssssssssssssssssssssssss');
+charCount('7', '10795426697');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 121
+
+// A group of friends have decided to start a secret society. The name will be the first letter of each of their names, sorted in alphabetical order.
+
+// Create a function that takes in an array of names and returns the name of the secret society.
+
+
+function societyName(friends) {
+	let a = "";
+	
+	for (let i = 0; i < friends.length; i++) {
+		a += friends[i].charAt(0);
+	}
+	
+	return a.split('').sort().join('');
+}
+
+
+function societyName(friends) {
+	return friends.map(x => x[0]).sort().join("")
+}
+
+
+function societyName(friends) {
+	return friends.reduce(function(acc,current)  {
+    return acc + current[0]
+  }, "").split("").sort().join("")
+}
+
+
+societyName(['Adam', 'Sarah', 'Malcolm']);
+societyName(['Phoebe', 'Chandler', 'Rachel', 'Ross', 'Monica', 'Joey']);
+societyName(['Harry', 'Newt', 'Luna', 'Cho']);
+societyName(['Sherlock', 'Irene', 'John']);
+societyName(['Sheldon', 'Amy', 'Penny', 'Howard', 'Raj']);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 122
+
+// Write a function that takes a string name and a number num (either 0 or 1) and return "Hello" + name if num is 1, otherwise return "Bye" + name.
+
+
+
+function sayHelloBye(name, num) {
+	return (num === 1) ? `Hello ${name[0].toUpperCase() + name.slice(1)}` : `Bye ${name[0].toUpperCase() + name.slice(1)}`;
+}
+
+
+sayHelloBye("jose", 1);
+sayHelloBye("barry", 1);
+sayHelloBye("jon", 0);
+sayHelloBye("khloy", 1);
+sayHelloBye("sara", 0);
+sayHelloBye("Jon", 0);
+sayHelloBye("Matt", 1);
+
