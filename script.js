@@ -6323,13 +6323,199 @@ function convertBinary(str) {
 
 const convertBinary = str =>
   str.replace(/[a-m]|([n-z])/gi, (match, g1) => Number(match === g1));
-  
+
 
 convertBinary("house");
 convertBinary("excLAIM");
 convertBinary("moon");
 convertBinary("MOOn");
 convertBinary("topsyTurvy");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 137
+
+// Create a function takes all even-indexed characters and odd-indexed characters from a string and concatenates them together.
+
+
+function indexShuffle(str) {
+	let a = "";
+	let b = ""
+	for (let i = 0; i < str.length; i++) {
+		if (i % 2 === 1) {
+			a += str[i];
+		} else {
+			b += str[i];
+		}
+		
+	}
+	return b.concat(a);
+}
+
+
+function indexShuffle(str) {
+    return [...str].filter((v,i) => i % 2 == 0).concat([...str].filter((v,i) => i % 2 != 0)).join('')
+}
+
+
+function indexShuffle(str) {
+	const even = [...str].filter((char, i) => i % 2 === 0);
+	const odd = [...str].filter((char, i) => i % 2);
+	
+	return [...even, ...odd].join('');
+}
+
+
+indexShuffle("abcdef");
+indexShuffle("abababab");
+indexShuffle("it was a beautiful day");
+indexShuffle("maybe");
+indexShuffle("holiday");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 138
+
+// Create a function that moves all capital letters to the front of a word.
+
+
+function capToFront(s) {
+	let a = "";
+	let b = "";
+	for (let i = 0; i < s.length; i++) {
+		if (s[i] === s[i].toUpperCase()) {
+			a += s[i];
+		} else b += s[i];
+	};
+	
+	return a.concat(b);
+}
+
+
+function capToFront(s) {
+    return s.match(/[A-Z]/g).join('') + s.match(/[a-z]/g).join('');
+}
+
+
+function capToFront(s) {
+	let lowerCase = [...s].filter(l => l === l.toLowerCase())
+	let upperCase = [...s].filter(l => l === l.toUpperCase())
+	return [...upperCase,...lowerCase].join("")
+}
+
+
+capToFront("hApPy");
+capToFront("moveMENT");
+capToFront("aPPlE");
+capToFront("shOrtCAKE");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 139
+
+// An array is special, if every even index contains an even number and every odd index contains an odd number. Create a function that returns true if an array is special, and false otherwise.
+
+function isSpecialArray(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] % 2 === 0 && i % 2 === 0 || arr[i] % 2 === 1 && i % 2 === 1) {
+			continue;
+		} else return false;
+	}
+	return true;
+}
+
+
+const isSpecialArray = a => a.every((v, i) => v%2 == i%2);
+
+
+function isSpecialArray(arr) {
+    return arr.every((element, index) => element%2 === index%2)
+}
+
+
+isSpecialArray([2, 7, 4, 9, 6, 1, 6, 3]);
+isSpecialArray([2, 7, 9, 1, 6, 1, 6, 3]);
+isSpecialArray([2, 7, 8, 8, 6, 1, 6, 3]);
+isSpecialArray([1, 1, 1, 2]);
+isSpecialArray([2, 2, 2, 2]);
+isSpecialArray([2, 1, 2, 1]);
+isSpecialArray([4, 5, 6, 7]);
+isSpecialArray([4, 5, 6, 7, 0, 5]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 140
+
+// Take an array of integers (positive or negative or both) and return the sum of the absolute value of each element.
+
+
+function getAbsSum(arr) {
+	return arr.length > 1 ? arr.reduce((x, i) => Math.abs(x) + Math.abs(i)) : Math.abs(arr[0]);
+}
+
+
+const getAbsSum = arr => arr.reduce((acc, item) => acc + Math.abs(item), 0)
+
+
+getAbsSum([2, -1, -3, 4, 8]);
+getAbsSum([-1]);
+getAbsSum([-1, -3, -5, -4, -10, 0]);
+getAbsSum([8, 9, 10, 32, 101, -10]);
+getAbsSum([500]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 141
+
+// Zip codes consist of 5 consecutive digits. Given a string, write a function to determine whether the input is a valid zip code. A valid zip code is as follows:
+
+// Must only contain numbers (no non-digits allowed).
+// Must not contain any spaces.
+// Must not be greater than 5 digits in length.
+
+
+function isValid(zip) {
+	return !isNaN(zip) && zip.length <= 5;
+}
+
+
+const isValid = zip => /^\d{5}$/.test(zip);
+
+
+isValid("59001");
+isValid("853a7");
+isValid("732 32");
+isValid("788876");
+isValid("a923b");
+isValid("5923!");
+isValid("59238aa");
+isValid("88231");
 
 
 
