@@ -5825,3 +5825,511 @@ sayHelloBye("sara", 0);
 sayHelloBye("Jon", 0);
 sayHelloBye("Matt", 1);
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 123
+
+// Create two functions: isPrefix(word, prefix-) and isSuffix(word, -suffix).
+
+    // isPrefix should return true if it begins with the prefix argument.
+    // isSuffix should return true if it ends with the suffix argument.
+// Otherwise return false.
+
+
+function isPrefix(word, prefix) {
+	return word.startsWith(prefix.slice(0, -1));
+}
+
+function isSuffix(word, suffix) {
+	return word.endsWith(suffix.slice(1));
+}
+
+
+function isPrefix(word, prefix) {
+	return word.startsWith(prefix.replace("-", ""));
+}
+
+function isSuffix(word, suffix) {
+	return word.endsWith(suffix.replace("-", ""));
+}
+
+
+
+isPrefix("automation", "auto-");
+isPrefix("superfluous", "super-");
+isPrefix("oration", "mega-");
+isPrefix("retrospect", "sub-");
+isSuffix("arachnophobia", "-phobia");
+isSuffix("rhinoplasty", "-plasty");
+isSuffix("movement", "-scope");
+isSuffix("vocation", "-logy");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 124
+
+// Christmas Eve is almost upon us, so naturally we need to prepare some milk and cookies for Santa! Create a function that accepts a Date object and returns true if it's Christmas Eve (December 24th) and false otherwise. Keep in mind JavaScript's Date month is 0 based, meaning December is the 11th month while January is 0.
+
+
+function timeForMilkAndCookies(date) {
+	return date.getMonth() === 11 && date.getDate() === 24;
+}
+
+
+timeForMilkAndCookies(new Date(2013, 11, 24));
+timeForMilkAndCookies(new Date(3000, 11, 24));
+timeForMilkAndCookies(new Date(2154, 11, 11));
+timeForMilkAndCookies(new Date(2010, 11, 2));
+timeForMilkAndCookies(new Date(1980, 9, 24));
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 125
+
+// Create a function that takes an array of non-negative numbers and strings and return a new array without the strings.
+
+
+function filterArray(arr) {
+	return arr.filter( x => typeof x === 'number');
+}
+
+Test.assertSimilar(filterArray([1, 2, "a", "b"]);
+Test.assertSimilar(filterArray([1, "a", "b", 0, 15]);
+Test.assertSimilar(filterArray([1, 2, "aasf", "1", "123", 123]);
+Test.assertSimilar(filterArray(["jsyt", 4, "yt", 6]);
+Test.assertSimilar(filterArray(["w", "r", "u", 43, "s", "a", 76, "d", 88]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 126
+
+// Write a function that takes a string as an argument and returns the left most digit in the string.
+
+
+function leftDigit(num) {
+	for (let i = 0; i < num.length; i++) {
+		if (!isNaN(num[i])) {
+			return parseInt(num[i]);
+		}
+	}
+}
+
+
+const leftDigit = str => Number(str.match(/[\d]/));
+
+
+leftDigit("TrAdE2W1n95!");
+leftDigit("V3r1ta$");
+leftDigit("U//DertHe1nflu3nC3");
+leftDigit("J@v@5cR1PT");
+leftDigit("0nSlaUgh7*d3atH");
+leftDigit("F8andD3st1nY");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 127
+
+// Write a function that takes a positive integer and return its factorial.
+
+
+function factorial(z) {
+	let a = 1;
+	for (let i = z; i > 0; i--) {
+		a *= i;
+	}	
+	return a;
+}
+
+factorial(4);
+factorial(0);
+factorial(9);
+factorial(1);
+factorial(2);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 128
+
+// You're given a string of words. You need to find the word "Nemo", and return a string like this: "I found Nemo at [the order of the word you find nemo]!".
+
+// If you can't find Nemo, return "I can't find Nemo :(".
+
+
+function findNemo(sentence) {
+	const a = sentence.split(" ");
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] === "Nemo") {
+			return `I found Nemo at ${i + 1}!`;
+		}
+	}
+	return "I can't find Nemo :(";
+}
+
+
+const findNemo = str => (n = str.split` `.indexOf("Nemo") + 1, n) ?
+`I found Nemo at ${n}!` : `I can\'t find Nemo :(`;
+
+
+findNemo("I am Ne mo Nemo !");
+findNemo("N e m o is NEMO NeMo Nemo !");
+findNemo("I am Nemo's dad Nemo senior .");
+findNemo("Oh, hello !");
+findNemo("Is it Nemos, Nemona, Nemoor or Garfield?");
+findNemo("Nemo is a clown fish, he has white and orange stripes. Nemo , come back!");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 129
+
+// Write two functions:
+
+// toArray(), which converts a number to an array of its digits.
+// toNumber(), which converts an array of digits back to its number.
+
+function toArray(num) {
+	const a = num.toString().split("");
+	return a.map(x => parseInt(x));
+}
+
+function toNumber(arr) {
+	return parseInt(arr.join(""));
+}
+
+
+
+const toArray = num => String(num).split('').map(Number);
+
+const toNumber = arr => Number(arr.join(''));
+
+
+function toArray(num) {
+	return [...num.toString()].map(s => Number(s))
+}
+
+function toNumber(arr) {
+	return Number(arr.join(""))
+}
+
+Test.assertSimilar(toArray(235));
+Test.assertSimilar(toArray(19));
+Test.assertSimilar(toArray(0));
+Test.assertEquals(toNumber([2, 3, 5]));
+Test.assertEquals(toNumber([1, 9]));
+Test.assertEquals(toNumber([0]));
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 130
+
+// Create a function that takes an array of items, removes all duplicate items and returns a new array in the same sequential order as the old array (minus duplicates).
+
+function removeDups(arr) {
+	return [...new Set(arr)];
+}
+
+removeDups(['John', 'Taylor', 'John']);
+removeDups(['John', 'Taylor', 'John', 'john']);
+removeDups(['javascript', 'python', 'python', 'ruby', 'javascript', 'c', 'ruby']);
+removeDups([1, 2, 2, 2, 3, 2, 5, 2, 6, 6, 3, 7, 1, 2, 5]);
+removeDups(['#', '#', '%', '&', '#', '$', '&']);
+removeDups([3, 'Apple', 3, 'Orange', 'Apple']);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 131
+
+// Write a function that calculates the factorial of a number recursively.
+
+
+function factorial(n) {
+	let a = 1;
+	for (let i = n; i > 0; i--) {
+		a *= i;
+	}
+	return a;
+}
+
+
+let factorial = n => n ? n * factorial(--n) : 1;
+
+
+factorial(5);
+factorial(3);
+factorial(1);
+factorial(0);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 132
+
+// A decimal number can be represented as a sequence of bits.
+// We can calculate the bitwise AND, bitwise OR and bitwise XOR.
+
+// Write three functions to calculate the bitwise AND, bitwise OR and bitwise XOR of two numbers.
+
+const bitwiseAND = (n1, n2) => n1 & n2;
+const bitwiseOR = (n1, n2) => n1 | n2;
+const bitwiseXOR = (n1, n2) => n1 ^ n2;
+
+bitwiseAND(7, 12);
+bitwiseOR(7, 12);
+bitwiseXOR(7, 12);
+
+bitwiseAND(32, 17);
+bitwiseOR(32, 17);
+bitwiseXOR(32, 17);
+
+bitwiseAND(13, 19);
+bitwiseOR(13, 19);
+bitwiseXOR(13, 19);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 133
+
+// Given a string, create a function to reverse the case. All lower-cased letters should be upper-cased, and vice versa.
+
+
+
+function reverseCase(str) {
+	let a = "";
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === str[i].toLowerCase()) {
+			a += str[i].toUpperCase();
+		} else {
+			a += str[i].toLowerCase();
+		}
+	}
+	return a;
+}
+
+
+function reverseCase(str) {
+	return [...str].map(c => c.toLowerCase() == c ? c.toUpperCase() : c.toLowerCase()).join("")
+}
+
+
+reverseCase('Happy Birthday');
+reverseCase('MANY THANKS');
+reverseCase('sPoNtAnEoUs');
+reverseCase('eXCELLENT, yOuR mAJESTY');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 134
+
+// Create a function which takes in a word and spells it out, by consecutively adding letters until the full word is completed.
+
+
+function spelling(str) {
+	let a = [];
+	for (let i = 0; i < str.length; i++) {
+	if (a.length < 1) {
+		a.push(str[i]);
+	} else {
+		a.push(a[i-1] + str[i]);
+	}
+	}
+	return a;
+}
+
+function spelling(str) {
+	let arr = []
+	for(let i=1; i<str.length+1; i++){
+		arr.push(str.slice(0,i))
+	}
+	return arr
+}
+
+
+function spelling(str) {
+    return str.split('').map((c, i) => str.slice(0, i+1) );
+}
+
+
+
+spelling("bee");
+spelling("cake");
+spelling("happy");
+spelling("eagerly");
+spelling("believe");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 135
+
+// Create a function that takes a string and returns a string in which each character is repeated once.
+
+
+function doubleChar(str) {
+	return [...str].map(x => (x + x)).join("");
+}
+
+
+function doubleChar(str) {
+    return str.split('').map(x => x + x).join('');
+}
+
+
+let doubleChar = str => str.replace(/./g,'$&$&');
+
+
+doubleChar("String");
+doubleChar("Hello World!");
+doubleChar("1234!_ ");
+doubleChar("##^&%%*&%%$#@@!");
+doubleChar("scandal");
+doubleChar("economics");
+doubleChar(" ");
+doubleChar("_______");
+doubleChar("equip gallon read");
+doubleChar("baby increase");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 135
+
+// Given an unsorted array, create a function that returns the nth smallest element (the smallest element is the first smallest, the second smallest element is the second smallest, etc).
+
+function nthSmallest(arr, n) {
+	let a = arr.sort();
+	if (a.length <= n - 1) {
+		return null;
+	} else return a[n-1];
+}
+
+
+function nthSmallest(arr, n) {
+	let sortedArray = arr.sort();
+	return sortedArray[n-1] || null;
+}
+
+
+function nthSmallest(arr, n) {
+	return n > arr.length ? null : arr.sort()[n-1];
+}
+
+
+nthSmallest([1, 3, 5, 7], 1);
+nthSmallest([1, 3, 5, 7], 3);
+nthSmallest([1, 3, 5, 7], 5);
+nthSmallest([7, 3, 5, 1], 2);
+nthSmallest([5, 4, 3, 2, 1, -3], 1);
+nthSmallest([5, 4, 3, 2, 1, -3], 5);
+nthSmallest([4, 5], 3);
+nthSmallest([4, 5], 2);
+nthSmallest([4, 5], 1);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 136
+
+// Write a function that transforms all letters from [a,m] to 0 and letters from [n,z] to 1 in a string.
+
+
+function convertBinary(str) {
+	let a = "";
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].toLowerCase() <= "m") {
+			a += '0';
+		} else {
+						a += '1';
+		}
+	}
+	return a;
+}
+
+
+const convertBinary = str =>
+  str.replace(/[a-m]|([n-z])/gi, (match, g1) => Number(match === g1));
+  
+
+convertBinary("house");
+convertBinary("excLAIM");
+convertBinary("moon");
+convertBinary("MOOn");
+convertBinary("topsyTurvy");
+
+
+
