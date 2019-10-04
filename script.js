@@ -6519,3 +6519,35 @@ isValid("88231");
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 142
+
+// Write a function that receives two portions of a path and joins them. The portions will be joined with the "/" separator. There could be only one separator and if it is not present it should be added.
+
+function joinPath(portion1, portion2) {
+	let a = [...portion1].filter(x => x.match(/[a-z0-9]/gi));
+	let b = [...portion2].filter(x => x.match(/[a-z0-9]/gi));
+
+	a.push("/");
+	
+	return [...a,  ...b].join("");
+}
+
+
+joinPath("portion1", "portion2");
+joinPath("portion1/", "portion2");
+joinPath("portion1", "/portion2");
+joinPath("portion1/", "/portion2");
+joinPath("5wf7fny", "stJKXlc8");
+joinPath("5wf7fny/", "stJKXlc8");
+joinPath("5wf7fny", "/stJKXlc8");
+joinPath("5wf7fny/", "/stJKXlc8");
+joinPath("FKBZOBHo", "GNcYGnB");
+joinPath("FKBZOBHo/", "GNcYGnB");
+joinPath("FKBZOBHo", "/GNcYGnB");
+joinPath("FKBZOBHo/", "/GNcYGnB");
+
