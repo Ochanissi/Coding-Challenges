@@ -5623,9 +5623,9 @@ const amplify = num =>
 });
 
 
-Test.assertSimilar(amplify(1));
-Test.assertSimilar(amplify(4));
-Test.assertSimilar(amplify(25));
+amplify(1);
+amplify(4);
+amplify(25);
 
 
 
@@ -6551,3 +6551,492 @@ joinPath("FKBZOBHo/", "GNcYGnB");
 joinPath("FKBZOBHo", "/GNcYGnB");
 joinPath("FKBZOBHo/", "/GNcYGnB");
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 143
+
+// Create a function that takes three integer arguments (a, b, c) and returns the number of equal values.
+
+
+function equal(a, b, c) {
+	let x = 0;
+	for (let i = 0; i < arguments.length; i++) {
+		if (arguments[i] === arguments[i+1] || arguments[i] === arguments[i-1] || arguments[i] === arguments[i+2] || arguments[i] === arguments[i-2]) {
+			x++;
+		}
+	}
+	
+	return x;
+}
+
+
+function equal(a, b, c) {
+	const size = (new Set([a, b, c])).size;
+	return size === 3 ? 0 : 4 - size;
+}
+
+
+
+function equal(a, b, c) {
+    if (a === b && a === c) {
+       return 3;}
+    if (a === b || a === c || b === c) {
+       return 2;}
+           return 0;
+}
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 144
+
+// Create a function to count the number of 1s in a 2D array.
+
+
+function countOnes(matrix) {
+	let x = 0;
+	for (let i = 0; i < matrix.length; i++) {
+		for (let j = 0; j < matrix.length; j++) {
+			if (matrix[i][j] === 1) {
+				x++;
+			}
+		}
+	}
+	return x;
+}
+
+
+function countOnes(matrix) {
+	return matrix.join("").split("").filter(x => x == "1").length;
+}
+
+
+countOnes([
+	[5, 2],
+	[0, 2],
+	[5, 1]
+]);
+
+countOnes([
+	[1, 1],
+	[0, 1]
+]);
+
+countOnes([
+	[0, 1],
+	[0, 0]
+]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 145
+
+// Create a function that takes an integer and returns the factorial of that integer. That is, the integer multiplied by all positive lower integers.
+
+
+function factorial(int) {
+	let x = 1;
+	
+	for (let i = int; i > 0; i--) {
+		x *= i;
+	}
+	
+	return x;
+}
+
+
+const factorial = num => num === 1 ? num : num * factorial(num - 1);
+
+factorial(2);
+factorial(6);
+factorial(3);
+factorial(12);
+factorial(5);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 146
+
+// Given an array of scrabble tiles, create a function that outputs the maximum possible score a player can achieve by summing up the total number of points for all the tiles in their hand. Each hand contains 7 scrabble tiles.
+
+
+
+function maximumScore(tileHand) {
+	let x = 0;
+	
+	for (let i = 0; i < tileHand.length; i++) {
+		x += tileHand[i].score;
+	}
+	
+	return x;
+}
+
+
+function maximumScore(tileHand) {
+	return tileHand.reduce((p,c) => p + c.score, 0);
+}
+
+
+[{tile: 'N', score: 1}, {tile: 'K', score: 5},  {tile: 'Z', score: 10}, {tile: 'X', score: 8}, {tile: 'D', score: 2}, {tile: 'A', score: 1}, {tile: 'E', score: 1}];
+[{tile: 'B', score: 2}, {tile: 'V', score: 4},  {tile: 'F', score: 4}, {tile: 'U', score: 1}, {tile: 'D', score: 2}, {tile: 'O', score: 1}, {tile: 'U', score: 1}];
+[{tile: 'M', score: 3}, {tile: 'Q', score: 10},  {tile: 'O', score: 1}, {tile: 'E', score: 1}, {tile: 'E', score: 1}, {tile: 'I', score: 1}, {tile: 'A', score: 1}];
+[{tile: 'A', score: 1}, {tile: 'E', score: 1},  {tile: 'O', score: 1}, {tile: 'E', score: 1}, {tile: 'E', score: 1}, {tile: 'I', score: 1}, {tile: 'A', score: 1}];
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 147
+
+// Create a function that takes an array of strings and return an array, sorted from shortest to longest.
+
+
+function sortByLength(arr) {
+	return arr.sort((a, b) => a.length - b.length);
+
+}
+
+
+sortByLength(["Google", "Apple", "Microsoft"]);
+sortByLength(["Leonardo", "Michelangelo", "Raphael", "Donatello"]);
+sortByLength(["Turing", "Einstein", "Jung"]);
+sortByLength(["Tatooine", "Hoth", "Yavin", "Dantooine"]);
+sortByLength(["Mario", "Bowser", "Link"]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 148
+
+// Write a regular expression that matches a string if and only if it is a valid zip code.
+
+
+let x = /^[0-9]{5}(?:-[0-9]{4})?$/
+
+
+const x = /^\d{5}$/;
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 149
+
+// Create a function that takes a string and returns a new string with all vowels removed.
+
+function removeVowels(str) {
+	return str.replace(/[aeiou]/gi, "");
+}
+
+
+removeVowels("If Obama resigns from office NOW, thereby doing a great service to the country—I will give him free lifetime golf at any one of my courses!");
+removeVowels("This election is a total sham and a travesty. We are not a democracy!");
+removeVowels("I have never seen a thin person drinking Diet Coke.");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 150
+
+// Create a function that takes an array as an argument and returns true or false depending on whether the average of all elements in the array is a whole number or not.
+
+
+function isAvgWhole(arr) {
+	let a = 0;
+	for (let i = 0; i < arr.length; i++) {
+		a += arr[i];
+	}
+	
+	return Number.isInteger(a / arr.length);
+}
+
+
+
+isAvgWhole([3, 5, 9]);
+isAvgWhole([1, 1, 1, 1]);
+isAvgWhole([1, 2, 3, 4, 5]);
+isAvgWhole([5, 2, 4]);
+isAvgWhole([11, 22]);
+isAvgWhole([4, 1, 7, 9, 2, 5, 7, 2, 4]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 151
+
+// Create a function that takes an array of 10 numbers (between 0 and 9) and returns a string of those numbers formatted as a phone number (e.g. (555) 555-5555).
+
+function formatPhoneNumber(numbers) {
+	const a = numbers.join("").toString().match(/.{1,3}/g);
+	return `(${a[0]}) ${a[1]}-${a[2]}${a[3]}`;
+}
+
+
+formatPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+formatPhoneNumber([5, 1, 9, 5, 5, 5, 4, 4, 6, 8]);
+formatPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]);
+formatPhoneNumber([6, 6, 2, 5, 8, 8, 7, 0, 4, 3]);
+formatPhoneNumber([5, 1, 0, 2, 6, 6, 3, 5, 8, 3]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 152
+
+// Create a function that takes a string and returns the number (count) of vowels contained within it.
+
+
+function countVowels(str) {
+	return str.match(/[aeiou]/gi).length;
+}
+
+
+
+Test.assertEquals(countVowels("Celebration"));
+Test.assertEquals(countVowels("Palm"));
+Test.assertEquals(countVowels("Prediction"));
+Test.assertEquals(countVowels("Suite"));
+Test.assertEquals(countVowels("Quote"));
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 153
+
+// Create a function that takes a string as input and capitalizes a letter if it's ASCII code is even, and returns its lower case version if it's ASCII code is odd.
+
+
+function asciiCapitalize(str) {
+	let a = "";
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].charCodeAt(0) % 2 === 0) {
+			a += str[i].toUpperCase();
+		} else a += str[i].toLowerCase();
+	}	
+	return a;
+}
+
+
+const asciiCapitalize = s => 
+[...s].map(x => x.charCodeAt(0)%2 ? x.toLowerCase(): x.toUpperCase()).join("")
+
+
+asciiCapitalize("Oh what a beautiful morning.");
+asciiCapitalize("THE LITTLE MERMAID");
+asciiCapitalize("to be or not to be!");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 154
+
+// Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not. A number is symmetrical when it is the same as its reverse.
+
+function isSymmetrical(num) {
+	return (num.toString() === num.toString().split("").reverse().join(""));
+}
+
+
+isSymmetrical(23);
+isSymmetrical(9562);
+isSymmetrical(10019);
+isSymmetrical(1);
+isSymmetrical(3223);
+isSymmetrical(95559);
+isSymmetrical(66566);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 155
+
+// Given an array of boxes, create a function that returns the total volume of all those boxes combined together. A box is represented by an array with three elements: length, width and height.
+
+function totalVolume(...boxes) {
+	let x = 0;
+	for (let i = 0; i < [...boxes].length; i++) {
+		x += ([...boxes][i].reduce((x, i) => x * i));
+	}
+	return x;
+}
+
+
+const totalVolume = (...boxes) =>
+  boxes.reduce((total, [l, w, h]) => total + l * w * h, 0);
+
+
+function totalVolume(...boxes) {
+	return boxes.map(x => x.reduce((a,b) => a*b)).reduce((a,b) => a+b);
+}
+
+
+totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]);
+totalVolume([2, 2, 2], [2, 1, 1]);
+totalVolume([1, 1, 1]);
+totalVolume([5, 1, 10], [1, 9, 2]);
+totalVolume([1, 1, 5], [3, 3, 1]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 156
+
+// Given a number n, write a function that returns PI to n decimal places.
+
+
+function myPi(n) {
+	return parseFloat(Math.PI.toFixed(n));
+}
+
+
+
+myPi(0);
+myPi(1);
+myPi(2);
+myPi(3);
+myPi(5);
+myPi(6);
+myPi(7);
+myPi(8);
+myPi(9);
+myPi(10);
+myPi(11);
+myPi(12);
+myPi(13);
+myPi(14);
+myPi(15);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 157
+
+// Create a function that takes in a date and returns the correct century.
+
+
+
+function century(year) {
+	const a = Math.ceil(year / 100);
+	return (a === 21) ? `${a}st century` : `${a}th century`;
+}
+
+century(1756);
+century(1555);
+century(1000);
+century(1001);
+century(2005);
+century(1789);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 158
+
+// Create a function that keeps only strings with repeating identical characters (in other words, it has a set size of 1).
+
+
+function identicalFilter(arr) {
+	return arr.filter(x => new Set(x).size === 1);
+}
+
+
+identicalFilter(['aaaaaa', 'bc', 'd', 'eeee', 'xyz']);
+
+identicalFilter(['88', '999', '22', '545', '133']);
+
+identicalFilter(['xxxxo', 'oxo', 'xox', 'ooxxoo', 'oxo']);
+
+identicalFilter(['aa', 'bb', 'cc', 'dd', 'ee']);
+
+identicalFilter(['aba', 'bcb', 'abb', 'bcc', 'eee']);
+
+identicalFilter(['1', '2', '3']);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 159
+
+// function factorGroup(num) {
+	return (num % 2 === 0) ? 'even' : 'odd';
+}
