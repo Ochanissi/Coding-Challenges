@@ -5908,11 +5908,11 @@ function filterArray(arr) {
 	return arr.filter( x => typeof x === 'number');
 }
 
-Test.assertSimilar(filterArray([1, 2, "a", "b"]);
-Test.assertSimilar(filterArray([1, "a", "b", 0, 15]);
-Test.assertSimilar(filterArray([1, 2, "aasf", "1", "123", 123]);
-Test.assertSimilar(filterArray(["jsyt", 4, "yt", 6]);
-Test.assertSimilar(filterArray(["w", "r", "u", 43, "s", "a", 76, "d", 88]);
+filterArray([1, 2, "a", "b"]);
+filterArray([1, "a", "b", 0, 15]);
+filterArray([1, 2, "aasf", "1", "123", 123]);
+filterArray(["jsyt", 4, "yt", 6]);
+filterArray(["w", "r", "u", 43, "s", "a", 76, "d", 88]);
 
 
 
@@ -6049,12 +6049,12 @@ function toNumber(arr) {
 	return Number(arr.join(""))
 }
 
-Test.assertSimilar(toArray(235));
-Test.assertSimilar(toArray(19));
-Test.assertSimilar(toArray(0));
-Test.assertEquals(toNumber([2, 3, 5]));
-Test.assertEquals(toNumber([1, 9]));
-Test.assertEquals(toNumber([0]));
+toArray(235);
+toArray(19);
+toArray(0);
+toNumber([2, 3, 5]);
+toNumber([1, 9]);
+toNumber([0]);
 
 
 
@@ -6839,11 +6839,11 @@ function countVowels(str) {
 
 
 
-Test.assertEquals(countVowels("Celebration"));
-Test.assertEquals(countVowels("Palm"));
-Test.assertEquals(countVowels("Prediction"));
-Test.assertEquals(countVowels("Suite"));
-Test.assertEquals(countVowels("Quote"));
+countVowels("Celebration");
+countVowels("Palm");
+countVowels("Prediction");
+countVowels("Suite");
+countVowels("Quote");
 
 
 
@@ -7037,6 +7037,458 @@ console.log('**************************************************************');
 /////////////////////////////////
 // CODING CHALLENGE 159
 
-// function factorGroup(num) {
-	return (num % 2 === 0) ? 'even' : 'odd';
+// Create a function that accepts a string of space separated numbers and returns the highest and lowest number (as a string).
+
+
+function highLow(str) {
+	const a = str.split(" ");
+	let x = "";
+	x += Math.max(...a);
+	x += " ";
+	x += Math.min(...a);
+	return x;
 }
+
+function highLow(str) {
+    var nums = str.split(' ');
+    return `${Math.max(...nums)} ${Math.min(...nums)}`;
+}
+
+
+function highLow(str) {
+    return Math.max(...str.split(' ')) + ' ' + Math.min(...str.split(' '));
+}
+
+highLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6");
+highLow("1 -1");
+highLow("1 1");
+highLow("-1 -1");
+highLow("1 -1 0");
+highLow("1 1 0");
+highLow("-1 -1 0");
+highLow("42");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 160
+
+// Create a function that takes a string as an argument and returns a coded (h4ck3r 5p34k) version of the string.
+
+// In order to work properly, the function should replace all 'a's with 4, 'e's with 3, 'i's with 1, 'o's with 0, and 's's with 5.
+
+function hackerSpeak(str) {
+	let a = "";
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === "a") {
+			a += "4";
+		} else if (str[i] === "e") {
+			a += "3";
+		} else if (str[i] === "i") {
+			a += "1";
+		} else if (str[i] === "o") {
+			a += "0";
+		} else if (str[i] === "s") {
+			a += "5";
+		} else {
+			a += str[i];
+		}
+	}
+	return a;
+}
+
+function hackerSpeak(str) {
+    var chars = {'a':'4','e':'3','i':'1', 'o':'0', 's':'5'};
+    str = str.replace(/[aeios]/g, letter => chars[letter]);
+    
+    return str;
+}
+
+function hackerSpeak(str) {
+return str
+    .replace(/e/g, "3")
+    .replace(/i/g, "1")
+    .replace(/a/g, "4")
+    .replace(/o/g, "0")
+    .replace(/s/g, "5");
+}
+
+hackerSpeak("javascript is cool");
+hackerSpeak("become a coder");
+hackerSpeak("hi there");
+hackerSpeak("programming is fun");
+hackerSpeak("keep on practicing");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 161
+
+// Create a function that takes an array of numbers and returns the mean value.
+
+
+function mean(arr) {
+	return Number((arr.reduce((x, i) => x + i) / arr.length).toFixed(2));
+}
+
+
+mean([1, 0, 4, 5, 2, 4, 1, 2, 3, 3, 3]);
+mean([324, 543, 654, 9876]);
+mean([0, 0, 0, 0]);
+mean([30, 40, 20, 100, 30]);
+mean([1, 1, 1, 0]);
+mean([1, 1, 0, 1, 2, 1, 1, 1, 0, 0]);
+mean([10000]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 162
+
+// Write a function that reverses all the words in a sentence starting with a particular letter.
+
+
+function specialReverse(s, c) {
+	const x = s.split(" ");
+	const y = [];
+	
+	for (let i = 0; i < x.length; i++) {
+		if (x[i].startsWith(c)) {
+			y.push(x[i].split("").reverse().join(""));
+		} else y.push(x[i]);
+	}
+	return y.join(" ");
+}
+
+
+function specialReverse(s, c) {
+	return s.split(" ")
+		.map(x => x[0]== c ? x.split("").reverse().join(""):x)
+		.join(" ");
+}
+
+
+specialReverse('word searches are super fun', 's');
+specialReverse('first man to walk on the moon', 'm');
+specialReverse('peter piper picked pickled peppers', 'p');
+specialReverse('he went to climb mount everest', 'p');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 163
+
+// Create a function that takes an array of numbers between 1 and 10 (excluding one number) and returns the missing number.
+
+
+
+function missingNum(arr) {
+    for (let i = 1; i <= arr.length + 1; i++) {
+        if (arr.indexOf(i) === -1) {
+            return i;
+        }
+    }
+}
+
+
+function missingNum(arr) {
+    var sum = arr.reduce((a, b) => a + b, 0);
+    return 55 - sum;
+  }
+
+
+missingNum([1, 2, 3, 4, 6, 7, 8, 9, 10]);
+missingNum([7, 2, 3, 6, 5, 9, 1, 4, 8]);
+missingNum([7, 2, 3, 9, 4, 5, 6, 8, 10]);
+missingNum([10, 5, 1, 2, 4, 6, 8, 3, 9]);
+missingNum([1, 7, 2, 4, 8, 10, 5, 6, 9]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 164
+
+// Create a function that takes an array of numbers and returns a new array, sorted in ascending order (smallest to biggest).
+
+// Sort numbers array in ascending order.
+// If functions argument is null, an empty array or undefined, return an empty array.
+// Return new array of sorted numbers.
+
+
+
+function sortNumsAscending(arr) {
+	return (arr !== null) ? arr.sort((a, b) => a - b) : [];
+}
+
+
+function sortNumsAscending(arr) {
+    return (arr || []).sort((a,b) => a - b)
+}
+
+sortNumsAscending([1, 2, 10, 50, 5]);
+sortNumsAscending([80, 29, 4, -95, -24, 85]);
+sortNumsAscending(null);
+sortNumsAscending([]);
+sortNumsAscending([47, 51, -17, -16, 91, 47, -85, -8, -16, -27]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 165
+
+// Create a function that takes a number as an argument and returns a string formatted to separate thousands.
+
+
+function formatNum(num) {
+	return num.toLocaleString();
+}
+
+
+function formatNum(num) {
+	let ar = [...(''+num)];
+  let i = ar.length;
+  while (i -= 3) {
+    if (i < 0) break;
+    ar.splice(i, 0, ',');
+  }
+  return ar.join('');
+}
+
+
+formatNum(1000);
+formatNum(1000000);
+formatNum(20);
+formatNum(0);
+formatNum(12948);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 166
+
+// A factor chain is an array where each previous element is a factor of the next consecutive element. 
+
+function factorChain(arr) {
+	for(let i = arr.length - 1; i > 0; i--){
+		if(arr[i] % arr[i-1] == 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+}
+
+
+const factorChain = arr => arr.slice(1).every((num, i) => num % arr[i] === 0);
+
+
+factorChain([1, 2, 4, 8, 16, 32]);
+factorChain([1, 1, 1, 1, 1, 1]);
+factorChain([2, 4, 6, 7, 12]);
+factorChain([10, 1]);
+factorChain([10, 20, 30, 40]);
+factorChain([10, 20, 40]);
+factorChain([1, 1, 1, 1, 7, 49]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 167
+
+// Create a function that returns "even" if a number has an even number of factors and "odd" if a number has an odd number of factors.
+
+function factorGroup(num) {
+	var array = [];
+  for(var i = 0; i <= num; i++) {
+    if(num % i == 0) {
+     array.push(i)
+    }
+  }
+  return array.length % 2 == 0 ? "even" : "odd"  
+}
+
+
+const factorGroup = num => Number.isInteger(Math.sqrt(num)) ? 'odd' : 'even';
+
+
+factorGroup(33);
+factorGroup(36);
+factorGroup(7);
+factorGroup(1);
+factorGroup(19);
+factorGroup(27);
+factorGroup(100);
+factorGroup(18);
+factorGroup(16);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 168
+
+// Create a function that takes a number as its argument and returns an array of all its factors.
+
+
+function factorize(num) {
+	const a = [];
+	for (let i = 0; i <= num; i++) {
+		if(num % i === 0) {
+			a.push(i);
+		}
+	}
+	return a;
+}
+
+
+function factorize(num) {
+	return new Array(num).fill().map((x, i) => i + 1).filter(n => num % n === 0)
+}
+
+factorize(12);
+factorize(4);
+factorize(17);
+factorize(24);
+factorize(1);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 169
+
+// Create a function that takes an array of names and returns an array with the first letter capitalized.
+
+
+
+function capMe(arr) {
+	return arr.map(x => x[0].toUpperCase() + x.substring(1).toLowerCase());
+}
+
+
+function capMe(arr) {
+	return arr.map(x => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase());
+}
+
+
+capMe(['mavis', 'senaida', 'letty']);
+capMe(['samuel', 'MABELLE', 'letitia', 'meridith']);
+capMe(['Slyvia', 'Kristal', 'Sharilyn', 'Calista']);
+capMe(['krisTopher', 'olIva', 'herminiA']);
+capMe(['luke', 'marsha', 'stanford']);
+capMe(['kara']);
+capMe(['mARIANN', 'jOI', 'gEORGEANN']);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 170
+
+// Create a function that takes any nonnegative number as an argument and return it with it's digits in descending order. Descending order is when you sort from highest to lowest.
+
+
+function sortDecending(num) {
+	return parseInt(num.toString().split("").sort().reverse().join(""));
+}
+
+
+sortDecending(123);
+sortDecending(670276097);
+sortDecending(2619805);
+sortDecending(81294);
+sortDecending(0000000);
+sortDecending(321);
+sortDecending(628904);
+sortDecending(289327560);
+sortDecending(6456);
+sortDecending(444111888555333);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 171
+
+// Create a function that takes an array of arrays with numbers. Return a new (single) array with the largest numbers of each.
+
+function findLargestNums(arr) {
+	return arr.map(x => Math.max(...x));
+}
+
+
+
+findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]);
+findLargestNums([[0.4321, 0.7634, 0.652], [1.324, 9.32, 2.5423, 6.4314], [9, 3, 6, 3]]);
+findLargestNums([[-34, -54, -74], [-32, -2, -65], [-54, 7, -43]]);
+findLargestNums([[0.34, -5, 1.34], [-6.432, -1.762, -1.99], [32, 65, -6]]);
+findLargestNums([[0, 0, 0, 0], [3, 3, 3, 3], [-2, -2]]);
+
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 172
+
+// Create a function that returns only strings with unique characters.
+
+
+function filterUnique(arr) {
+	return arr.filter(x => new Set(x).size === x.length);
+}
+
+
+filterUnique(['abb', 'abc', 'abcdb', 'aea', 'bbb']);
+filterUnique(['88', '999', '989', '9988', '9898']);
+filterUnique(['ABCDE', 'DDEB', 'BED', 'CCA', 'BAC']);
+filterUnique(['qrrs', 'srrq', 'qqrs', 'qq', 'ss', 'rs']);
+filterUnique(['abab', 'ba', 'ab', 'cc']);
+
