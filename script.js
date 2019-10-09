@@ -7492,3 +7492,434 @@ filterUnique(['ABCDE', 'DDEB', 'BED', 'CCA', 'BAC']);
 filterUnique(['qrrs', 'srrq', 'qqrs', 'qq', 'ss', 'rs']);
 filterUnique(['abab', 'ba', 'ab', 'cc']);
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 173
+
+// Count the amount of ones in the binary representation of an integer. So for example, since 12 is '1100' in binary, the return value should be 2.
+
+
+function countOnes(i) {
+	return i.toString(2).split('1').length-1
+}
+
+
+countOnes(12);
+countOnes(0);
+countOnes(100);
+countOnes(101);
+countOnes(999);
+countOnes(1e9);
+countOnes(123456789);
+countOnes(1234567890);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 174
+
+// Create a function that takes a string and returns the middle character(s). If the word's length is odd, return the middle character. If the word's length is even, return the middle two characters.
+
+function getMiddle(str) {
+	let a = str;
+	for (let i = 0; i < a.length; i++) {
+		if (a.length % 2 === 0 && a.length > 2) {
+			a = a.slice(1,-1);
+		} else if (a.length % 2 === 1 && a.length > 2) {
+			a = a.slice(1,-1);
+		} else break;
+	}
+	return a;
+}
+
+
+function getMiddle(str) {
+    var start = Math.ceil(str.length / 2) - 1;
+    var end = Math.floor(str.length / 2) + 1;
+    return str.substring(start, end);
+}
+
+function getMiddle(str) {
+    return str.length % 2 ? str[(str.length - 1) / 2] : str.substr((str.length - 2) / 2 , 2);
+}
+
+
+getMiddle("test");
+getMiddle("testing");
+getMiddle("middle");
+getMiddle("A");
+getMiddle("inhabitant");
+getMiddle("brown");
+getMiddle("pawn");
+getMiddle("cabinet");
+getMiddle("fresh");
+getMiddle("shorts");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 175
+
+// Create a function that returns the mean of all digits.
+
+
+function mean(num) {
+	return  [...num.toString()].reduce((x, i) => (Number(x) + Number(i)))  / num.toString().length; 
+}
+
+function mean(num) {
+	const arr = Math.abs(num).toString().split('');
+	return arr.reduce((acc, item)=>acc+(+item),0)/arr.length;
+}
+
+mean(666);
+mean(80);
+mean(789);
+mean(417);
+mean(1357);
+mean(42);
+mean(12345);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 176
+
+// Create a function that returns true if an asterisk * is inside a box.
+
+
+function inBox(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = 0; j < arr[i].length; j++) {
+			if (arr[i][j] === "*") {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+
+
+const inBox = arr => arr.some(str => str.includes('*'));
+
+
+
+const inBox = a => a.some(e => (/\*/).test(e));
+
+
+inBox([
+    "###", 
+    "#*#", 
+    "###"
+]);
+
+inBox([
+    "####", 
+    "# *#", 
+    "#  #", 
+    "####"
+]);
+
+inBox([
+    "#####", 
+    "#  *#", 
+    "#   #", 
+    "#   #", 
+    "#####"
+]);
+
+inBox([
+    "#####", 
+    "#   #", 
+    "# * #", 
+    "#   #", 
+    "#####"
+]);
+
+inBox([
+    "#####", 
+    "#   #", 
+    "#   #", 
+    "# * #", 
+    "#####"
+];
+
+inBox([
+    "#####", 
+    "#*  #", 
+    "#   #", 
+    "#   #", 
+    "#####"
+]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 177
+
+// Return the total number of arrays inside a given array.
+
+
+
+function numOfSubbarrays(arr) {
+	return arr.filter(x => x.length > 1).length;
+}
+
+
+function numOfSubbarrays(arr) {
+	return arr.filter(a => a instanceof Array).length;
+}
+
+
+numOfSubbarrays([[1,2,3], [1,2,3], [1,2,3]]);
+numOfSubbarrays([[1,2,3]]);
+numOfSubbarrays([1,2,3]);
+numOfSubbarrays([[1,2,3], [ 1,2,3 ], [ 1,2,3 ], [1,2,3]]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 178
+
+// Create a function that transforms a string of upvote counts into an array of numbers. Each k represents a thousand.
+
+
+
+function transformUpvotes(str) {
+	const a = str.split(" ");
+	const b = [];
+	for (let i = 0; i < a.length; i++) {
+		if (a[i].endsWith('k')) {
+			b[i] = a[i].replace(/[^0-9]+/g, '');
+			b[i] = Number(b[i] + '00')
+		} else b[i] = Number(a[i]);	
+	}
+	return b;
+}
+
+
+function transformUpvotes(str) {
+	return str.split(' ')
+		.map(a => (a.endsWith("k") ? parseFloat(a) * 1000 : parseInt(a)));
+}
+
+transformUpvotes('20.3k 3.8k 7.7k 992');
+transformUpvotes('5.5k 8.9k 32');
+transformUpvotes('6.8k 13.5k');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 179
+
+// Create a function that takes a word and returns true if the word has two consecutive identical letters.
+
+
+function doubleLetters(word) {
+	for (let i = 0; i < word.length; i ++) {
+		if (word[i] === word[i+1]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
+function doubleLetters(word) {
+	return /(\w)\1/.test(word)
+}
+
+
+// True test cases
+doubleLetters("loop");
+doubleLetters("meeting");
+doubleLetters("yummy");
+doubleLetters("moo");
+doubleLetters("toodles");
+doubleLetters("droop");
+doubleLetters("loot");
+// False test cases
+doubleLetters("orange");
+doubleLetters("munchkin");
+doubleLetters("forestry");
+doubleLetters("raindrops");
+doubleLetters("gold");
+doubleLetters("paradise");
+doubleLetters("chicken");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 180
+
+// Suppose an image can be represented as a 2D array of 0s and 1s. Write a function to reverse an image. Replace the 0s with 1s and vice versa.
+
+
+function reverseImage(image) {
+	for (let i = 0; i < image.length; i++) {
+		for (let j = 0; j < image[i].length; j++) {
+			image[i][j] = 1 - image[i][j];
+		}
+	}
+	return image;
+}
+
+
+function reverseImage(image) {
+	return image.map(v => v.map(x => +!x));
+}
+
+
+
+reverseImage([
+    [1, 0, 0], 
+    [0, 1, 0], 
+    [0, 0, 1]
+  ]);
+  
+  reverseImage([
+    [1, 1, 1], 
+    [0, 0, 0]
+  ]);
+  
+  reverseImage([
+    [1, 0, 0], 
+    [1, 0, 0]
+  ]);
+  
+  reverseImage([
+    [1, 0, 0, 0, 0], 
+    [1, 0, 0, 1, 1], 
+    [1, 1, 1, 1, 1], 
+    [1, 1, 1, 1, 0], 
+    [1, 1, 1, 0, 0]
+  ]);
+  
+  reverseImage([
+    [1, 1], 
+    [1, 0], 
+    [1, 1], 
+    [1, 1], 
+    [1, 1]
+  ]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 181
+
+// Create a function that takes a string as an argument and converts the first character of each word to uppercase. Return the newly formatted string.
+
+
+
+
+function makeTitle(str) {
+	const a = str.split(" ");
+	for (let i = 0; i < a.length; i++) {
+		a[i] =a[i].slice(0, 1).toUpperCase() + a[i].slice(1, a[i].length);
+	}
+	return a.join(" ");
+}
+
+
+let makeTitle = x => x.replace(/(^\w|\s\w)/g, x => x.toUpperCase());
+
+
+function makeTitle(str) {
+    return str.split(' ').map( w => w[0].toUpperCase() + w.slice(1)).join(' ');
+}
+
+makeTitle("I am a title");
+makeTitle("I AM A TITLE");
+makeTitle("i aM a tITLE");
+makeTitle("the first letter of every word is capitalized");
+makeTitle("I Like Pizza");
+makeTitle("Don't count your ChiCKens BeFore They HatCh");
+makeTitle("All generalizations are false, including this one");
+makeTitle("Me and my wife lived happily for twenty years and then we met.");
+makeTitle("There are no stupid questions, just stupid people.");
+makeTitle("1f you c4n r34d 7h15, you r34lly n33d 2 g37 l41d");
+makeTitle("PIZZA PIZZA PIZZA");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 182
+
+// Write a function that takes a string of one or more words as an argument and returns the same string, but with all five or more letter words reversed. Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+
+function reverse(str) {
+	const  a = str.split(" ");
+	for (let i = 0; i < a.length; i++) {
+		if (a[i].length >= 5) {
+			a[i] = a[i].split("").reverse().join("");
+		}
+	}
+	return a.join(" ");
+}
+
+
+
+function reverse(str) {
+    return str.split(' ').map(x => x.length > 4 ? x.split('').reverse().join('') : x).join(' ');
+}
+
+
+reverse("Reverse");
+reverse("This is a typical sentence.");
+reverse("The dog is big.");
+reverse("Reverse the order of every word greater than or equal to five characters.");
+reverse("Lets all be unique together until we realise we are all the same.");
+reverse("The old apple revels in its authority.");
+reverse("The shooter says goodbye to his love.");
+reverse("Please wait outside of the house.");
+reverse("Two seats were vacant.");
+reverse("Sixty-Four comes asking for bread.");
+
+
