@@ -7923,3 +7923,121 @@ reverse("Two seats were vacant.");
 reverse("Sixty-Four comes asking for bread.");
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 183
+
+// Given an array of numbers, write a function that returns an array that...
+
+// Has all duplicate elements removed.
+// Is sorted from least to greatest value.
+
+
+function uniqueSort(arr) {
+	return [...new Set(arr)].sort((a, b) => a - b);
+}
+
+
+function uniqueSort(arr) {
+    return Array.from(new Set(arr)).sort((a,b) => a - b);
+}
+
+
+uniqueSort([1, 5, 8, 2, 3, 4, 4, 4, 10]);
+  
+uniqueSort([1, 2, 5, 4, 7, 7, 7]);
+  
+uniqueSort([7, 6, 5, 4, 3, 2, 1, 0, 1]);
+  
+uniqueSort([3, 6, 5, 4, 3, 27, 1, 100, 1]);
+  
+uniqueSort([-9, -3.1414, -87, 8, -4.323827, -3.1415, -3.1415]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 184
+
+// In BlackJack, cards are counted with -1, 0, 1 values:
+
+// 2, 3, 4, 5, 6 are counted as +1
+// 7, 8, 9 are counted as 0
+// 10, J, Q, K, A are counted as -1
+// Create a function that counts the number and returns it from the array of cards provided.
+
+function count(deck) {
+	let a = 0;
+	for (let i = 0; i < deck.length; i++) {
+		if (deck[i] >= 2 && deck[i] <= 6) {
+				a++;
+		} else if (deck[i] === 10 || deck[i] === 'J' || deck[i] === 'Q' || deck[i] === 'K' || deck[i] === 'A') {
+				a--;					 
+	 }
+	}	
+	return a;
+}
+
+
+function count(deck) {
+	return deck.reduce((a, c) => a + (c <= 6 ? 1 : c <= 9 ? 0 : -1), 0);
+}
+
+
+count([5, 9, 10, 3, 'J', 'A', 4, 8, 5]);
+count(['A', 'A', 'K', 'Q', 'Q', 'J']);
+count(['A', 5, 5, 2, 6, 2, 3, 8, 9, 7]);
+count([2, 2, 2, 2, 2, 2, 2, 2]);
+count([]);
+count(['A', 'A', 'A', 'A', 'A', 'A', 'A']);
+count(['A', 'K', 'Q', 'J', 10, 9, 8, 7, 6, 5, 4, 3, 2]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 184
+
+// Create a function that performs an even-odd transform to an array, n times. Each even-odd transformation:
+
+// Adds two (+2) to each odd integer.
+// Subtracts two (-2) to each even integer.
+
+function evenOddTransform(arr, n) {
+	for (let i = 0; i < n; i++) {
+		for (let j = 0; j < arr.length; j++) {
+			if (arr[j] % 2 !== 0) {
+				arr[j] += 2;
+			} else if (arr[j] % 2 === 0) {
+				arr[j] -= 2;
+			}
+		}
+	}
+	return arr;
+}
+
+
+function evenOddTransform(arr, n) {
+	return arr.map(x => (x % 2 == 0) ? x - 2 * n : x + 2 * n);
+}
+
+
+evenOddTransform([3, 4, 9], 3);
+evenOddTransform([0, 0, 0], 10);
+evenOddTransform([1, 2, 3], 1);
+evenOddTransform([55, 90, 830], 2);
+
