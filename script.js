@@ -8041,3 +8041,149 @@ evenOddTransform([0, 0, 0], 10);
 evenOddTransform([1, 2, 3], 1);
 evenOddTransform([55, 90, 830], 2);
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 185
+
+// Create a function that takes an integer n and reverses it.
+
+
+function rev(n) {
+	return Math.abs(n).toString().split("").reverse().join("");
+}
+
+
+rev(215);
+rev(122225);
+rev(215);
+rev(-215);
+rev(-2152);
+rev(-122157);
+rev(666);
+rev(999);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 186
+
+// Create a function that takes an array of numbers and returns the sum of the two lowest positive numbers.
+
+
+function sumTwoSmallestNums(arr) {
+	const a = arr.sort((a, b) => (a > 0 && b > 0) ? a - b : b);
+	return a[0] + a[1];
+}
+
+
+function sumTwoSmallestNums(arr) {
+    arr = arr.sort((a,b) => a - b).filter(x => x > 0);
+    return arr[0] + arr[1];
+   
+}
+
+
+function sumTwoSmallestNums(arr) {
+    return arr.filter((item) => item >= 0)
+      .sort((a, b) => a - b)
+      .slice(0, 2)
+      .reduce((acc, item) => acc + item);
+}
+
+sumTwoSmallestNums([19, 5, 42, 2, 77]);
+sumTwoSmallestNums([10, 343445353, 3453445, 3453545353453]);
+sumTwoSmallestNums([2, 9, 6, -1]);
+sumTwoSmallestNums([879, 953, 694, -847, 342, 221, -91, -723, 791, -587]);
+sumTwoSmallestNums([3683, 2902, 3951, -475, 1617, -2385]);
+sumTwoSmallestNums([280, 134, 108]);
+sumTwoSmallestNums([280, 134, 108, 1]);
+sumTwoSmallestNums([321, 406, -176]);
+sumTwoSmallestNums([1, 1, 1, 1]);
+sumTwoSmallestNums([-1, -1, 1, 1]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 187
+
+// Create a function that takes a string, removes all "special" characters (e.g. ! @ # $ % ^ & \ *) and returns the new string. The only non-alphanumeric characters allowed are dashes -, underscores _ and spaces.
+
+
+
+function removeSpecialCharacters(str) {
+	return str.replace(/[^a-z0-9 _\-]/gi, "");
+}
+
+
+function removeSpecialCharacters(str) {
+    return str.replace(/[^\w- ]/gi, "");
+}
+
+
+
+removeSpecialCharacters("The quick brown fox!");
+removeSpecialCharacters("%fd76$fd(-)6GvKlO.");
+removeSpecialCharacters("D0n$c sed 0di0 du1");
+removeSpecialCharacters("cat_pic.jpeg");
+removeSpecialCharacters("519-555-8093");
+removeSpecialCharacters("h-d+=rf[]_{}<>.,`~!@#$%^&*(|)");
+removeSpecialCharacters("Etiam#!!!!!,,, [`po%rta ~sem!] {male*su-ada} (ma*gna) mo^llis... eui$smod???");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 188
+
+// Create a function that returns the total number of steps it takes to transform each element to the maximal element in the array. Each step consists of incrementing a digit by one.
+
+
+
+function incrementToTop(arr) {
+	let a = 0;
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = arr[i]; j < Math.max(...arr); j++) {
+			a++;
+		}
+	}
+	return a;
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const incrementToTop = arr => {
+  const max = Math.max(...arr);
+  return sum(arr.map(num => max - num));
+};
+
+
+incrementToTop([3, 4, 5]);
+incrementToTop([4, 3, 4]);
+incrementToTop([3, 3, 3]);
+incrementToTop([3, 10, 3]);
+incrementToTop([1, 2, 3, 4, 5]);
+
+
