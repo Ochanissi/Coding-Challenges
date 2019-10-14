@@ -8187,3 +8187,33 @@ incrementToTop([3, 10, 3]);
 incrementToTop([1, 2, 3, 4, 5]);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 189
+
+// Create a function that accepts a string, checks if it's a valid email address and returns either true or false, depending on the evaluation.
+
+
+function validateEmail(str) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   return re.test(String(str).toLowerCase());
+}
+
+
+validateEmail('@edabit.com');
+validateEmail('@edabit');
+validateEmail('matt@edabit.com');
+validateEmail('');
+validateEmail('hello.gmail@com');
+validateEmail('bill.gates@microsoft.com');
+validateEmail('hello@email');
+validateEmail('%^%$#%^%');
+validateEmail('www.email.com');
+validateEmail('email');
+
+
