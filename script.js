@@ -8217,3 +8217,213 @@ validateEmail('www.email.com');
 validateEmail('email');
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 190
+
+// Write a function that returns the longest sequence of consecutive zeroes in a binary string.
+
+
+function longestZero(s) {
+	let a = "";
+	
+	for (let i = 0; i < s.length; i++) {
+		if (s[i] === "0") {
+			a += "0";
+		} else {
+			a += " ";
+		}
+	}
+	return a.split(" ").reduce((r, e) => r.length < e.length ? e : r, "");
+}
+
+
+function longestZero(s) {
+	return s.split('1').sort().reverse()[0]
+}
+
+
+function longestZero(s) {
+	return s.split("1").sort((a,b) => b.length - a.length)[0]
+}
+
+
+longestZero("01100001011000");
+longestZero("100100100");
+longestZero("111101");
+longestZero("1000000000011101");
+longestZero("100001110000100000");
+longestZero("101001101");
+longestZero("101010101");
+longestZero("1001001");
+longestZero("111111");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 191
+
+// Create a function that takes an array and returns the difference between the smallest and biggest numbers.
+
+
+function diffMaxMin(arr) {
+	return Math.max(...arr) - Math.min(...arr);
+}
+
+
+diffMaxMin([10, 4, 1, 2, 8, 91]);
+diffMaxMin([-70, 43, 34, 54, 22]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 192
+
+// Usually when you sign up for an account to buy something, your credit card number, phone number or answer to a secret question is partially obscured in some way. Since someone could look over your shoulder, you don't want that shown on your screen. Hence, the website masks these strings.
+
+// Your task is to create a function that takes a string, transforms all but the last four characters into "#" and returns the new masked string.
+
+
+function maskify(str) {
+	let a = "";
+	for (let i = 0; i < str.length; i++) {
+		if (str.length > 4 && i < str.length - 4) {
+			a += "#";
+		} else {
+			a += str[i];
+		}	
+	}
+	return a;
+}
+
+
+const maskify = str => str.replace(/.(?=.{4})/g, '#');
+
+
+maskify("4556364607935616");
+maskify("64607935616");
+maskify("1");
+maskify("");
+maskify("tBy>L/cMe+?<j:6n;C~H");
+maskify("12");
+maskify("8Ikhlf6yoxPOwi5cB014eWbRumj7vJ");
+maskify("123");
+maskify(")E$aCU=e\"_");
+maskify("2673951408");
+maskify("1234");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 193
+
+// Return the sum of all items in an array, where each item is multiplied by its index (zero-based). For empty arrays, return 0.
+
+
+function indexMultiplier(arr) {
+	return arr.length > 0 ? arr.map((x, i) => x * i).reduce((x, i) => x + i) : 0;
+}
+
+const indexMultiplier = arr => arr.reduce((a,v,i) => a + v*i, 0);
+
+indexMultiplier([9, 3, 7, -7]);
+indexMultiplier([3, 8, 6, -4]);
+indexMultiplier([10, -9, -2, 0, 2]);
+indexMultiplier([4, 4, 2, 2, -4]);
+indexMultiplier([9, 4, 7, 5, -1, -3]);
+indexMultiplier([-9, 5, 9, 5, -7, 7]);
+indexMultiplier([-1, -2, 8, -5]);
+indexMultiplier([7, 10, -5, -4, 6, 2]);
+indexMultiplier([0, 1, 0, 1, 0, 1, 0, 1]);
+indexMultiplier([-2, 5, -7, -23, 0, 14]);
+indexMultiplier([53, -43, 39, -2, -11, 3]);
+indexMultiplier([40, 32, -18, 48, -15]);
+indexMultiplier([1, -20, -11, 4, -12, 38, -30, 34]);
+indexMultiplier([-21, 30, 20, 6, -16]);
+indexMultiplier([8, -24, -8, -23, 20, 32, -29, -20]);
+indexMultiplier([]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 194
+
+// Create a function that takes an object and returns the keys and values as separate arrays.
+
+
+function keysAndValues(obj) {
+	return [Object.keys(obj), Object.values(obj)];
+}
+
+
+keysAndValues({a: 1, b: 2, c: 3});
+keysAndValues({a: "Apple", b: "Microsoft", c: "Google"});
+keysAndValues({key1: true, key2: false, key3: undefined});
+keysAndValues({1: null, 2: null, 3: null});
+keysAndValues({key1: "cat", key2: "dog", key3: null});
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 195
+
+// Return the smallest number of steps it takes to convert a string entirely into uppercase or entirely into lower case, whichever takes the fewest number of steps. A step consists of changing one character from lower to upper case, or vice versa.
+
+
+function stepsToConvert(str) {
+	let a = 0;
+	let b = 0;
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === str[i].toLowerCase()) {
+			a++;
+		} else if (str[i] === str[i].toUpperCase()) {
+			b++
+		}
+	}
+	return Math.min(a, b);
+}
+
+
+function stepsToConvert(string) {
+	const upper = [...string].filter(char => char === char.toUpperCase())
+	const lower = [...string].filter(char => char === char.toLowerCase())
+	return Math.min(upper.length,lower.length)
+}
+
+stepsToConvert('abC');
+stepsToConvert('abCBA');
+stepsToConvert('aba');
+stepsToConvert('ABA');
+stepsToConvert('abaCCC');
+stepsToConvert('abaaCCCDE');
+stepsToConvert('CCaaCCaaCa');
+stepsToConvert('');
+
+
