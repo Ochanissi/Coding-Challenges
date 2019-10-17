@@ -8427,3 +8427,94 @@ stepsToConvert('CCaaCCaaCa');
 stepsToConvert('');
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 196
+
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits. Your task is to create a function that takes a string and returns true if the PIN is valid and false if it's not.
+
+
+function validatePIN(pin) {
+	let a = "";
+	for (let i = 0; i < pin.length; i++) {
+		if (!Number.isInteger(Number(pin[i]))) {
+			return false;
+			console.log(pin[i]);
+		} else a += pin[i];
+	}
+	return a.length === 4 || a.length === 6 ? true : false;
+}
+
+function validatePIN(pin) {
+    var regEx =  new RegExp(/^(\d{4}|\d{6})$/);
+    return regEx.test(pin);
+}
+
+
+function validatePIN(pin) {
+    return (/^\d{4}(\d\d)?$/).test(pin);
+}
+
+
+validatePIN("1234");
+validatePIN("12345");
+validatePIN("a234");
+validatePIN("");
+validatePIN("%234");
+validatePIN("`234");
+validatePIN("@234");
+validatePIN("#234");
+validatePIN("$234");
+validatePIN("*234");
+validatePIN("5678");
+validatePIN("^234");
+validatePIN("(234");
+validatePIN(")234");
+validatePIN("123456");
+validatePIN("-234");
+validatePIN("_234");
+validatePIN("+234");
+validatePIN("=234");
+validatePIN("?234");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 197
+
+// Create a function that accepts a string and returns true if it's in the format of a proper phone number and false if it's not. Assume any number between 0-9 (in the appropriate spots) will produce a valid phone number. This is what a valid phone number looks like: (123) 456-7890
+
+
+
+function isValidPhoneNumber(str) {
+	return /^(\([0-9]{3}\) \s*|[0-9]{3}\-)[0-9]{3}-[0-9]{4}$/.test(str);
+}
+
+
+
+isValidPhoneNumber("(123) 456-7890");
+isValidPhoneNumber("(1111)555 2345");
+isValidPhoneNumber("(098) 123 4567");
+isValidPhoneNumber("(123)456-7890");
+isValidPhoneNumber("abc(123)456-7890");
+isValidPhoneNumber("(123)456-7890abc");
+isValidPhoneNumber("abc(123)456-7890abc");
+isValidPhoneNumber("abc(123) 456-7890");
+isValidPhoneNumber("(123) 456-7890abc");
+isValidPhoneNumber("abc(123) 456-7890abc");
+isValidPhoneNumber("(123)-456-7890");
+isValidPhoneNumber("(123)_456-7890");
+isValidPhoneNumber("-123) 456-7890");
+isValidPhoneNumber("(519) 505-6498");
+
