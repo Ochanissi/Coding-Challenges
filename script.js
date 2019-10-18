@@ -8518,3 +8518,150 @@ isValidPhoneNumber("(123)_456-7890");
 isValidPhoneNumber("-123) 456-7890");
 isValidPhoneNumber("(519) 505-6498");
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 198
+
+// Create a function that takes a single character as an argument and returns the char code of its lowercased / uppercased counterpart.
+
+function counterpartCharCode(char) {
+	return char === char.toUpperCase() ? char.toLowerCase().charCodeAt(0) : char.toUpperCase().charCodeAt(0);
+}
+
+
+// Normal letters
+counterpartCharCode('a');
+counterpartCharCode('A');
+counterpartCharCode('l');
+counterpartCharCode('L');
+counterpartCharCode('z');
+counterpartCharCode('Z');
+
+// Accented / weird letters
+counterpartCharCode('è');
+counterpartCharCode('È');
+counterpartCharCode('Œ');
+counterpartCharCode('œ');
+counterpartCharCode('Ⱥ');
+counterpartCharCode('ⱥ');
+
+// These don't have a counterpart, you should return the input's char code
+counterpartCharCode('5');
+counterpartCharCode('$');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 199
+
+// An isogram is a word that has no repeating letters, consecutive or nonconsecutive. Create a function that takes a string and returns either true or false depending on whether or not it's an "isogram".
+
+function isIsogram(str) {
+	return new Set([...str.toLowerCase()]).size === str.length;
+}
+
+
+function isIsogram(str) {
+    return !/(\w).*\1/i.test(str);
+}
+
+
+isIsogram("Algorism");
+isIsogram("PasSword");
+isIsogram("Dermatoglyphics");
+isIsogram("Cat");
+isIsogram("Filmography");
+isIsogram("Consecutive");
+isIsogram("Bankruptcies");
+isIsogram("Unforgivable");
+isIsogram("Unpredictably");
+isIsogram("Moose");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 200
+
+// Write a function that takes an array and a number as arguments. Add the number to the end of the array, then remove the first element of the array. The function should then return the updated array.
+
+function nextInLine(arr, num) {
+	if (!isNaN(arr[0]) || arr.length > 0) {
+			arr.shift();
+			arr.push(num);
+		return arr
+		} else {		
+	 return "No array has been selected";
+	}
+}
+
+const nextInLine = (arr, num) => Array.isArray(arr) ? arr.slice(1).concat(num) : "No array has been selected";
+
+
+function nextInLine(arr, num) {
+	if(!Array.isArray(arr)) return 'No array has been selected';
+
+	arr.push(num);
+	arr.shift();
+	
+	return arr;
+}
+
+
+nextInLine([5,6,7,8,9], 1);
+nextInLine([7,6,3,23,17], 10);
+nextInLine([1,10,20,42], 6);
+nextInLine(NaN,6);
+nextInLine([0], 1);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 201
+
+// The Fibonacci Sequence is the sequence of numbers (Fibonacci Numbers) whose sum is the two preceding numbers (e.g. 0, 1, 1, 2, 3, etc). Using 0 and 1 as the starting values, create a function that returns an array containing all of the Fibonacci numbers less than 255.
+
+
+
+function fibonacciSequence() {
+	let arr = [0, 1];
+	for(let i = 2; ; i++){
+		let item = arr[i-1] + arr[i-2];
+		if (item < 255){
+			arr.push(item);
+		}else{
+			break;
+		}
+	}
+	return arr;
+}
+
+
+function fibonacciSequence() {
+	const sumOfLastTwo = ar => ar.slice(-2).reduce((a,v) => a + v, 0);
+
+	let fib = [0, 1];
+	while (sumOfLastTwo(fib) < 255) { fib.push(sumOfLastTwo(fib)); }
+	return fib;
+}
+
+
+fibonacciSequence();
