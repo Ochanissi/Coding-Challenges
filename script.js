@@ -8665,3 +8665,151 @@ function fibonacciSequence() {
 
 
 fibonacciSequence();
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 202
+
+// Write a function that returns the position of the second occurrence of "zip" in a string, or -1 if it does not occur at least twice. Your code should be general enough to pass every possible case where "zip" can occur in a string.
+
+
+function findZip(str) {
+	return str.indexOf("zip", str.indexOf("zip") + 3);
+}
+
+
+function findZip(str) {
+	return str.replace('zip', 'aaa').search('zip')
+}
+
+findZip("all zip files are zipped");
+findZip("all zip files are compressed");
+findZip("We believe university-level zip education can be both high quality and low cost. Using the economics of the Internet, we've connected some of the greatest teachers to hundreds of thousands of students all over the world.");
+findZip("Zip is a file format used for data compression and archiving. A zip file contains one or more files that have been compressed, to reduce file size, or stored as is. The zip file format permits a number of compression algorithms.");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 203
+
+// Return true if the sum of ASCII values of the first string is same as the sum of ASCII values of the second string, otherwise return false.
+
+
+function sameAscii(a, b) {
+	c = 0;
+	d = 0;
+	
+	for (let i = 0; i < a.length; i++) {
+		c += a.charCodeAt(i);
+	}
+	
+		for (let i = 0; i < b.length; i++) {
+		d += b.charCodeAt(i);
+	}
+	
+	return c === d;
+}
+
+
+function sameAscii(a, b) {
+	return a.split("").map(a => a.charCodeAt(0)).reduce((a, b) => a + b) === b.split("").map(a => a.charCodeAt(0)).reduce((a, b) => a + b);
+}
+
+sameAscii("a", "a");
+sameAscii("A", "a");
+sameAscii("!", "g");
+sameAscii("aAAAaaAA", "~~~aa,");
+sameAscii("aUGSIGHIhiSJGijs", "~~~~~~~~~FF,");
+sameAscii("~~Tga2", "{}[]()I");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 204
+
+// Create a function to that compares two words based on the sum of their ASCII codes and returns the word with the smaller ASCII sum.
+
+
+
+function asciiSort(arr) {
+	const a = [0, 0];
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = 0; j < arr[i].length; j++) {
+			a[i] += arr[i][j].charCodeAt(0);
+		}
+	}
+		return a[0] < a[1] ? arr[0] : arr[1];
+}
+
+
+function asciiSort(arr) {
+	const count1 = arr[0].split("").reduce((a, v) => a + v.charCodeAt(0), 0);
+	const count2 = arr[1].split("").reduce((a, v) => a + v.charCodeAt(0), 0);
+
+	return count1 < count2 ? arr[0] : arr[1];
+}
+
+
+asciiSort(["hey", "man"]);
+asciiSort(["majorly", "then"]);
+asciiSort(["magic", "kingdom"]);
+asciiSort(["bored", "shampoo"]);
+asciiSort(["victory", "careless"]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 205
+
+// Create a function that takes two strings and returns (true or false) whether they're anagrams or not.
+
+
+function isAnagram(s1, s2) {
+	const a = s1.toLowerCase(). split("").sort().join("").trim();
+	const b = s2.toLowerCase(). split("").sort().join("").trim();
+
+	if (s1.toLowerCase().length !== s2.toLowerCase().length || a !== b) {
+		return false;
+	} else return true;
+}
+
+
+function isAnagram(s1, s2) {
+    var str1 = s1.toLowerCase().split('').sort().join('').trim();
+    var str2 = s2.toLowerCase().split('').sort().join('').trim();
+    return str1===str2;
+}
+
+
+function isAnagram(s1, s2) {
+    var t = s => s.toLowerCase().split('').sort().join('');
+    return t(s1) === t(s2); 
+}
+
+isAnagram('cristian', 'Cristina');
+isAnagram('Dave Barry', 'Ray Adverb');
+isAnagram('Nope', 'Note');
+isAnagram('Apple', 'Appeal');
+
+
+
+
