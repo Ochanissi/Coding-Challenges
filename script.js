@@ -8813,3 +8813,167 @@ isAnagram('Apple', 'Appeal');
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 206
+
+// Write a function that takes three arguments (x, y, z) and returns an array containing x subarrays (e.g. [[], [], []]), each containing y number of z items.
+
+// x Number of subarrays contained within the main array.
+// y Number of items contained within each subarray.
+// z Item contained within each subarray.
+
+
+
+function matrix(x, y, z) {
+	const a = Array(y).fill(z);
+	return 	Array(x).fill(a);
+}
+
+
+function matrix(x, y, z) {
+    return Array(x).fill(Array(y).fill(z));
+}
+
+
+matrix(3, 4, 0);
+matrix(2, 3, "#");
+matrix(2, 3, -4);
+matrix(1, 2, 0);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 206
+
+// A leap year has one day added to February for being synchronized with the seasonal year. A leap year appears with a regular frequency, which is determined by the rule below:
+
+// The year is exactly divisible by 400, or exactly divisible by 4 and not exactly divisible by 100.
+// Given a year you must implement a function that returns true if it's a leap year, or false if it's not.
+
+function isLeap(year) {
+	return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0;
+}
+
+
+
+isLeap(2020);
+isLeap(1800);
+isLeap(2000);
+isLeap(2019);
+isLeap(1452);
+isLeap(1998);
+isLeap(1904);
+isLeap(1985);
+isLeap(2048);
+isLeap(1600);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 207
+
+// Write a function that returns true if a hash contains the specified key, and false otherwise.
+
+
+function hasKey(obj, key) {
+	return obj.hasOwnProperty(key);
+}
+
+
+function hasKey(obj, key) {
+	return key in obj;
+}
+
+
+function hasKey(obj, key) {
+	return Object.keys(obj).includes(key);
+}
+
+
+const hasKey = (obj, key) => obj[key]? true : false;
+
+
+hasKey({ pot: 1, tot: 2, not: 3 }, "not");
+hasKey({ craves: true, midnight: true, snack: true }, "morning");
+hasKey({ a: 44, b: 45, c: 46 }, "d");
+hasKey({ a: "z", b: "y", c: "x" }, "c");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 208
+
+// Write a function redundant that takes in a string str and returns a function that returns str.
+
+
+function redundant(str) {
+	function b() {
+		return str;
+	}
+	
+	return b;
+}
+
+
+const redundant = str => () => str;
+
+const f1 = redundant("apple")
+const f2 = redundant("pear")
+const f3 = redundant("")
+
+f1();
+f2();
+f3();
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 209
+
+// Write a function that returns the greatest common divisor (GCD) of two integers.
+
+
+function gcd(n1, n2) {
+	for (let i = Math.max(n1, n2); i > 0; i--) {
+		if (n1 % i === 0 && n2 % i === 0) {
+			return i;
+		}
+	}
+}
+
+
+const gcd = (n1, n2) => !n2 ? n1: gcd(n2, n1 % n2)
+
+gcd(32, 8);
+gcd(8, 12);
+gcd(17, 13);
+gcd(14, 7);
+gcd(32, 16);
+gcd(17, 100);
+gcd(55, 20);
+gcd(55, 22);
+
+
