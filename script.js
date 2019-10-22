@@ -8977,3 +8977,96 @@ gcd(55, 20);
 gcd(55, 22);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 210
+
+// Create a function that takes an array of positive and negative numbers. Return an array where the first element is the count of positive numbers and the second element is the sum of negative numbers.
+
+function countPosSumNeg(arr) {
+	let a = 0;
+	let b = 0;
+	
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] > 0) {
+			a++;
+		} else {
+			b += arr[i];
+		}
+	}
+	return a > 0 || b > 0 ? [a, b] : [];
+}
+
+
+
+function countPosSumNeg(nums) {
+    if (nums === null || nums.length < 1) return [];
+    let pos = nums.filter(x => x >= 0).length;
+    let neg = nums.filter(x => x < 0).reduce((a, b) => a + b);
+    return [pos, neg];
+}
+
+
+countPosSumNeg([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]);
+countPosSumNeg([92, 6, 73, -77, 81, -90, 99, 8, -85, 34]);
+countPosSumNeg([91, -4, 80, -73, -28]);
+countPosSumNeg([]);
+countPosSumNeg([69, 100, 28, 47, 53, -61, -24]);
+countPosSumNeg([5, 7, 9, -3, -7, 61, -24]);
+countPosSumNeg([98, 51, -19, -97]);
+countPosSumNeg([-42, 3, -51, -64, 69, 77, -20, -5, 68, -76]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 211
+
+// Create a function that takes the height and radius of a cone as arguments and returns the volume of the cone. See the resources tab for the formula.
+
+
+
+function coneVolume(h, r) {
+	return Number((Math.PI * Math.pow(r, 2) * h / 3).toFixed(2));
+}
+
+
+
+coneVolume(3,2);
+coneVolume(15,6);
+coneVolume(18,0);
+coneVolume(100,2);
+coneVolume(1,1);
+coneVolume(0,30);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 212
+
+// Write a function that returns true if an integer is a power of 2, and false otherwise.
+
+
+function powerOfTwo(num) {
+	return num && (num & (num - 1)) === 0;
+}
+
+
+
+powerOfTwo(32);
+powerOfTwo(1);
+powerOfTwo(-7);
+powerOfTwo(18);
+
+
+
