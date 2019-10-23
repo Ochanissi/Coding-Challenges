@@ -9070,3 +9070,137 @@ powerOfTwo(18);
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 213
+
+// Write a function that takes an array and returns a new array with unique positive (more than 0) numbers.
+
+
+function uniqueArr(arr) {
+	return [...new Set(arr.filter(x => x > 0))];
+}
+
+
+const uniqueArr = arr => [...new Set(arr)].filter(v => v > 0);
+
+
+const uniqueArr = arr => Array.from(new Set(arr)).filter(num => num > 0);
+
+uniqueArr([-5, 1, -7, -5, -2, 3, 3, -5, -1, -1]);
+uniqueArr([3, -3, -3, 5, 5, -6, -2, -4, -1, 3]);
+uniqueArr([-5, 3, 2, -4, 3, -1, -7, 2, 4, 4]);
+uniqueArr([3, -5, 0, -5, 2, -1, 0, -4, -6, 1]);
+uniqueArr([10, 6, -12, 13, 5, 5, 13, 6, 5]);
+uniqueArr([5, 10, -12, 5, 9, 5, 10, 9, 10, -12]);
+uniqueArr([]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 214
+
+// Write a function that takes two arrays and adds the first element in the first array with the first element in the second array, the second element in the first array with the second element in the second array, etc, etc. Return true if all element combinations add up to the same number. Otherwise, return false.
+
+
+
+function puzzlePieces(a1, a2) {
+	const a = [];
+	
+	for (let i = 0; i < Math.max(a1.length, a2.length); i++) {
+		a.push(a1[i] + a2[i]);
+	}
+	
+	return a.every(x => x === a[0]);
+}
+
+
+
+function puzzlePieces(a1, a2) {
+	return a1.length === a2.length && new Set(a1.map((v,i) => v + a2[i])).size === 1;
+}
+
+
+puzzlePieces([1, 2, 3, 4], [4, 3, 2, 1]);
+puzzlePieces([1, 8, 5, 0, -1, 7], [0, -7, -4, 1, 2, -6]);
+puzzlePieces([2, 1, 1], [-2, -1, -1]);
+puzzlePieces([2], [-2]);
+puzzlePieces([5, -1], [-6, 0]);
+puzzlePieces([0, 0, 0, 0, 0], [1, 1, 1, 1, 1]);
+puzzlePieces([1, 2], [-1, -1]);
+puzzlePieces([9, 8, 7], [7, 8, 9, 10]);
+puzzlePieces([9, 8, 7], [7, 8, 9, 16]);
+puzzlePieces([1, 1, 1], [1, 1, 2]);
+puzzlePieces([1, 8, 1], [1, -8, -1]);
+puzzlePieces([0, 0, 0, 0, 0], [1, 1, 0, 1, 1]);
+puzzlePieces([0, 0, 0, 0, 0], [1, 1, 1, 1]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 215
+
+// Create a function that returns the sum of all even elements in a 2D matrix.
+
+
+function sumOfEvens(arr) {
+	let a = 0;
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = 0; j < arr[i].length; j++) {
+			if (arr[i][j] % 2 === 0) {
+				a += arr[i][j];
+			}
+		}
+	}
+	return a;
+}
+
+
+function sumOfEvens(arr) {
+	return arr.flat().reduce((acc, el) => {
+		return acc + (el % 2 === 0 ? el : 0);
+	}, 0);
+}
+
+sumOfEvens([
+    [1, 5, 1, 3], 
+    [4, 1, 2, 0], 
+    [6, 9, 7, 4], 
+    [5, 1, 2, 6]
+]), 24)
+
+sumOfEvens([
+    [1, 0, 1],
+    [33, 1, 2],
+    [15, 9, 1],
+    [5, 1, 979]
+]);
+
+sumOfEvens([
+    [2, 19, 5, 43], 
+    [67, 2, 0, 12]
+]);
+
+sumOfEvens([
+    [1, 3, 7, 9], 
+    [11, 13, 15, 17], 
+    [19, 21, 23, 25]
+]);
+
+sumOfEvens([
+    [], 
+    [], 
+    []
+]);
+
