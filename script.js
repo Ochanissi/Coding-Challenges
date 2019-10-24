@@ -9204,3 +9204,150 @@ sumOfEvens([
     []
 ]);
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 216
+
+// Given two integers a and b, return how many times a can be halved while still being greater than b.
+
+function halveCount(a, b) {
+	let x = -1;
+	for (let i = 0; a > b; i++) {
+		a /= 2;
+		x++;
+	}
+	return x;
+}
+
+
+function halveCount(a, b) {
+	let count = -1;
+	while (a > b) { a /= 2; count++; }
+	return count;
+}
+
+
+
+
+halveCount(1891, 4);
+halveCount(1756, 14);
+halveCount(7764, 2);
+halveCount(1118, 47);
+halveCount(161, 79);
+halveCount(8573, 35;
+halveCount(4123, 1);
+halveCount(1348, 60);
+halveCount(7549, 31);
+halveCount(4469, 5);
+halveCount(1123, 98);
+halveCount(8197, 85);
+halveCount(1199, 56);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 217
+
+// Additional spaces have been added to a sentence. Return the correct sentence by removing them. All words should be separated by one space, and there should be no spaces at the beginning or end of the sentence.
+
+
+function correctSpacing(sentence) {
+	return sentence.replace(/\s+/g,' ').trim();
+}
+
+
+
+correctSpacing(" A  glittering  gem     is    not   enough.  ");
+correctSpacing("   She      did  her best  to  help    him.  ");
+correctSpacing("  They      made  sure   to get   there  early. ");
+correctSpacing("  She  did   her      best     to   help him. ");
+correctSpacing("      I     love  eating    toasted  cheese   and tuna  sandwiches.");
+correctSpacing("  There     were  foggy   conditions on   the      trail.   ");
+correctSpacing("     The  roads   were  impassable  due to      snow.  ");
+correctSpacing(" Better   to      paint  with  bold  colors.   ");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 218
+
+// Write a function that recursively determines if a string is a palindrome.
+
+
+function isPalindrome(str) {
+	return str === str.split("").reverse().join("");
+}
+
+
+isPalindrome("abcba");
+isPalindrome("abbba");
+isPalindrome("abbbba");
+isPalindrome("abccdba");
+isPalindrome("abbaa");
+isPalindrome("abbbbb");
+isPalindrome("ad");
+isPalindrome("b");
+isPalindrome("");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 218
+
+// Two sisters are eating chocolate, whose pieces are represented as subarrays of [l x w].
+
+// Write a function that returns true if the total area of chocolate is the same for each sister.
+
+
+function testFairness(agatha, bertha) {
+	let a = 0;
+	let b = 0;
+	for (let i = 0; i < agatha.length; i++) {
+		a += agatha[i][0] * agatha[i][1];
+	}
+		for (let i = 0; i < bertha.length; i++) {
+		b += bertha[i][0] * bertha[i][1];
+	}
+	
+	return a === b;
+}
+
+
+function testFairness(agatha, bertha) {
+	return agatha.reduce((a,c) => a += c[0] * c[1], 0) ==
+         bertha.reduce((a,c) => a += c[0] * c[1], 0)
+}
+
+
+function testFairness(agatha, bertha) {
+	const f = (c) => c.reduce((acc, cur) => acc + cur[0] * cur[1], 0)
+	return f(agatha) === f(bertha)
+}
+
+
+testFairness([[1,5], [6,3], [1,1]], [[7,1], [2,2], [1,1]]);
+testFairness([[2,2], [2,2], [2,2], [2,2]], [[4,4]]);
+testFairness([[1,2], [2,1]], [[2,2]]);
+testFairness([[1,2], [2,1]], [[2,2], [4,4]]);
+testFairness([[2,4], [1,1], [11,1]], [[2,2], [4,4]]);
+
+
