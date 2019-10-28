@@ -9351,3 +9351,141 @@ testFairness([[1,2], [2,1]], [[2,2], [4,4]]);
 testFairness([[2,4], [1,1], [11,1]], [[2,2], [4,4]]);
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 219
+
+// Create a function that returns true if a number is prime and false if it's not. A prime number is any positive integer that is evenly divisible by only two divisors: 1 and itself. The first ten prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29.
+
+
+function isPrime(num) {
+    for(let i = 2; i < num; i++)
+      if(num % i === 0) return false;
+    return num > 1;
+}
+
+
+
+
+isPrime(1);
+isPrime(2);
+isPrime(3);
+isPrime(4);
+isPrime(5);
+isPrime(6);
+isPrime(7);
+isPrime(8);
+isPrime(9);
+isPrime(10);
+isPrime(11);
+isPrime(102);
+isPrime(103);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 219
+
+// Imagine a messaging device with only one button. For the letter A, you press the button one time, for E, you press it five times, for G, it's pressed seven times, etc, etc.
+
+// Write a function that takes a string (the message) and returns the total number of times the button is pressed.
+
+
+function howManyTimes(msg) {
+	var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+	let a = 0;
+	for (let i = 0; i < msg.length; i++) {
+		a += alphabet.indexOf(msg[i]) + 1;
+	}
+	return a;
+}
+
+const howManyTimes = msg => [...msg].reduce((a,v) => a + v.charCodeAt()-96, 0);
+
+howManyTimes("qudusayo");
+howManyTimes("que");
+howManyTimes("abd");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 220
+
+// Create a function that determines if there is an upward trend.
+
+
+function upwardTrend(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		if (typeof arr[i] !== 'number') {
+			return 'Strings not permitted!';
+		} else if (arr[i+1] < arr[i]) {
+			return false;
+		} 
+	}
+	return true;
+}
+
+
+function upwardTrend(arr) {
+    return arr.some(x=>typeof x == 'string')?'Strings not permitted!':arr.toString()==arr.sort((a,b)=>a-b).toString()
+}
+
+
+upwardTrend([1, 2, 3, 4, 5, 6]);
+upwardTrend([1, 3, 2, 5, 6, 7]);
+upwardTrend([1, 2, 3, 4, 5, "6", 7, 8, 9]);
+upwardTrend([1, 3, 5, 7, 9]);
+upwardTrend([10, 12, 13, 15, 20]);
+upwardTrend([6, 9, 11, 15, 12]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 221
+
+// Write a function that calculates the nth Fibonacci number.
+
+
+function fib(n) {
+
+    const result = [0, 1];
+      if (n === 0) {
+          return 0;
+      } else {
+        for (var i = 2; i < n + 1; i++) {
+    result.push(result[i-2] + result[i-1]);
+        }
+    }
+return result[result.length - 1];
+}
+
+
+const fib = num => (num < 2 ? num : fib(num - 1) + fib(num - 2));
+
+
+fib(2);
+fib(5);
+fib(8);
+fib(12);
+fib(0);
+fib(1);
+
+
+
