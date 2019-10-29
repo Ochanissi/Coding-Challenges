@@ -9489,3 +9489,228 @@ fib(1);
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 221
+
+// You have an array of item codes with the following format: "[letters][digits]"
+
+// Create a function that splits these strings into their alphabetic and numeric parts.
+
+function splitCode(item) {
+	var s1 = item.substr(0, item.length / 2);
+	var s2 = Number(item.substr(item.length / 2 - 1 + 1));
+	
+	return [s1, s2];
+}
+
+
+const splitCode = item => [
+    item.match(/[a-z]+/i)[0],
+    Number(item.match(/[0-9]+/)[0]),
+];
+
+
+splitCode("TEWA8392");
+splitCode("MMU778");
+splitCode("SRPE5532");
+splitCode("SKU8977");
+splitCode("MCI5589");
+splitCode("WIEB3921");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 222
+
+// Create a function that takes a string and returns a new string with its first and last characters swapped, except under three conditions:
+
+// If the length of the string is less than two, return "Incompatible.".
+// If the argument is not a string, return "Incompatible.".
+// If the first and last characters are the same, return "Two's a pair.".
+
+
+function flipEndChars(str) {
+	if (str.length < 2 || typeof str !== 'string') {
+		return "Incompatible.";
+	} else if (str[0] === str[str.length - 1]) {
+		 return "Two's a pair.";
+	 } else {
+		 return str.slice(-1) + str.slice(1, -1) + str.slice(0, 1);
+	 }
+}
+
+
+
+function flipEndChars(str) {
+	return typeof str != "string"  || str.length < 2 ? "Incompatible." : 
+         str[0] == str[str.length - 1] ? "Two's a pair." : 
+         str[str.length - 1] + str.slice(1,str.length - 1) + str[0] ;
+}
+
+flipEndChars("Cat, dog, and mouse.");
+flipEndChars("Anna, Banana");
+flipEndChars("[]");
+flipEndChars("");
+flipEndChars([1, 2, 3]);
+flipEndChars("dfdkf49824fdfdfjhd");
+flipEndChars("#343473847#");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 223
+
+// Write a function that recursively returns the number of vowels in a string.
+
+
+function countVowels(str) {
+	let a = 0;
+	
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === 'a' || str[i] === 'e' || str[i] === 'i' || str[i] === 'o' || str[i] === 'u') {
+			a++;
+		}
+	}
+	return a;
+}
+
+
+function countVowels(str) {
+	return str.split('').filter(x=>(/[aeiou]/ig).test(x)).length;
+}
+
+
+countVowels("apple");
+countVowels("cheesecake");
+countVowels("martini");
+countVowels("rhythm");
+countVowels("");
+countVowels("b");
+countVowels("a");
+countVowels("bbbbbb");
+countVowels("bbbbba");
+countVowels("abbbb");
+countVowels("bbbab");
+countVowels("bbaab");
+countVowels("baabab");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 224
+
+// Write a function that, given a date (in the format MM/DD/YYYY), returns the day of the week as a string. Each day name must be one of the following strings: "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", or "Saturday".
+
+
+function getDay(day) {
+	var d = new Date(day);
+	var weekday = new Array(7);
+	weekday[0] = "Sunday";
+	weekday[1] = "Monday";
+	weekday[2] = "Tuesday";
+	weekday[3] = "Wednesday";
+	weekday[4] = "Thursday";
+	weekday[5] = "Friday";
+	weekday[6] = "Saturday";
+
+	var n = weekday[d.getDay()];
+	return n;
+}
+
+const getDay = day =>
+new Date(day).toLocaleString('en-us', {weekday:'long'});
+
+getDay('12/07/2016');
+getDay('12/08/2011');
+getDay('09/04/2016');
+getDay('06/08/2012');
+getDay('08/13/2019');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 225
+
+// Write a function that converts an object into an array, where each element represents a key-value pair.
+
+
+
+function toArray(obj) {
+	const a = [];
+	for (let [key, value] of Object.entries(obj)) {
+  a.push([key, value]);
+	}
+	return a;
+}
+
+
+function toArray(obj) {
+	return Object.entries(obj);
+}
+
+
+toArray({ a: 1, b: 2 });
+toArray({ foo: 33, bar: 45, baz: 67 });
+toArray({ shrimp: 15, tots: 12 });
+toArray({});
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 226
+
+// Create a function that takes a sequence of either strings or numbers, removes the surrounding duplicates and returns an array of items without any items with the same value next to each other and preserves the original order of items.
+
+
+
+function uniqueInOrder(sequence) {
+	const a = [];
+	
+	for (let i = 1; i < sequence.length + 1; i++) {
+		if (sequence[i-1] !== sequence[i]) {
+			a.push(sequence[i-1]);
+		}
+	}
+	return a;
+}
+
+
+uniqueInOrder("AAAABBBCCDAABBB");
+uniqueInOrder("ABBCcAD");
+uniqueInOrder([1, 2, 2, 3, 3]);
+uniqueInOrder("12333355555522211133");
+uniqueInOrder("uuUfffFgGggYtt76%5$$$");
+uniqueInOrder(["1", "2", "2", "3", "3"]);
+uniqueInOrder([3, 7, 3, 8, 4]);
+uniqueInOrder("ABC");
+uniqueInOrder("$$$%%%$$$%%%");
+uniqueInOrder([1, 1, 1, "A", "B", "B"]);
+
+
+
+
+
