@@ -9699,6 +9699,16 @@ function uniqueInOrder(sequence) {
 }
 
 
+function uniqueInOrder(sequence) {
+    return Array.from(sequence).filter((x,i,a) => x !== a[i-1]);
+}
+
+
+function uniqueInOrder(sequence) {
+    return [...sequence].filter((a, i) => a !== sequence[i+1])
+}
+
+
 uniqueInOrder("AAAABBBCCDAABBB");
 uniqueInOrder("ABBCcAD");
 uniqueInOrder([1, 2, 2, 3, 3]);
@@ -9713,4 +9723,113 @@ uniqueInOrder([1, 1, 1, "A", "B", "B"]);
 
 
 
+
+ // ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 227
+
+// A number n is automorphic if n^2 ends in n.
+
+// For example: n=5, n^2=25
+
+// Create a function that takes a number and returns true if the number is automorphic, false if it isn't.
+
+
+function isAutomorphic(n) {
+	return String(Math.pow(n, 2)).endsWith(n);
+}
+
+
+
+isAutomorphic(0);
+isAutomorphic(1);
+isAutomorphic(5);
+isAutomorphic(6);
+isAutomorphic(25);
+isAutomorphic(76);
+isAutomorphic(7109376);
+isAutomorphic(36);
+isAutomorphic(100);
+isAutomorphic(11);
+isAutomorphic(6025);
+isAutomorphic(3);
+isAutomorphic(1376);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 228
+
+//Create a function that takes a strings characters as ASCII and returns each characters hexadecimal value as a string.
+
+
+
+function toHex(str) {
+	const a = [];
+	
+	for (let i = 0; i < str.length; i++) {
+		a.push(str[i].charCodeAt(0).toString(16));
+	}
+	
+	return a.join(" ");
+}
+
+
+function toHex(str) {
+	return str.split('').map(a => a.charCodeAt(0).toString(16)).join(' ');
+}
+
+
+const toHex = str => [...str].map(v => v.charCodeAt().toString(16)).join(' ');
+
+
+toHex("Big Boi");
+toHex("Marty Poppinson");
+toHex("abcdefghi");
+toHex("oh dear");
+toHex("i hate C#");
+toHex("i love C++ , not really");
+
+
+
+
+
+Write a function that moves all elements of one type to the end of the array.
+
+
+function moveToEnd(arr, el) {
+	const a = [];
+	const b = []
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] === el) {
+			a.push(arr[i]);
+		} else {
+			b.push(arr[i]);
+		}
+	}
+	return [...b, ...a];
+}
+
+function moveToEnd(arr, el) {
+	return arr.sort((a)=>a==el?1:-1)
+}
+
+
+moveToEnd=(a,e)=>a.sort(i=>i==e?1:0)
+
+
+moveToEnd([1, 3, 2, 4, 4, 1], 1);
+moveToEnd([7, 8, 9, 1, 2, 3, 4], 9);
+moveToEnd([7, 7, 7, 6, 6, 6, 6], 7);
+moveToEnd(["a", "c", "c", "c", "b", "c"], "b");
+moveToEnd(["a", "c", "c", "c", "b", "c"], "c");
+moveToEnd(["a", "a", "a", "b"], "a");
 
