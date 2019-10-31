@@ -9768,7 +9768,7 @@ console.log('**************************************************************');
 /////////////////////////////////
 // CODING CHALLENGE 228
 
-//Create a function that takes a strings characters as ASCII and returns each characters hexadecimal value as a string.
+// Create a function that takes a strings characters as ASCII and returns each characters hexadecimal value as a string.
 
 
 
@@ -9832,4 +9832,78 @@ moveToEnd([7, 7, 7, 6, 6, 6, 6], 7);
 moveToEnd(["a", "c", "c", "c", "b", "c"], "b");
 moveToEnd(["a", "c", "c", "c", "b", "c"], "c");
 moveToEnd(["a", "a", "a", "b"], "a");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 229
+
+// Your job is to create a function, that takes 3 numbers: a, b, c and returns true if the last digit of (the last digit of a * the last digit of b) = the last digit of c. Check examples for explanation.
+
+
+function lastDig(a, b, c) {
+	const x = a.toString()[a.toString().length - 1] * b.toString()[b.toString().length - 1];
+	return c.toString()[c.toString().length - 1] === x.toString()[x.toString().length - 1];
+}
+
+
+function lastDig(a, b, c) {
+	return (a % 10) * (b % 10) % 10 == c % 10
+}
+
+lastDig(1, 1, 1);
+lastDig(12, 15, 10);
+lastDig(15228, 9209, 72162);
+lastDig(15, 1, 1);
+lastDig(123, 15, 10);
+lastDig(5213, 99219, 6165);
+lastDig(1523, 513, 512);
+lastDig(-15, 1, 1);
+lastDig(123, -15, 10);
+lastDig(-12, 15, -10);
+lastDig(15228, -9209, -72162);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 229
+
+// Common lore states that we should only be eating shellfish, especially oysters, in months with the letter “r”. So we can help ourselves to all the oysters, mussels, and clams we can eat from September through April, but put the brakes on come May.
+
+// Create a function that takes a date as an argument and returns "safe" or "unsafe" depending on whether or not it's safe or unsafe to eat shellfish.
+
+
+const shellFish = d => (d.getMonth() + 7) % 12 <= 3 ? `unsafe` : `safe`;
+
+const shellFish = date => {
+	const m = date.getMonth();
+	return m > 8 || m < 5 ? "safe" : "unsafe";
+}
+
+
+shellFish(new Date(2009, 6, 9));
+shellFish(new Date(1991, 8, 30));
+shellFish(new Date(2059, 10, 6));
+shellFish(new Date(1934, 4, 18));
+shellFish(new Date(1986, 2, 22));
+shellFish(new Date(2000, 7, 10));
+shellFish(new Date(1963, 11, 3));
+shellFish(new Date(1958, 1, 11));
+shellFish(new Date(1945, 5, 19));
+shellFish(new Date(1937, 6, 2));
+shellFish(new Date(2020, 12, 28));
+shellFish(new Date(2019, 10, 10));
+shellFish(new Date(2001, 3, 9));
+shellFish(new Date(1901, 9, 18));
+
 
