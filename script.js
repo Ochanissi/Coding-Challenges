@@ -10020,3 +10020,78 @@ canAlternate("1111");
 canAlternate("101");
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 232
+
+// A museum wants to get rid of some exhibitions. Vanya, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and removes the one with the lowest rating. Just as she finishes rating the exhibitions, she's called off to an important meeting. She asks you to write a program that tells her the ratings of the items after the lowest one is removed.
+
+// Create a function that takes an array of integers and removes the smallest value.
+
+
+function removeSmallest(arr) {
+	const a = arr.splice(arr.indexOf(Math.min(...arr)), 1);	
+	return arr.filter(x => x !== a);
+}
+
+
+function removeSmallest(arr) {
+    arr.splice(arr.indexOf(Math.min(...arr)), 1);
+    return arr;
+}
+
+
+removeSmallest([1, 2, 3, 4, 5]);
+removeSmallest([5, 3, 2, 1, 4]);
+removeSmallest([2, 2, 1, 2, 1]);
+removeSmallest([3, 1, 6, 7, 3, 7, 6]);
+removeSmallest([4, 4, 4, 1]);
+removeSmallest([5, 4, 5, 3, 1, 1]);
+removeSmallest([1, 5, 3]);
+removeSmallest([]);
+removeSmallest([6, 2, 5, 4, 8, 6, 3, 2, 7]);
+removeSmallest([3]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 233
+
+// Create a function that outputs true if a number is prime, and false otherwise.
+
+function isPrime(num) {
+	for (i=2;i<Math.floor(Math.sqrt(num));i++){
+		if (num%i==0){return false}
+	}
+	return true
+}
+
+
+function isPrime(num) {
+	if (num == 1 || num % 2 == 0) return false;
+	for (let i = 3; i < num; i += 2){
+		if (num % i == 0) return false;  
+	}
+	return true;
+}
+
+
+isPrime(31);
+isPrime(18);
+isPrime(11);
+isPrime(12);
+isPrime(1);
+isPrime(3);
+isPrime(48);
+isPrime(10);
+isPrime(5);
+isPrime(77);
+isPrime(7);
+
+
