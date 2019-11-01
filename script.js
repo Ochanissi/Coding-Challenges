@@ -9907,3 +9907,116 @@ shellFish(new Date(2001, 3, 9));
 shellFish(new Date(1901, 9, 18));
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 230
+
+// Given a string of letters in the English alphabet, return the letter that's missing from the string. The missing letter will make the string be in alphabetical order (from A to Z).
+
+// If there are no missing letters in the string, return "No Missing Letter".
+
+
+function missingLetter(str) {
+	for (var i = 0; i < str.length - 1; i++) {
+		if (str.charCodeAt(i + 1) - str.charCodeAt(i) != 1) {
+				return String.fromCharCode(str.charCodeAt(i) + 1);
+		}
+	}
+	return 'No Missing Letter';
+}
+
+
+missingLetter("abdefg");
+missingLetter("mnopqs");
+missingLetter("tuvxyz");
+missingLetter("jlm");
+missingLetter("rsu");
+missingLetter("eghij");
+missingLetter("qrtuv");
+missingLetter("ghijklmno");
+missingLetter("xyz");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 231
+
+// Create a function that takes a sentence and turns every "i" into "wi" and "e" into "we", and add "owo" at the end.
+
+
+function owofied(sentence) {
+	const a = sentence.replace(/i/g, "wi");
+	const b = a.replace(/e/g, "we");
+	return b + " owo";
+}
+
+
+function owofied(sentence) {
+	return sentence.replace(/([ie])/g, 'w$1') + ' owo';
+}
+
+
+function owofied(sentence) {
+	return sentence.replace(/i/g, "wi").replace(/e/g, "we") + " owo";
+}
+
+
+owofied("I'm gonna ride 'til I can't no more");
+owofied("Do you ever feel like a plastic bag");
+owofied("Cause baby you're a firework");
+owofied("Never gonna give you up");
+owofied("We've known each other for so long");
+owofied("Never gonna let you down");
+owofied("Shine bright like a diamond");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 232
+
+// Write a function that returns true if the binary string can be rearranged to form a string of alternating 0s and 1s.
+
+
+function canAlternate(s) {
+	let a = 0;
+	let b = 0;
+	
+	for (let i = 0; i < s.length; i++) {
+		if (s[i] === "1") {
+			a++;
+		} else b++;
+	}
+	
+	return  a === b - 1 || a === b + 1 || a === b;
+}
+
+
+
+canAlternate("0001111");
+canAlternate("01001");
+canAlternate("010001");
+canAlternate("0100110111");
+canAlternate("10101010");
+canAlternate("010101000");
+canAlternate("0111");
+canAlternate("00");
+canAlternate("1111");
+canAlternate("101");
+
+
