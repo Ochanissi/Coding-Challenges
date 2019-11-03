@@ -10095,3 +10095,34 @@ isPrime(77);
 isPrime(7);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 234
+
+// Create a function that takes an input (e.g. "5 + 4") and returns true if it's a mathematical expression or false if not.
+
+function mathExpr(expr) {
+	return expr.match(/[a-z]/i) || typeof eval(expr) !== 'number' ? false : true;
+}
+
+
+const mathExpr = exp => /^\d\s?[\+\-\*\/\%]\s?\d$/.test(exp);
+
+function mathExpr(expr) {
+	return /^\d(\s)*[%+/*-](\s)*\d$/.test(expr);
+}
+
+
+mathExpr("5+4");
+mathExpr("4 * 5");
+mathExpr("3*6");
+mathExpr("4 - 5");
+mathExpr("6 % 7");
+mathExpr("a - b");
+mathExpr("a - 2");
+mathExpr("nope");
+
+
