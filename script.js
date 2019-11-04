@@ -10126,3 +10126,177 @@ mathExpr("a - 2");
 mathExpr("nope");
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 235
+
+// Create a function that takes a single string as argument and returns an ordered array containing the indexes of all capital letters in the string.
+
+
+function indexOfCaps(str) {
+	const a = [];
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === str[i].toUpperCase() && str[i].match("^[a-zA-Z]+$")) {
+			a.push(str.indexOf(str[i]));
+		}
+	}
+	return a;
+}
+
+
+function indexOfCaps(str) {
+    var res = [];
+    for(var i = 0; i < str.length; i++){
+      if (/[A-Z]/.test(str[i])){
+        res.push(i);
+      }
+    }
+    return res;
+}
+
+
+function indexOfCaps(str) {
+    return str.split('').reduce((arr, c, i) => /[A-Z]/.test(c) ? arr.concat(i) : arr, [])
+}
+
+
+const indexOfCaps = str => str.split('').map((l, i) => l.toLowerCase() !== l ? i : '').filter(c => c !== '');
+
+
+indexOfCaps("eDaBiT");
+indexOfCaps("eQuINoX");
+indexOfCaps("determine");
+indexOfCaps("STRIKE");
+indexOfCaps("sUn");
+indexOfCaps("SpiDer");
+indexOfCaps("accOmpAnY");
+indexOfCaps("@xCE#8S#i*$en");
+indexOfCaps("1854036297");
+indexOfCaps("Fo?.arg~{86tUx=|OqZ!");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 236
+
+// Create a function that outputs the results of a flashcard. A flashcard is an array of three elements: a number, an operator symbol, and another number. Return the mathematical result of that expression.
+
+// There are 4 operators: + (addition), - (subtraction), x (multiplication), and / (division). If the flashcard displays a number being divided by zero, e.g. [3, "/", 0], then return undefined. For division, round to the hundredths place. So [10, "/", 3] should return 3.33.
+
+
+function flash([num1, op, num2]) {
+	switch (op) {
+		case "+":
+			return num1 + num2;
+		case "-":
+			return num1 - num2;
+		case "/":
+			if (num2 !== 0) {
+				return Number((num1 / num2).toFixed(2));
+			} else return undefined;
+		case "x":
+			return num1 * num2;
+	}
+}
+
+
+function flash([num1, op, num2]) {
+    switch (op) {
+      case '+':
+        return num1 + num2;
+      case '-':
+        return num1 - num2;
+      case 'x':
+        return num1 * num2;
+      case '/':
+        const result = num1 / num2;
+        return Number.isFinite(result) ? Number(result.toFixed(2)) : undefined;
+    }
+  
+    return undefined;
+}
+
+
+
+flash([3, 'x', 7]);
+flash([5, '+', 7]);
+flash([10, '-', 9]);
+flash([10, '/', 0]);
+flash([10, '/', 3]);
+flash([2, 'x', 0]);
+flash([0, '/', 5]);
+flash([0, '+', 0]);
+flash([0, '-', 0]);
+flash([8, '-', 0]);
+flash([0, '/', 0]);
+flash([3, '/', 8]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 236
+
+// Suppose you have a guest list of students and the country they are from, stored as key-value pairs in an object.
+
+// const GUEST_LIST = {
+//   Randy: "Germany",
+//   Karla: "France",
+//   Wendy: "Japan",
+//   Norman: "England",
+//   Sam: "Argentina"
+// }
+// Write a function that takes in a name and returns a name tag, that should read:
+
+// "Hi! I'm [name], and I'm from [country]."
+// If the name is not in the object, return:
+
+// "Hi! I'm a guest."
+
+
+const GUEST_LIST = {
+	Randy: "Germany",
+	Karla: "France",
+	Wendy: "Japan",
+	Norman: "England",
+	Sam: "Argentina"
+}
+
+function greeting(name) {
+	return (GUEST_LIST[name]) ? `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.` : `Hi! I'm a guest.`;
+}
+
+
+const countries = {
+    Randy: 'Germany',
+    Karla: 'France',
+    Wendy: 'Japan',
+    Norman: 'England',
+    Sam: 'Argentina',
+  };
+  
+  const greeting = name =>
+    countries.hasOwnProperty(name)
+      ? `Hi! I'm ${name}, and I'm from ${countries[name]}.`
+      : "Hi! I'm a guest.";
+
+
+greeting("Randy");
+greeting("Sam");
+greeting("Monti");
+greeting("Trudy");
+greeting("Wendy");
+
+
