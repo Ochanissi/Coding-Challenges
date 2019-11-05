@@ -10300,3 +10300,179 @@ greeting("Trudy");
 greeting("Wendy");
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 237
+
+// Given an array of integers arr, implement a function that returns the index of the number nearest to the given value n. If two numbers equally distant from n are found, the function will return the greatest of them.
+
+function nearestElement(n, arr) {
+    const nearest = arr.concat().sort((a, b) => Math.abs(n - a) - Math.abs(n - b) || b - a)[0];
+    return arr.indexOf(nearest);
+}
+
+
+const nearestElement = (n, a,
+    s = a.map(v => Math.abs(v - n)),
+    m = Math.min(...s)) => {	
+s = s.map((v,i) => v !== m ? 0 : a[i] > n ? "+" : "-");
+return s.indexOf("+") > -1 ? s.indexOf("+") : s.indexOf("-");
+}
+
+
+const nearestElement = (n,a) => {
+    const m = a.map(v => Math.max(v,n)-Math.min(v,n)).reduce((x,y) => Math.min(x,y));
+    return a.includes(n + m) ? a.indexOf(n + m) : a.indexOf(n - m)
+}
+
+
+nearestElement(10, [1, 100, 1000]);
+nearestElement(50, [100, 49, 51]);
+nearestElement(-20, [-50, -10, -30]);
+nearestElement(100, [80, 60, 40]);
+nearestElement(48, [47, 49, 73, 51, 44, 41]);
+nearestElement(1, [0, -2, 3, 2, -1]);
+nearestElement(100, [88, 99, 101, 108, 97, 98, 36]);
+nearestElement(-50, [13, 86, -49, -51, 8, 0]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 238
+
+// A number is narcissistic when the sum of its digits, with each digit raised to the power of digits quantity, is equal to the number itself.
+
+
+function isNarcissistic(n) {
+	let a = 0;
+	
+	for (let i = 0; i < n.toString().length; i++) {
+		a += Math.pow(n.toString()[i], n.toString().length);
+	}
+	
+	return a === n;
+}
+
+
+function isNarcissistic(n) {
+	return String(n)
+		.split("")
+		.map(v => Math.pow(v, String(n).length))
+		.reduce((a,v) => a + v) === n ? true : false;
+}
+
+
+function isNarcissistic(n) {
+	const digits = [...String(n)];
+	return digits.reduce((a, c) => a + c ** digits.length, 0) === n;
+}
+
+
+
+isNarcissistic(6);
+isNarcissistic(1741725);
+isNarcissistic(66);
+isNarcissistic(65239);
+isNarcissistic(886243);
+isNarcissistic(92727);
+isNarcissistic(472335975);
+isNarcissistic(42300981);
+isNarcissistic(548834);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 239
+
+// Implement a function that returns an array containing all the consecutive numbers in ascendant order from the given value low up to the given value high (bounds included).
+
+
+function getSequence(low, high) {
+	const a = [];
+	for (let i = low; i <= high; i++) {
+		a.push(i);
+	}
+	return a;
+}
+
+
+const getSequence = (low, high) =>
+Array.from({length: high - low + 1}, (_, i) => low + i);
+
+
+const getSequence = (low, high) => 
+	Array.from(Array(high - low + 1), (x, i) => i + low);
+
+
+getSequence(1, 5);
+getSequence(98, 100);
+getSequence(1000, 1000);
+getSequence(1450, 1460);
+getSequence(0, 3);
+getSequence(-10, 1);
+getSequence(-100, -100);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 240
+
+// A Kaprekar Number is a positive integer that, after being squared and split into two lexicographical parts, is equal to the sum of the two new numbers obtained:
+
+// If the quantity of digits of the squared number is even, the left and right parts will have the same length.
+// If the quantity of digits of the squared number is odd, then the right part will be the longest half, with the left part being the smallest or equal to zero if the quantity of digits is equal to 1.
+// Given a positive integer n implement a function that returns true if it's a Kaprekar number, and false if it's not.
+
+
+function isKaprekar(n) {
+	const a = Math.pow(n, 2).toString();
+	const x = Number(a.slice(0, Math.min(a.length / 2)));
+ 	const y = Number(a.slice(Math.max(a.length / 2)));
+	
+	return n === x + y;
+}
+
+
+const isKaprekar = n => {
+	let num = String(n ** 2)
+	let len = num.length
+	
+	return +num.slice(0, len / 2) + +num.slice(len / 2) === n
+}
+
+
+const isKaprekar = (n, a = String(n*n), h = a.length / 2) =>
++a.substring(0, h) + +a.substring(h) === n;
+
+
+isKaprekar(1);
+isKaprekar(2);
+isKaprekar(3);
+isKaprekar(5);
+isKaprekar(9);
+isKaprekar(65);
+isKaprekar(99);
+isKaprekar(297);
+isKaprekar(348);
+isKaprekar(666);
+isKaprekar(1441);
+isKaprekar(77778);
+isKaprekar(102102);
+isKaprekar(533170);
+
+
