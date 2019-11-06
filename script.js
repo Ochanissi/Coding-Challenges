@@ -10476,3 +10476,119 @@ isKaprekar(102102);
 isKaprekar(533170);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 241
+
+// Write a function that takes a string, and returns a new string with any duplicate consecutive letters removed.
+
+
+function unstretch(word) {
+	const a = [];
+	for (let i = 0; i < word.length; i++) {
+		if (word[i] !== word[i+1]) {
+			a.push(word[i]);
+		}
+	}
+	return a.join("");
+}
+
+
+const unstretch = word => word.replace(/(.)\1+/g, '$1');
+
+
+unstretch('llossttttt');
+unstretch('cccccaaaaannnnne');
+unstretch('hhoooneestttt');
+unstretch('ppppooowwddddeeerrrr');
+unstretch('eexxpppppeeccctt');
+unstretch('rrrrepooooorrttt');
+unstretch('pppaaaaattteeeennnntt');
+unstretch('mmmeeemoooryy');
+unstretch('vvvvviiiiisssuuaaalll');
+unstretch('eeeennnnsuuurrre');
+unstretch('iiinncclludddddeee');
+unstretch('ttteestiffffyyy');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 242
+
+// This is a reverse coding challenge. Normally you're given explicit directions with how to create a function. Here, you must generate your own function to satisfy the relationship between the inputs and outputs.
+
+// Your task is to create a function that, when fed the inputs below, produce the sample outputs shown.
+
+// Examples
+// mysteryFunc(152) ➞ 10
+
+// mysteryFunc(832) ➞ 48
+
+// mysteryFunc(19) ➞ 9
+
+// mysteryFunc(133) ➞ 9
+
+
+function mysteryFunc(num) {
+	return num.toString().split("").map(x => parseInt(x)).reduce((x, i) => x * i);
+}
+
+
+const mysteryFunc = num =>
+  String(num)
+    .split('')
+    .reduce((total, digit) => total * Number(digit));
+
+
+
+function mysteryFunc(num) {
+	return (''+num).split('').reduce((r,v) => r*v, 1);
+}
+
+
+const mysteryFunc = n => [...n.toString()].map(v => +v).reduce((acc, val) => acc * val);
+
+mysteryFunc(152);
+mysteryFunc(832);
+mysteryFunc(5511);
+mysteryFunc(19);
+mysteryFunc(133);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 243
+
+// Given two lines, determine whether or not they are parallel.
+
+// Lines are represented by an array [a, b, c], which corresponds to the line ax+by=c.
+
+
+function linesAreParallel(l1, l2) {
+	return l1[0] * l2[1] - l2[0] * l1[1] === 0;
+}
+
+
+
+linesAreParallel([1,2,3], [1,2,4]);
+linesAreParallel([2,4,1], [4,2,1]);
+linesAreParallel([0,1,5], [0,1,5]);
+linesAreParallel([2,5,0], [20,50,10]);
+linesAreParallel([2,5,0], [-200,-500,10]);
+linesAreParallel([400000,1,0], [400000,2,0]);
+linesAreParallel([800,20,0], [40,20,0]);
+linesAreParallel([400000,1,0], [800000,2,100000]);
+linesAreParallel([-5,7,100000], [5,-7,-200000]);
+
+
