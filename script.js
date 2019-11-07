@@ -10592,3 +10592,106 @@ linesAreParallel([400000,1,0], [800000,2,100000]);
 linesAreParallel([-5,7,100000], [5,-7,-200000]);
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 244
+
+// Create a function that takes an array of items and checks if the last item matches the rest of the array.
+
+function matchLastItem(arr) {
+	let a = ''
+	for (let i = 0; i < arr.length - 1; i++) {
+		a += arr[i];
+	}
+	return a === arr[arr.length - 1];
+}
+
+
+function matchLastItem(arr) {
+	return arr.pop() === arr.join('');
+}
+
+
+matchLastItem(['rsq', '6hi', 'g', 'rsq6hig']);
+matchLastItem([ 0, 1, 2, 3, 4, 5, '12345' ]);
+matchLastItem([ 'for', 'mi', 'da', 'bel', 'formidable' ]);
+matchLastItem([8, 'thunder', true, '8thundertrue']);
+matchLastItem([ 1, 1, 1, '11' ]);
+matchLastItem(['tocto','G8G','xtohkgc','3V8','ctyghrs',100.88,'fyuo','Q','toctoG8Gxtohkgc3V8ctyghrs100.88fyuoQ']);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 245
+
+// Create a function that returns true if the given circles are intersecting, otherwise return false. The circles are given as two arrays containing the values in the following order:
+
+// Radius of the circle.
+// Position on the x-axis.
+// Position on the y-axis.
+
+function isCircleCollision(c1, c2) {
+
+    var dx = c1[1] - c2[1];
+    var dy = c1[2] - c2[2];
+    var distance = Math.sqrt(dx * dx + dy * dy);
+    
+    return distance < c1[0] + c2[0]
+}
+
+
+function isCircleCollision(c1,c2){
+    return (c1[0] + c2[0] > Math.hypot(c2[2] - c1[2], c2[1] - c1[1]));
+}
+
+
+
+isCircleCollision([10,0,0],[10,10,10]);
+isCircleCollision([10,0,0],[5,0,0]);
+isCircleCollision([1,0,0],[1,0,0]);
+isCircleCollision([5,0,0],[5,10,10]);
+isCircleCollision([1,0,0],[1,10,10]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 246
+
+// Write a function that converts an object into an array of keys and values.
+
+
+function objectToArray(obj) {
+	return Object.entries(obj);
+}
+
+
+function objectToArray(obj) {
+	return Object.keys(obj).map(key => [key, obj[key]]);
+}
+
+
+
+objectToArray({
+  D: 1, 
+  B: 2, 
+  C: 3
+});
+
+objectToArray({
+	likes: 2, 
+  dislikes: 3, 
+  followers: 10
+});
+
