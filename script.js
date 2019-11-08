@@ -10682,6 +10682,15 @@ function objectToArray(obj) {
 }
 
 
+function objectToArray(obj) {
+	var r = [];
+  for (var i in obj) {
+		r.push([i, obj[i]]);
+	}
+	return r;
+}
+
+
 
 objectToArray({
   D: 1, 
@@ -10694,4 +10703,79 @@ objectToArray({
   dislikes: 3, 
   followers: 10
 });
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 247
+
+// Create a function that determines whether a string is a valid hex code.
+
+// A hex code must begin with a pound key # and is exactly 6 characters in length. Each character must be a digit from 0-9 or an alphabetic character from A-F. All alphabetic characters may be uppercase or lowercase.
+
+
+function isValidHexCode(str) {
+	return /^#[a-f0-9]{6}$/i.test(str);
+}
+
+
+
+isValidHexCode('#CD5C5C');
+isValidHexCode('#EAECEE');
+isValidHexCode('#eaecee');
+isValidHexCode('#CD5C58C');
+isValidHexCode('#CD5C5Z');
+isValidHexCode('#CD5C&C');
+isValidHexCode('CD5C5C');
+isValidHexCode('#123CCCD');
+isValidHexCode('#123456');
+isValidHexCode('#987654');
+isValidHexCode('#9876543');
+isValidHexCode('#CCCCCC');
+isValidHexCode('#ZCCZCC');
+isValidHexCode('#Z88Z99');
+isValidHexCode('#Z88!99');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 248
+
+// Create a function that takes a string and returns a new string with each new character accumulating by +1. Separate each set with a dash.
+
+
+function accum(str) {
+	const a = [];
+	for (let i = 0; i < str.length; i++) {
+		a.push(str[i].repeat(i + 1));
+	}
+	
+	return a.map(x => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()).join("-");
+}
+
+
+function accum(str) {
+    return 	str.split('').map((x, i) => x.toUpperCase() + x.repeat(i).toLowerCase()).join('-');
+  }
+
+
+accum("abcd");
+accum("RqaEzty");
+accum("cwAt");
+accum("VgyCdnQa");
+accum("nRBSdNOsMl");
+accum("nuE");
+accum("RlDrhZuQaqsoHEfziByObtMxkFCJVe");
+accum("EXpzPFx");
+accum("NU");
+accum("g");
 
