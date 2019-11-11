@@ -10779,3 +10779,152 @@ accum("EXpzPFx");
 accum("NU");
 accum("g");
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 249
+
+// A palindrome is a word, phrase, number or other sequence of characters which reads the same backward or forward, such as madam or kayak.
+
+// Write a function that takes a string and determines whether it's a palindrome or not. The function should return a boolean (true or false value).
+
+
+function isPalindrome(string) {
+    var sanitized = string.toLowerCase().replace(/[^a-z]/g, "");
+    var reversed = sanitized.split('').reverse().join(''); 
+    return (reversed == sanitized);
+}
+
+
+function isPalindrome(string) {
+    var arr = string.toLowerCase().match(/[a-z]+/g).join('');
+    
+    return arr.split('').join('') == arr.split('').reverse().join('');
+}
+
+
+const isPalindrome = str => {
+    const clean = str.toLowerCase().replace(/[\W\s-]/g, '');
+    return clean.split('').reverse().join('') === clean;
+}
+
+
+isPalindrome('A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!');
+isPalindrome('Neuquen');
+isPalindrome('Not a palindrome');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 250
+
+// Create a function that takes a string of lowercase characters and returns that string reversed and capitalized.
+
+function reverseCapitalize(str) {
+	return str.toUpperCase().split("").reverse().join("");
+}
+
+
+reverseCapitalize("edabit");
+reverseCapitalize("abc");
+reverseCapitalize("hellothere");
+reverseCapitalize("input");
+reverseCapitalize("indubitably");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 251
+
+// Your function will get an array with a number sequence. However, one item will be missing. It's your job to find out which one is not in the array.
+
+// To illustrate, given the array [1, 3, 4, 5], 2 is missing so the output must be 2.
+
+
+function missing(arr) {
+	var sum = (arr.length + 1) * (arr[0] + arr[arr.length - 1]) / 2;
+	return sum  - arr.reduce((x,y) => x + y);
+}
+
+
+const missing = arr => {
+    const first = arr[0];
+    const last = arr[arr.length - 1];
+    const delta = last - first;
+    const step = delta / arr.length;
+  
+    return arr.find((num, i) => num + step !== arr[i + 1]) + step;
+  };
+
+
+[1, 3, 4, 5];
+[2, 4, 6, 8, 10, 14, 16];
+[12, 15, 18, 21, 24, 30, 33];
+[0, 60, 180];
+[-1.25, 1.25, 2.5];
+[1, 19, 28];
+[100, 500, 900, 1300, 2100, 2500, 2900];
+[1.5, 2, 3];
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 252
+
+// Create a function that takes an integer and returns it as an ordinal number. An Ordinal Number is a number that tells the position of something in a list, such as 1st, 2nd, 3rd, 4th, 5th etc.
+
+
+function returnEndOfNumber(num) {
+	if (num.toString()[num.toString().length - 1] === "1") {
+		return num + "-ST"
+	} else if (num.toString()[num.toString().length - 1] === "2") {
+		return num + "-ND"
+	} else if (num.toString()[num.toString().length - 1] === "3") {
+		return num + "-RD"
+	} else return num + "-TH"
+}
+
+
+const returnEndOfNumber = (num) => {
+    const unitsNum = num.toString().split('')[num.toString().length-1]
+    switch(unitsNum) {
+        case "1": return num.toString() + "-ST"
+        case "2": return num.toString() + "-ND"
+        case "3": return num.toString() + "-RD"
+        default: return num.toString() + "-TH"
+    }
+}
+
+
+const returnEndOfNumber = (num) => {
+    let a=["-TH","-ST","-ND","-RD"]
+    return num+(a[[...""+num].slice(-1)]||a[0])
+}
+
+
+
+returnEndOfNumber(334);
+returnEndOfNumber(12341);
+returnEndOfNumber(1);
+returnEndOfNumber(3222);
+returnEndOfNumber(563);
+
+
