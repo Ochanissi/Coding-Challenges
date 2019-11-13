@@ -10928,3 +10928,62 @@ returnEndOfNumber(3222);
 returnEndOfNumber(563);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 253
+
+// Create a function that takes an array of numbers and return its median. If the input array is even length, take the average of the two medians, else, take the single median.
+
+
+function median(arr) {
+	const values = arr.sort((a, b ) => a - b)
+	const lowMiddle = Math.floor( (values.length - 1) / 2);
+	const highMiddle = Math.ceil( (values.length - 1) / 2);
+	
+	return (values[lowMiddle] + values[highMiddle]) / 2;
+}
+
+
+median([20, 40, 20, 30, 50, 60, 70, 0, 20]);
+median([342, 98, 5456, 32, 786, 432, 890, 321]);
+median([1, 0, 1, 0, 0, 0, 1, 1]);
+median([32, 5, 78, 32, 4, 5, 3]);
+median([-20, 40, 30, -2, 40, -13]);
+median([32786, 7837, 83736, 83736, 10383, 738393]);
+median([7685, 83736, 38376, 73638, 7337]);
+median([0, 0, 0, 0]);
+median([-30, -42, -60, -10, -30, -50]);
+median([238, 432, 897, 710]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 254
+
+// Create a function that takes two numbers as arguments and returns the GCD of the two numbers.
+
+
+function gcd(a, b) {
+	if (!b) return a;
+  return gcd(b, a % b);
+}
+
+
+function gcd(a,b){
+    return b == 0 ? a : gcd(b, a % b);
+};
+
+
+gcd(6, 10);
+gcd(17, 85);
+gcd(18, 153);
+gcd(14, 14);
+gcd(6, 31);
+
+
