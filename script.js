@@ -10987,3 +10987,134 @@ gcd(14, 14);
 gcd(6, 31);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 255
+
+// Create a function that takes an array of numbers and returns an array where each number is the sum of itself + all previous numbers in the array.
+
+
+
+function cumulativeSum(arr) {
+	let a = 0;
+	let x = [];
+	
+	for (let i = 0; i < arr.length; i++) {
+		x.push(a + arr[i]);
+		a += arr[i];
+	}
+	return x;
+}
+
+function cumulativeSum(array) {
+    var sum=0;
+    return array.map(x=>(sum+=x))
+}
+
+
+cumulativeSum([]);
+cumulativeSum([1]);
+cumulativeSum([1, 2, 3]);
+cumulativeSum([-1, -2, -3]);
+cumulativeSum([1, -2, 3]);
+cumulativeSum([3, 3, -2, 408, 3, 3, 0, 66, 2, -2, 2, 3, 4, 2, -47, 3, 3, 2]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 256
+
+// Andy, Ben and Charlotte are playing a board game. The three of them decided to come up with a new scoring system. A player's first initial ("A", "B" or "C") denotes that player scoring a single point. Given a string of capital letters, return an array of the players' scores.
+
+// For instance, if ABBACCCCAC is written when the game is over, then Andy scored 3 points, Ben scored 2 points, and Charlotte scored 5 points, since there are 3 instances of letter A, 2 instances of letter B, and 5 instances of letter C. So the array [3, 2, 5] should be returned.
+
+function calculateScores(str) {
+	const a = [0, 0, 0];
+	
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === "A") {
+			a[0]++;
+		} else if (str[i] === "B") {
+			a[1]++;
+		} else if (str[i] === "C") {
+			a[2]++;
+		}
+	}
+	return a;
+}
+
+
+const calculateScores = str => [
+    (str.match(/A/g) || []).length,
+    (str.match(/B/g) || []).length,
+    (str.match(/C/g) || []).length,
+];
+
+calculateScores("AAB");
+calculateScores("ABC");
+calculateScores("ABCBACC");
+calculateScores("CCBBBB");
+calculateScores("CCAABBAABBCC");
+calculateScores("A");
+calculateScores("");
+calculateScores("ACCCA");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 257
+
+// Given a character and a value between 0 and 100, return a string that represents a simple progress bar.
+
+// The value represents a percentage.
+// The bar should begin and end with "|"
+// Repeat the character to fill the bar, with each character equivalent to 10%
+// Use spaces to pad the bar to a length of 10 characters.
+// A single space comes after the bar, then a message with the % completion (e.g. "Progress: 60%")
+// If the value is 100, the message should be "Completed!".
+
+
+function progressBar(bar, progress) {
+	const a = bar.repeat(progress / 10);
+	const b = " ".repeat(10 - progress / 10) 
+	
+	return progress < 100 ? `|${a + b}| Progress: ${progress}%` : `|${a + b}| Completed!`;
+}
+
+
+const progressBar = (bar, prog) => `|${bar.repeat(prog/10)}${' '.repeat((100-prog)/10)}| ` + (prog<100 ? `Progress: ${prog}%` : `Completed!`);
+
+
+progressBar("=", 10);
+progressBar("#", 90);
+progressBar("*", 100);
+progressBar("#", 50);
+progressBar("*", 60);
+progressBar("#", 100);
+progressBar("*", 60);
+progressBar("=", 30);
+progressBar(">", 70);
+progressBar("=", 40);
+progressBar(">", 20);
+progressBar("*", 0);
+progressBar("=", 60);
+progressBar(">", 90);
+progressBar("*", 80);
+progressBar("#", 20);
+progressBar("*", 30);
+progressBar("=", 70);
+progressBar("=", 0);
+progressBar(">", 100);
+
+
+
