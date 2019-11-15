@@ -11118,3 +11118,128 @@ progressBar(">", 100);
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 258
+
+// Create a function that takes the month and year (as integers) and returns the number of days in that month.
+
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate();
+}
+
+
+days(1, 2018);
+days(2, 2018);
+days(3, 2018);
+days(4, 2018);
+days(5, 2018);
+days(6, 2018);
+days(7, 2018);
+days(8, 2018);
+days(9, 2018);
+days(10, 2018);
+days(11, 2018);
+days(12, 2018);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 259
+
+// Write a function that takes a string, breaks it up and returns it with vowels first, consonants second. For any character that's not a vowel (like special characters or spaces), treat them like consonants.
+
+
+function split(str) {
+	let a = "";
+	let b = "";
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].toLowerCase() === "a" || str[i].toLowerCase() === "e" || str[i].toLowerCase() === "i" || str[i].toLowerCase() === "o" || str[i].toLowerCase() === "u") {
+			a += str[i];
+		} else b += str[i];
+	}
+	return a + b;
+}
+
+
+const split = str => str.replace(/[^aeiou]/gi,'') + str.replace(/[aeiou]/gi,'');
+
+
+split("abcde");
+split("Hello!");
+split("What's the time?");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 260
+
+// A Sudoku is a 9x9 grid that is completed when every 3x3 square, row and column consist of the numbers 1-9.
+
+// For this task, you will be given a completed 3x3 square, in the form of a two-dimensional array. Create a function that checks to make sure this 3x3 square contains each number from 1-9 exactly once. Make sure there are no duplicates, and no numbers outside this range.
+
+function isMiniSudoku(square) {
+	return square.flat().length === new Set(square.flat()).size && square.flat().every(x => x > 0);
+}
+
+
+function isMiniSudoku(square) {
+	let plane = [].concat(...square)
+	return new Set(plane).size === 9 && plane.every(n=>n<=9 && n>=1)
+}
+
+
+const flatArray = arr =>
+  arr.reduce((result, inner) => result.concat(inner), []);
+
+const isMiniSudoku = square =>
+  flatArray(square)
+    .sort()
+    .join('') === '123456789';
+
+isMiniSudoku(
+    [[1, 3, 2], 
+    [9, 7, 8], 
+    [4, 5, 6]]);
+isMiniSudoku(
+    [[1, 1, 3], 
+    [6, 5, 4], 
+    [8, 7, 9]]);
+isMiniSudoku(
+    [[0, 1, 2], 
+    [6, 4, 5], 
+    [9, 8, 7]]);
+isMiniSudoku(
+    [[8, 9, 2], 
+    [5, 6, 1], 
+    [3, 7, 4]]);
+isMiniSudoku(
+    [[2, 3, 4], 
+    [6, 7, 7], 
+    [8, 9, 1]]);
+isMiniSudoku(
+    [[6, 5, 9], 
+    [4, 3, 8], 
+    [2, 1, 7]]);
+isMiniSudoku(
+    [[4, 3, 5], 
+    [8, 1, 2], 
+    [9, 6, 7]]);
+isMiniSudoku(
+    [[4, 3, 5], 
+    [8, 6, 2], 
+    [9, 6, 7]]);
+
