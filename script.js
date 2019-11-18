@@ -11243,3 +11243,79 @@ isMiniSudoku(
     [8, 6, 2], 
     [9, 6, 7]]);
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 261
+
+// Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num up to length.
+
+
+function arrayOfMultiples (num, length) {
+	let x = num;
+	const a = [x];
+	
+	for (let i = 1; i < length; i++) {
+		x += num;
+		a.push(x);
+	}
+	return a;
+}
+
+
+const arrayOfMultiples = (num, length) => {
+	return Array.from({length: length}, (_, i) => num * (i + 1));
+}
+
+
+arrayOfMultiples(7, 5);
+arrayOfMultiples(12, 10);
+arrayOfMultiples(17, 7);
+arrayOfMultiples(630, 14);
+arrayOfMultiples(140, 3);
+arrayOfMultiples(7, 8);
+arrayOfMultiples(11, 21);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 261
+
+// Write a function to return the city from each of these vacation spots.
+
+
+
+function grabCity(str) {
+	const kek = str.split("[")
+	return kek.pop().slice(0, -1);
+}
+
+
+function grabCity(str) {
+	return str.slice(str.lastIndexOf('[') + 1, str.lastIndexOf(']'))
+}
+
+
+
+function grabCity(str) {
+	return str.match(/\[([\w\s]+)]$/)[1];
+}
+
+
+grabCity("[Last Day!] Beer Festival [Munich]");
+grabCity("Cheese Factory Tour [Portland]");
+grabCity("[Duration: 7 hours] Tour of the Maritimes [Prince Edward Island]");
+grabCity("[5 Stars] Traditional Gondola Experience [Venice]");
+grabCity("[Last Minute Deal][$1039] Machu Picchu 3 Day Trip [Machu Picchu]");
+grabCity("[50% Off!][Group Tours Included] 5-Day Trip to Onsen [Kyoto]");
+
+
+
