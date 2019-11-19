@@ -11319,3 +11319,147 @@ grabCity("[50% Off!][Group Tours Included] 5-Day Trip to Onsen [Kyoto]");
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 262
+
+// Write a function that creates an object with each (key, value) pair being the (lower case, upper case) versions of a letter, respectively.
+
+
+function mapping(letters) {
+	let y = letters.reduce((acc, elem) => {
+  acc[elem] = elem.toUpperCase();
+  return acc;
+}, {})
+	return y;
+}
+
+
+function mapping(letters) {
+	return letters.reduce((a, c) => (a[c] = c.toUpperCase(), a), {});
+}
+
+
+mapping(["a", "b", "c"]);
+mapping(["p", "s", "t"]);
+mapping(["a", "v", "y", "z"]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 263
+
+// Create a function that determines whether a shopping order is eligible for free shipping. An order is eligible for free shipping if the total cost of items purchased exceeds $50.00.
+
+
+function freeShipping(order) {
+	return Object.values(order).reduce((x, i) => x + i) > 50;
+}
+
+
+function freeShipping(order) {
+	return Object.keys(order).reduce((t, c) => t + order[c], 0) > 50
+}
+
+
+
+freeShipping({'Shampoo' : 5.99, 'Rubber Ducks': 15.99});
+freeShipping({'Flatscreen TV': 399.99});
+freeShipping({'Monopoly': 11.99, 'Secret Hitler': 35.99, 'Bananagrams': 13.99});
+freeShipping({'Scrabble': 12.32, 'Jenga': 5.55, 'Clue': 20.00});
+freeShipping({'Elephant Plushie': 40.55, 'Octopus Plushie': 20.33, 'Spongebob Plushie': 20.00});
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 264
+
+// Create a function that takes a number a and finds the missing exponent x so that a when raised to the power of x is equal to b.
+
+
+function solveForExp(a, b) {
+	return Math.round(Math.log(b) / Math.log(a));
+}
+
+
+solveForExp(4, 1024);
+solveForExp(2, 1024);
+solveForExp(9, 3486784401);
+solveForExp(4, 4294967296);
+solveForExp(8, 134217728);
+solveForExp(19, 47045881);
+solveForExp(10, 100000000);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 265
+
+// Write a function that returns the first n vowels of a string.
+
+// Return "invalid" if the n exceeds the number of vowels in a string.
+// Vowels are: a, e, i, o, u
+
+
+
+function firstNVowels(s, n) {
+	const x = s.match(/[aeiou]/gi).join('').slice(0, n);
+	return n > x.length ? 'invalid' : x;
+}
+
+
+firstNVowels("sharpening skills", 3);
+firstNVowels("major league", 5);
+firstNVowels("crabby patty", 2);
+firstNVowels("shrimp", 1);
+firstNVowels("shrimpy", 2);
+firstNVowels("hostess", 5);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 266
+
+// Create a function that concatenates n input arrays, where n is variable.
+
+
+function concat(...args) {
+	return args.flat();
+}
+
+
+function concat(...args) {
+	return [].concat(...args)
+}
+
+
+const concat = (...args) =>
+  args.reduce((result, arr) => result.concat(arr), []);
+
+
+concat([1, 2, 3], [4, 5], [6, 7]);
+concat([1], [2], [3], [4], [5], [6], [7]);
+concat([1, 2], [3, 4]);
+concat([4, 4, 4, 4, 4]);
+concat(['a'], ['b', 'c']);
+
+
