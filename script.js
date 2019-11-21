@@ -11463,3 +11463,112 @@ concat([4, 4, 4, 4, 4]);
 concat(['a'], ['b', 'c']);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 266
+
+// Write a function that changes every letter to the next letter:
+
+// "a" becomes "b"
+// "b" becomes "c"
+// "d" becomes "e"
+// and so on ...
+
+
+function move(word) {
+	const alphabet = "abcdefghijklmnopqrstuvwxyz";
+	return word.split("").map(x => alphabet[alphabet.indexOf(x) + 1]).join("");
+}
+
+
+function move(word) {
+	return [...word].map(a => String.fromCharCode(a.charCodeAt(0)+1)).join('');
+}
+
+
+move("hello");
+move("lol");
+move("bye");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 267
+
+// Create a function that converts dates from one of five string formats:
+
+// "January 9, 2019" (MM D, YYYY)
+// "Jan 9, 2019" (MM D, YYYY)
+// "01/09/2019" (MM/DD/YYYY)
+// "01-09-2019" (MM-DD-YYYY)
+// "01.09.2019" (MM.DD.YYYY)
+// The return value will be an array formatted like: [MM, DD, YYYY], where MM, DD, and YYYY are all integers. Using the examples above:
+
+
+
+function convertDate(date) {
+	const a = new Date(date);
+	return [a.getMonth() + 1, a.getDate(), a.getFullYear()]
+}
+
+
+
+convertDate("January 9, 2019");
+convertDate("Jan 9, 2019");
+convertDate("01/09/2019");
+convertDate("01-09-2019");
+convertDate("01.09.2019");
+convertDate("March 3, 1901");
+convertDate("Mar 3, 1901");
+convertDate("03/03/1901");
+convertDate("03-03-1901");
+convertDate("03.03.1901");
+convertDate("August 8, 1666");
+convertDate("Nov 13, 1533");
+convertDate("04/15/1789");
+convertDate("12-23-1111");
+convertDate("02.28.1832");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 268
+
+// Create a function that accepts an array of two strings and checks if the letters in the second string are present in the first string.
+
+
+function letterCheck(arr) {
+	return [...arr[1].toLowerCase()].every(x => [...arr[0].toLowerCase()].indexOf(x) !== -1);
+}
+
+
+letterCheck = a => 
+	a[1].split``.every(v => ~a[0].toLowerCase().indexOf(v))
+
+
+letterCheck(["trances", "nectar"]);
+letterCheck(["THE EYES", "they see"]);
+letterCheck(["assert", "staring"]);
+letterCheck(["arches", "later"]);
+letterCheck(["dale", "caller"]);
+letterCheck(["parses", "parsecs"]);
+letterCheck(["replays", "adam"]);
+letterCheck(["mastering", "streaming"]);
+letterCheck(["drapes", "compadres"]);
+letterCheck(["deltas", "slated"]);
+
+
