@@ -11572,3 +11572,56 @@ letterCheck(["drapes", "compadres"]);
 letterCheck(["deltas", "slated"]);
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 269
+
+// The digit distance between two numbers is the absolute value of the difference of each digit.
+
+
+
+function digitDistance(num1, num2) {
+	const a = [];
+	for (let i = 0; i < num1.toString().length; i++) {
+		a.push(Math.abs(num1.toString()[i] - num2.toString()[i]));
+	}
+	return a.reduce((x, i) => x + i);
+}
+
+
+function digitDistance(num1, num2) {
+  var num1Arr =  String(num1).split('')
+  var num2Arr =  String(num2).split('')
+	
+	return num1Arr.map((val,index,arr) => Math.abs(arr[index] - num2Arr[index])).reduce((a,b) => a + b)
+}
+
+
+digitDistance(121, 599);
+digitDistance(12, 12);
+digitDistance(10, 20);
+digitDistance(12345678, 23456789);
+digitDistance(5555, 6666);
+digitDistance(105, 777);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 270
+
+// Create a function that checks to see if two object arguments are equal to one another. Return true if the objects are equal, otherwise, return false.
+
+
+
+function isEqual(objOne, objTwo) {
+	return JSON.stringify(objOne) === JSON.stringify(objTwo)
+}
+
