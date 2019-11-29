@@ -11625,3 +11625,38 @@ function isEqual(objOne, objTwo) {
 	return JSON.stringify(objOne) === JSON.stringify(objTwo)
 }
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 271
+
+// Create a function that takes a string as the first argument, and a (string) specification as a second argument. If the specification is "word", return a string with each word reversed while maintaining their original order. If the specification is "sentence", reverse the order of the words in the string, while keeping the words intact.
+
+
+function flip(str, spec) {
+	const a = str.split(" ").reverse().join(" ");
+	const b = str.split(" ").map(x => x.split("").reverse().join("")).join(" ");
+	
+	return spec === "word" ? b : a;
+}
+
+
+str1 = "There's never enough time to do all the nothing you want"
+str2 = "I have all these great genes but they're recessive"
+str3 = "I like maxims that don't encourage behavior modification"
+
+flip('Hello', 'word');
+flip('Hello', 'sentence');
+flip(str1, 'word');
+flip(str1, 'sentence');
+flip(str2, 'word');
+flip(str2, 'sentence');
+flip(str3, 'word');
+flip(str3, 'sentence');
+
+
