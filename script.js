@@ -11646,6 +11646,31 @@ function flip(str, spec) {
 }
 
 
+const flip = (str, spec) =>
+  spec === 'word'
+    ? str
+        .split(' ')
+        .map(word => word.split('').reverse().join(''))
+        .join(' ')
+    : str
+        .split(' ')
+        .reverse()
+        .join(' ');
+
+
+function flip(str, spec) {
+    switch(spec){
+        case 'word':
+            return /\s/.test(str) ?
+                str.split(' ').map(w => w.split('').reverse().join('')).join(' ')
+                :
+                str.split('').reverse().join('')
+        case 'sentence':
+            return str.split(' ').reverse().join(' ')
+    }
+}
+
+
 str1 = "There's never enough time to do all the nothing you want"
 str2 = "I have all these great genes but they're recessive"
 str3 = "I like maxims that don't encourage behavior modification"
@@ -11660,3 +11685,82 @@ flip(str3, 'word');
 flip(str3, 'sentence');
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 272
+
+// You are to read each part of the date into its own integer type variable. The year should be a 4 digit number. You can assume the user enters a correct date (no error checking required).
+
+// Determine whether the entered date is a magic date. Here are the rules for a magic date:
+
+// mm * dd is a 1-digit number that matches the last digit of yyyy or
+// mm * dd is a 2-digit number that matches the last 2 digits of yyyy or
+// mm * dd is a 3-digit number that matches the last 3 digits of yyyy
+// The program should then display true if the date is magic, or false if it is not.
+
+
+function Magic(str) {
+	const m = str.split(" ")[0];
+	const d = str.split(" ")[1];
+	
+	const a = str.split(" ")[2].slice(-1);
+	const b = str.split(" ")[2].slice(2, 4);
+	const c = str.split(" ")[2].slice(1, 4);
+	
+	return Number(m * d) === Number(c) || m + d === b;
+}
+
+
+const Magic = str => {
+    const [day, month, year] = str.split(' ').map(Number);
+  
+    return String(year).endsWith(day * month);
+};
+
+
+function Magic(str) {
+    const [d, m, y] = str.split(' ')
+    return y.endsWith(d * m)
+}
+
+
+Magic('1 1 2011');
+Magic('4 1 2001');
+Magic('2 4 2008');
+Magic('3 3 2009');
+Magic('5 2 2010');
+Magic('1 2 2011');
+Magic('9 2 2011');
+Magic('1 4 2011');
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 273
+
+// Create a function that takes a string of four numbers. These numbers represent two separat points on a graph known as the x-axis (horizontal axis) and y-axis (vertical axis). Each number corresponds as follows: "x1, y1, x2, y2". Calculate the distance between x and y.
+
+
+function shortestDistance(str) {
+	return Number(Math.hypot((str.split(",")[0] - str.split(",")[2]), (str.split(",")[1] - str.split(",")[3])).toFixed(2));
+}
+
+shortestDistance('1,1,2,1');
+shortestDistance('1,1,3,1');
+shortestDistance('-5,1,3,1');
+shortestDistance('-5,2,3,1');
+shortestDistance('18174,773931,851747,490653');
+shortestDistance('737017,82252,882429,883228');
+shortestDistance('700230,523734,877217,172766');
+shortestDistance('354972,19774,976623,664356');
+shortestDistance('587568,609626,654834,18784');
+shortestDistance('66662,790481,873587,545905');
+shortestDistance('332500,825806,905569,98242');
