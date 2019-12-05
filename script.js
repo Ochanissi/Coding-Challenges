@@ -11753,6 +11753,12 @@ function shortestDistance(str) {
 	return Number(Math.hypot((str.split(",")[0] - str.split(",")[2]), (str.split(",")[1] - str.split(",")[3])).toFixed(2));
 }
 
+
+function shortestDistance(str) {
+	let [x1,y1,x2,y2] = str.split(",").map(a => Number(a));
+	return Number(Math.hypot(x1 - x2, y1 - y2).toFixed(2));
+};
+
 shortestDistance('1,1,2,1');
 shortestDistance('1,1,3,1');
 shortestDistance('-5,1,3,1');
@@ -11764,3 +11770,56 @@ shortestDistance('354972,19774,976623,664356');
 shortestDistance('587568,609626,654834,18784');
 shortestDistance('66662,790481,873587,545905');
 shortestDistance('332500,825806,905569,98242');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 274
+
+// You are given one input: An array containing eight 1's and/or 0's. Write a function that takes an 8 bit binary number and convert it to decimal.
+
+
+function binaryToDecimal(binary) {
+	return parseInt(binary.join(""), 2);
+}
+
+
+binaryToDecimal([1, 1, 1, 1, 1, 1, 1, 1]);
+binaryToDecimal([0, 0, 0, 0, 0, 0, 0, 0]);
+binaryToDecimal([1, 0, 1, 1, 1, 1, 0, 0]);
+binaryToDecimal([1, 0, 1, 1, 0, 1, 0, 1]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 275
+
+// Create a function that returns the ammount of duplicate characters in a string as a integer.
+// It will be case sensitive and spaces are included.
+// If there are no duplicates simply return 0
+
+
+function duplicates(str) {
+	return str.length - new Set(str).size;
+}
+
+
+duplicates("Hello World!");
+duplicates("birthday");
+duplicates("helicopter");
+duplicates("foobar");
+duplicates("The Quick Brown Fox Jumps Over the Lazy Dog");
+duplicates("donald trump");
+duplicates("Row, row, row your boat Gently down the stream Merrily merrily, merrily, merrily Life is but a dream.");
+duplicates("Gen'rals gathered in their masses,Just like witches at black masses");
+duplicates("Evil minds that plot destruction,Sorcerer of death's construction");
+duplicates("gamer");
+duplicates("gamer gang");
