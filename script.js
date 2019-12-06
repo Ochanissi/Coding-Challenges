@@ -11823,3 +11823,68 @@ duplicates("Gen'rals gathered in their masses,Just like witches at black masses"
 duplicates("Evil minds that plot destruction,Sorcerer of death's construction");
 duplicates("gamer");
 duplicates("gamer gang");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 276
+
+// Create a function that takes a number as an argument and returns "Fizz", "Buzz" or "FizzBuzz".
+
+// If the number is a multiple of 3 the output should be "Fizz".
+// If the number given is 5 the output should be "Buzz".
+// If the number given is a multiple of both 3 and 5, the output should be "FizzBuzz".
+// If the number is not a multiple of either 3 or 5, the number should be output on its own as shown in the examples below.
+
+
+function FizzBuzz(num) {
+	if (num % 3 === 0 && num % 5 === 0) {
+		return "FizzBuzz"
+	} else if (num % 3 === 0) {
+		return "Fizz"
+	}  else if (num % 5 === 0) {
+		return "Buzz"
+	}  else return num.toString();
+}
+
+
+function FizzBuzz(num) {
+	return (num%3?'':'Fizz')+(num%5?'':'Buzz')||`${num}`;
+}
+
+
+FizzBuzz(3);
+FizzBuzz(5);
+FizzBuzz(15);
+FizzBuzz(10);
+FizzBuzz(98);
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 277
+
+// Write a function that takes a credit card number and only displays the last four characters. The rest of the card number must be replaced by ************.
+
+
+function cardHide(card) {
+	return '*'.repeat(card.length - 4) + card.slice(-4, card.length);
+}
+
+
+function cardHide(card) {
+	return card.replace(/.(?=.{4,}$)/g, '*')
+}
+
+
+cardHide("1234123456785678");
+cardHide("8754456321113213");
+cardHide("35123413355523");
+
+
