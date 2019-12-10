@@ -11888,3 +11888,32 @@ cardHide("8754456321113213");
 cardHide("35123413355523");
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 278
+
+// In this challenge, you have to find the distance between two points placed on a Cartesian plane. Knowing the coordinates of both the points, you have to apply the Pythagorean theorem to find the distance between them.
+
+
+function getDistance(a, b) {
+	return parseFloat(Math.hypot((b.x - a.x), (b.y - a.y)).toFixed(3))
+}
+
+
+function getDistance(a, b) {
+	return +Math.hypot((b.x - a.x), (b.y - a.y)).toFixed(3);
+}
+
+
+getDistance({x: -2, y: 1}, {x: 4, y: 3});
+getDistance({x: 0, y: 0}, {x: 1, y: 1});
+getDistance({x: 10, y: -5}, {x: 8, y: 16});
+getDistance({x: 4, y: 3}, {x: 3, y: -2});
+getDistance({x: -1, y: -1}, {x: 10, y: 10});
+getDistance({x: 100, y: 100}, {x: 100, y: 100});
+getDistance({x: 14239, y: -11222}, {x: -12301, y: 12888});
+
+
