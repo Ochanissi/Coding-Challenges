@@ -12018,6 +12018,14 @@ function cars(wheels, bodies, figures) {
 	return a.sort((a, b) => a - b)[0];
 }
 
+function cars(wheels, bodies, figures) {
+	return Math.min(parseInt(wheels/4), bodies, parseInt(figures/2));
+}
+
+function cars(wheels, bodies, figures) {
+	return Math.floor(Math.min(wheels/4, bodies/1, figures/2))
+}
+
 
 cars(37, 15, 20);
 cars(72, 7, 21);
@@ -12026,3 +12034,105 @@ cars(50, 38, 7);
 cars(416, 340, 551);
 cars(692, 348, 543);
 cars(527, 412, 951);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 282
+
+// Create a function that returns the array of numbers from a given range. But for multiples of three, return “Eda” instead of the number and for the multiples of five, return “Bit”. For numbers which are multiples of both three and five, return “EdaBit”.
+
+
+function edaBit(start, end) {
+	const a = [];
+	
+	for (let i = start; start <= end; i++) {
+		if (i % 3 === 0 && i % 5 === 0) {
+			a.push("EdaBit");
+		} else if (i % 3 === 0) {
+			a.push("Eda");
+		} else if (i % 5 === 0) {
+			a.push("Bit");
+		} else a.push(i);
+	}
+	return a;
+}
+
+
+const edaBit = (start, end) =>
+Array(end - start + 1).fill().map((_,idx)=> start + idx)
+.map(x => x % 3===0 && x % 5===0 ? "EdaBit": x % 3 === 0 ? "Eda" : x % 5===0 ? "Bit": 
+x == 0 ? "EdaBit" : x);
+
+
+edaBit(1, 20);
+edaBit(-250, -230);
+edaBit(-10, 5);
+edaBit(33, 45);
+edaBit(50, 90);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 283
+
+// You are given three inputs: a string, one letter, and a second letter.
+
+// Write a function that returns true if every instance of the first letter occurs before every instance of the second letter.
+
+function firstBeforeSecond(s, first, second) {
+	return s.lastIndexOf(first) < s.indexOf(second);
+}
+
+
+firstBeforeSecond("a rabbit jumps joyfully", "a", "j");
+firstBeforeSecond("knaves knew about waterfalls", "k", "w");
+firstBeforeSecond("maria makes money", "m", "o");
+firstBeforeSecond("the hostess made pecan pie", "h", "p");
+firstBeforeSecond("barry the butterfly flew away", "b", "f");
+firstBeforeSecond("moody muggles", "m", "g");
+firstBeforeSecond("happy birthday", "a", "y");
+firstBeforeSecond("precarious kangaroos", "k", "a");
+firstBeforeSecond("maria makes money", "m", "i");
+firstBeforeSecond("taken by the beautiful sunrise", "u", "s");
+firstBeforeSecond("sharp cheddar biscuit", "t", "s");
+firstBeforeSecond("moody muggles", "m", "o");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 284
+
+// Suppose that you invest $10,000 for 10 years at an interest rate of 6% compounded monthly. What will be the value of your investment at the end of the 10 year period?
+
+// Create a function that accepts the principal p, the term in years t, the interest rate r, and the number of compounding periods per year n. The function returns the value at the end of term rounded to the nearest cent.
+
+
+function compoundInterest(p, t, r, n) {
+	return Number((p * Math.pow((1 + r / n), n * t)).toFixed(2));
+}
+
+
+function compoundInterest(p, t, r, n) {
+	return +(p * (1 + r / n) ** (n * t)).toFixed(2);
+}
+
+compoundInterest(100, 1, 0.05, 1);
+compoundInterest(3500, 15, 0.1, 4);
+compoundInterest(100000, 20, 0.15, 365);
+
+
