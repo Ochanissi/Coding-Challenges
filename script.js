@@ -12136,3 +12136,155 @@ compoundInterest(3500, 15, 0.1, 4);
 compoundInterest(100000, 20, 0.15, 365);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 285
+
+// Create a function that counts the number of times a particular letter shows up in the word search.
+
+
+
+function letterCounter(arr, letter) {
+	return arr.flat().filter(x => x === letter).length;
+}
+
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'D');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'H');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'Z');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'R');
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'X');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'S');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 286
+
+// Create a function that checks to see if two object arguments are equal to one another. Return true if the objects are equal, otherwise, return false.
+
+
+
+function isEqual(objOne, objTwo) {
+	return JSON.stringify(objOne) === JSON.stringify(objTwo);
+}
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 287
+
+// Tom is a very methodic guy that loves geometry and pizza: he loves them so much that, before eating a pizza, he calculates its radius and its height. Now, he wants to know from you the total volume of pizza that he swallowed!
+
+// You are given the two parameters that Tom measured:
+
+// radius
+// height
+
+// He tells you that if you multiply the height for the square of the radius and multiply the result for the mathematical constant π (Pi), you will obtain the total volume of the pizza. Implement a function that returns the volume of the pizza as a whole number, rounding it to the nearest integer (and rounding up for numbers with .5 as decimal part).
+
+
+function volPizza(radius, height) {
+	return Math.round(Math.pow(radius, 2) * height * Math.PI);
+}
+
+
+function volPizza(radius, height) {
+	return Math.round(radius*radius*height*Math.PI)	
+}
+
+
+const volPizza = (r, h) => Math.round(r**2 * h  * Math.PI)
+
+
+volPizza(1, 1);
+volPizza(7, 2);
+volPizza(10, 2.5);
+volPizza(15, 1.3);
+volPizza(20, 1);
+volPizza(13, 2);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 288
+
+// Write a function that returns all the elements in an array that are strictly greater than their adjacent left and right neighbors.
+
+
+
+function miniPeaks(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] > arr[i-1] && arr[i] > arr[i+1]) {
+			a.push(arr[i]);
+		}
+	}
+	return a;
+}
+
+
+miniPeaks([4, 5, 2, 1, 4, 9, 7, 2]);
+miniPeaks([1, 2, 1, 1, 3, 2, 5, 4, 4]);
+miniPeaks([1, 2, 3, 4, 5, 6]);
+miniPeaks([6, 4, 3]);
+miniPeaks([1, 1, 1, 1, 2, 1, 1, 1]);
+miniPeaks([1, 9, 1, 8, 2, 7, 6]);
+miniPeaks([7, 8, 7, 8, 7, 8, 5, 1, 2, 0]);
+
+
