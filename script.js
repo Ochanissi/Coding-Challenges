@@ -12279,6 +12279,10 @@ function miniPeaks(arr) {
 }
 
 
+const miniPeaks = arr =>
+  arr.slice(1, -1).filter((num, i) => num > arr[i] && num > arr[i + 2]);
+
+
 miniPeaks([4, 5, 2, 1, 4, 9, 7, 2]);
 miniPeaks([1, 2, 1, 1, 3, 2, 5, 4, 4]);
 miniPeaks([1, 2, 3, 4, 5, 6]);
@@ -12288,3 +12292,71 @@ miniPeaks([1, 9, 1, 8, 2, 7, 6]);
 miniPeaks([7, 8, 7, 8, 7, 8, 5, 1, 2, 0]);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 289
+
+// Create a function that converts a date formatted as MM/DD/YYYY to YYYYDDMM.
+
+
+
+function formatDate(date) {
+	return date.split("/").reverse().join("");
+}
+
+
+formatDate("11/12/2019");
+formatDate("12/31/2019");
+formatDate("01/15/2019");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 290
+
+// Imagine a school that kids attend for 6 years. In each year, there are five groups started, marked with the letters a, b, c, d, e. For the first year, the groups are 1a, 1b, 1c, 1d, 1e and for the last year, the groups are 6a, 6b, 6c, 6d, 6e.
+
+// Write a function that returns the groups in the school by year (as a string), separated with a comma and a space in the form of "1a, 1b, 1c, 1d, 1e, 2a, 2b (....) 5d, 5e, 6a, 6b, 6c, 6d, 6e".
+
+
+function printAllGroups() {
+	const x = ['a', 'b', 'c', 'd', 'e']
+	const a = [];
+	for (let i = 1; i <= 6; i++) {
+		for (let j = 0; j < x.length; j++) {
+			a.push(i + x[j]);
+		}
+	}
+	return a.join(', ');
+}
+
+function printAllGroups() {
+	let result = [];
+	for (let y of "123456") for (let c of "abcde") result.push(y+c);
+	return result.join(', ');
+}
+
+function printAllGroups() {
+	let alp = ['a', 'b', 'c', 'd', 'e']
+	let num = [1,2,3,4,5,6]
+	let result = []
+	for (let x of num) {
+		for (let y of alp) {
+			result.push(x + y)
+		}
+	}
+	return result.join(', ')
+}
+
+
+printAllGroups("1a, 1b, 1c, 1d, 1e, 2a, 2b, 2c, 2d, 2e, 3a, 3b, 3c, 3d, 3e, 4a, 4b, 4c, 4d, 4e, 5a, 5b, 5c, 5d, 5e, 6a, 6b, 6c, 6d, 6e, ");
+printAllGroups("1a, 1b, 1c, 1d, 1e, 2a, 2b, 2c, 2d, 2e, 3a, 3b, 3c, 3d, 3e, 4a, 4b, 4c, 4d, 4e, 5a, 5b, 5c, 5d, 5e, 6a, 6b, 6c, 6d, 6e");
