@@ -12360,3 +12360,112 @@ function printAllGroups() {
 
 printAllGroups("1a, 1b, 1c, 1d, 1e, 2a, 2b, 2c, 2d, 2e, 3a, 3b, 3c, 3d, 3e, 4a, 4b, 4c, 4d, 4e, 5a, 5b, 5c, 5d, 5e, 6a, 6b, 6c, 6d, 6e, ");
 printAllGroups("1a, 1b, 1c, 1d, 1e, 2a, 2b, 2c, 2d, 2e, 3a, 3b, 3c, 3d, 3e, 4a, 4b, 4c, 4d, 4e, 5a, 5b, 5c, 5d, 5e, 6a, 6b, 6c, 6d, 6e");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 291
+
+// Create a function that takes a Present Value of Cash pv, an Investment Rate ir and the Number of Years years to be Invested and returns the Net Present Value.
+
+// In the world of finance, the time value of money must be taken into account. In simple terms, this is because $100 now would buy more than $100 a year from now. Therefore, if we receive $100 in one years time, it will not be worth as much to us today.
+
+// Assuming we received the Present Value of Cash at the end of each year over a period of time, this can be calculated by multipying the Present Value of Cash by the cumulative present value interest rate.
+
+// The result should always be rounded to the nearest whole dollar.
+
+// It is not possible to receive a negative amount of money, use a negative investment rate or invest for a negative number of years. These should return false.
+
+const netPresentValue = (pv, ir, y) => {
+	return [pv, ir, y].every(arg => arg > 0) ?
+				 `$${Math.round(pv*((1-((1+ir)**-y))/ir))}`
+				 : false;
+}
+
+
+const netPresentValue = (pv, ir, years) => {
+	const npv = (1 - (1 + ir) ** -years) / ir * pv;
+	return npv < 0? false : `$${Math.round(npv)}`
+}
+
+function netPresentValue(pv, ir, years) {
+	return [...arguments].every(x=>x>=0)?`$${(pv*(1-Math.pow(1+ir,-years))/ir).toFixed(0)}`:false
+}
+
+
+netPresentValue(100, 0.10, 1);
+netPresentValue(100, 0.2, 1);
+netPresentValue(100, 0.1, 20);
+netPresentValue(10000, 0.05, 20);
+netPresentValue(250, 0.01, 1);
+netPresentValue(250, 0.01, -1);
+netPresentValue(15, 0.50, 100);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 292
+
+// Given an array of numbers and a value n, write a function that returns the probability of choosing a number greater than or equal to n from the array. The probability should be expressed as a percentage, rounded to one decimal place.
+
+
+function probability(arr, num) {
+	const a = arr.filter(x => x >= num);
+	return (a.length * 100 / arr.length).toFixed(1) * 1;
+}
+
+probability([14, 19, 2, 6], 12);
+probability([11, 10, 9, 18, 16, 18, 4, 3, 5], 13);
+probability([2, 13, 1, 11, 6, 9, 11, 14, 3], 15);
+probability([11, 6, 17, 2, 1, 16, 20, 15], 7);
+probability([12, 15, 12, 8, 20, 16, 1], 1);
+probability([15, 8, 12, 1, 11, 4], 4);
+probability([14, 11, 16, 3, 13, 14, 3], 8);
+probability([1, 4, 18, 19, 15, 3, 3, 11], 23);
+probability([9, 8, 17, 13, 17], 8);
+probability([4, 6, 2, 9, 15, 18, 8, 2, 10, 8], 6);
+probability([15, 4, 6, 11, 11, 17, 9, 16, 7, 4, 5, 10], 12);
+probability([7, 1, 5, 7, 15, 15, 16, 14], 2);
+probability([11, 4, 6, 7, 14, 4, 4], 8);
+probability([10, 10, 3, 18, 14, 1, 2, 19, 17, 2, 4, 11, 18, 6, 3], 11);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 292
+
+// Array A is contained inside array B if each element in A also exists in B.
+
+// The number of times a number is present doesn't matter. In other words, if we transformed both arrays into sets, A would be a subset of B.
+
+
+// Create a function that determines with the first array is a subset of the second.
+
+
+function subset(arr1, arr2) {
+	return arr1.every(x => arr2.includes(x));
+}
+
+
+subset([1, 3], [1, 3, 3, 5]);
+subset([4, 8, 7], [7, 4, 4, 4, 9, 8]);
+subset([1, 3], [1, 33]);
+subset([1, 3, 10], [10, 8, 8, 8]);
+subset([5, 9, 13], [13, 9, 5]);
+subset([5, 9, 13], [13, 9, 5, 1, 1, 1]);
+subset([5, 9, 13], [13, 5, 1, 1, 1]);
+
+
+
