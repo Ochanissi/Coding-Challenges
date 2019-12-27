@@ -12573,3 +12573,266 @@ hasValidUnitOfMeasure({ "product": "Beef", unitOfMeasure: "Cow" });
 hasValidUnitOfMeasure();
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 295
+
+// Given an object containing the names and ages of a group of people, return the name of the oldest person.
+
+
+function oldest(people) {
+	return Object.keys(people).reduce((a, b) => people[a] > people[b] ? a : b);
+}
+
+
+const oldest = people =>
+  Object.keys(people)
+    .map(key => [key, people[key]])
+    .sort(([, a], [, b]) => b - a)[0][0];
+
+
+oldest({Charlotte: 53, Oliver: 15, Henry: 18, Gabriel: 46, Violet: 13});
+oldest({Grayson: 50, Imogen: 63, Logan: 21, Daniel: 64, Rory: 19});
+oldest({Josh: 78, Adam: 63, Aria: 65, Grace: 51, Bella: 37});
+oldest({Alex: 9, Jayden: 18, Julia: 43, Penelope: 32, Ella: 34});
+oldest({Sam: 65, Joseph: 60, Mia: 41, Thomas: 31, Rebecca: 5});
+oldest({Eden: 64, Archie: 18, Olivia: 32, Kai: 84, Harry: 14});
+oldest({Anna: 67, Elijah: 10, Cole: 31, Andrew: 24, Elliot: 77});
+oldest({Innes: 77, Lilly: 11, Hallie: 41, Nina: 66, Ryan: 9});
+oldest({Isla: 73, Elsie: 6, Frankie: 36, Robbie: 75, Kayla: 9});
+oldest({Jack: 64, Jacob: 33, Tommy: 17, Finn: 5, Isaac: 13});
+oldest({Carson: 81, Charlie: 33, Riley: 28, Maria: 39, Sadie: 67});
+oldest({Amy: 70, Owen: 11, Matilda: 64, Lexi: 37, Lena: 26});
+oldest({Lola: 45, Tyler: 23, Hope: 4, Phoebe: 86, Freya: 44});
+oldest({Hollie: 48, Harris: 24, Ava: 72, Alfie: 9, Louis: 47});
+oldest({Erica: 32, Eve: 82, Harper: 74, Summer: 38, Ben: 72});
+oldest({Michael: 63, Jessica: 65, Reuben: 25, Aiden: 82, Emily: 18});
+oldest({Brooke: 8, Lucy: 44, Cooper: 33, Ellie: 82, Millie: 7});
+oldest({Piper: 10, Quinn: 62, David: 20, John: 61, Noah: 17});
+oldest({Cara: 5, Max: 81, Lucas: 62, Sophie: 71, Amelia: 79});
+oldest({Leo: 29, Clara: 8, Florence: 69, Lewis: 38, James: 47});
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 296
+
+// Create a function that takes in two arrays and returns true if the second array follows the first array by one element, and false otherwise. In other words, determine if the second array is the first array shifted to the right by 1.
+
+
+
+
+function simonSays(arr1, arr2) {
+	for (let i = 1; i < arr2.length; i++) {
+		if (arr2[i] !== arr1[i - 1]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+function simonSays(arr1, arr2) {
+	return arr1.slice(-1) - arr2.slice(-1)  === 1 ? true : false
+}
+
+const simonSays = (arr1, arr2) =>
+  arr2.slice(1).every((num, i) => num === arr1[i]);
+
+simonSays(
+	[1, 2, 3, 4, 5],
+	[0, 1, 2, 3, 4]
+);
+
+simonSays(
+	[1, 2, 3, 4, 5],
+	[5, 5, 1, 2, 3]
+);
+
+simonSays(
+	[1, 2],
+	[5, 1]
+);
+
+simonSays(
+	[1, 2],
+	[5, 5]
+);
+
+simonSays(
+	[1, 2, 3],
+	[0, 1, 2]
+);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 296
+
+// Given an array of integers, find the pair of adjacent elements that have the largest product and return that product.
+
+
+function adjacentProduct(arr) {
+	const a = [];
+	
+	for (let i = 0; i < arr.length - 1; i++) {
+		a.push(arr[i] * arr[i + 1]);
+	}
+	return a.sort((a, b) => b - a)[0]; 
+}
+
+
+
+function adjacentProduct(arr) {
+	const a = [];
+	
+	for (let i = 0; i < arr.length - 1; i++) {
+		a.push(arr[i] * arr[i + 1]);
+	}
+	return a.sort((a, b) => a - b)[a.length - 1]; 
+}
+
+const adjacentProduct = a =>
+a.sort((x,y) => {a = a > x*y ? a : x*y}) | a;
+
+
+
+function adjacentProduct(arr) {
+	return Math.max(...arr.slice(1).map((num,i) => num * arr[i]))
+}
+
+
+adjacentProduct([3, 6, -2, -5, 7, 3]);
+adjacentProduct([5, 6, -4, 2, 3, 2, -23]);
+adjacentProduct([0, -1, 1, 24, 1, -4, 8, 10]);
+adjacentProduct([1, 0, 1, 0, 1000]);
+adjacentProduct([-23, 4, -3, 8, -12]);
+adjacentProduct([-1, -2]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 297
+
+// In this challenge, you have to convert a weight weighed on a planet of the Solar System to the corresponding weight on another planet.
+
+// To convert the weight, you have to divide it by the gravitational force of the planet on which is weighed and multiply the result (the mass) for the gravitational force of the other planet. See the table below for a list of gravitational forces:
+
+// Planet	m/s²
+// Mercury	3.7
+// Venus	8.87
+// Earth	9.81
+// Mars	3.711
+// Jupiter	24.79
+// Saturn	10.44
+// Uranus	8.69
+// Neptune	11.15
+// Given a weight weighed on planetA, return the converted value for planetB rounded to the nearest hundredth.
+
+
+function spaceWeights(planetA, weight, planetB) {
+	switch(planetA) {
+		case 'Mercury':
+			planetA = 3.7;
+			break;
+		case 'Venus':
+			planetA = 8.87;
+			break;
+		case 'Earth':
+			planetA = 9.81;
+			break;
+		case 'Mars':
+			planetA = 3.711;
+			break;
+		case 'Jupiter':
+			planetA = 24.79;
+			break;
+		case 'Saturn':
+			planetA = 10.44;
+			break;
+		case 'Uranus':
+			planetA = 8.69;
+			break;
+		case 'Neptune':
+			planetA = 11.15;
+			break;
+	}
+	
+		switch(planetB) {
+			case 'Mercury':
+				planetB = 3.7;
+				break;
+			case 'Venus':
+				planetB = 8.87;
+				break;
+			case 'Earth':
+				planetB = 9.81;
+				break;
+			case 'Mars':
+				planetB = 3.711;
+				break;
+			case 'Jupiter':
+				planetB = 24.79;
+				break;
+			case 'Saturn':
+				planetB = 10.44;
+				break;
+			case 'Uranus':
+				planetB = 8.69;
+				break;
+			case 'Neptune':
+				planetB = 11.15;
+				break;
+	}
+	
+	return Math.round(weight  / planetA * planetB * 100) / 100;
+}
+
+
+
+function spaceWeights(planetA, weight, planetB) {
+	const GF = {"Mercury": 3.7,
+                "Venus": 8.87,
+                "Earth": 9.81,
+                "Mars": 3.711,
+                "Jupiter": 24.79,
+                "Saturn": 10.44,
+                "Uranus": 8.69,
+                "Neptune": 11.15};
+	return +((weight / GF[planetA]) * GF[planetB]).toFixed(2);
+}
+
+
+spaceWeights("Earth", 1, "Mars");
+spaceWeights("Earth", 1, "Jupiter");
+spaceWeights("Earth", 1, "Neptune");
+spaceWeights("Jupiter", 100, "Mercury");
+spaceWeights("Venus", 75, "Jupiter");
+spaceWeights("Uranus", 10, "Saturn");
+spaceWeights("Mars", 120, "Mercury");
+spaceWeights("Neptune", 1421, "Earth");
+spaceWeights("Jupiter", 33, "Mercury");
+spaceWeights("Saturn", 555, "Venus");
+spaceWeights("Jupiter", 3.141592, "Earth");
+
+
