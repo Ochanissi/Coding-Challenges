@@ -12469,3 +12469,107 @@ subset([5, 9, 13], [13, 5, 1, 1, 1]);
 
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 292
+
+// Your job is to find out whether the lamp is on or off.
+
+// C heck the test tab to find out what you have to do to make this work..
+
+
+function lampStatus() {
+	return lamp === 'on' ? true : false;
+}
+
+const lampStatus = () => lamp === `on`;
+
+
+(lamp = `off`, lampStatus());
+lampStatus();
+(lamp = `on`, lampStatus());
+(lamp = `off`, lampStatus());
+(lamp = `on`, lampStatus());
+lampStatus();
+(lamp = `off`, lampStatus());
+(lamp = `on`, lampStatus());
+lampStatus();
+(lamp = `off`, lampStatus());
+(lamp = `on`, lampStatus());
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 293
+
+// Create a function that takes an integer and outputs an n x n square solely consisting of the integer n.
+
+function squarePatch(n) {
+	return Array(n).fill().map(()=>Array(n).fill(n))
+}
+
+const squarePatch = length =>
+  Array.from({ length }, () => Array.from({ length }).fill(length));
+
+function squarePatch(n) {
+    return Array(n).fill().map(()=>Array(n).fill(n))
+}
+
+squarePatch(3);
+
+squarePatch(2);
+
+squarePatch(4);
+
+squarePatch(6);
+
+squarePatch(5);
+
+squarePatch(1);
+
+squarePatch(0);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 294
+
+// There has been a masterdata issue which affected the unit of measure of the products. All values need to be checked if they are valid. The unit of measure is valid when it is either "L" (liters), "PCE" (pieces) OR when the product has a comment.
+
+// The return value should be a Boolean.
+
+
+function hasValidUnitOfMeasure(product = {}) {
+	const { unitOfMeasure, comment } = product
+	return (product.hasOwnProperty('comment') || unitOfMeasure === 'L' || unitOfMeasure === 'PCE')
+}
+
+
+function hasValidUnitOfMeasure(product = {}) {
+	const { unitOfMeasure, comment } = product
+	return (!!(comment) || unitOfMeasure === 'L' || unitOfMeasure === 'PCE')
+}
+
+
+hasValidUnitOfMeasure({ "product": "Milk", unitOfMeasure: "L" });
+hasValidUnitOfMeasure({ "product": "Cheese", unitOfMeasure: "PCE" });
+hasValidUnitOfMeasure({ "product": "Eggs", comment: "Eggs are too different in size" });
+hasValidUnitOfMeasure({ "product": "Flour" });
+hasValidUnitOfMeasure({ "product": "Beer", unitOfMeasure: false });
+hasValidUnitOfMeasure({ "product": "Beef", unitOfMeasure: "Cow" });
+hasValidUnitOfMeasure();
+
+
