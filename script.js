@@ -12836,3 +12836,86 @@ spaceWeights("Saturn", 555, "Venus");
 spaceWeights("Jupiter", 3.141592, "Earth");
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 298
+
+// Given two numbers, return true if the sum of both numbers is less than 100. Return false otherwise.
+
+
+function lessThan100(a, b) {
+	return a + b < 100;
+}
+
+lessThan100(5, 57);
+lessThan100(77, 30);
+lessThan100(0, 59);
+lessThan100(78, 35);
+lessThan100(63, 11);
+lessThan100(37, 99);
+lessThan100(52, 11);
+lessThan100(82, 95);
+lessThan100(17, 44);
+lessThan100(74, 53);
+lessThan100(3, 77);
+lessThan100(25, 80);
+lessThan100(59, 28);
+lessThan100(69, 87);
+lessThan100(10, 45);
+lessThan100(43, 58);
+lessThan100(50, 44);
+lessThan100(74, 89);
+lessThan100(3, 27);
+lessThan100(21, 79);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 299
+
+// Given a string of letters, how many capital letters are there?
+
+function capitalLetters(txt) {
+	return txt.split("").filter(x => x === x.toUpperCase()).length;
+}
+
+
+const capitalLetters = s => {
+	return [...s].filter(v => v === v.toUpperCase()).length;
+}
+
+
+const capitalLetters = str => str.match(/[A-Z]/g) ? str.match(/[A-Z]/g).length : 0
+
+
+function capitalLetters(txt) {
+	return txt.split("").filter(x => x.match(/[A-Z]/)).length;
+}
+
+capitalLetters("hvbHKuFxMORMuBYRsgNF");
+capitalLetters("nrrvrXlmfwjwlbcjwrzt");
+capitalLetters("VdefGMkIeTUipnLhnIfe");
+capitalLetters("ShwvYyeQdGsJYRBhoihI");
+capitalLetters("ykEblUluPthiCMhxQFlz");
+capitalLetters("NCdLUzNdihwUumkqfJqN");
+capitalLetters("sdbMinvzxxulkzyzhfWe");
+capitalLetters("NEcLjmRMJEXwnBkiPpCO");
+capitalLetters("KVFifdDbnuWdkDdmDAkO");
+capitalLetters("pkgUmnquvzIueBlLbtYu");
+capitalLetters("xbbpykGhycjVEvCdaMew");
+capitalLetters("YVgbDlgZDDaGkOymseSP");
+capitalLetters("miuyhtTofqSuoCrgyhtc");
+capitalLetters("YYoNuXdYJhHIPFZZndya");
+capitalLetters("LRuGZepMZYIwQWXJpoTB");
+capitalLetters("gmEosHVTLNEsYOFLCrRR");
+capitalLetters("dPiadMjurjCjrgYbceuK");
+capitalLetters("PQgSxLADOswVPWoDBgCD");
+capitalLetters("odoaxlnmuyixnpthidus");
+capitalLetters("XcqykqdmvtuMynFhnayf");
