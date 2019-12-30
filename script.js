@@ -12919,3 +12919,77 @@ capitalLetters("dPiadMjurjCjrgYbceuK");
 capitalLetters("PQgSxLADOswVPWoDBgCD");
 capitalLetters("odoaxlnmuyixnpthidus");
 capitalLetters("XcqykqdmvtuMynFhnayf");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 299
+
+// Your job is to make a 'Twitter Link' regex expression rx. This regex searches a tweet to find the @handle and the #handle.
+
+// The function is already written in the test tab, so you only provide the Regex variable.
+// Only return the @ and # handles.
+
+
+
+const rx = /(?<!\w)@\w+|(?<!\w)#\w+/g;
+
+
+const rx = /[@#]\w+/gi
+
+
+const rx = /([@][A-z]+)|([#][A-z]+)/g;
+
+
+const tweet = str => str.match(rx).join` `;
+
+[
+[ 'Visit us at @edabit', '@edabit' ],
+[ 'This is #definitely, the @second test', '#definitely @second' ],
+[ '#Finally, a test!', '#Finally' ],
+[ '#Paris is the capital of #France.', '#Paris #France' ],
+[ 'The @committee consists of #eminent #jurists.',
+  '@committee #eminent #jurists'],
+[ '#Honesty is the best @policy!!', '#Honesty @policy' ],
+[ '@RonaldRoss was awarded the Nobel Prize for his work on the transmission of #malaria.',
+  '@RonaldRoss #malaria'],
+[ 'Follow @JavaScript', '@JavaScript' ]]
+    .forEach(x => tweet(x[0]), x[1]);
+    
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 300
+
+// Write a function that replaces all letters within a specified range with the hash symbol #.
+
+
+function replace(str, r) {
+	const regex = new RegExp("[" + r + "]", "g");
+	return str.replace(regex, "#");
+}
+
+
+function replace(str, r) {
+	return str.replace(new RegExp(`[${r}]`, 'g'), '#')
+}
+
+
+replace("abcdef", "c-e");
+replace("rattle", "r-z");
+replace("microscopic", "i-i");
+replace("bountiful", "a-o");
+replace("zebra", "a-z");
+replace("mount", "a-e");
+replace("", "a-z");
+
