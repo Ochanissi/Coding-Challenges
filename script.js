@@ -12993,3 +12993,173 @@ replace("zebra", "a-z");
 replace("mount", "a-e");
 replace("", "a-z");
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 301
+
+// Create a function that checks if the box is completely filled with the asterisk symbol *.
+
+
+function completelyFilled(arr) {
+	return arr.flat().join("").split("").every(x => x === "#" || x === "*");
+}
+
+
+function completelyFilled(arr) {
+    return !/\s/.test(arr.join(''));
+  }
+
+
+const completelyFilled = arr =>
+  arr.slice(1, -1).every(str => new Set(str).size === 2);
+
+
+function completelyFilled(arr) {
+    return arr.every(x => !x.includes(' '));
+}
+
+
+completelyFilled([
+    "#"
+]);
+completelyFilled([
+    "##", 
+    "##"
+]);
+completelyFilled([
+    "###", 
+    "#*#", 
+    "###"
+]);
+completelyFilled([
+    "######", 
+    "#****#", 
+    "#****#", 
+    "#****#", 
+    "#****#", 
+    "######"
+]);
+completelyFilled([
+    "#####", 
+    "#***#", 
+    "#***#", 
+    "#***#", 
+    "#####"
+]);
+completelyFilled([
+    "#####", 
+    "#* *#", 
+    "#***#", 
+    "#***#", 
+    "#####"
+]);
+completelyFilled([
+    "######", 
+    "#* **#", 
+    "#****#", 
+    "#* **#", 
+    "#*** #", 
+    "######"
+]);
+completelyFilled([
+    "######", 
+    "#* **#", 
+    "#* **#", 
+    "#* **#", 
+    "#* **#", 
+    "######"
+]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 302
+
+// Create a function that takes in a two-dimensional array and returns the number of sub-arrays with identical elements.
+
+
+function countIdentical(arr) {
+	return arr.filter(x => new Set(x).size === 1).length;
+}
+
+
+countIdentical([[33, 33], [5], ['a', 'a'], [2, 2, 2], [1, 2, 2], [3, 1]]);
+countIdentical([[1], [2], [3], [4]]);
+countIdentical([[1, 2], [2, 3], [3, 4], [4, 4]]);
+countIdentical([['@', '@', '@', '@'], [2, 3], [3, 4], [4, 4]]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 303
+
+// You have an array of strings, each consisting of a book title and an author's name.
+
+
+function tidyBooks(arr) {
+	const a = [];
+	arr.map(x => a.push(x.split(" -").map(x => x.trim())));
+	return a;
+}
+
+
+const tidyBooks = arr => arr.map(([str]) => str.trim().split(' - '));
+
+
+function tidyBooks(arr) {
+	arr= arr.map(x => x.trim(x)).map(x => x.split(" - "));
+	return arr;
+}
+
+
+tidyBooks(["     The Catcher in the Rye - J. D. Salinger    ", 
+"    Brave New World - Aldous Huxley   ", 
+"    Of Mice and Men - John Steinbeck    "]);
+
+
+tidyBooks(["     The Grapes of Wrath - John Steinbeck    ", 
+"    Great Expectations - Charles Dickens   ", 
+"    The Scarlet Letter - Nathaniel Hawthorne    "]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 304
+
+// Create a function that counts the number of adverbs in a sentence. An adverb is a word that ends with ly.
+
+
+function countAdverbs(sentence) {
+	return sentence.split(" ").map(x => x.match(/[\w\s]+/g).toString()).filter(x => x.endsWith('ly')).length;
+}
+
+
+countAdverbs("She ran hurriedly towards the stadium.");
+countAdverbs("She ate the lasagna heartily and noisily.");
+countAdverbs("He hates potatoes.");
+countAdverbs("He was happily, crazily, foolishly over the moon.");
+countAdverbs("She writes poetry beautifully.");
+countAdverbs("There are many fat geese in the park.");
+countAdverbs("The horse acted aggressively and stubbornly.");
+countAdverbs("She forgot where to buy the lysol.");
+countAdverbs("Ilya ran to the store.");
+
