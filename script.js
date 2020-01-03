@@ -13218,3 +13218,144 @@ floatSum(3.4444, 3.5555);
 floatSum(2.12022, 1.110001);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 306
+
+// Create a function that sums the total number of digits between two numbers, inclusive. For example, between the numbers 19 and 22 we have:
+
+// 19, 20, 21, 22
+// (1 + 9) + (2 + 0) + (2 + 1) + (2 + 2) = 19
+
+
+function sumDigits(a, b) {
+	const x = [];
+	for (let i = a; i <= b; i++) {
+		x.push(i);
+	}
+	return x.map(x => x.toString().split("")).flat().reduce((x, y) => Number(x) + Number(y));
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const sumDigits = (min, max) =>
+  sum(
+    Array.from({ length: max - min + 1 }, (_, i) =>
+      sum(
+        String(min + i)
+          .split('')
+          .map(Number)
+      )
+    )
+);
+
+
+function sumDigits(a, b) {
+	var arr = [];
+	for (var i = a; i <=b; i++){
+		arr.push(i);
+	}
+	return arr.join("").split("").reduce(function(a,b){return Number(a) + Number(b)});
+}
+
+sumDigits(7, 8);
+sumDigits(17, 20);
+sumDigits(10, 12);
+sumDigits(500, 506);
+sumDigits(66, 789);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 307
+
+// Create a function that takes a string and replaces each letter with its appropriate position in the alphabet. "a" is 1, "b" is 2, "c" is 3, etc, etc.
+
+
+function alphabetIndex(str) {
+	const x = [];
+	var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+	"k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+	"w", "x", "y", "z"];
+	
+	for (let i = 0; i < str.length; i++) {
+		const j = alphabet.indexOf(str[i].toLowerCase()) + 1;
+		if (j) x.push(j);
+	}
+	return x.join(" ");
+}
+
+
+const alphabetIndex = str => str.toLowerCase().match(/[a-z]/g).map(c => c.charCodeAt(0) - 96).join(' ');
+
+
+function alphabetIndex(str) {
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    return [...str.toLowerCase()]
+      .filter(s => letters.includes(s))
+        .map(s => letters.indexOf(s) + 1)
+        .join(' ');
+}
+
+
+function alphabetIndex(str) {
+    str.split('').filter( ch => /[a-zA-Z]/.test(ch) ).map( ch => ch.toLowerCase().charCodeAt() - 96 ).join(' ');
+}
+
+
+alphabetIndex("Wednesday is hump day, but has anyone asked the camel if he’s happy about it?");
+alphabetIndex("Check back tomorrow; I will see if the book has arrived.");
+alphabetIndex("We have a lot of rain in June.");
+alphabetIndex("Sixty-Four comes asking for bread.");
+alphabetIndex("The#b00k$is*in^fr0nt#0f!the_taBle.");
+alphabetIndex("Lets all be unique together until we realise we are all the same.");
+alphabetIndex("The river stole the gods.");
+alphabetIndex("Wow, does that work?");
+alphabetIndex("If Purple People Eaters are real… where do they find purple people to eat?");
+alphabetIndex("Abstraction is often one floor above you.");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 308
+
+// Write a function that calculates the GCD (Greatest Common Divisor) of two numbers recursively.
+
+
+function gcd(a, b) {
+    if (b == 0)
+      return a;
+    else
+      return gcd(b, (a % b));
+}
+
+
+const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+
+
+gcd(10, 20);
+gcd(1, 3);
+gcd(5, 7);
+gcd(2, 6);
+gcd(13, 39);
+gcd(50, 5);
+gcd(70, 35);
+gcd(100, 8);
+gcd(11, 45);
+
+
