@@ -13153,6 +13153,19 @@ function countAdverbs(sentence) {
 }
 
 
+const countAdverbs = sentence => (sentence.match(/\w+ly/g) || []).length;
+
+
+function countAdverbs(sentence) {
+	return sentence.split(/ly\b/).length - 1;
+}
+
+
+function countAdverbs(sentence) {
+	return sentence.split(' ').reduce((acc, cv) => acc + /ly\b/.test(cv), 0)
+}
+
+
 countAdverbs("She ran hurriedly towards the stadium.");
 countAdverbs("She ate the lasagna heartily and noisily.");
 countAdverbs("He hates potatoes.");
@@ -13162,4 +13175,46 @@ countAdverbs("There are many fat geese in the park.");
 countAdverbs("The horse acted aggressively and stubbornly.");
 countAdverbs("She forgot where to buy the lysol.");
 countAdverbs("Ilya ran to the store.");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 305
+
+// Captain Obvious is asked to implement a simple function that given two decimal numbers A and B returns their sum.
+
+// "Easy one!" he thinks, but soon he discovers that his function fails over the fifty percent of given test cases! He suspects the test cases are wrong, but his calculator is saying they're correct! What's happening?
+
+// Can you help Captain Obvious to debug his function and solve the exercise?
+
+
+function floatSum(A, B) {
+    return (Math.round((A + B) * 1000000)/1000000);
+}
+
+function floatSum(A, B) {
+    return Number((A + B).toFixed(6));
+}
+
+
+function floatSum(A, B) {
+    return parseFloat((A + B).toFixed(6));
+}
+
+floatSum(0.1, 0.2);
+floatSum(0.2, 0.3);
+floatSum(8.4, 8.8);
+floatSum(5.7, 4.3);
+floatSum(5, 0.81);
+floatSum(0.81, 99);
+floatSum(99.1, 0.109);
+floatSum(50.1234, 11.5678);
+floatSum(3.4444, 3.5555);
+floatSum(2.12022, 1.110001);
+
 
