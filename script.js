@@ -13359,3 +13359,262 @@ gcd(100, 8);
 gcd(11, 45);
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 309
+
+// Write a function that reverses the subarray between the start and end index (inclusive). The rest of the array should be kept the same.
+
+
+function rangedReversal(arr, start, end) {
+	const a = arr.slice(start, end + 1).reverse();
+	return [arr.slice(0, start), a, arr.slice(end + 1, arr.length)].flat();
+}
+
+
+function rangedReversal(arr, start, end) {
+    let prev=arr.slice(0,start)
+    let revesed=arr.slice(start,end+1).reverse()
+    let next=arr.slice(end+1)
+    return [...prev, ...revesed, ...next]
+}
+
+
+const rangedReversal = (arr, start, end) =>
+  arr
+    .slice(0, start)
+    .concat(arr.slice(start, end + 1).reverse())
+    .concat(arr.slice(end + 1));
+
+
+rangedReversal([1, 2, 3, 4, 5, 6], 1, 3);
+rangedReversal([1, 2, 3, 4, 5, 6], 0, 4);
+rangedReversal([9, 8, 7, 4], 0, 0);
+rangedReversal([9, 8, 7, 4], 0, 3);
+rangedReversal([8, 9, 3, 3, 2, 7, 4], 5, 6);
+rangedReversal([1, 2], 0, 1);
+rangedReversal([7, 8, 9, 4], 1, 2);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 310
+
+// Write a regular expression that matches any valid Canadian postal code with any of the following formats:
+
+// A1A 1A1
+// A1A-1A1
+// A1A1B1
+// Make the match case insensitive.
+
+
+const x = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+
+
+function validate(zip) {
+	return x.test(zip)
+}
+
+validate("M3M 0A9");
+validate("M3M-0A9");
+validate("M3M0A9");
+validate("m4c 1t1");
+validate("m4c-1t1");
+validate("m4c1t1");
+
+!validate("m45 1t1");
+!validate("M4F 1TY");
+!validate("M4C A1T");
+!validate("M4C-1T1Z");
+!validate("M4C1T1Z");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 311
+
+// Javascript has a String prototype default in the language which contains properties and methods such as .length and .toLowerCase(). Extend the String prototype by creating two new methods:
+
+// .consonants(), which returns the number of consonants in a word when called.
+// .vowels(), which returns the number of vowels in a word when called.
+
+
+String.prototype.consonants = function() {
+	// Write your code here
+	return this.match(/[bcdfghjklmnpqrstvwxys]/gi).length;
+}
+
+String.prototype.vowels = function() {
+	// Write your code here
+	return this.match(/[aeiou]/gi).length;
+}
+
+
+String.prototype.consonants = function() {
+	return this.match(/[^aeiou]/gi).length;	
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[aeiou]/gi).length;	
+}
+
+
+
+'hello'.consonants();
+'hello'.vowels();
+'greatly'.consonants();
+'greatly'.vowels();
+'Smithsonian'.consonants();
+'Smithsonian'.vowels();
+'fudge'.consonants();
+'fudge'.vowels();
+'lemony'.consonants();
+'lemony'.vowels();
+'chocolate'.consonants();
+'chocolate'.vowels();
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 312
+
+// Create a function that takes a phrase and transforms each word using the following rules:
+
+// Keep first and last character the same.
+// Transform middle characters into a dash -.
+
+
+function partiallyHide(phrase) {
+	return phrase.split(" ").map(x => x[0] + x.slice(1, -1).split("").map(x => x = "-").join("") + x[x.length - 1]).join(" ");
+}
+
+
+
+function partiallyHide(phrase) {
+	const pat = /(\B.)(?=\B)/g
+	return phrase.replace(pat, '-')
+}
+
+
+const partiallyHide = p => p.replace(/\B\w\B/g, "-");
+
+
+function partiallyHide(phrase) {
+    const words = phrase.split(" ")
+    const coded = words.map(word => word[0] + "-".repeat(word.length - 2) + word[word.length - 1])
+    return coded.join(" ")
+}
+
+
+const partiallyHide = sentence =>
+  sentence
+    .split(' ')
+    .map(word =>
+      word
+        .split('')
+        .map((char, i, arr) => (i === 0 || i === arr.length - 1 ? char : '-'))
+        .join('')
+    )
+    .join(' ');
+
+
+
+partiallyHide('Harry went to fight the basilisk');
+partiallyHide('She rolled her eyes');
+partiallyHide('skies were so beautiful');
+partiallyHide('red is not my color');
+partiallyHide('so many options');
+partiallyHide('the orient express');
+partiallyHide('went to the post office');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 313
+
+// In this challenge, you have to establish if a number is apocalyptic. A positive integer n greater than 0 is apocalyptic when 2 elevated to n contains one or more occurrences of 666 into it.
+
+// Given an integer n, implement a function that returns:
+
+// "Safe" if n is not apocalyptic.
+// "Single" if into 2^n there's a single occurence of 666.
+// "Double" if into 2^n there are two occurences of 666.
+// "Triple" if into 2^n there are three occurences of 666.
+
+
+function isApocalyptic(number) {
+	const x = BigInt(Math.pow(2, number)).toString();
+	let y = 0;
+	
+	for (let i = 0; i < x.length; i++) {
+		if (x[i] === '6' && x[i+1] === '6' && x[i+2] === '6') {
+			y++;
+		}
+	}
+
+	if (y === 1) {
+		return 'Single';
+	} else if (!y) {
+		return 'Safe';
+	} else if (y === 3) {
+		return 'Triple';
+	} else return 'Double';
+}
+
+
+const isApocalyptic = number => {
+	let find = String(BigInt(2 ** number)).match(/666/g),
+			type = find ? find.length : 0;
+	return ["Safe", "Single", "Double", "Triple"][type];
+}
+
+
+const answers = ['Safe', 'Single', 'Double', 'Triple'];
+const isApocalyptic = number => answers[
+	[...`${BigInt(2 ** number)}`.matchAll('666')].length
+];
+
+
+const isApocalyptic = num => {
+    const matches = String(BigInt(2) ** BigInt(num)).match(/666/g) || [];
+    return ['Safe', 'Single', 'Double', 'Triple'][Math.min(3, matches.length)];
+};
+
+
+isApocalyptic(66);
+isApocalyptic(157);
+isApocalyptic(220);
+isApocalyptic(931);
+isApocalyptic(166);
+isApocalyptic(529);
+isApocalyptic(443);
+isApocalyptic(166);
+isApocalyptic(703);
+isApocalyptic(528);
+isApocalyptic(648);
+
+
