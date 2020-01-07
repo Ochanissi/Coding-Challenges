@@ -13618,3 +13618,331 @@ isApocalyptic(528);
 isApocalyptic(648);
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 314
+
+// Per 6 coffee cups I buy, I get a 7th cup free. In total, I get 7 cups. Create a function that takes n cups bought and return as an integer the total number of cups I would get.
+
+
+
+function totalCups(n) {
+	return parseInt(n / 6) + n;
+}
+
+
+function totalCups(n) {
+    return n + Math.floor(n / 6)
+   }
+
+
+totalCups(6);
+totalCups(3);
+totalCups(7);
+totalCups(12);
+totalCups(213);
+totalCups(16);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 315
+
+// Write a function that retrieves all words that begin with a vowel.
+
+
+function retrieve(str) {
+	return str.toLowerCase().slice(0, -1).split(" ").filter(x => x.match(/^[aeiou]/gi));
+}
+
+
+function retrieve(str) {
+	return str.replace(/[.]/g,'')
+		.toLowerCase()
+		.split(/\s/)
+		.filter(x=>/[aeiou]/.test(x.charAt(0)));
+}
+
+
+
+retrieve("A simple life is a happy life for me.");
+retrieve("Exercising is a healthy way to burn off energy.");
+retrieve("The poor ostrich was ostracized.");
+retrieve("");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 316
+
+// Given an integer, return "odd" if the sum of all odd digits is greater than the sum of all even digits. Return "even" if the sum of even digits is greater than the sum of odd digits, and "equal" if both sums are the same.
+
+
+
+function oddsVsEvens(num) {
+	const even = num.toString().split("").filter(x => x % 2 === 0);
+	const odd = num.toString().split("").filter(x => x % 2 !== 0);
+	
+	let sumEven, sumOdd = 0;
+	
+	if (even.length > 0) {
+		sumEven = even.reduce((x, i) => Number(x) + Number(i));
+	}
+	
+	if (odd.length > 0) {
+		sumOdd = odd.reduce((x, i) => Number(x) + Number(i));
+	}
+	
+	if (sumEven > sumOdd) {
+		return "even";	
+	} else if (sumEven < sumOdd) {
+		return "odd";
+	} else if (sumEven === sumOdd) {
+		return "equal";
+	}
+}
+
+
+
+function oddsVsEvens(num) {
+	let even = 0, odd = 0; 
+	num.toString().split('')
+  .map((x) => Number(x) % 2 == 0 ? even += Number(x) : odd += Number(x));
+	return even == odd ? "equal" : even > odd ? "even" : "odd";
+}
+
+
+
+function oddsVsEvens(num) {
+	var even = String(num).split('').map(v => +v).filter(v => [2,4,6,8].includes(v)).reduce( (a,c) => a+c,0)
+	var odd = String(num).split('').map(v => +v).filter(v => [1,3,5,7,9].includes(v)).reduce( (a,c) => a+c,0)
+	return even > odd ? 'even' : even === odd ? 'equal' : 'odd'
+}
+
+
+oddsVsEvens(44547);
+oddsVsEvens(412420);
+oddsVsEvens(128797);
+oddsVsEvens(838768);
+oddsVsEvens(371910);
+oddsVsEvens(769431);
+oddsVsEvens(221294);
+oddsVsEvens(859307);
+oddsVsEvens(847617);
+oddsVsEvens(348466);
+oddsVsEvens(50236);
+oddsVsEvens(133987);
+oddsVsEvens(698570);
+oddsVsEvens(822406);
+oddsVsEvens(54313);
+oddsVsEvens(17788);
+oddsVsEvens(72083);
+oddsVsEvens(649924);
+oddsVsEvens(968740);
+oddsVsEvens(942674);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 317
+
+// Create a function that takes an array of numbers and return the number that's unique.
+
+
+function unique(arr) {
+	const a = arr.sort((a, b) => a - b);
+	
+	if (a[0] !== a[1]) {
+		return a[0];
+	}
+	
+	if (a[a.length - 1] !== a[a.length - 2]) {
+		return a[a.length - 1];
+	}
+}
+
+unique = a => a.find(x => a.indexOf(x) == a.lastIndexOf(x))
+
+function unique(arr) {
+	return arr.filter(x => arr.lastIndexOf(x) === arr.indexOf(x))[0];
+}
+
+
+unique = a => a.sort()[0]==a[1] ? a.pop() : a[0]
+
+
+unique([3, 3, 3, 7, 3, 3]);
+unique([0, 0, 0.77, 0, 0]);
+unique([0, 1, 1, 1, 1, 1, 1, 1]);
+unique([-4, -4, -4, 4]);
+unique([8, 8, 8, 8, 8, 8, 8, 0.5]);
+unique([2, 1, 2, 2, 2, 2, 2, 2]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 318
+
+// Create two functions: a left-shift function and a right-shift function. Each function will take in an array and a single parameter: the number of shifts.
+
+
+function leftShift(arr, num) {
+	const a = arr;
+	for (let i = 1; i <= num; i++) {
+			a.push(a[0]);
+			a.shift();
+	}
+	return a;
+}
+
+function rightShift(arr, num) {
+		const a = arr;
+		for (let i = 1; i <= num; i++) {
+			a.unshift(a[a.length - 1]);
+			a.pop();
+	}
+	return a;
+}
+
+
+
+function leftShift(arr, num) {
+	if (num <= 0) {
+		return arr;
+	}
+	
+	arr.push(arr.shift());
+	
+	return leftShift(arr, num - 1);
+}
+
+function rightShift(arr, num) {
+	if (num <= 0) {
+		return arr;
+	}
+	
+	arr.unshift(arr.pop());
+	
+	return rightShift(arr, num - 1);
+}
+
+
+
+const leftShift = (arr, num) => {
+    const { length } = arr;
+    const cutPoint = num % length;
+  
+    return arr.slice(cutPoint).concat(arr.slice(0, cutPoint));
+  };
+  
+  const rightShift = (arr, num) => {
+    const { length } = arr;
+    const cutPoint = length - (num % length);
+  
+    return arr.slice(cutPoint).concat(arr.slice(0, cutPoint));
+  };
+
+
+
+
+leftShift([1, 2, 3, 4], 1);
+rightShift([1, 2, 3, 4], 1);
+leftShift([1, 2, 3, 4, 5], 3);
+leftShift([1, 2, 3, 4, 5], 5);
+leftShift([1, 2, 3, 4, 5], 6);
+leftShift([1, 2, 3, 4, 5], 1);
+leftShift([1, 2, 3, 4, 5], 4);
+rightShift([1, 2, 3, 4, 5], 1);
+rightShift([1, 2, 3, 4, 5], 3);
+rightShift([1, 2, 3, 4, 5], 0);
+rightShift([1, 2, 3, 4, 5], 15);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 319
+
+// Create a function that takes two arrays and combines them by alternatingly taking elements from each array in turn.
+
+// The arrays may be of different lengths, with at least one character / digit.
+// The first array will contain string characters (lowercase, a-z).
+// The second array will contain integers (all positive).
+
+
+function mergeArrays(a, b) {
+	const x = [];
+	for (let i = 0; i < Math.max(a.length, b.length); i++) {
+		if (a[i]) {
+			x.push(a[i]);
+		}
+		if (b[i]) {
+			x.push(b[i]);
+		}
+	}
+	return x;
+}
+
+
+function mergeArrays(a, b) {
+    var result = []
+    for (var i = 0; i < Math.max(a.length, b.length); i++) {
+      if (a[i]) result.push(a[i])
+      if (b[i]) result.push(b[i])
+    }
+    return result
+}
+
+
+function mergeArrays(a, b) {
+    return a.reduce((arr, c, i) => {
+      return arr.concat(c).concat(b.slice(i, i+1))
+    }, []).concat(b.slice(a.length))
+}
+
+
+function mergeArrays(a, b) {
+	return [].concat(...a.map((v,i)=>(b[0])?[v,b.shift()]:v),b)
+}
+
+
+mergeArrays(["a", "b", "c", "d", "e"], [1, 2, 3, 4, 5]);
+mergeArrays([1, 2, 3], ["a", "b", "c", "d", "e", "f"]);
+mergeArrays(["f", "d", "w", "t"], [5, 3, 7, 8]);
+mergeArrays([4, 54, 7, 87], ["t", "d", "t"]);
+mergeArrays(["c"], [3]);
+mergeArrays([4, 3, 2, 1], ["r", "d"]);
+mergeArrays(["u", "k", "c"], [2, 8, 30]);
+mergeArrays(["e"], [1, 2, 3, 4, 5, 6, 7]);
+mergeArrays([1, 2, 3, 4, 5, 6, 7], ["e"]);
+mergeArrays([123, 456], ["c", "b", "a"]);
+
+
