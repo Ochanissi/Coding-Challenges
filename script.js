@@ -13946,3 +13946,257 @@ mergeArrays([1, 2, 3, 4, 5, 6, 7], ["e"]);
 mergeArrays([123, 456], ["c", "b", "a"]);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 320
+
+// Write a function that takes in a word and splits the consonants one by one, but keeps the vowels in a cluster.
+
+
+function split(word) {
+	const a = [];
+	for (let i = 0; i < word.length; i++) {
+		if (word[i].match(/[aeiou]/) && word[i - 1].match(/[aeiou]/)) {
+				a[a.length - 1] += word[i];
+		} else {
+			a.push(word[i])
+		}
+	}
+	return a;
+}
+
+const split = word => word.match(/[aeiou]+|./g);
+
+
+function split(word) {
+	return word.match(/([^aeiou]|[aeiou]+)/g)
+}
+
+
+const split = word => 
+    word.match(/[^aouei]|[aouei]{1,}/gi) || [];
+    
+
+
+split("beautifully");
+split("spoonful");
+split("swimming");
+split("courage");
+split("cooing");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 321
+
+// Create a function that tests whether or not an integer is a perfect number. A perfect number is a number that can be written as the sum of its factors, excluding the number itself.
+
+// For example, 6 is a perfect number, since 1 + 2 + 3 = 6, where 1, 2, and 3 are all factors of 6. Similarly, 28 is a perfect number, since 1 + 2 + 4 + 7 + 14 = 28.
+
+function checkPerfect(num) {
+	let a = 0;
+	
+	for (let i = 1; i < num; i++) {
+		if (num % i == 0) {
+			a += i;
+		}
+	}
+	if (a === num) {
+		return true;
+	}
+	return false;
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const factors = num => {
+  const factors = [];
+
+  for (let i = 1; i <= Math.floor(Math.sqrt(num)); i++) {
+    if (num % i === 0) {
+      factors.push(i);
+
+      if (num / i !== i && num / i !== num) factors.push(num / i);
+    }
+  }
+
+  return factors;
+};
+
+const checkPerfect = num => sum(factors(num)) === num;
+
+
+checkPerfect(6);
+checkPerfect(28);
+checkPerfect(496);
+checkPerfect(8128);
+checkPerfect(33550336);
+checkPerfect(12);
+checkPerfect(97);
+checkPerfect(481);
+checkPerfect(1001);
+checkPerfect(55555);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 322
+
+// You have an array of integers, and for each index you want to find the product of every integer except the integer at that index.
+
+// Create a function that takes an array of integers and returns an array of the products.
+
+
+function getProducts(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		let abc = arr.slice();
+		abc.splice(i, 1);
+		a.push(abc.reduce((x, i) => x * i));
+	}
+	return a;
+}
+
+
+
+function getProducts(arr) {
+    return arr.map((x, i) => arr.reduce((y, z, j) => (i === j ? y : y * z) , 1));
+}
+
+
+
+const getProducts = arr => {
+    return arr.map((item, index, arr) => {
+      return arr.reduce((acc, item, i, arr) => {
+        return acc *= (i !== index ? item : 1);
+      }, 1);
+    });
+  }
+
+
+const getProducts = arr => arr.map((i,k) => arr.filter((val,key) => key !== k).reduce((a,b) => a * b))
+
+
+
+
+getProducts([1, 2, 6, 5, 9]);
+getProducts([1, 7, 3, 4]);
+getProducts([1, 2, 3, 0, 5]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 323
+
+// Write a function that takes a string and calculates the number of letters and digits within it. Return the result as an object.
+
+
+
+function countAll(str) {
+	const a = {
+		LETTERS: 0,
+		DIGITS: 0
+	}
+	
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].match(/[A-Za-z]/)) {
+			a.LETTERS += 1;
+		} else if (str[i].match(/[0-9]/)) {
+			a.DIGITS += 1;
+		}
+	}
+	return a;
+}
+
+
+const countAll = str => ({
+    LETTERS: (str.match(/[a-z]/gi) || []).length,
+    DIGITS: (str.match(/\d/g) || []).length
+  });
+
+
+function countAll(str) {
+	var letters = [...str].filter(item => /[a-zA-Z]/.test(item));
+	var digits = [...str].filter(item => /[0-9]/.test(item));
+	return {"LETTERS" : letters.length, "DIGITS" : digits.length}
+}
+
+
+countAll('Hello');
+countAll('137');
+countAll('H3LL0');
+countAll('149990');
+countAll('edabit 2018');
+countAll('    ');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 324
+
+// Create a function that transforms sentences ending with multiple question marks ? or exclamation marks ! into a sentence only ending with one.
+
+
+function noYelling(phrase) {
+	const a = phrase.split("");
+	for (let i = 0; i < a.length; i++) {
+		if (a[a.length - 2] === "!" || a[a.length - 2] === "?") {
+			a.pop();
+		}
+	}
+	return a.join("");
+}
+
+
+
+function noYelling(phrase) {
+	return phrase.replace(/([?!])+$/g, '$1')
+}
+
+
+
+function noYelling(phrase) {
+	phrase = phrase.replace(/\?{2,}$/g, '?');
+	phrase = phrase.replace(/\!{2,}$/g, '!');
+	return phrase;
+}
+
+
+let noYelling=(phrase)=> phrase[phrase.length-1]==phrase[phrase.length-2]?
+    noYelling(phrase.slice(0,phrase.length-1)):phrase
+
+
+noYelling("What went wrong?????????");
+noYelling("Oh my goodness!!!");
+noYelling("WHAT!");
+noYelling("WHAT?");
+noYelling("Oh my goodness!");
+noYelling("I just cannot believe it.");
+noYelling("I just!!! can!!! not!!! believe!!! it!!!");
+noYelling("That's a ton!! of cheese!!!!");
+
+
