@@ -14200,3 +14200,384 @@ noYelling("I just!!! can!!! not!!! believe!!! it!!!");
 noYelling("That's a ton!! of cheese!!!!");
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 325
+
+// Given an array of numbers and a positive value for n, return the sum of every nth number in the array.
+
+function sumEveryNth(numbers, n) {
+	let a = 0;
+	for (let i = 0; i < numbers.length; i++) {
+		if ((i + 1) % n === 0) {
+			a += numbers[i];
+		}
+	}
+    return a;
+}
+
+
+const sumEveryNth = (arr, k) => 
+	arr.reduce((a, v, i) => (i + 1) % k? a : a + v, 0);
+
+
+const sumEveryNth = (arr, nth) => {
+    return arr
+        .filter((_,i) => (i + 1) % nth === 0)
+        .reduce((a,v) => a + v, 0);
+}
+
+
+sumEveryNth([2, 5, 3, 9, 5, 7, 10, 7, 3, 3, 3], 9);
+sumEveryNth([10, 9, 2, 5, 9, 6, 4, 6, 7, 10, 9, 9, 9, 9, 2, 1, 2], 7);
+sumEveryNth([4, 5, 8, 7, 8, 1, 7, 9, 7, 4, 6, 2, 8, 8, 9, 9, 1, 7, 4], 6);
+sumEveryNth([8, 3, 5, 2, 6, 1, 5, 4, 3, 6, 6, 8, 5, 10, 7, 3, 7, 3, 5], 11);
+sumEveryNth([8, 9, 4, 8, 7, 5, 2, 9, 1, 8, 3, 8, 4, 9, 9, 6], 11);
+sumEveryNth([8, 2, 2, 7, 10, 6, 3, 5, 4, 4], 12);
+sumEveryNth([7, 4, 4, 10, 2, 6, 1, 9, 5, 10, 6, 4, 6, 6, 5, 9, 4, 10, 9], 8);
+sumEveryNth([5, 10, 10, 9, 10, 3, 5, 6, 6, 2, 10, 2, 9, 6, 8, 9, 10, 9, 4], 16);
+sumEveryNth([10, 4, 8, 4, 3, 9, 1, 1, 10, 7, 1, 4, 5, 5, 6, 1, 9]);
+sumEveryNth([2, 6, 3, 10, 6, 5, 4, 7, 9, 4, 1, 8, 9, 10, 8, 7, 2, 3, 6], 8);
+sumEveryNth([10, 9, 7, 8, 5, 7, 9, 5, 3, 3, 1], 7);
+sumEveryNth([7, 2, 9, 6, 1, 8, 8, 10, 2, 5, 5, 7, 3, 10, 1], 2);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 326
+
+// The median of a group of numbers is the middle number when the group is sorted. If the size of the group is even, the median is the average of the middle two numbers. Given a sorted array of numbers, return the median (rounded to one decimal place if the median isn't an integer).
+
+
+function median(nums) {
+	for (let i = 0; i <= nums.length; i++) {
+		if (nums.length > 2) {
+			nums.pop();
+			nums.shift();
+		}
+	}
+	return nums.length === 2 ? (nums[0] + nums[1]) / 2 : nums[0]
+}
+
+
+
+function median(nums) {
+
+	if(nums.length%2 == 0){
+		let b = nums.length/2 -1
+		return (nums[b] + nums[b+1])/2
+	}else{
+		return nums[Math.floor(nums.length/2)]
+	}
+}
+
+
+const median=n=>
+n.length%2?n[(n.length-1)/2]:(n[n.length/2-1]+n[n.length/2])/2
+
+
+
+function median(nums) {
+	let len = nums.length;
+	let mid = Math.floor(len / 2);
+	return len % 2 === 1 ? nums[mid] : 
+		+(((nums[mid] + nums[mid-1]) / 2).toFixed(1));
+}
+
+
+function median(nums) {
+	if(nums.length % 2) {return nums.splice(nums.length/2,1)[0]}
+	else {
+		return nums
+			.splice((nums.length/2)-1,2)
+			.reduce((acc,v) => acc + v) / 2
+	}
+}
+
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const average = arr => sum(arr) / arr.length;
+
+const median = arr => {
+  const half = Math.floor(arr.length / 2);
+  return arr.length % 2 !== 0
+    ? arr[half]
+    : average(arr.slice(half - 1, half + 1));
+};
+
+
+median([3, 4, 4, 5, 6, 8]);
+median([1, 4, 4, 9, 9, 10]);
+median([1, 2, 4, 4, 4, 7, 7, 9, 10]);
+median([1, 7, 8, 8, 10, 10, 10]);
+median([2, 3, 3, 3, 3, 5]);
+median([1, 1, 3, 4, 6, 6, 6, 7, 10]);
+median([3, 4, 6, 6, 6, 7, 9, 10, 10]);
+median([3, 3, 4, 5, 6, 6, 7, 9]);
+median([3, 4, 4, 6, 9, 9, 9]);
+median([3, 4, 4, 5, 7, 8]);
+median([2, 4, 4, 5, 5, 8, 8, 9, 10]);
+median([4, 5, 5, 6, 8, 10]);
+median([1, 4, 4, 5, 8, 9]);
+median([1, 4, 8, 8, 8, 8, 9, 10]);
+median([1, 1, 2, 2, 10, 10]);
+median([3, 4, 4, 5, 7, 8, 9]);
+median([1, 1, 2, 2, 2, 4, 5, 6, 8]);
+median([2, 4, 5, 5, 7, 7, 9, 10]);
+median([1, 3, 4, 8, 8, 10, 10]);
+median([1, 1, 4, 5, 5, 9, 9, 10]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 327
+
+// Alliteration refers to a sequence of words that begin with the same letter. For this exercise, a sentence is correctly alliterated if all words strictly greater than 3 characters begin with the same letter.
+
+
+function alliterationCorrect(sentence) {
+	const a = sentence.toLowerCase().slice(0, -1).split(" ").filter(x => x.length > 3);
+	return a.every(x => x[0] === a[0][0]);
+}
+
+
+const alliterationCorrect = sentence => {
+    const words = sentence.split(' ').filter(word => word.length > 3);
+    const initial = words[0][0];
+    return words.every(word => new RegExp(`^${initial}`, 'i').test(word));
+};
+
+
+function alliterationCorrect(sentence) {
+	var a = sentence.replace(/[\.,]/g, '').toLowerCase().split(/\s+/);
+	for (var i = a.length-1; i >= 0; i--) {
+		if (a[i].length <= 3) a.splice(i, 1);
+	}
+	for (var i = 0; i < a.length-1; i++) {
+		if (a[i].charAt(0) != a[i+1].charAt(0)) return false;
+	}
+	return true;
+}
+
+
+alliterationCorrect('She swam to the shore.');
+alliterationCorrect('Maybel manages money well.');
+alliterationCorrect('He helps harness happiness.');
+alliterationCorrect('There are many animals in the zoo.');
+alliterationCorrect('Tanya took the tomatoes. Two times two is not twenty.');
+alliterationCorrect('Two times two is four.');
+alliterationCorrect('Nancy nimbly ran for the newts.');
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 328
+
+// Create a function that takes in an array and returns an array of the accumulating sum.
+
+
+function accumulatingArray(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (a.length > 0) {
+			a.push(arr[i] + a[i-1]);
+		} else {
+			a.push(arr[i]);
+		}
+	}
+	return a;
+}
+
+
+const accumulatingArray = arr => {
+    let sum = 0;
+    return arr.map(num => (sum += num));
+  };
+
+
+const accumulatingArray = arr => arr.map((x, i) =>
+  arr.slice(0, i+1).reduce((acc, val) => acc + val, 0));
+
+
+accumulatingArray([1, 1, 1, 1, 1]);
+accumulatingArray([1, 5, 7]);
+accumulatingArray([1, 0, 1, 0, 1]);
+accumulatingArray([1, 2, 3, 0, 0, 1]);
+accumulatingArray([]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 329
+
+// Create a function that divides a string into parts of size n.
+
+
+function partition(str, n) {
+    return str.match(new RegExp('.{1,' + n + '}', 'g'));
+}
+
+
+function partition(str, n) {
+	return str.match(new RegExp(`.{1,${n}}`, 'g'));
+}
+
+
+const divideByN = (str, size) => {
+    const result = [];
+  
+    for (let i = 0; i < str.length; i += size) {
+      result.push(str.slice(i, i + size));
+    }
+  
+    return result;
+};
+
+
+partition("them", 2);
+partition("thematic", 4);
+partition("movement", 2);
+partition("python", 2);
+partition("c++", 2);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 330
+
+// Write a function that counts the number of times a specific digit occurs in a range (inclusive). The function will look like:
+
+// digitOccurrences(min, max, digit) ➞ number of times digit occurs
+
+
+function digitOccurrences(min, max, digit) {
+	const a = [];
+	for (let i = min; i <= max; i++) {
+		a.push(i);
+	}
+	return a.join("").split("").filter(x => Number(x) === digit).length;
+}
+
+
+
+function digitOccurrences(min, max, digit) {
+	const p = new RegExp(`[^${digit}]`, 'g');
+	return Array.from({length: max+1-min}, el=>min++).join``.replace(p,'').length;
+}
+
+
+const digitOccurrences = (min, max, digit) => {
+    const range = Array.from({ length: max - min + 1 }, (_, i) => min + i);
+    return (range.join('').match(new RegExp(digit, 'g')) || []).length;
+};
+
+
+function digitOccurrences(min, max, digit) {
+	let count = 0;
+	for (let i = min; i <= max; i++) {
+		count += (String(i).match(new RegExp(digit, 'g')) || []).length;
+	}
+	return count;
+}
+
+
+digitOccurrences(51, 55, 5);
+digitOccurrences(1, 8, 9);
+digitOccurrences(71, 77, 2);
+digitOccurrences(1, 14, 4);
+digitOccurrences(20, 30, 2);
+digitOccurrences(18, 37, 3);
+digitOccurrences(5, 335, 6);
+digitOccurrences(-19, 19, 0);
+digitOccurrences(-8, -1, 8);
+digitOccurrences(-5, -5, 4);
+digitOccurrences(-5, -5, 5);
+digitOccurrences(-50, -45, 4);
+digitOccurrences(-500, -45, 4);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 331
+
+// Write a function to create a Christmas tree based on height h.
+
+
+function tree(h) {
+	const a = [];
+    for (let i = 0; i < h; i++) {
+			let star = '#';
+			let space = ' ';
+
+		for (let j = 1; j <= i; j++) {
+			star = star + '##';            
+		}
+
+		const spacesBefore = space.repeat(h-i-1);
+		star = spacesBefore + star + spacesBefore;
+		a.push(star);
+	}
+	return a;
+}
+
+
+
+const tree = length =>
+  Array.from({ length }, (_, i) => {
+    const leafs = i * 2 + 1;
+    const spaces = ' '.repeat((length * 2 - 1 - leafs) / 2);
+    return `${spaces}${'#'.repeat(leafs)}${spaces}`;
+});
+
+
+
+function tree(h) {
+	return [...Array(h)].map((v,i) => ' '.repeat(h-i-1) + '#'.repeat(2*i+1) + ' '.repeat(h-i-1));
+}
+
+
+tree(1);
+
+tree(2);
+
+tree(5);
+
+tree(0);
+
+
