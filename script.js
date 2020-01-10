@@ -14581,3 +14581,177 @@ tree(5);
 tree(0);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 332
+
+// Create a function that takes an array and finds the integer which appears an odd number of times.
+
+
+function findOdd(arr) {
+	const freq = arr.reduce(
+		(o, k) => ({ ...o, [k]: (o[k] || 0) + 1 }), 
+		{});
+	return Number(Object.keys(freq).filter(k => freq[k] % 2));
+}
+
+
+function findOdd(arr) {
+	return arr.find(n => arr.filter(n2 => n == n2).length % 2);
+}
+
+
+findOdd = l=>l.reduce((a,b)=>a^b,0)
+
+
+
+const findOdd = arr => {
+	const map = arr.reduce((obj, curr) => {
+    return Object.assign({}, obj, { [curr]: (obj[curr] || 0) + 1 });
+  }, {});
+
+  return parseInt(Object.keys(map).find(key => map[key] % 2 === 1), 10);
+}
+
+
+doTest([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5], 5);
+doTest([1,1,2,-2,5,2,4,4,-1,-2,5], -1);
+doTest([20,1,1,2,2,3,3,5,5,4,20,4,5], 5);
+doTest([10], 10);
+doTest([1,1,1,1,1,1,10,1,1,1,1], 10);
+doTest([5,4,3,2,1,5,4,3,2,10,10], 1);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 333
+
+// Create a function that takes a string and returns the number of alphanumeric characters that occur more than once.
+
+
+function duplicateCount(str) {
+	const a = str.split("").sort().join("");
+	const x = [];
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] == a[i+1] && a[i] !== x[x.length-1]) {
+			x.push(a[i]);
+		}
+	}
+	return x.length;
+}
+
+
+const duplicateCount = str => (str.split('').sort().join('').match(/(.)\1+/g) || []).length
+
+
+function duplicateCount(str) {
+    return str.toLowerCase().split("")
+      .filter( (x, i, a) => a.indexOf(x) !== i )
+      .filter( (x, i, a) => a.indexOf(x) === i ).length;
+  }
+
+
+
+function duplicateCount(str) {
+    str = str.toLowerCase();
+    var map = {};
+    
+    for (var i = 0; i < str.length; i++) {
+      	var char = str[i];
+        map[char] = map[char] + 1 || 1;
+    }
+    
+    return Object.keys(map).reduce((acc, key) => {
+        return map[key] > 1 ? acc + 1 : acc;
+    }, 0);
+}
+
+
+function duplicateCount(str) {
+    const m = {};
+      str.split('').forEach(x => m[x] = !m[x] ? 1 : m[x] + 1);
+      return Object.keys(m).filter(x => m[x] > 1).length;
+  }
+
+duplicateCount("abcde");
+duplicateCount("Aa");
+duplicateCount("aabbcde");
+duplicateCount("aabbcdeB");
+duplicateCount("indivisibility");
+duplicateCount("Indivisibilities");
+duplicateCount("aa1112");
+duplicateCount("bb2c");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 334
+
+// Create two functions toCamelCase() and toSnakeCase() that each take a single string and convert it into either camelCase or snake_case. If you're not sure what these terms mean, check the Resources tab above.
+
+
+function toSnakeCase(str) {
+	return str.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase();
+}
+
+function toCamelCase(str) {
+	const a = str.split("_");
+	const x = [a[0]];
+	for (let i = 1; i < a.length; i++) {
+		x.push(a[i][0].toUpperCase() + a[i].slice(1))
+	}
+	return x.join("");
+}
+
+
+
+
+toSnakeCase = s => s.replace(/[A-Z]/g, x => '_' + x.toLowerCase())
+toCamelCase = s => s.replace(/_\w/g, x => x[1].toUpperCase())
+
+
+
+const toSnakeCase = str =>
+  str.replace(/[A-Z]/g, match => `_${match.toLowerCase()}`);
+
+const toCamelCase = str =>
+  str.replace(/_+(.)/g, (_, group1) => group1.toUpperCase());
+
+
+
+
+const toSnakeCase = (str) => str.split('').map(a=>(a === a.toUpperCase()? '_'+ a.toLowerCase(): a)).join('')
+​
+​
+const toCamelCase = (str) => str.split('_').map((a, index)=>(index>0)? a[0].toUpperCase() + a.slice(1): a).join('')
+
+
+// camelCase to snake_case tests
+toSnakeCase("edabit");
+toSnakeCase("helloEdabit");
+toSnakeCase("isModalOpen");
+toSnakeCase("getBackgroundColor");
+toSnakeCase("isLoading");
+toSnakeCase("x");
+
+// snake_case to camelCase tests
+toCamelCase("edabit");
+toCamelCase("hello_edabit");
+toCamelCase("is_modal_open");
+toCamelCase("get_background_color");
+toCamelCase("is_loading");
+toCamelCase("x");
+
+
