@@ -14755,3 +14755,156 @@ toCamelCase("is_loading");
 toCamelCase("x");
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 335
+
+// Create a function that takes an array of strings and returns an array with only the strings that have numbers in them. If there are no strings containing numbers, return an empty array.
+
+
+
+function numInStr(arr) {
+	return arr.filter(x => x.match(/\d/));
+}
+
+
+function numInStr(arr) {
+	return arr.filter(x=>/\d/.test(x));
+}
+
+
+
+const numInStr = arr => arr.filter(str => /\d/.test(str));
+
+
+
+
+
+numInStr(['abc', 'abc10']);
+numInStr(['abc', 'ab10c',  'a10bc', 'bcd']);
+numInStr(['1', 'a' , ' ' ,'b']);
+numInStr(['rct', 'ABC', 'Test', 'xYz']);
+numInStr(['this IS','10xYZ', 'xy2K77', 'Z1K2W0', 'xYz']);
+numInStr(['-/>', '10bc', 'abc ']);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 336
+
+// Write a function that returns the smallest N-digit number which is a multiple of the specified value.
+
+
+function smallest(digits, value) {
+	let a = '1';
+	for (let i = 1; i < digits; i++) {
+		a += 0;
+	}
+	
+	let b = parseInt(a);
+	
+	for (let i = 0; i < value; i++) {
+		if (b % value !== 0) {
+			b++;
+		}
+	}
+	return b;
+}
+
+
+function smallest(digits, value) {
+	let num = Math.pow(10,digits-1)
+	return num + value - (num%value || value) 
+}
+
+
+function smallest(digits, value) {
+	for (let i = 1; true; i++) {
+		var x = value * i;
+		if ((""+x).length == digits) {
+			return x;
+		}
+	}
+}
+
+
+
+const smallest = (digits, value) => {
+    const start = Number(`1e${digits - 1}`);
+  
+    for (let i = start; ; i++) if (i % value === 0) return i;
+  };
+
+
+smallest(3, 8);
+smallest(5, 12);
+smallest(7, 1);
+smallest(2, 3);
+smallest(9, 33);
+smallest(8, 17);
+smallest(4, 67);
+smallest(4, 432);
+smallest(3, 432);
+smallest(3, 77);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 337
+
+// Create a function that takes two numbers as arguments and returns the first number rounded to the nearest number, or a multiple of that number.
+
+
+function roundNearest(num, nearest) {
+	const a = nearest * Math.round(num / nearest)
+	return isNaN(a) ? Math.round(num) : a;
+}
+
+
+const roundNearest = (n, nR = 1) => Math.round(n / nR) * nR;
+
+
+function roundNearest(num, nearest) {
+	if (!nearest) return Math.round(num)
+	return ~~((num+Math.sign(num)*nearest/2)/nearest)*nearest
+}
+
+
+const roundNearest = (n, nearest = 1) => Math.round(n / nearest) * nearest;
+
+
+[[11, 10.5],
+[-17, -16.9],
+[180, 178, 10],
+[21446.69, 21418.3, 118.49],
+[125, 123, 5],
+[19700, 19684, 100],
+[159.5, 160, 1.1],
+[36, 36.3],
+[123000, 123456, 1000],
+[21, 18, 7],
+[123500, 123456, 100],
+[25, 25.9, 2.5],
+[123460, 123456, 10],
+[99, 100, 11],
+[876519, 876518, 3],
+[160, 160],
+[-87912, -87510.69, 888],
+[0, 0.05],
+[722228, 722222, 19],
+[190, 189, 2]].forEach(x => roundNearest(x[1], x[2]), x[0]);
+
