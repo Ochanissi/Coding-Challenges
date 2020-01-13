@@ -14908,3 +14908,123 @@ const roundNearest = (n, nearest = 1) => Math.round(n / nearest) * nearest;
 [722228, 722222, 19],
 [190, 189, 2]].forEach(x => roundNearest(x[1], x[2]), x[0]);
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 338
+
+// The facts are:
+
+// You've just finished dinner.
+// You love spicy food but your friend hates it.
+// Given your friend's unfortunate taste preferences, you decide to split the bill only for non-spicy items. You will pay in full for the spicy dishes.
+
+// Given two ordered arrays, one classifying the dishes as spicy vs. non-spicy and the other listing their prices, write a function that outputs an array where the first element is how much you pay and the second element is how much your friend pays.
+
+
+function billSplit(spicy, cost) {
+	const a = [0, 0];
+	for (let i = 0; i < cost.length; i++) {
+		if (spicy[i] === 'S') {
+			a[0] += cost[i];
+		} else {
+			a[0] += cost[i] / 2;
+			a[1] += cost[i] / 2;
+		}
+	}
+	return a;
+}
+
+
+function billSplit(spicy, cost) {
+	let you = spicy.map((x,i) => x === 'S'? cost[i]: cost[i]/2).reduce((a,b)=>a+b);
+	let friend = spicy.map((x,i) => x === 'S'? 0: cost[i]/2).reduce((a,b) => a+b);
+	return [you, friend];	
+}
+
+
+
+const billSplit = (spicy, costs) => {
+    return costs.reduce(
+      ([me, him], cost, i) => {
+        const isSpicy = spicy[i] === 'S';
+        return isSpicy ? [me + cost, him] : [me + cost / 2, him + cost / 2];
+      },
+      [0, 0]
+    );
+  };
+
+
+billSplit(['N', 'S', 'N'], [10, 10, 20]);
+billSplit(['N', 'N'], [10, 10]);
+billSplit(['S', 'N'], [41, 10]);
+billSplit(['S', 'S', 'S', 'N', 'N'], [8, 9, 8, 7, 7]);
+billSplit(['N', 'N', 'N', 'S'], [40, 20, 20, 10]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 339
+
+// Create a function which simulates the game "rock, paper, scissors". The function takes the input of both players (rock, paper or scissors), first parameter from first player, socond from second player. The function returns the result as such:
+
+// "Player 1 wins"
+// "Player 2 wins"
+// "TIE" (if both inputs are the same)
+// The rules of rock, paper, scissors, if not known:
+
+// Both players have to say either "rock", "paper" or "scissors" at the same time.
+// Rock beats scissors, paper beats rock, scissors beat paper.
+
+
+
+function rps(s1, s2) {
+	if (s1 === s2) {
+		return "TIE"
+	} else if (s1 === "paper" && s2 === "rock" || s1 === "rock" && s2 === "scissors" || s1 === "scissors" && s2 === "paper") {
+		return "Player 1 wins";
+	} else return "Player 2 wins";
+}
+
+
+const rps = (s1, s2) => {
+	if (s1 === s2) return "TIE";
+	let res = {p: "rock", s: "paper", r: "scissors"};
+	return res[s1[0]] === s2 ? "Player 1 wins" : "Player 2 wins";
+}
+
+
+const relationships = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper',
+  };
+  
+const rps = (player1, player2) => {
+    if (player1 === player2) return 'TIE';
+    return `Player ${relationships[player1] === player2 ? 1 : 2} wins`;
+};
+
+
+function rps(s1, s2) {
+    return s1 === s2 ? 'TIE' 
+        : (s2.length === 2*s1.length || s1.length-s2.length > 0) ? 'Player 1 wins' 
+        : 'Player 2 wins'
+}
+
+
+rps("rock", "paper");
+rps("paper", "rock");
+rps("paper", "scissors");
+rps("scissors", "scissors");
+rps("scissors", "paper");
+
