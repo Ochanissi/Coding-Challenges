@@ -15028,3 +15028,317 @@ rps("paper", "scissors");
 rps("scissors", "scissors");
 rps("scissors", "paper");
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 340
+
+// Create a function that takes a string as an argument. The function must return a string containing 1s and 0s based on the string argument's words. If any word in the argument is not equal to "zero" or "one" (case insensitive), you should ignore it. The returned string's length should be a multiple of 8, if the string is not a multiple of 8 you should remove the numbers in excess.
+
+
+
+function textToNumberBinary(str) {
+	const a = str.toLowerCase().split(" ");
+	let x = '';
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] === 'one') {
+			x += 1;
+		} else if (a[i] === 'zero') {
+			x += 0;
+		}
+	}
+	
+	for (let i = 0; i < x.length; i++) {
+		if (x.length %  8 !== 0) {
+			x = x.slice(0, -1);
+		}
+	}
+	return x.length < 8 ? '' : x;
+}
+
+
+
+
+const textToNumberBinary = str => {
+    const cleanStr = str
+        .replace(/zero/gi, '0')
+        .replace(/one/gi, '1')
+      .replace(/[^01]/g, '');
+    
+    const strLength = Math.floor(cleanStr.length / 8) * 8;
+    
+    return cleanStr.slice(0, strLength);
+  }
+
+  
+function textToNumberBinary(str) {
+    str = str.replace(/one/gi, '1').replace(/zero/gi,'0').match(/[0-1]/g).join('');
+    return str.substr(0,str.length - str.length % 8); 
+}
+
+
+
+function textToNumberBinary(str) {
+    var arr = str.toLowerCase().split(" ");
+    arr = arr.map( x => { 
+      if (x == "one") return "1"; 
+      if (x == "zero") return "0"; 
+      return ""; 
+    }).filter( x => x.length > 0);
+    
+    var rem = arr.length % 8;
+    if (rem === 0) return arr.join("");
+    return arr.splice(0, arr.length - rem).join("");
+}
+
+
+textToNumberBinary('one one one one zero zero zero zero');
+textToNumberBinary('one Zero zero one zero zero one one one one one zero oNe one one zero one zerO');
+textToNumberBinary('one zero one');
+textToNumberBinary('one zero zero one zero ten one one one one two');
+textToNumberBinary('One zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero');
+textToNumberBinary('TWO one zero one one zero one zero');
+textToNumberBinary('TWO one zero one one zero one zero one');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 341
+
+// Create a function that converts Celcius to Fahrenheit and vice versa.
+
+
+
+function convert(deg) {
+	const a = deg.match(/\d|-/g).join("");
+	if (deg.endsWith('C')) {
+		return `${Math.round(a * 1.8 + 32)}°F`;
+	} else if (deg.endsWith('F')) {
+		return `${Math.round((a - 32) / 1.8)}°C`;
+	} else return 'Error';
+}
+
+
+
+const convert = d => (a = d.split`°`)[1] == `C` ?
+Math.round(+a[0] * 9 / 5 + 32) + `°F` : a[1] == `F` ?
+Math.round((+a[0] - 32) * 5 / 9) + `°C` : `Error`;
+
+
+function convert(deg){
+	var temp = deg.split("°")[0];
+	if (deg[deg.length - 1] == "F"){
+		return String(Math.round((+temp - 32) * 5/9)) + "°C"
+	}
+	else if (deg[deg.length - 1] == "C"){
+		return String(Math.round(+temp * 9/5 + 32)) + "°F";
+	}
+	else { return "Error" };
+}
+
+
+
+const convert = s => s.endsWith('C') ? Math.round(parseInt(s) * 1.8 + 32) + '°F' : s.endsWith('F') ? Math.round((parseInt(s) - 32) / 1.8) + '°C' : 'Error';
+
+
+
+convert('35°C');
+convert('18°C');
+convert('0°F');
+convert('100°C');
+convert('69°F');
+convert('159°C');
+convert('-40°C');
+convert('-40°F');
+convert('16°C');
+convert('500°C');
+convert('33');
+convert('19°F');
+convert('85°C');
+convert('0°C');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 342
+
+// A word nest is created by taking a starting word, and generating a new string by placing the word inside itself. This process is then repeated.
+
+// Nesting 3 times with the word "incredible":
+
+// start  = incredible
+// first  = incre|incredible|dible
+// second = increin|incredible|credibledible
+// third  = increinincr|incredible|ediblecredibledible
+// The final nest is "increinincrincredibleediblecredibledible" (depth = 3).
+
+// Given a starting word and the final word nest, return the depth of the word nest.
+
+
+
+function wordNest(word, nest) {
+	return (nest.length / word.length) - 1;
+}
+
+
+function wordNest(word, nest) {
+	var i = 0;
+	while(nest !== word) {
+		nest = nest.replace(word, '');
+		i++;
+	}
+	return i;
+}
+
+
+wordNest("engagement", "engenengagemengagemeengagementntentgagementagement");
+wordNest("passage", "passpassageage");
+wordNest("factory", "ffacfactofactfafactoryctoryoryrytoryactory");
+wordNest("deny", "ddededdddenyenyenyenynynyeny");
+wordNest("jinx", "jijijjijjijijjinxinxnxnxinxnxinxnxnx");
+wordNest("deal", "dedddealealealal");
+wordNest("paradox", "parparaparadoxdoxadox");
+wordNest("meet", "mmememmeeteeteteteet");
+wordNest("last", "lalastst");
+wordNest("silence", "sisilsisilencelenceencelence");
+wordNest("inflate", "inflate");
+wordNest("ruin", "rurrurrrrrrururuinininuinuinuinuinuininuinin");
+wordNest("episode", "episoepisepisepiepiepiepisoepisodedesodesodesodeodeodede");
+wordNest("dictate", "dictadicdidictdiddictadictadictateteteictatectateatectatetatete");
+wordNest("caller", "callcacacalccallcacaccallerallerllerllererallerlerllerllerer");
+wordNest("sweater", "sweatsweswsweatereateraterer");
+wordNest("measure", "measumememeasumemmeasmmeasureeasureureeasureasurereasureasurere");
+wordNest("relieve", "relierelierelrelierrelieveelieveveieveveve");
+wordNest("home", "hohohohhohohhhohhomeomemeomeomememeomemememe");
+wordNest("profession", "profesprofessionsion");
+wordNest("continuous", "contcontcontinuoconcocontinuousntinuoustinuoususinuousinuous");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 343
+
+// Create a function that accepts a string as an argument and returns the first non-repeated character.
+
+
+
+function firstNonRepeatedCharacter(str) {
+	const a = str.split("").filter(i => str.split("").filter(j => i === j).length === 1)[0];
+	return a ? a : false;
+}
+
+
+
+firstNonRepeatedCharacter = s =>
+	[...s].find(c => s.search(c) == s.lastIndexOf(c)) || !1
+
+
+
+
+function firstNonRepeatedCharacter(str) {
+    var arr = str.split('');
+    for (var i = 0; i < arr.length; i++) {
+        if(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])) {
+        return arr[i];
+        }
+    }
+    return false;
+    
+}
+
+
+
+const firstNonRepeatedCharacter = (str) => {
+    const unique = [];
+    const blacklist = new Set();
+  
+    for (const char of str) {
+      if (blacklist.has(char)) continue;
+  
+      const charIndex = unique.indexOf(char);
+  
+      if (charIndex > -1) {
+        unique.splice(charIndex, 1);
+        blacklist.add(char);
+      } else {
+        unique.push(char);
+      }
+    }
+    
+    return unique.shift() || false;
+}
+
+
+
+
+
+firstNonRepeatedCharacter("the quick brown fox jumps then quickly blows air");
+firstNonRepeatedCharacter("the misty examination pleases into the drab county");
+firstNonRepeatedCharacter("hheelloo");
+firstNonRepeatedCharacter("it was then the darling top met the whispering wing");
+firstNonRepeatedCharacter("");
+firstNonRepeatedCharacter("it was then the frothy word met the round night");
+firstNonRepeatedCharacter("is the remind zone better than the section");
+firstNonRepeatedCharacter("b");
+firstNonRepeatedCharacter("what if the brainy boss ate the afternoon");
+firstNonRepeatedCharacter("the sympathetic mixture rejects into the leafy objective");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 344
+
+// A quadratic equation a x² + b x + c = 0 has either 0, 1, or 2 distinct solutions for real values of x. Given a, b and c, you should return the number of solutions to the equation.
+
+
+function solutions(a, b, c) {
+	const z = b ** 2 - 4 * a * c;
+	if (z > 0) {
+		return 2;
+	} else if (z < 0) {
+		return 0;
+	} else return 1;
+}
+
+
+const solutions = (a,b,c) => [0,1,2][Math.sign(b*b-4*a*c)+1];
+
+
+
+function solutions(a,b,c) {
+    const disc = b*b - 4*a*c;
+    return disc > 0 ? 2 : disc == 0 ? 1 : 0;
+  }
+
+
+solutions(1, 0, -1);
+solutions(1, 0, 0);
+solutions(1, 0, 0);
+solutions(200, 420, 800);
+solutions(200, 420, -800);
+solutions(1000, 1000, 0);
+solutions(10000, 400, 4);
