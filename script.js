@@ -15342,3 +15342,80 @@ solutions(200, 420, 800);
 solutions(200, 420, -800);
 solutions(1000, 1000, 0);
 solutions(10000, 400, 4);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 345
+
+// Create a function that takes a single word string and does the following:
+
+// Concatenates inator to the end if the word ends with a consonant otherwise, concatenate -inator instead.
+
+// Adds the word length of the original word to the end, supplied with '000'.
+
+
+
+function inatorInator(inv) {
+	const a = inv[inv.length - 1];
+	return /[^aeiou]/i.test(a) ? `${inv}inator ${inv.length}000` : `${inv}-inator ${inv.length}000`;
+}
+
+
+
+const inatorInator = inv =>
+	`${inv}${/[aeiou]/i.test(inv.slice(-1)) ? '-' : ''}inator ${inv.length}000`
+;
+
+
+const inatorInator = w => {
+	let c = /[aeiou]/i.test(w[w.length - 1]) ? "-inator" : "inator";
+	return `${w}${c} ${w.length}000`;
+}
+
+
+let inatorInator=s=>
+  `${s+(/[aeio]$/i.test(s)?'-':'')}inator ${s.length}000`
+
+
+inatorInator('Shrink');
+inatorInator('Doom');
+inatorInator('EvilClone');
+inatorInator('Destroy');
+inatorInator('a');
+inatorInator('Shrek');
+inatorInator('bEE');
+inatorInator('CAPITALISE');
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 346
+
+// Create a function that, given a number, returns the corresponding Fibonacci number.
+
+
+function fibonacci(num) {
+    if (num <= 1) return 1;
+  
+    return fibonacci(num - 1) + fibonacci(num - 2);
+}
+  
+  
+fibonacci(3);
+fibonacci(7);
+fibonacci(12);
+fibonacci(0);
+fibonacci(1);
+
+
