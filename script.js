@@ -15419,3 +15419,101 @@ fibonacci(0);
 fibonacci(1);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 347
+
+// Create a function that takes an array of card numbers and checks if the sum of their value exceeds 21. If the sum exceeds 21, return true and if the sum is under or equal to 21, return false. Values of the cards are as follows:
+
+// 2-10 are their value.
+// J-K (face cards) count as 10.
+// Aces count either as 1 or 11 - play conservatively, so that if giving an ace a value of 11 causes you to lose and 1 allows you to win, then go with 1.
+
+
+
+function overTwentyOne(cards) {
+	return cards.map(x => x === "A" ? 1 : x).map(x => isNaN(x) ? 10 : x).reduce((x, i) => x + i) > 21 ? true : false;
+}
+
+
+const overTwentyOne = cards => {
+    return cards.reduce((total, card) => {
+      if (['J', 'Q', 'K'].includes(card)) card = 10;
+      if (card === 'A') card = 1;
+      return total + card;
+    }, 0) > 21;
+};
+
+
+function overTwentyOne(cards) {
+	var r = 0;
+	for (var i in cards) {
+		if (['J','Q','K'].indexOf(cards[i]) != -1) {
+			cards[i] = 10;
+		} else if (cards[i] == 'A') {
+			cards[i] = 1;
+		}
+		r += cards[i];
+	}
+	return r > 21;
+}
+
+Test.assertEquals(overTwentyOne(['A', 2, 3]), false);
+Test.assertEquals(overTwentyOne(['A', 'J', 'K']), false);
+Test.assertEquals(overTwentyOne(['A', 'J', 'K', 'Q']), true);
+Test.assertEquals(overTwentyOne([5, 3, 6, 6, 7, 9]), true);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 348
+
+// Create a left rotation and a right rotation function that returns all the left rotations and right rotations of a string.
+
+
+function leftRotations(str) {
+	const a = [str];
+	for (let i = 0; i < str.length - 1; i++) {
+		a.push(a[i].slice(1, a[i].length) + a[i].slice(0,1));
+	}
+	return a;	
+}
+
+function rightRotations(str) {
+	const a = [str];
+	for (let i = 0; i < str.length - 1; i++) {
+		a.push(a[i].slice(-1) + a[i].slice(0, -1));
+	}
+	return a;	
+}
+
+
+function leftRotations(str) {
+	return str.split("").map((a,i)=>str.slice(i)+str.slice(0,i))
+}
+
+function rightRotations(str) {
+	return str.split("").map((a,i)=>str.slice(-i)+str.slice(0,-i))
+}
+
+
+
+leftRotations("abc");
+leftRotations("abcdef");
+leftRotations("himalaya");
+leftRotations("aab");
+rightRotations("abc");
+rightRotations("abcdef");
+rightRotations("himalaya");
+rightRotations("aab");
+
+
+
+
