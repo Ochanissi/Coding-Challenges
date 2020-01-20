@@ -15461,10 +15461,10 @@ function overTwentyOne(cards) {
 	return r > 21;
 }
 
-Test.assertEquals(overTwentyOne(['A', 2, 3]), false);
-Test.assertEquals(overTwentyOne(['A', 'J', 'K']), false);
-Test.assertEquals(overTwentyOne(['A', 'J', 'K', 'Q']), true);
-Test.assertEquals(overTwentyOne([5, 3, 6, 6, 7, 9]), true);
+overTwentyOne(['A', 2, 3]);
+overTwentyOne(['A', 'J', 'K']);
+overTwentyOne(['A', 'J', 'K', 'Q']);
+overTwentyOne([5, 3, 6, 6, 7, 9]);
 
 
 
@@ -15516,4 +15516,89 @@ rightRotations("aab");
 
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 349
+
+// Create a function that splits a string into an array of identical clusters.
+
+
+
+function splitGroups(str) {
+	const a = [str[0]];
+	for (let i = 1; i < str.length; i++) {
+		if (a[a.length - 1].slice(-1) === str[i]) {
+			a[a.length - 1] += str[i];
+		} else {
+			a.push(str[i]);
+		}
+	}
+	return a;
+}
+
+
+const splitGroups = str => str.match(/(.)\1*/g);
+
+
+splitGroups('aaabbbaabbab');
+splitGroups('5556667788');
+splitGroups('abbbcc88999&&!!!_');
+splitGroups('555');
+splitGroups('AABBCC');
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 350
+
+// A number n is apocalyptic if 2^n contains a string of 3 consecutive 6s (666 being the presumptive "number of the beast").
+
+// Create a function that takes a number n as input. If the number is apocalyptic, find the index of 666 in 2^n, and return "Repent! X days until the Apocalypse!" (X being the index). If not, return "Crisis averted. Resume sinning.".
+
+
+function apocalyptic(n) {
+	const a = String(BigInt(Math.pow(2, n)));
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] === '6' && a[i+1] === '6' && a[i+2] === '6') {
+			return `Repent! ${i} days until the Apocalypse!`;
+		}
+	}
+	return 'Crisis averted. Resume sinning.';
+}
+
+
+const apocalyptic = number => {
+	let index = `${2n ** BigInt(number)}`.indexOf(666);
+	return index > -1
+		? `Repent! ${index} days until the Apocalypse!`
+		: `Crisis averted. Resume sinning.`
+}
+
+
+const apocalyptic = n => {
+	const idx = String(BigInt(2 ** n)).indexOf('666');
+	
+	return idx < 0
+		? 'Crisis averted. Resume sinning.'
+		: `Repent! ${idx} days until the Apocalypse!`;
+};
+
+
+apocalyptic(157);
+apocalyptic(175);
+apocalyptic(220);
+apocalyptic(333);
+apocalyptic(499);
+apocalyptic(666);
+apocalyptic(1003);
 
