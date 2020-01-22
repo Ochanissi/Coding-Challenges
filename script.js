@@ -15602,3 +15602,103 @@ apocalyptic(499);
 apocalyptic(666);
 apocalyptic(1003);
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 351
+
+// Create a function that takes an array of strings and return the number of smiley faces contained within it. These are the components that make up a valid smiley:
+
+// A smiley has eyes. Eyes can be : or ;.
+// A smiley has a nose but it doesn't have to. A nose can be - or ~.
+// A smiley has a mouth which can be ) or D.
+// No other characters are allowed except for those mentioned above.
+
+
+function countSmileys(arr) {
+	return arr
+		.filter(x => x[0] === ":" || x[0] === ";")
+		.filter(x => x[x.length - 1] === ")" || x[x.length - 1] === "D")
+		.filter(x => x.length === 2 || x.length === 3 && x[1] === "-" || x.length === 3 && x[1] === "~")
+		.length;
+}
+
+
+countSmileys = a => a.filter(x => /[:;][~-]?[D\)]/.test(x)).length
+
+
+function countSmileys(arr) {
+	let regex = /(:|;)(~|-)?(D|\))/gi;
+return !regex.test(arr.join(''))?0: arr.join('').match(regex).length; 
+}
+
+
+function countSmileys(arr) {
+	return arr.filter(x => /(\;|\:)(\-|\~){0,1}(\)|D)/.test(x)).length;
+}
+
+
+
+countSmileys([":)", ";(", ";}", ":-D"]);
+countSmileys([";D", ":-(", ":-)", ";~)"]);
+countSmileys([";]", ":[", ";*", ":$", ";-D"]);
+countSmileys([";(", ":>", ":}", ":]"]);
+countSmileys([":)", ":)", ":)", ":)", ":)", ":)", ":)", ":)", ":)", ":)", ":)", ":)", ":)",]);
+countSmileys([':)',':(',':D',':O',':;']);
+countSmileys([':-)',';~D',':-D',':_D']);
+countSmileys([':---)','))',';~~D',';D']);
+countSmileys([';~)',':)',':-)',':--)']);
+countSmileys([':o)',':--D',';-~)']);
+countSmileys([]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 352
+
+// Create a function that takes a string str and censors any word from a given array arr. The text removed must be replaced by the given character char.
+
+
+function censorString(str, arr, char) {
+	return str.split(" ").map(x => x.replace(new RegExp(arr.join('|'), 'g'), char.repeat(x.length))).join(" ");
+}
+
+
+
+const censorString = (str, arr, char) =>
+  str.split(' ').map(x => arr.includes(x) ? char.repeat(x.length) : x).join(' ')
+;
+
+
+
+const censorString = (s, a, c) => {
+	return s
+		.split(" ")
+		.map((w, i) => a.includes(w) ? c.repeat(w.length) : w)
+		.join(" ");
+}
+
+
+function censorString(str, arr, char) {
+	arr = arr.map(v => v.toLowerCase());
+	return str.replace(/\S+/gi, s => arr.includes(s.toLowerCase()) ? char.repeat(s.length) : s)
+}
+
+
+censorString("The cow jumped over the moon.", ["cow", "over"], "*");
+censorString("Why do my cats keep eating grass?", ["Why", "keep", "eating"], "!");
+censorString("How do I stop myself from using python!?", ["do", "stop", "using"], "-");
+censorString("If statements are pretty fun to use.", ["statements", "pretty", "to"], "~~");
+censorString("I'm dyslexic, but that deos'tn matter!", ["that", "matter!"], "?");
+censorString("I should be doing work but I am doing this instead.", ["should", "but", "this"], "*");
+
+
