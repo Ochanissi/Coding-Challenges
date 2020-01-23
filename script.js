@@ -15702,3 +15702,52 @@ censorString("I'm dyslexic, but that deos'tn matter!", ["that", "matter!"], "?")
 censorString("I should be doing work but I am doing this instead.", ["should", "but", "this"], "*");
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 353
+
+// Create a function that takes an array and determines whether it's strictly increasing, strictly decreasing, or neither.
+
+
+
+function check(arr) {
+	const a = [...new Set(arr.map((x, i) => x < arr[i + 1]).slice(0, -1))];
+	if (a.length > 1) return 'neither';
+	if (a[0]) {
+		return 'increasing';	
+	} else {
+		return 'decreasing';
+	}
+
+}
+
+
+const check = arr => {
+    arr = arr.slice(1).map((num, i) => Math.sign(arr[i] - num));
+  
+    if (arr.every(num => num === -1)) return 'increasing';
+    if (arr.every(num => num === 1)) return 'decreasing';
+    return 'neither';
+  };
+
+
+
+let check=(arr)=>
+    arr.slice(1).every((a,b)=>a>arr[b])?'increasing':
+    arr.slice(1).every((a,b)=>a<arr[b])?'decreasing':'neither'
+
+check([1, 2, 3]);
+check([3, 2, 1]);
+check([1, 2, 1]);
+check([1, 1, 2]);
+check([1, 3, 5, 7, 9, 10]);
+check([5, 6, 5, 7, 9, 10]);
+check([5, 7]);
+check([9, 7, 1]);
+
+
