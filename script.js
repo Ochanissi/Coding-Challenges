@@ -15751,3 +15751,156 @@ check([5, 7]);
 check([9, 7, 1]);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 354
+
+// Create a function that returns the indices of all occurrences of an item in the array.
+
+
+function getIndices(arr, el) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] === el) {
+			a.push(i)
+		}
+	}
+	return a;
+}
+
+
+function getIndices(arr, el) {
+	ret=[]
+	arr.forEach((a,b)=>a==el?ret.push(b):null)
+	return ret
+}
+
+
+const getIndices = (arr, el) =>
+  arr.reduce(
+    (indices, item, i) => (item === el ? indices.concat(i) : indices),
+    []
+  );
+
+getIndices(['a', 'a', 'b', 'a', 'b', 'a'], 'a');
+getIndices([1, 5, 5, 2, 7], 7);
+getIndices([1, 5, 5, 2, 7], 5);
+getIndices([1, 5, 5, 2, 7], 8);
+getIndices([8, 8, 8, 8, 8], 8);
+getIndices([8, 8, 7, 8, 8], 8);
+getIndices([true, false, true, false], true);
+getIndices([true, false, true, false], false);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 355
+
+// Given a string, reverse all the words which have odd length. The even length words are not changed.
+
+
+function reverseOdd(str) {
+	const a = [];
+	for (let i = 0; i < str.split(" ").length; i++) {
+		if (str.split(" ")[i].length % 2 !== 0)  {
+			a.push(str.split(" ")[i].split("").reverse().join(""));
+		} else {
+			a.push(str.split(" ")[i]);
+		}
+	}
+	return a.join(" ");
+}
+
+
+function reverseOdd(str) {
+    return str.split(" ").map(w => w.length%2 ? [...w].reverse().join("") : w).join(" ");
+}
+
+function reverseOdd(str) {
+	return str.split(' ')
+		.map(e => e.length % 2 === 0 ? e : e.split('').reverse().join(''))
+		.join(' ');
+}
+
+
+
+reverseOdd("One two three four");
+reverseOdd('Make sure uoy only esrever sdrow of ddo length');
+reverseOdd('');
+reverseOdd('Bananas');
+reverseOdd('Even even even even even even even even even');
+reverseOdd('Odd odd odd odd odd odd odd odd odd odd odd');
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 356
+
+// Create a function which outputs the result of a math expression in words.
+
+
+function wordedMath(expr) {
+	const a = expr.toLowerCase().split(" ");
+	const b = [];
+	for (let i = 0; i < a.length; i++) {
+		switch (a[i]) {
+			case "zero": b.push("0");
+				break;
+			case "one": b.push("1");
+				break;
+			case "plus": b.push("+");
+				break;
+			case "minus": b.push("-");
+				break;
+		}
+	}
+	if (eval(b.join(" ")) === 0) {
+		return "Zero";
+	} else 	if (eval(b.join(" ")) === 1) {
+		return "One";
+	} else 	if (eval(b.join(" ")) === 2) {
+		return "Two";
+	}
+}
+
+
+const wordedMath = e => {
+	let d = {E: 0, N: 1, W: 2, H: 3, L: "+", I: "-"};
+	return ["Zero", "One", "Two"]
+	[eval(e.toUpperCase().split(" ").map(v => d[v[1]]).join(""))];
+}
+
+
+function wordedMath(expr) {
+	var nums = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+	var operations = {"plus" : "+", "minus" : "-"};
+	var words = expr.split(" ");
+	var e = nums[eval(nums.indexOf(words[0].toLowerCase()).toString() + operations[words[1].toLowerCase()] + nums.indexOf(words[2]).toString())];
+	return e[0].toUpperCase() + e.slice(1,e.length);
+}
+
+
+function wordedMath(expr) {
+	let e = expr.replace(/one/gi,1).replace(/plus/i,"+").replace(/minus/i,"-")
+					.replace(/zero/i,"0");
+	return eval(e) == 0 ? "Zero" : eval(e) == 1 ? "One" : "Two";
+}
+
+wordedMath('One plus one');
+wordedMath('zero Plus one');
+wordedMath('one minus one');
+
+
