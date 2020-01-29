@@ -15904,3 +15904,97 @@ wordedMath('zero Plus one');
 wordedMath('one minus one');
 
 
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 357
+
+// Create a function that takes an array of booleans that represent whether or not a player has logged into a game that day. Output the longest streak of consecutive logged in days.
+
+
+function dailyStreak(arr) {
+	const a = [0];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i]) {
+			a[a.length - 1] += 1;
+		} else {
+			a.push(0);
+		}
+	}
+	return a.sort((a, b) => b - a)[0];
+}
+
+
+const dailyStreak = a => {
+	a = a.join("").match(/(true)+/g);
+	return a ? Math.max(...a.map(v => v.length / 4)) : 0;
+}
+
+
+const dailyStreak = vector =>
+vector.every(e => e === false) ? 0 : Math.max(...vector.join(``)
+      .match(/(true)+/g)
+      .map(m => m.length/4))
+
+
+dailyStreak([true, true, false, true]);
+dailyStreak([false, false, false]);
+dailyStreak([true, true, true, false]);
+dailyStreak([true, true, true, false, true, true]);
+dailyStreak([true, false]);
+dailyStreak([true, false, true]);
+dailyStreak([true, false, true, true]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 358
+
+// Create a function that takes a string of words and return a string sorted alphabetically by the last character of each word.
+
+
+function sortByLast(str) {
+	return str.split(" ").sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1)).join(" ");
+}
+
+
+function sortByLast(str) {
+	return str.split(' ').sort(function(a,b){
+		if(a[a.length - 1] > b[b.length - 1]){
+			return true
+		}
+		else return false
+	}).join(' ')
+}\
+
+
+const sortByLast = str => str.split(" ").sort((a,b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1)).join(" ");
+
+
+const sortByLast = str =>
+  str
+    .split(' ')
+    .sort((a, b) =>
+      a.charAt(a.length - 1).localeCompare(b.charAt(b.length - 1))
+    )
+    .join(' ');
+
+
+sortByLast("herb camera dynamic");
+sortByLast("stab traction artist approach");
+sortByLast("sample partner autonomy swallow trend");
+sortByLast("dividend platform pupil conclusion silence breakfast");
+sortByLast("harm");
+sortByLast("card warrant opinion medium illustrate");
+sortByLast("introduce fashionable cause sacrifice reality");
+sortByLast("brick moral institution loud talk resign worth");
+
+
