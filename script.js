@@ -15998,3 +15998,280 @@ sortByLast("introduce fashionable cause sacrifice reality");
 sortByLast("brick moral institution loud talk resign worth");
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 359
+
+// Create a function that returns the original value from a matrix with too many sub-arrays.
+
+
+function deNest(arr) {
+	return arr.flat(Infinity)[0];
+}
+
+deNest([[[[[[[[[[[[3]]]]]]]]]]]]);
+deNest([[[[[[[true]]]]]]]);
+deNest([[[[[[[[[[[[[[[[['edabit']]]]]]]]]]]]]]]]]);
+deNest([1]);
+deNest([[[[[[[4.3]]]]]]]);
+deNest([[[[[false]]]]]);
+deNest([['sixty']]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 359
+
+// Create a function that capitalizes the last letter of every word.
+
+
+
+function capLast(txt) {
+	return txt.split(" ").map(x => x.slice(0, -1) + x[x.length - 1].toUpperCase()).join(" ");
+}
+
+
+const capLast = str => str.replace(/\w\b/g, match => match.toUpperCase());
+
+
+
+function capLast(txt) {
+	const cap = s => s.slice(0,-1) + s.slice(-1).toUpperCase();
+	return txt.split(' ').map(cap).join(' ');
+}
+
+
+capLast("hello");
+capLast("My Name Is Edabit");
+capLast("HELp THe LASt LETTERs CAPITALISe");
+capLast("hellooooo");
+capLast("hahA I aM alreadY capitaliseD");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 360
+
+// Create the function that takes an array with objects and returns the sum of people's budgets.
+
+
+function getBudgets(arr) {
+	return arr.map(x => x.budget).reduce((x, i) => x + i);
+}
+
+
+const getBudgets = arr => arr.reduce((a,v) => a + v.budget, 0);
+
+
+getBudgets([{name: "John",  age: 21, budget: 23000}, {name: "Steve",  age: 32, budget: 40000}, {name: "Martin",  age: 16, budget: 2700}]);
+getBudgets([{name: "John",  age: 21, budget: 29000}, {name: "Steve",  age: 32, budget: 32000}, {name: "Martin",  age: 16, budget: 1600}]);
+getBudgets([{name: "John",  age: 21, budget: 19401}, {name: "Steve",  age: 32, budget: 12321}, {name: "Martin",  age: 16, budget: 1204}]);
+getBudgets([{name: "John",  age: 21, budget: 10234}, {name: "Steve",  age: 32, budget: 21754}, {name: "Martin",  age: 16, budget: 4935}]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 361
+
+// Throughout the 12 days of Christmas, my true love gave me in total 364 items.
+
+// Create a function where given n days as an argument, return the total amount of items received throughout those days as an integer.
+
+
+function xmasItems(n) {
+	return n / 6 * (n + 1) * (n + 2);
+}
+
+
+const xmasItems = n => (n * (n + 1) * (n + 2)) / 6;
+
+xmasItems(0);
+xmasItems(1);
+xmasItems(21);
+xmasItems(12);
+xmasItems(54);
+xmasItems(14);
+xmasItems(11);
+xmasItems(9);
+xmasItems(13);
+xmasItems(19);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 362
+
+// Create a function that takes a string and censors words over four characters with *.
+
+
+function censor(str) {
+	return str.split(" ").map(x => x.length > 4 ? x.replace(x, "*".repeat(x.length)) : x).join(" ");
+}
+
+
+function censor(str) {
+	var arr = str.split(" ");
+	
+	var a = arr.map(x => x.length > 4 ? x.replace(/[a-z0-9]/gi, '*'): x);
+
+	
+return a.join (" ");
+}
+
+
+censor("The code is fourty");
+censor("Two plus three is five");
+censor("aaaa aaaaa 1234 12345");
+censor("abcdefghijklmnop");
+censor("a");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 362
+
+// Create a function which returns the word in the string, but with all the fog letters removed. However, if the string is clear from fog, return "It's a clear day!".
+
+
+
+function clearFog(str) {
+	return str.match(/fog/gi) ? str.match(/[^fog]/gi).join("") : "It's a clear day!";
+}
+
+
+function clearFog(str) {
+	return (/[fog]/gi).test(str) ? str.match(/[^fog]/gi).join("") :"It's a clear day!";
+}
+
+
+function clearFog(str) {
+    return str.includes('f') ? str.replace(/f/g,'').replace(/o/g,'').replace(/g/g,'') : "It's a clear day!"
+
+}
+
+
+clearFog("fogfogfffoooofftreesggfoogfog");
+clearFog("fooofffgggofoogfoskygfogfogfoooggg");
+clearFog("ffogfogoggofobirdsandthebeesfogfoggofgoffog");
+clearFog("fogfoofgfogfgplanefogofgoffgo");
+clearFog("fogofogoofgfffogthesaurusfogfogfogfgofg");
+clearFog("fogfgofofsunfogfgoogfogofgff");
+clearFog("city");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 363
+
+// Create a function that counts the number of towers.
+
+// Examples
+
+// count_towers([
+//   ["     ##         "],
+//   ["##   ##        ##"],
+//   ["##   ##   ##   ##"],
+//   ["##   ##   ##   ##"]
+// ]) ➞ 4
+
+// count_towers([
+//   ["                         ##"],
+//   ["##             ##   ##   ##"],
+//   ["##        ##   ##   ##   ##"],
+//   ["##   ##   ##   ##   ##   ##"]
+// ]) ➞ 6
+
+// count_towers([
+//   ["##"],
+//   ["##"]
+// ]) ➞ 1
+
+// Notes
+// You are given a 2D matrix.
+// Towers are two characters in length.
+// Towers are made only of the character #.
+// Some tests have no towers, return 0.
+
+
+function countTowers(towers) {
+	const a = towers.map(x => x.map(x => x.match(/##/g)).filter(x => x !== null).map(x => x.length)).flat();
+	return  a.length > 0 ? a[a.length - 1] : 0;
+}
+
+
+const countTowers = T => T.pop()[0].split(/#+/).length - 1
+
+
+const countTowers = t => t[t.length-1].toString().replace(/ /g, '').length / 2;
+
+
+const countTowers = towers => {
+	const c = towers.slice(-1)[0][0].match(/##/g)
+	return c? c.length : 0;
+};
+
+
+countTowers([
+	["     ##          "],
+	["##   ##        ##"],
+	["##   ##   ##   ##"],
+	["##   ##   ##   ##"]
+]);
+
+countTowers([
+	["                         ##"],
+	["##             ##   ##   ##"],
+	["##        ##   ##   ##   ##"],
+	["##   ##   ##   ##   ##   ##"]
+]);
+
+countTowers([
+	["##"],
+	["##"]
+]);
+
+countTowers([
+	[""]
+]);
+
+countTowers([
+	["                                              "],
+	["##   ##   ##   ##   ##   ##   ##   ##   ##   ##"],
+	["##   ##   ##   ##   ##   ##   ##   ##   ##   ##"],
+	["##   ##   ##   ##   ##   ##   ##   ##   ##   ##"]
+]);
+
+countTowers([
+	["##   ##          "],
+	["##   ##          "],
+	["##   ##   ##   ##"],
+	["##   ##   ##   ##"]
+]);
