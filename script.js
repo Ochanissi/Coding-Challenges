@@ -16275,3 +16275,129 @@ countTowers([
 	["##   ##   ##   ##"],
 	["##   ##   ##   ##"]
 ]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 364
+
+// Create a function that takes a number as input and returns true if the sum of its digits has the same parity as the entire number. Otherwise, return false.
+
+
+function parityAnalysis(num) {
+	return (num.toString().split("").reduce((x, i) => parseInt(x) + parseInt(i)) % 2 === 0) === (num % 2 === 0) ;
+}
+
+
+function parityAnalysis(num) {
+	return num % 2 == [...String(num)].reduce((sum,x) => sum + +x, 0) % 2;
+}
+
+const parityAnalysis = n => 
+n.toString().split('').map(Number).reduce((sum, el) => sum + el) % 2 === n % 2;
+
+
+parityAnalysis(243);
+parityAnalysis(12);
+parityAnalysis(3);
+parityAnalysis(5);
+parityAnalysis(4);
+parityAnalysis(3453);
+parityAnalysis(0);
+parityAnalysis(123456789);
+parityAnalysis(987654321);
+parityAnalysis(13);
+parityAnalysis(37);
+parityAnalysis(182);
+parityAnalysis(133331);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 365
+
+// Create a function that returns the number of decimal places a number (given as a string) has. Any zeros after the decimal point count towards the number of decimal places.
+
+
+function getDecimalPlaces(num) {
+	return num.split(".").length > 1 ? num.split(".")[1].length : 0;
+}
+
+
+const getDecimalPlaces = s => (s.split(".")[1] || []).length;
+
+
+function getDecimalPlaces(num) {
+	return num.slice(num.indexOf(".")).length - 1;
+}
+
+getDecimalPlaces("3.22");
+getDecimalPlaces("400");
+getDecimalPlaces("43.50");
+getDecimalPlaces("100,000,000");
+getDecimalPlaces("3.1415");
+getDecimalPlaces("0");
+getDecimalPlaces("01");
+getDecimalPlaces("00010.00010");
+getDecimalPlaces("3,141.592");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 365
+
+// John is playing a dice game. The rules are as follows.
+
+// Roll two dice.
+// Add the numbers on the dice together.
+// Add the total to your overall score.
+// Repeat this for three rounds.
+// But if you roll DOUBLES, your score is instantly wiped to 0 and your game ends immediately!
+
+// Create a function which takes in a matrix as input, and return John's score after his game has ended.
+
+
+function diceGame(arr) {
+	if (arr.some(x => x[0] === x[1])) return 0;
+	return arr.flat().reduce((x, i) => x + i);
+}
+
+function diceGame(arr) {
+	var score = 0;
+	for(var i = 0; i<arr.length;i++){
+		if(arr[i][0]==arr[i][1]){return 0;}
+		else{score+=(arr[i][0]+arr[i][1])};
+	} return score;
+}
+
+function diceGame(arr) {
+    let res = arr.filter((item, index) => {
+     return item.reduce((acc, curr) => acc - curr) === 0;
+   }).length;
+
+   return res > 0 ? 0 : arr.flat().reduce((acc, curr) => acc + curr);
+}
+
+diceGame([[1, 2], [3, 4], [5, 6]]);
+diceGame([[1, 1], [5, 6], [6, 4]]);
+diceGame([[4, 5], [4, 5], [4, 5]]);
+diceGame([[1, 3], [4, 3], [5, 2]]);
+diceGame([[1, 3], [4, 3], [5, 5]]);
+diceGame([[1, 3], [4, 4], [5, 2]]);
+diceGame([[5, 6], [5, 6], [5, 6]]);
+
+
