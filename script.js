@@ -15793,8 +15793,8 @@ getIndices([1, 5, 5, 2, 7], 5);
 getIndices([1, 5, 5, 2, 7], 8);
 getIndices([8, 8, 8, 8, 8], 8);
 getIndices([8, 8, 7, 8, 8], 8);
-getIndices([true, false, true, false], true);
-getIndices([true, false, true, false], false);
+getIndices([true, false, true, false];;
+getIndices([true, false, true, false];;
 
 
 
@@ -16399,5 +16399,266 @@ diceGame([[1, 3], [4, 3], [5, 2]]);
 diceGame([[1, 3], [4, 3], [5, 5]]);
 diceGame([[1, 3], [4, 4], [5, 2]]);
 diceGame([[5, 6], [5, 6], [5, 6]]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 366
+
+// Create a function which takes a sentence and returns its abbreviation. Get all of the words over or equal to n characters in length and return the first letter of each, capitalised and overall returned as a single string.
+
+
+function abbreviate(sentence, n = 4) {
+	return sentence.split(" ").map(x => x.length >= n ? x[0].toUpperCase() : "").join("");
+}
+
+
+const abbreviate = (string, limit) => {
+	return string.split(" ").map(word => (
+				 word.length < (limit || 4) ? "" : word[0].toUpperCase()
+				 )).join("");
+}
+
+
+const abbreviate = (sentence, n = 4) => sentence.split(" ").filter(w => w.length >= n).map(w => w[0].toUpperCase()).join("");
+
+abbreviate("do it yourself", 2);
+abbreviate("attention AND deficit OR hyperactivity THE disorder");
+abbreviate("the acronym of long word lengths", 5);
+abbreviate("laugh out loud");
+abbreviate("Keep It Simple Stupid");
+abbreviate("laugh out loud", 3);
+abbreviate("Keep It Simple Stupid",2);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 367
+
+// Create a function that takes three numbers as arguments and returns true if it's a triangle and false if not.
+
+function isTriangle(a, b, c) {
+	return a + b > c && a + c > b && b + c > a;
+}
+
+
+isTriangle(4, 5, 6);
+isTriangle(3, 4, 6);
+isTriangle(2, 5, 7);
+isTriangle(2, 5, 9);
+isTriangle(2, 9, 5);
+isTriangle(9, 2, 5);
+isTriangle(11, 12, 20);
+isTriangle(14, 3, 12);
+isTriangle(23, 4, 28);
+isTriangle(21, 4, 25);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 368
+
+// A game of table tennis almost always sounds like Ping! followed by Pong! Therefore, you know that Player 2 has won if you hear Pong! as the last sound (since Player 1 didn't return the ball back).
+
+// Given an array of Ping!, create a function that inserts Pong! in between each element. Also:
+
+// If win equals True, end the list with Pong!.
+// If win equals False, end with Ping! instead.
+
+
+function pingPong(arr, win) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] === "Ping!" && arr[i+1] === "Ping!") {
+			a.push("Ping!");
+			a.push("Pong!")
+		} else {
+			a.push("Ping!")
+		}
+	}
+	
+	if (win) a.push("Pong!");
+	
+	return a;
+}
+
+
+function pingPong(arr, win) {
+	var final = arr.map(e => [e, "Pong!"]).flat()
+	return win ? final : final.slice(0,final.length-1);
+}
+
+
+const pingPong = ({ length }, win) =>
+  Array.from({ length: length * 2 - !win }, (_, i) =>
+    i % 2 ? 'Pong!' : 'Ping!',
+  );
+
+
+
+pingPong(["Ping!", "Ping!", "Ping!"], true);
+pingPong(["Ping!", "Ping!"], false);
+pingPong(["Ping!"], true);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 369
+
+// In music, notes can be written out in multiple ways (especially for notes on the black keys). Although these notes are spelled out differently, they still are the same note physically.
+
+// C# = Db, D# = Eb, F# = Gb, G# = Ab, A# = Bb
+
+// Given a musical note, create a function that returns its enharmonic equivalent. The examples below should make this clear.
+
+
+function getEquivalent(note) {
+	switch (note) {
+		case "C#": return "Db";
+			break;
+		case "Db": return "C#";
+			break;
+		case "D#": return "Eb";
+			break;
+		case "Eb": return "D#";
+			break;
+		case "F#": return "Gb";
+			break;
+		case "Gb": return "F#";
+			break;
+		case "G#": return "Ab";
+			break;
+		case "Ab": return "G#";
+			break;
+		case "A#": return "Bb";
+			break;
+		case "Bb": return "A#";
+			break;
+	}
+}
+
+
+const getEquivalent = note => "GABCDEFGA"[" ABCDEFG ".indexOf(note[0]) + {"#": 1, "b": -1}[note[1]]] + {"#": "b", "b": "#"}[note[1]];
+
+
+function getEquivalent(note) {
+	const notes = 'CDEFGAB', [n, a] = note;
+	return notes[(notes.indexOf(n) + 7 + (a === '#' ? 1 : -1)) % 7] +
+		(a === '#' ? 'b' : '#');
+}
+
+
+getEquivalent("C#");
+getEquivalent("Db");
+getEquivalent("D#");
+getEquivalent("Eb");
+getEquivalent("F#");
+getEquivalent("Gb");
+getEquivalent("G#");
+getEquivalent("Ab");
+getEquivalent("A#");
+getEquivalent("Bb");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 370
+
+// This Triangular Number Sequence is generated from a pattern of dots that form a triangle. The first 5 numbers of the sequence, or dots, are: 1, 3, 6, 10, 15. Write a function that converts n number of places with its corresponding number.
+
+
+function triangle(n) {
+	return  n * (n + 1) / 2;
+}
+
+
+triangle(1);
+triangle(2);
+triangle(3);
+triangle(8);
+triangle(2153);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 371
+
+// Create a function that takes an array of factorial expressions and returns their sum.
+
+
+
+function evalFactorial(arr) {
+	const x = arr.map(x => parseInt(x));
+	const a = [];
+	for (let i = 0; i < x.length; i++) {
+		if (x[i] === 0 || x[i] === 1) {
+			a.push(1);
+		} else {
+		for (var j = x[i] - 1; j >= 1; j--) {
+			x[i] *= j;
+		}
+		a.push(x[i]);
+		}
+	}
+	return a.reduce((x, i) => x + i);
+}
+
+
+var factorial = function(n) {
+	return n === 0 ? 1 : n * factorial(n - 1);
+}
+
+function evalFactorial(lst) {
+	var res = lst.map(elem => factorial(+elem.slice(0,-1)));
+	
+	return res.reduce((acc,idx) => acc += idx);
+}
+
+const fac = n => n < 2 ? 1 : n * fac(n - 1);
+const evalFactorial = arr => arr.reduce((a,v) => a + fac(parseInt(v)), 0);
+
+
+
+function evalFactorial(arr) {
+	const getFact = x => {
+		x = +x.slice(0, -1);
+		if (x === 0 || x === 1) return 1;
+		for (let i = x - 1; i >= 2; i--) x *= i;
+		return x;
+	}
+	return arr.map(getFact).reduce((a,b) => a + b, 0);
+}
+
+
+evalFactorial(["2!", "3!"]);
+evalFactorial(["5!", "4!", "2!"]);
+evalFactorial(["0!", "1!"]);
+evalFactorial(["5!", "5!", "10!"]);
+evalFactorial(["6!", "3!"]);
+evalFactorial(["2!", "2!", "1!", "1!"]);
+
 
 
