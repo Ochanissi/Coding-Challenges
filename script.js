@@ -16507,9 +16507,9 @@ const pingPong = ({ length }, win) =>
 
 
 
-pingPong(["Ping!", "Ping!", "Ping!"], true);
-pingPong(["Ping!", "Ping!"], false);
-pingPong(["Ping!"], true);
+pingPong(["Ping!", "Ping!", "Ping!"];;
+pingPong(["Ping!", "Ping!"];;
+pingPong(["Ping!"];;
 
 
 
@@ -16660,5 +16660,571 @@ evalFactorial(["5!", "5!", "10!"]);
 evalFactorial(["6!", "3!"]);
 evalFactorial(["2!", "2!", "1!", "1!"]);
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 372
+
+// Create a function that takes an array and returns the sum of all numbers in the array.
+
+
+function getSumOfItems(arr) {
+	return arr.reduce((x, i) => x + i);
+}
+
+
+const getSumOfItems = a => a.reduce((sum,el) => sum + el);
+
+
+const getSumOfItems=(arr)=>arr.reduce((acc,val)=>acc+val,0)
+
+
+getSumOfItems([2, 7, 4]);
+getSumOfItems([45, 3, 0]);
+getSumOfItems([-2, 84, 23]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 373
+
+// Create a function which changes all the elements in an array as follows:
+
+// Add 1 to all even integers, nothing to odd integers.
+// Concatenates "!" to all strings and capitalises them.
+// Changes all boolean values to its opposite.
+
+
+function changeTypes(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if(typeof arr[i] === "number") (arr[i] % 2 === 0) ? a.push(arr[i] + 1) : a.push(arr[i]);
+		if (typeof arr[i] === "string") a.push(arr[i].slice(0, 1).toUpperCase() + arr[i].slice(1)  + "!");
+		if (typeof arr[i] === "boolean") (!arr[i]) ? a.push(true) : a.push(false);	
+	}
+	return a;
+}
+
+
+const changeTypes = arr =>
+arr.map(el => typeof el === 'string' ? el.charAt(0).toUpperCase() + el.slice(1) + '!' :
+    typeof el === 'boolean' ? !el :
+    el % 2 === 0 ? el += 1 : el);
+    
+
+const changeTypes = arr => arr.map(el => {
+    if (typeof(el) === 'boolean') return !el;
+    if (typeof(el) === 'string') return el[0].toUpperCase() + el.slice(1) + '!';
+    return el + !(el % 2);
+});
+
+
+
+const changeTypes = arr => arr.map(v => {
+	if (typeof v === "number" && v % 2 === 0) return v + 1;
+	if (typeof v === "string") return v[0].toUpperCase() + v.slice(1) + "!";
+	if (typeof v === "boolean") return !v;
+	return v;
+});
+
+
+changeTypes(["a", 12, true]);
+changeTypes([13, "13", "12", "twelve"]);
+changeTypes([false, "false", "true"]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 374
+
+// Create a function that takes two parameters and, if both parameters are strings, add them as if they were integers or if the two parameters are integers, concatenate them.
+
+function stupidAddition(a, b) {
+	if (typeof a === 'number' && typeof b === 'number') {
+		return String(a) + String(b);
+	} else if (typeof a === 'string' && typeof b === 'string') {
+		return Number(a) + Number(b);
+	} else return null;
+}
+
+
+const stupidAddition = (a, b) =>
+ typeof a == 'string' && typeof b == 'string' ? +a + +b :
+ typeof a == 'number' && typeof b == 'number' ? '' + a + b : null;
+
+
+
+const stupidAddition = (a, b) => {
+	if (typeof a !== typeof b) return null;
+	if (typeof a === 'string') return Number(a) + Number(b);
+	return `${a}${b}`;
+};
+
+stupidAddition(1, 2);
+stupidAddition("1", "2");
+stupidAddition(1, "2");
+stupidAddition("1", 2);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 375
+
+// Given a fraction as a string, return whether or not it is greater than 1 when evaluated.
+
+
+
+function greaterThanOne(frac) {
+	return eval(frac) > 1;
+}
+
+
+const greaterThanOne = fraction => {
+	const [numerator, denominator] = fraction.split('/');
+	return numerator / denominator > 1;
+};
+
+
+greaterThanOne("1/2");
+greaterThanOne("7/4");
+greaterThanOne("10/10");
+greaterThanOne("12/30");
+greaterThanOne("28/3");
+greaterThanOne("35/31");
+greaterThanOne("11/27");
+greaterThanOne("42/32");
+greaterThanOne("34/15");
+greaterThanOne("16/16");
+greaterThanOne("38/41");
+greaterThanOne("45/43");
+greaterThanOne("13/38");
+greaterThanOne("43/2");
+greaterThanOne("16/31");
+greaterThanOne("41/15");
+greaterThanOne("2/38");
+greaterThanOne("37/21");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 376
+
+// Write a regular expression that ensures the word "end" is inside of another word (eg. "bending"). Non-word characters such as !, ?, etc. cannot be boundaries.
+
+
+const REGEXP = /\Bend\B/gi
+
+
+const validate = (REGEXP) => {
+    if(/[w*.+]/.test(String(REGEXP))) return () => "exclude"
+    return function testReg(str) {
+        return REGEXP.test(str) 
+    }
+} 
+
+let str1 = "The end of the story."
+let str2 = "Ending is pointless."
+let str3 = "DEFENDING THE CROWN WILL END THE CROWN"
+let str4 = "Let's send!"
+let str5 = "We viewed the rendering at the end." 
+let str6 = "Sometimes bending the rules is good."
+
+const testStr = validate(REGEXP) 
+
+testStr(str1)
+testStr(str1)
+testStr(str2)
+testStr(str3)
+testStr(str3)
+testStr(str4)
+testStr(str5)
+testStr(str5)
+testStr(str6)
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 377
+
+// Given an object of how many more pages each ink color can print, output the maximum number of pages the printer can print before any of the colors run out.
+
+
+function inkLevels(inks) {
+	return Math.min(...Object.values(inks))
+}
+
+
+inkLevels({
+	"cyan": 23,
+	"magenta": 12,
+	"yellow": 10
+});
+
+inkLevels({
+	"cyan": 432,
+	"magenta": 543,
+	"yellow": 777
+});
+
+inkLevels({
+	"cyan": 700,
+	"magenta": 700,
+	"yellow": 0
+});
+
+inkLevels({
+	"cyan": 70,
+	"magenta": 700,
+	"yellow": 1
+});
+
+inkLevels({
+	"cyan": 6543,
+	"magenta": 74543,
+	"yellow": 2345678
+});
+
+inkLevels({
+	"cyan": 1,
+	"magenta": 1,
+	"yellow": 1
+});
+
+inkLevels({
+	"cyan": 700,
+	"magenta": 700,
+	"yellow": 700
+});
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 378
+
+// Given an object of people and their ages, return how old the people would be after n years have passed. Use the absolute value of n.
+
+
+function afterNYears(names, n) {
+	for (let key in names) {
+  	names[key] += Math.abs(n);
+	}
+	return names;
+}
+
+
+
+const afterNYears = (list, n) => {
+	for (let person in list) list[person] += Math.abs(n);
+	return list;
+}
+
+
+const afterNYears = (names, n) => {
+	for (const name in names) names[name] += Math.abs(n);
+	return names;
+};
+
+
+afterNYears({
+	"Joel" : 32,
+	"Fred" : 44,
+	"Reginald" : 65,
+	"Susan" : 33,
+	"Julian" : 13
+}, 1);
+
+afterNYears({
+	"Baby" : 2,
+	"Child" : 8,
+	"Teenager" : 15,
+	"Adult" : 25,
+	"Elderly" : 71
+}, 19);
+
+afterNYears({
+	"Genie" : 1000,
+	"Joe" : 40
+}, 5);
+
+afterNYears({
+	"Adam" : 0,
+	"Eve" : 0
+}, 800);
+
+afterNYears({
+	"Ambitious Old Scientist" : 87,
+	"Ambitious Scientist" : 42,
+	"Slightly Concerned Young Scientist" : 23
+}, -35);
+
+afterNYears({
+	"USA" : 243,
+	"Person" : 27
+}, 0);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 379
+
+// Given an array with an odd number of elements, return whether the scale will tip "left" or "right" based on the sum of the numbers. The scale will tip on the direction of the largest total. If both sides are equal, return "balanced".
+
+
+function scaleTip(arr) {
+	const a = arr.slice(0, Math.floor(arr.length / 2)).reduce((x, i) => x + i);
+	const b = arr.slice(Math.ceil(arr.length / 2), arr.length).reduce((x, i) => x + i);
+	
+	return a < b ? 'right' : a > b ? 'left' : 'balanced';
+}
+
+
+function scaleTip(arr) {
+	var  middle = arr.indexOf("I");
+	var left = arr.slice(0,middle).reduce((acc,idx) => acc += idx);
+	var right = arr.slice(middle+1).reduce((acc,idx) => acc += idx);;
+	
+	return left < right ? "right" : left > right ? "left" : "balanced";
+}
+
+
+scaleTip([0, 0, 0, "I", 1, 1, 1]);
+scaleTip([1, 2, 3, "I", 4, 0, 0]);
+scaleTip([5, 5, 5, "I", 10, 2, 3]);
+scaleTip([2, 3, 1, "I", 6, 0, 0]);
+scaleTip([500, 0, 0, "I", 32, 53, 12]);
+scaleTip([500, 0, 0, "I", 302, 53, 12]);
+scaleTip([50, 0, 0, "I", 32, 53, 12]);
+scaleTip([5, "I", 3]);
+scaleTip([500, 0, 0, "I", 500, 0, 0]);
+scaleTip([500, 0, 0, 0, 0, 0, "I", 32, 53, 12, 0, 0, 0]);
+scaleTip([1, 300, "I", 300, 1]);
+scaleTip([1, 300, "I", 300, 2]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 379
+
+// Create a function where given the number n to count down from, and some words str, return a countdown sequence as a string leading up to the words at the end.
+
+// Put a full stop after each number and capitalize and add an exclamation mark to the word. See the examples below for clarification!
+
+
+function countdown(n, str) {
+	const a = [];
+	for (let i = n; i > 0; i--) {
+		a.push(i);
+	}
+	a.push(str.toUpperCase() + "!")
+	return a.join(". ");
+}
+
+
+const countdown = (n, str) => {
+	return `${Array.from( {length: n}, (_, i) =>
+		 n-i).join(". ")}. ${str.toUpperCase()}!`
+}
+
+
+function countdown(n, str) {
+	var output = ''
+	for(var i = n; i > 0; i--){
+		output += i + '. '
+	}
+	return output + str.toUpperCase() + '!'
+}
+
+
+countdown(10, "Blast Off");
+countdown(3, "go");
+countdown(5, "FIRE");
+countdown(12, "watch out");
+countdown(7, "fire");
+countdown(16, "shoot");
+countdown(28, "fire");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 380
+
+// Assume a program only reads .js or .jsx files. Write a function that accepts a file path and returns true if it can read the file and false if it can't.
+
+
+function isJS(path) {
+	return path.split(".")[1] === "jsx" || path.split(".")[1] === "js";
+}
+
+
+function isJS(path) {
+	return /jsx?$/.test(path)
+}
+
+
+const isJS = args => /\.(js|jsx)$/g.test(args)
+
+
+isJS("/users/user.jsx");
+isJS("/users/user.js");
+isJS("/users/user.ts");
+isJS("/users/user.jpg");
+isJS("/users/user.ext");
+isJS("/users/user.php");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 381
+
+// When creating variables, the variable name must always start with a letter, though numbers and underscores are allowed to be contained in it also.
+
+// Create a function which returns true if a given variable name is valid, otherwise return false.
+
+
+function variableValid(variable) {
+	return !/ /.test(variable) && !+variable[0];
+}
+
+
+const variableValid = s => /^[a-z]\w*$/i.test(s)
+
+variableValid("result");
+variableValid("odd_nums");
+variableValid("2TimesN");
+variableValid("rather_long_variable_name");
+variableValid("count spaces");
+variableValid("nTimes2");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 382
+
+// Write a function that inserts a white space between every instance of a lower character followed immediately by an upper character.
+
+
+
+function insertWhitespace(s) {
+	let a = s[0];
+	for (let i = 1; i < s.length; i++) {
+		if (s[i] === s[i].toUpperCase()) {
+			a += " ";
+		}
+		a += s[i];
+	}
+	return a;
+}
+
+
+function insertWhitespace(s) {
+	return s.replace(/([a-z])([A-Z])/g, "$1 $2");
+}
+
+
+const insertWhitespace = s => s.replace(/[A-Z]/g, ' $&').trim()
+
+
+const insertWhitespace = str =>
+  str.replace(/([a-z][A-Z])/g, ([lower, upper]) => `${lower} ${upper}`);
+
+
+function insertWhitespace(s) {
+	let reg = /(?=[A-Z])/g;
+	return s.split(reg).join(" ");
+}
+
+insertWhitespace("SheWalksToTheBeach");
+insertWhitespace("MarvinTalksTooMuch");
+insertWhitespace("HopelesslyDevotedToYou");
+insertWhitespace("EvenTheBestFallDownSometimes");
+insertWhitespace("TheGreatestUpsetInHistory");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 383
+
+// The .length property on an array will return the number of elements in the array. For example, the array below contains 2 elements:
+
+// [1, [2, 3]]
+// // 2 elements, number 1 and array [2, 3]
+// Suppose we instead wanted to know the total number of non-nested items in the nested array. In the above case, [1, [2, 3]] contains 3 non-nested items, 1, 2 and 3.
+
+// Write a function that returns the total number of non-nested items in a nested array.
+
+
+function getLength(arr) {
+	return arr.flat(Infinity).length;
+}
+
+
+const flatten = arr =>
+  arr.reduce((result, inner) => {
+    if (Array.isArray(inner)) return result.concat(flatten(inner));
+    return result.concat(inner);
+  }, []);
+
+const getLength = arr => flatten(arr).length;
+
+
+getLength([1, [2,3]]);
+getLength([1, [2, [3, 4]]]);
+getLength([1, [2, [3, [4, [5, 6]]]]]);
+getLength([1, 7, 8]);
+getLength([2]);
+getLength([2, [3], 4, [7]]);
+getLength([2, [3, [5, 7]], 4, [7]]);
+getLength([2, [3, [4, [5]]], [9]]);
+getLength([]);
 
 
