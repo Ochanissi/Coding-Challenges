@@ -17228,3 +17228,507 @@ getLength([2, [3, [4, [5]]], [9]]);
 getLength([]);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 384
+
+// There is an easy way to assign to array values to the nth index by using the Rest element.
+
+
+const str = `[head, ...tail] = [1, 2, 3, 4]`;
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 384
+
+// Wild Roger is tasked with shooting down 6 bottles with 6 shots as fast as possible. Here are the different types of shots he could make:
+
+// He could use one pistol to shoot a bottle with a "Bang!" in 0.5 seconds.
+// Or he could use both pistols at once with a "BangBang!" to shoot two bottles in 0.5 seconds.
+// Given an array of strings, return the it took to shoot down all 6 bottles. Make sure to only count Bangs and BangBangs. Anything else doesn't count.
+
+
+function rogerShots(arr) {
+	return arr.filter(x => x === "BangBang!" || x === 'Bang!').map(x => x = 0.5).reduce((x, i) => x + i);
+}
+
+
+const rogerShots = arr => {
+	return arr.filter(v => /^(Bang){1,2}!/.test(v)).length / 2;
+}
+
+
+function rogerShots(arr) {
+	var pattern = /\b(?:Bang|BangBang)\b/g;
+	var matches = arr.filter(elem => elem.match(pattern))
+	
+	return matches.length / 2;
+}
+
+
+rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "Bang!", "Bang!"]);
+rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "BangBang!"]);
+rogerShots(["Bang!", "BangBangBang!", "Boom!", "Bang!", "BangBang!", "BangBang!"]);
+rogerShots(["BangBang!", "BangBang!", "BangBang!"]);
+rogerShots(["Bang!", "BadaBing!", "Badaboom!", "Bang!", "Bang!", "Bang!", "Bang!", "Bang!"]);
+rogerShots(["BangBang!", "BangBang!", "Bag!", "Ban!", "Tang!", "Bang!", "Bang!"]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 385
+
+// Create a function that takes a string (a random name). If the last character of the name is an "n", return true, otherwise return false.
+
+
+function isLastCharacterN(word) {
+	return word[word.length - 1].toLowerCase() === "n";
+}
+
+
+function isLastCharacterN(word) {
+	return [...word].pop() == "n"
+}
+
+
+isLastCharacterN("Aiden");
+isLastCharacterN("Roxy");
+isLastCharacterN("Bert");
+isLastCharacterN("Dean");
+isLastCharacterN("Ian");
+isLastCharacterN("Brian");
+isLastCharacterN("Daniel");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 386
+
+// Given an array of 10 numbers, return the maximum possible total made by summing just 5 of the 10 numbers.
+
+
+function maxTotal(nums) {
+	return nums.sort((a, b) => b - a).slice(0, 5).reduce((x, i) => x + i);
+}
+
+
+
+maxTotal([70, -25, 78, -58, -49, -42, -77, -52, 93, -37]);
+maxTotal([-30, -29, 32, -60, 84, -13, 67, -77, 94, 64]);
+maxTotal([-54, 7, 18, 83, -45, 68, 0, 78, 55, -30]);
+maxTotal([-81, -51, 63, 94, 22, -91, -75, 75, 28, -97]);
+maxTotal([69, -34, -94, -50, -94, -38, -73, 33, 39, -99]);
+maxTotal([-60, -69, -55, -69, 5, 14, 97, 59, 93, 15]);
+maxTotal([48, 77, -31, 74, 39, 8, -22, 24, 87, 10]);
+maxTotal([56, 24, 46, 28, 61, 38, -32, 85, -36, -80]);
+maxTotal([-73, 72, 94, -5, 72, 0, 30, -93, -24, -10]);
+maxTotal([-48, 75, 31, -31, 29, 74, -56, -14, 7, -55]);
+maxTotal([-11, -92, 89, -23, -67, 45, 89, 10, -28, 76]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 387
+
+// The function skipTooMuchSugarDrinks() takes in an array of drinks. Make sure the function only returns an array of drinks with no sugar in it or a little bit of sugar.
+
+// Drinks that contain too much sugar (in this challenge) are:
+
+// Cola
+// Fanta
+
+function skipTooMuchSugarDrinks(drinks) {
+	return drinks.filter(x => x !== 'cola' && x !== 'fanta');
+}
+
+
+skipTooMuchSugarDrinks(["cola", "fanta"]);
+skipTooMuchSugarDrinks(["cola", "fanta", "water"]);
+skipTooMuchSugarDrinks(["cola"]);
+skipTooMuchSugarDrinks([]);
+skipTooMuchSugarDrinks(["lemonade", "beer", "fanta"]);
+skipTooMuchSugarDrinks(["water", "cola"]);
+skipTooMuchSugarDrinks(["water", "tea"]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 388
+
+// Write a function that takes an array of elements and returns only the integers.
+
+function returnOnlyInteger(arr) {
+	return arr.filter(x => Number.isInteger(x));
+}
+
+returnOnlyInteger([9, 2, "space", "car", "lion", 16]);
+returnOnlyInteger(["hello", 81, "basketball", 123, "fox"]);
+returnOnlyInteger([10, "121", 56, 20, "car", 3, "lion"]);
+returnOnlyInteger(["String", true, 3.3, 1]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 389
+
+// Create a function that takes an array with numbers and return an array with the elements multiplied by two.
+
+
+function getMultipliedArr(arr) {
+	return arr.map(x => x * 2);
+}
+
+
+getMultipliedArr([2, 5, 3]);
+getMultipliedArr([1, 86, -5]);
+getMultipliedArr([5, 382, 0]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 390
+
+// Create a function that applies a discount d to every number in the array.
+
+
+function getDiscounts(nums, d) {
+	return nums.map(x => x * parseInt(d) / 100);
+}
+
+getDiscounts([2, 4, 6, 11], "50%");
+getDiscounts([10, 20, 40, 80], "75%");
+getDiscounts([100], "45%");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 391
+
+// Create a function that takes a string and returns a string with spaces in between all of the characters.
+
+
+function spaceMeOut(str) {
+	return str.split("").join(" ");
+}
+
+
+spaceMeOut("space");
+spaceMeOut("far out");
+spaceMeOut("elongated musk");
+spaceMeOut("long");
+spaceMeOut("123");
+spaceMeOut("a1b2c3");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 392
+
+// You will be given an array of drinks, with each drink being an object with two properties: name and price. Create a function that has the drinks array as an argument and return the drinks object sorted by price in ascending order.
+
+
+function sortDrinkByPrice(drinks) {
+	return drinks.sort((a, b) => a.price - b.price);
+}
+
+
+const drinks = [
+	{name: 'lemonade', price: 90}, 
+	{name: 'lime', price: 432}, 
+	{name: 'peach', price: 23}
+]
+
+const sorted = [
+	{name: 'peach', price: 23},
+	{name: 'lemonade', price: 90}, 
+	{name: 'lime', price: 432}
+]
+
+sortDrinkByPrice(drinks);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 393
+
+// You are give an array with random words but your program doesn't accept words that begin with the capital letter "C". Remove the unaccepted words and return the new array.
+
+
+function acceptedWords(arr) {
+	return arr.filter(x => !x.startsWith("C"))
+}
+
+
+function acceptedWords(list) {
+	return list.filter(x => /^[^C]/.test(x))
+}
+
+
+const acceptedWords = (arr) => arr.filter(el => el.charAt(0) !== 'C')
+
+
+function acceptedWords(list) {
+	return list.filter( el => !el.match(/^C/))
+}
+
+
+acceptedWords(["Cans", "Worms", "Bugs", "Cold", "Beans"]);
+acceptedWords(["Ducks", "Bears",  "Cats"]);
+acceptedWords(["cars", "trucks", "planes"]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 394
+
+// Write a function that takes the last number of a consecutive list of numbers and returns the total of all numbers up to and including it.
+
+
+function addUpTo(n) {
+	return n * (n + 1) / 2;
+}
+
+
+addUpTo(3);
+addUpTo(10);
+addUpTo(0);
+addUpTo(2);
+addUpTo(20);
+addUpTo(1);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 395
+
+// Given an array of strings (depicting a skyline of several buildings), return in meters the height of the tallest building. Each line in the list represents 20m.
+
+
+function tallestBuildingHeight(arr) {
+	return `${arr.filter(x => x.includes("#")).length * 20}m`;
+}
+
+
+
+const tallestBuildingHeight = arr => {
+	return arr.filter(r => r.includes("#")).length * 20 + "m";
+}
+
+
+const tallestBuildingHeight = S => S.filter(s => /#/.test(s)).length * 20 + 'm'
+
+
+tallestBuildingHeight([
+	"         ",
+	" ##      ",
+	" ##      ",
+	"###   ## ",
+	"###   ## ",
+	"###   ###",
+	"###   ###"
+]);
+
+tallestBuildingHeight([
+	"            ##",
+	"            ##",
+	"            ##",
+	"###   ###   ##",
+	"###   ###   ###",
+	"###   ###   ###",
+	"###   ###   ###"
+]);
+
+tallestBuildingHeight([
+	"               ",
+	"               ",
+	"               ",
+	"       #    ###",
+	"      # #   ###",
+	"###   ###   ###",
+	"###   ###   ###"
+]);
+
+tallestBuildingHeight([
+	"               ",
+	"               ",
+	"               ",
+	"               ",
+	"               ",
+	"###   ###   ###",
+	"###   ###   ###"
+]);
+
+tallestBuildingHeight([
+	"                  ",
+	" #                ",
+	" #     #          ",
+	"###    #    ###   ",
+	"###   # #   ###   #",
+	"###   ###   ###   #",
+	"###   ###   ###   #"
+]);
+
+tallestBuildingHeight([
+	"          ",
+	"###   # # ",
+	"###   ### ",
+	"###   ### "
+]);
+
+tallestBuildingHeight([
+	"###                    #####  ",
+	"###      #             #####  ",
+	"###     ###            #####  ",
+	"######  ###            #######",
+	"######  ######  ###    #######",
+	"###################    #######",
+	"###############################",
+	"###############################"
+]);
+
+tallestBuildingHeight([
+	"                              ",
+	"                              ",
+	"                              ",
+	"###                    #####  ",
+	"###      #             #####  ",
+	"###     ###            #####  ",
+	"######  ###            #######",
+	"######  ######  ###    #######",
+	"###################    #######",
+	"###############################",
+	"###############################"
+]);
+
+tallestBuildingHeight([
+	"                              ",
+	"                         ###  ",
+	"                         ###  ",
+	"###                    #####  ",
+	"###      #             #####  ",
+	"###     ###            #####  ",
+	"######  ###            #######",
+	"######  ######  ###    #######",
+	"###################    #######",
+	"###############################",
+	"###############################"
+]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 396
+
+// Create a function which replaces the last n words with "blah". Add "..." to the last blah.
+
+
+function blahBlah(str, n) {
+	const a = [];
+	for (let i = 0; i < str.split(" ").length; i++) {
+		if (i >= str.split(" ").length - n) {
+			a.push("blah");
+		} else {
+			a.push(str.split(" ")[i]);
+		}
+	}
+	return a.join(" ") + '...';
+}
+
+
+
+const blahBlah = (str, n) =>
+	str.split(' ')
+		 .map((el, i, a) => a.length - i <= n ? 'blah' : el)
+         .join(' ') + '...';
+         
+
+const blahBlah = (string, n) => {
+    return string.match(/\S+/g).map((word, index, array) => (
+        index >= array.length - n ? "blah" : word
+    )).join(" ") + "...";
+}
+
+
+const blahBlah = (str, n) => (arrS = str.split(` `)).length > n ?
+         arrS.slice(0, arrS.length-n).join(` `).concat(` blah`.repeat(n)).concat(`...`) :
+         ` blah`.repeat(arrS.length).slice(1).concat(`...`)
+
+
+blahBlah("A function is a block of code which only runs when it is called",  5);
+blahBlah("one two three four five", 2);
+blahBlah("Sphinx of black quartz judge my vow", 10);
+blahBlah("The quadratic formula is negative b plus or minus the square root of b squared subtract four ac all over two a", 5);
+
+
