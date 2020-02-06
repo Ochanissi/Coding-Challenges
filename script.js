@@ -17732,3 +17732,393 @@ blahBlah("Sphinx of black quartz judge my vow", 10);
 blahBlah("The quadratic formula is negative b plus or minus the square root of b squared subtract four ac all over two a", 5);
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 397
+
+// Create a function that flips M's to W's (all uppercase).
+
+
+function wumbo(words) {
+	return words.replace(/M/g, "W");
+}
+
+
+function wumbo(words) {
+    return words
+      .split("")
+      .map(x => (x === "M" ? "W" : x))
+      .join("");
+  }
+
+
+wumbo("WHAT DO YOU MEAN WE'RE OUT OF MONEY");
+wumbo("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+wumbo("1 WUMBO 2 WUMBO 3 WUMBO 4");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 398
+
+// Create a function that calculates the profit margin given costPrice and salesPrice. Return the result as a percentage formated string, and rounded to one decimals. To calculate profit margin you subtract the cost from the sales price, then divide by salesprice.
+
+
+function profitMargin(costPrice, salesPrice) {
+	return `${(100 - (costPrice * 100 / salesPrice)).toFixed(1)}%`;
+}
+
+
+profitMargin(10, 15);
+profitMargin(75, 40);
+profitMargin(55, 55);
+profitMargin(30, 50);
+profitMargin(9999, 10001);
+profitMargin(33, 84);
+profitMargin(28, 39);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 399
+
+// Create a function that takes a whole number as input and returns the shape with that number's amount of sides. Here are the expected outputs to get from these inputs.
+
+// Inputs	Outputs
+// 1	"circle"
+// 2	"semi-circle"
+// 3	"triangle"
+// 4	"square"
+// 5	"pentagon"
+// 6	"hexagon"
+// 7	"heptagon"
+// 8	"octagon"
+// 9	"nonagon"
+// 10	"decagon"
+
+
+function nSidedShape(n) {
+	switch (n) {
+		case 1: return "circle"
+		case 2: return "semi-circle"
+		case 3: return	"triangle"
+		case 4: return	"square"
+		case 5: return	"pentagon"
+		case 6: return	"hexagon"
+		case 7: return	"heptagon"
+		case 8: return	"octagon"
+		case 9: return	"nonagon"
+		case 10: return	"decagon"
+	}
+}
+
+
+function nSidedShape(n) {
+	return ['circle', 'semi-circle', 'triangle', 'square', 'pentagon', 'hexagon', 'heptagon', 'octagon', 'nonagon', 'decagon'][n-1];
+}
+
+
+nSidedShape(1);
+nSidedShape(2);
+nSidedShape(3);
+nSidedShape(4);
+nSidedShape(5);
+nSidedShape(6);
+nSidedShape(7);
+nSidedShape(8);
+nSidedShape(9);
+nSidedShape(10);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 399
+
+// The important thing when a comment is posted on Edabit is its content. But when a comment is formatted in the right way, it will be properly shown and it will be easily readable by everyone.
+
+// In this challenge, you have to format a word using four specific methods of the Markdown language that is used by Edabit to format the text in the Comments tab and the Instructions tab (during the creation, or the translation, of a challenge). Each of these four methods (or styles) is identified by the lowercased initial letter of its name:
+
+// "b" is for bold
+// "i" is for italics
+// "c" is for inline code
+// "s" is for strikethrough
+
+
+function mdFormat(word, style) {
+	if (style === 'b') return `**${word}**`;
+	if (style === 'i') return `_${word}_`;
+	if (style === 'c') return '`' + word + '`';
+	if (style === 's') return `~~${word}~~`;
+}
+
+
+const styles = {b: "**", i: "_", c: "`", s: "~~"},
+    mdFormat = (word, x) => styles[x] + word + styles[x];
+            
+
+const mdFormat = (w,s) =>
+    `${c = { b: '**', i: '_', c: '`', s: '~~' }[s]}${w}${c}`
+
+
+mdFormat("Bold", "b");
+mdFormat("Italics", "i");
+mdFormat("Code", "c");
+mdFormat("Ruby", "s");
+mdFormat("JavaScript", "b");
+mdFormat("Python", "i");
+mdFormat("C++", "c");
+mdFormat("Strikethrough", "s");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 400
+
+// Create a function that returns the thickness (in meters) of a piece of paper after folding it n number of times. The paper starts off with a thickness of 0.5mm.
+
+
+
+function numLayers(n) {
+	return Math.pow(2, n) * 0.001 / 2 + 'm';
+}
+
+
+numLayers(0);
+numLayers(1);
+numLayers(2);
+numLayers(3);
+numLayers(4);
+numLayers(5);
+numLayers(6);
+numLayers(7);
+numLayers(8);
+numLayers(9);
+numLayers(10);
+numLayers(24);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 401
+
+// Create a function that takes in a sentence and a character to find. Return an object of each word in the sentence, with the count of the specified character as the value.
+
+
+
+function findOccurrences(str, char) {
+	const obj = {};
+	for (const key of str.toLowerCase().split(" ")) {
+			obj[key] = key.toLowerCase().match(char.toLowerCase()) ? key.toLowerCase().split("").filter(x => x === char.toLowerCase()).length : 0;
+	}
+	return obj;
+}
+
+
+const findOccurrences = (str, char) => {
+	return str.toLowerCase().match(/\S+/g)
+		.reduce((o,k) => ({...o, [k]: [...k]
+			.filter(v => v === char.toLowerCase()).length}), {});
+}
+
+
+function findOccurrences(str, char) {
+    const arr = str.toLowerCase().split(' ')
+    const obj = {}
+    const rx = new RegExp(char.toLowerCase(), 'g')
+    
+    arr.forEach(word => {
+        const matches = word.match(rx)
+        obj[word] = matches == null ? 0 : matches.length
+    })
+
+    return obj
+}
+
+
+findOccurrences("Hello World", "o");
+findOccurrences("Create a nice JUICY function", "c");
+findOccurrences("An APPLE a day keeps an Archeologist AWAY...", "a");
+findOccurrences("hello people of the planet Earth", "g");
+findOccurrences("Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.", "R");
+
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 402
+
+// Rest in Object Destructuring
+
+// Using basic object destructuring you can assign variables name and email:
+
+// let { name, email } = { name: "John", email: "john@example.com" } 
+
+// console.log(name) // "John"
+// console.log(email) // "john@example.com"
+// What if there were more properties but you didn't want to write variables for all them and just wanted to stick them into another object and do something like this:
+
+// let { name, email, rest} = { name: "John", email: "john@example.com", city: "Phoenix", state: "AZ", country: "USA"} 
+
+// rest ===  { city: "Phoenix", state: "AZ", country: "USA"} // true 
+// There is something you have to do with the variable name rest in order to assign it an object containing the rest of the object properties. You can find out how in the MDN docs in the Resource Links.
+
+
+const user = { name: "John", email: "john@example.com",city: "Phoenix", state: "AZ", country: "USA"}
+const str = `({ name, email, ...rest } = user ).toString()`
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 403
+
+// Create a function which takes in a sentence str and a string of characters chars and return the sentence but with all the specified characters removed.
+
+
+function stripSentence(str, chars) {
+	return str.split("").filter(x => !chars.includes(x)).join("");
+}
+
+
+const stripSentence = (s,c) => s.replace(RegExp(`[${c}]`,'g'), '')
+
+
+const stripSentence = (str, lst) => {
+	return [...str].filter(chr => !lst.includes(chr)).join("");
+}
+
+
+function stripSentence(str, chars) {
+	let regex = new RegExp('[' + chars + ']', 'g');
+	return str.replace(regex, '');
+}
+
+
+const stripSentence = (str, chars) =>
+	str.replace(new RegExp(`[${chars}]`, 'g'), '');
+
+
+stripSentence("the quick brown fox jumps over the lazy dog", "aeiou");
+stripSentence("the hissing snakes sinisterly slither across the rustling leaves", "s");
+stripSentence("gone, reduced to atoms", "go, muscat nerd");
+stripSentence("uh oh i made a typo please fixq it for me", "q");
+stripSentence("sphinx of black quartz, judge my vow!", "sgwj");
+stripSentence("!!!!!!!!!!!!!!!!!!!!!!!", "?");
+stripSentence("cat rat eat pat eat sat", "at");
+stripSentence("abc", "def");
+stripSentence("allegro andante", "aaaaaaaaa");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 404
+
+// The 2nd of February 2020 is a palindromic date in both dd/mm/yyyy and mm/dd/yyyy format (02/02/2020). Given a date in dd/mm/yyyy format, return true if the date is palindromic in both date formats.
+
+
+function palindromicDate(date) {
+	return date.split("/").join("") === date.split("/").join("").split("").reverse().join("");
+}
+
+
+palindromicDate("02/02/2020");
+palindromicDate("11/12/2019");
+palindromicDate("11/02/2011");
+palindromicDate("06/10/1469");
+palindromicDate("06/05/3133");
+palindromicDate("12/12/2121");
+palindromicDate("09/09/9090");
+palindromicDate("11/04/2203");
+palindromicDate("07/07/7070");
+palindromicDate("06/11/2923");
+palindromicDate("03/08/8030");
+palindromicDate("01/01/1010");
+palindromicDate("03/11/3369");
+palindromicDate("11/03/2775");
+palindromicDate("03/03/1822");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 404
+
+// After an amazing performance, the crowd goes wild! People clap enthusiastically and most claps overlap with each other to create one homogeneous sound.
+
+// An overlapped clap is a clap which starts but doesn't finish, as in "ClaClap" (The first clap is cut short and there are overall 2 claps)
+
+// Given a string of what the overlapping claps sounded like, return how many claps were made in total.
+
+
+function countClaps(str) {
+	return str.split("").filter(x => x === "C").length;
+}
+
+
+function countClaps(txt) {
+	return txt.split("C").length-1;
+}
+
+
+
+const countClaps = t => (t.match(/[A-Z]/g) || []).length;
+
+
+
+countClaps("ClaClaClaClap!");
+countClaps("ClClClaClaClaClap!");
+countClaps("CCClaClClap!Clap!ClClClap!");
+countClaps("ClCCClaClaClaClCClap!CClaClap!Clap!ClClClClaClaClap!Clap!ClClCClap!Clap!ClClap!ClaCClClap!ClClap!Clap!CClClaClaClaCClaCClaClClaCCCClaClap!Clap!ClaClaClap!ClaClap!CClap!Clap!ClClap!");
+countClaps("Clap!ClClaClap!ClaClap!CClap!ClClClap!CClaClap!CClap!ClClap!ClaClaClClap!ClaClap!ClClCClaClaCClaCCCCClClCClap!ClaCClaClCClap!Clap!ClaClaClaCClaClap!");
+countClaps("Clap!CClaClClap!ClCClCCClaCClap!ClCCClCClClap!ClClClap!CClap!CClCClap!ClCClap!Clap!Clap!Clap!ClClap!Clap!CClaClClap!ClaClaClaClCClClaClClap!ClaClClaClap!ClaClap!CClClClap!ClClaClClap!Clap!ClaClaClaClaClClap!CClaClClaCClap!ClClClClClap!Clap!CClClap!ClClap!ClaClap!CClClaClaClap!Clap!");
+
