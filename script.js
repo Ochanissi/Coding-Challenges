@@ -18122,3 +18122,329 @@ countClaps("ClCCClaClaClaClCClap!CClaClap!Clap!ClClClClaClaClap!Clap!ClClCClap!C
 countClaps("Clap!ClClaClap!ClaClap!CClap!ClClClap!CClaClap!CClap!ClClap!ClaClaClClap!ClaClap!ClClCClaClaCClaCCCCClClCClap!ClaCClaClCClap!Clap!ClaClaClaCClaClap!");
 countClaps("Clap!CClaClClap!ClCClCCClaCClap!ClCCClCClClap!ClClClap!CClap!CClCClap!ClCClap!Clap!Clap!Clap!ClClap!Clap!CClaClClap!ClaClaClaClCClClaClClap!ClaClClaClap!ClaClap!CClClClap!ClClaClClap!Clap!ClaClaClaClaClClap!CClaClClaCClap!ClClClClClap!Clap!CClClap!ClClap!ClaClap!CClClaClaClap!Clap!");
 
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 405
+
+// A repdigit is a positive number composed out of the same digit.
+
+// Create a function that takes an integer and returns whether it's a repdigit or not.
+
+function isRepdigit(num) {
+	return new Set(num.toString().split("")).size === 1;
+}
+
+
+function isRepdigit(num) {
+	return new Set('' + num).size === 1
+}
+
+const isRepdigit = n => new Set(`${n}`).size === 1;
+
+const isRepdigit = num => new Set(''+num).size === 1;
+
+isRepdigit(6);
+isRepdigit(66);
+isRepdigit(666);
+isRepdigit(6666);
+isRepdigit(1001);
+isRepdigit(-11);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 406
+
+// Given a fraction frac (given in the format "1/2" for example) and n number of decimal places, return a sentence in the following format:
+
+// "{fraction} rounded to {n} decimal places is {answer}"
+
+
+function fracRound(frac, n) {
+	return `${frac} rounded to ${n} decimal places is ${eval(frac).toFixed(n)}`;
+}
+
+
+
+fracRound("1/3", 5);
+fracRound("2/8", 4);
+fracRound("22/7", 2);
+fracRound("23/2", 2);
+fracRound("40/77", 3);
+fracRound("15/58", 3);
+fracRound("2/92", 2);
+
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 407
+
+// As you complete questions on Edabit, you gain experience points depending on the difficulty of the question. The points for each difficulty are as follows:
+
+// Difficulty	Experience Points
+// Very Easy	5XP
+// Easy	10XP
+// Medium	20XP
+// Hard	40XP
+// Very Hard	80XP
+// Given an object of how many questions a person has completed of each difficulty, return how many experience points they'll have.
+
+
+function getXP(obj) {
+	const a = [];
+	let xp = 5;
+	for (var key of Object.keys(obj)) {
+    a.push(obj[key]);
+	}
+	for (let i = 0; i < a.length; i++) {
+		a[i] *= xp;
+		xp *= 2;
+	}
+	return a.reduce((x, i) => x + i) + "XP";
+}
+
+
+const getXP = list => {
+	return Object.values(list)
+		.map((v,i) => v * [5, 10, 20, 40, 80][i])
+		.reduce((a,b) => a + b) + "XP";
+}
+
+
+const getXP = obj => Object.values(obj)
+ .reduce((t, c, i) => t + [5, 10, 20, 40, 80][i] * c, 0) + `XP`;
+
+
+getXP({
+	'Very Easy' : 89,
+	'Easy' : 77,
+	'Medium' : 30,
+	'Hard' : 4,
+	'Very Hard' : 1
+});
+
+getXP({
+	'Very Easy' : 254,
+	'Easy' : 32,
+	'Medium' : 65,
+	'Hard' : 51,
+	'Very Hard' : 34
+});
+
+
+getXP({
+	'Very Easy' : 11,
+	'Easy' : 0,
+	'Medium' : 2,
+	'Hard' : 0,
+	'Very Hard' : 27
+});
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 408
+
+// Create a function that calculates what percentage of the box is filled in. Give your answer as a string percentage rounded to the nearest integer.
+
+
+// Only "o" will fill the box and also "o" will not be found outside of the box.
+// Don't focus on how much physical space an element takes up, pretend that each element occupies one whole unit (which you can judge according to the number of "#" on the sides).
+
+
+function percentFilled(box) {
+	return parseInt(box.flat().join("").split("").filter(x => x === "o").length * 100 / box.flat().join("").split("").filter(x => x === "o" || x === " ").length) + "%";
+}
+
+
+function percentFilled(box) {
+	const max = (box.length - 2) * (box[0].length - 2);
+	const o = (box.join('').match(/o/g) || []).length;
+	return `${Math.round(o / max * 100)}%`;
+}
+
+
+
+const percentFilled = box => {
+	let arr = [...box.join("")],
+			fil = arr.filter(v => v === "o").length,
+			tot = arr.filter(v => v !== "#").length;
+	return `${Math.round(fil / tot * 100)}%`;
+}
+
+
+percentFilled([
+	"####",
+	"#  #",
+	"#o #",
+	"####"
+]);
+
+percentFilled([
+	"#######",
+	"#o oo #",
+	"#######"
+]);
+
+percentFilled([
+	"######",
+	"#ooo #",
+	"#oo  #",
+	"#    #",
+	"#    #",
+	"######"
+]);
+
+percentFilled([
+	"####",
+	"#  #",
+	"####"
+]);
+
+percentFilled([
+	"###",
+	"#o#",
+	"###"
+]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 409
+
+// Given an array of ingredients i and a string flavour f as input, create a function that returns the array but with the elements bread around the selected ingredient.
+
+
+function makeSandwich(ingredients, flavour) {
+	const a = [];
+	for (let i = 0; i < ingredients.length; i++) {
+		if (ingredients[i] === flavour) {
+			a.push("bread");			
+			a.push(ingredients[i]);
+			a.push("bread");
+		} else {
+			a.push(ingredients[i]);
+		}
+	}
+	return a;
+}
+
+const makeSandwich = (ingredients, flavour) => ingredients.flatMap(v => v === flavour ? ["bread", v, "bread"] : v);
+
+
+function makeSandwich(ingredients, flavour) {
+	return ingredients.map(item => {
+		if(item === flavour) return ["bread", item, "bread"];
+		return item
+	}).flat();
+}
+
+
+makeSandwich(["t", "h", "t"], "h");
+makeSandwich(["c", "l"], "c");
+makeSandwich(["h", "h"], "h");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 410
+
+// In this challenge, you have to establish if a given integer n is a Sastry number. If the number resulting from the concatenation of an integer n with its successor is a perfect square, then n is a Sastry Number.
+
+// Given a positive integer n, implement a function that returns true if n is a Sastry number, or false if it's not.
+
+function isSastry(number) {
+	return "" + number + (number + 1) > 0 && Math.sqrt("" + number + (number + 1)) % 1 === 0;
+}
+
+
+const isSastry = n => !(Math.sqrt(+`${n}${n+1}`) % 1);
+
+
+
+
+isSastry(183);
+isSastry(184);
+isSastry(106755);
+isSastry(129987253440921);
+isSastry(157175907513603);
+isSastry(206611570247935);
+isSastry(338752188230098);
+isSastry(433610247875715);
+isSastry(652333983478884);
+isSastry(718717107443715);
+isSastry(752199872453889);
+isSastry(786704531939448);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 411
+
+// Create a function that takes in year and months as input, then return what year it would be after n-months has elapsed.
+
+
+function afterNMonths(year, months) {
+	return year && months ? parseInt(year + months / 12) : !year ? "year missing" : "month missing";
+}
+
+
+const afterNMonths = (y, m) => {
+	return !y ? "year missing" : !m ? "month missing"
+				 : y + Math.floor(m / 12);
+}
+
+
+const afterNMonths = (y, m) =>
+	!y ? 'year missing' : !m ? 'month missing' : y + ~~(m / 12);
+
+
+afterNMonths(2020, 24);
+afterNMonths(1832, 2);
+afterNMonths(1444, 60);
+afterNMonths(2020, undefined);
+afterNMonths(undefined, 2);
+afterNMonths(1444, 65);
+
+
