@@ -18448,3 +18448,366 @@ afterNMonths(undefined, 2);
 afterNMonths(1444, 65);
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 412
+
+// You are given the length of a video in minutes. The format is mm:ss (Example: '02:54'). Create a function which takes the video length and return it in seconds.
+
+
+function minutesToSeconds(time) {
+	return time.split(":")[1] < 60 ? +time.split(":")[0] * 60 + +time.split(":")[1] : false;
+}
+
+
+const minutesToSeconds = time => {
+	let [minutes, seconds] = time.split(":").map(Number);
+	return seconds < 60 ? (minutes * 60) + seconds : false;
+}
+
+
+minutesToSeconds('01:00');
+minutesToSeconds('13:56');
+minutesToSeconds('10:60');
+minutesToSeconds('132:21');
+minutesToSeconds('132:271');
+minutesToSeconds('01:30');
+minutesToSeconds('10:00');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 413
+
+// Given a number, return a string of the word "Boom", which varies in the following ways:
+
+// The string should include n number of "o"s, unless n is below 2 (in that case, return "boom").
+// If n is evenly divisible by 2, add an exclamation mark to the end.
+// If n is evenly divisible by 5, return the string in ALL CAPS.
+// If n is evenly divisible by both 2 and 5, return the string in ALL CAPS and add an exclamation mark to the end.
+
+
+function boomIntensity(n) {
+	if (n < 2) return "boom";
+	if (n % 2 === 0 && n % 5 === 0) return `B${"O".repeat(n)}M!`;
+	if (n % 5 === 0) return `B${"O".repeat(n)}M`;
+	if (n % 2 === 0) return `B${"o".repeat(n)}m!`;
+	return `B${"o".repeat(n)}m`;
+}
+
+
+const boomIntensity = n => {
+	if (n < 2) return 'boom';
+	const boom = 'B' + 'o'.repeat(n) + 'm' + (!(n % 2) ? '!' : '');
+	return !(n % 5) ? boom.toUpperCase() : boom;
+};
+
+
+const boomIntensity = n => {
+	let i = [n<2, !(n%10), !(n%5), !(n%2), true].indexOf(true);
+	switch(i) {
+		case 0: return `boom`;
+		case 1: return `B${"O".repeat(n)}M!`;
+		case 2: return `B${"O".repeat(n)}M`;
+		case 3: return `B${"o".repeat(n)}m!`;
+		case 4: return `B${"o".repeat(n)}m`;
+	}
+}
+
+
+boomIntensity(0);
+boomIntensity(1);
+boomIntensity(2);
+boomIntensity(3);
+boomIntensity(4);
+boomIntensity(5);
+boomIntensity(6);
+boomIntensity(7);
+boomIntensity(8);
+boomIntensity(9);
+boomIntensity(10);
+boomIntensity(11);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 412
+
+// Something which is not true is false, but something which is not not true is true! Create a function where given n number of "not", evaluate whether it's true or false.
+
+
+function notNotNot(n, bool) {
+	return n % 6 === 0 || n % 2 === 0 ? bool : !bool;
+}
+
+
+const notNotNot = (n, bool) => !(n % 2) === bool;
+
+
+notNotNot(1, true);
+notNotNot(2, false);
+notNotNot(7, true);
+notNotNot(7, false);
+notNotNot(3, true);
+notNotNot(13, true);
+notNotNot(24, false);
+notNotNot(6, false);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 413
+
+// You will be implementing a basic case of the map-reduce pattern in programming. Use the built in JavaScript array functions .map() and .reduce() to solve the following problem.
+
+// Given a vector stored as an array of numbers, find the magnitude of the vector (this is similar to the function Math.hypot()). Use the standard distance formula for n-dimensional Cartesian coordinates.
+
+
+
+var magnitude = vector => vector.length > 0 ? Math.sqrt(vector.map(x => x * x).reduce((x, i) => x + i)) : 0;
+
+
+let magnitude = v =>
+    Math.sqrt(
+        v.map(x => x * x)
+         .reduce((x, y) => x + y, 0));
+
+
+var magnitude = vector => {
+    return Math.sqrt(vector
+        .map(num => Math.pow(num, 2))
+        .reduce((acc, num) => acc + num, 0)
+    );
+}
+
+
+// Basic tests
+magnitude([3,4]);
+magnitude([0,0,-10]);
+magnitude([]);
+magnitude([2,3,6,1,8]);
+
+// Extra tests
+magnitude([9,-9,3]);
+magnitude([-24,94,4,0,10]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 414
+
+// Write a function that takes an integer n, reverses the binary representation of that integer, and returns the new integer from the reversed binary.
+
+
+function reversedBinaryInteger(num) {
+	return parseInt(num.toString(2).split("").reverse().join(""), 2);
+}
+
+
+reversedBinaryInteger(1);
+reversedBinaryInteger(4);
+reversedBinaryInteger(5);
+reversedBinaryInteger(31);
+reversedBinaryInteger(82);
+reversedBinaryInteger(90);
+reversedBinaryInteger(255);
+reversedBinaryInteger(446);
+reversedBinaryInteger(451);
+reversedBinaryInteger(634);
+reversedBinaryInteger(776);
+reversedBinaryInteger(898);
+reversedBinaryInteger(1103);
+reversedBinaryInteger(3801);
+reversedBinaryInteger(4096);
+reversedBinaryInteger(8505);
+reversedBinaryInteger(428293);
+reversedBinaryInteger(547643);
+reversedBinaryInteger(612965);
+reversedBinaryInteger(999999);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 415
+
+// Given any number, we can create a new number by adding the sums of squares of digits of that number. For example, given 203, our new number is 4 + 0 + 9 = 13. If we repeat this process, we get a sequence of numbers:
+
+// 203 -> 13 -> 10 -> 1 -> 1
+// Sometimes, like with 203, the sequence reaches (and stays at) 1. Numbers like this are called happy.
+
+// Not all numbers are happy. If we started with 11, the sequence would be:
+
+// 11 -> 2 -> 4 -> 16 -> ...
+// This sequence will never reach 1, and so the number 11 is called unhappy.
+
+// Given a positive whole number, you have to determine whether that number is happy or unhappy.
+
+
+function happy(n) {
+	const a = +n.toString().split("").reduce((x, i) => +x + +i).toString().split("").reduce((x, i) => +x + +i);
+	return a === 1 || a === 4;
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const getDigits = num => String(num).split('').map(Number);
+
+const happy = num => {
+  if (num === 1) return true;
+  if (num === 4) return false;
+  return happy(sum(getDigits(num).map(digit => Math.pow(digit, 2))));
+};
+
+
+function happy(n) {
+	if (n == 1) return true;
+	if (n == 4) return false;
+	return happy([...n.toString()]
+		.reduce((sum, v) => Math.pow(Number(v), 2) + sum, 0))
+}
+
+
+// Between 100 and 110 the happy numbers are 100, 103, 109
+happy(100);
+happy(101);
+happy(102);
+happy(103);
+happy(104);
+happy(105);
+happy(106);
+happy(107);
+happy(108);
+happy(109);
+happy(110);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 415
+
+// You can assign variables from nested arrays like this:
+
+// const arr = ["cars", "planes", ["trains", ["motorcycles"]]]
+
+// let trans1 = arr[0]  
+// let trans2 = arr[1]  
+// let trans3 = arr[2][0]  
+// let trans4 = arr[2][1][0] 
+
+// console.log(trans1) // outputs "cars"
+// console.log(trans2) // outputs "planes"
+// console.log(trans3) // outputs "trains"
+// console.log(trans4) // outputs "motorcycles"
+// But with es6 you can assign variables from arrays in a much more succint way.
+
+
+const arr = ["cars", "planes", ["trains", ["motorcycles"]]]
+
+// Fix the following using es6 destructuring
+// Only edit what's inside of [ trans1, trans2, trans3, trans4 ]
+let [ trans1, trans2, [trans3, [trans4]] ] = arr
+
+/* 
+console.log(trans1) // should output "cars"
+console.log(trans2) // should output "planes"
+console.log(trans3) // should output "trains"
+console.log(trans4) // should output "motorcycles"
+*/
+
+
+trans1, "cars";
+trans2, "planes";
+trans3, "trains";
+trans4, "motorcycles";
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 416
+
+// Create a function that returns the sum of missing numbers.
+
+
+function sumMissingNumbers(arr) {
+	const a = [];
+	for (let i = Math.min(...arr); i < Math.max(...arr); i++) {
+		if (!arr.includes(i)) a.push(i);
+	}
+	return a.reduce((x, i) => x + i, 0);
+}
+
+
+const sumMissingNumbers = a => {
+	let tot = 0;
+	for (let i = Math.min(...a) + 1, j = Math.max(...a); i < j; i++)
+		if (!a.includes(i)) tot += i;
+	return tot;
+}
+
+
+const sumAB = (a, b) => ((b - a + 1) * (a + b)) >> 1;
+const sum = ar => ar.reduce((a,v) => a + v, 0);
+const sumMissingNumbers = arr => sumAB(Math.min(...arr), Math.max(...arr)) - sum(arr);
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const sumMissingNumbers = arr => {
+  const min = Math.min(...arr);
+  const max = Math.max(...arr);
+
+  return (max - min + 1) * ((min + max) / 2) - sum(arr);
+};
+
+
+sumMissingNumbers([1, 3, 5, 7, 10]);
+sumMissingNumbers([10, 20, 30, 40, 50, 60]);
+sumMissingNumbers([7, 3, 8, 5, 12]);
+sumMissingNumbers([99, 2, 45, 4, 17]);
+sumMissingNumbers([10, 7, 5, 3, 1]);
+sumMissingNumbers([7, 8, 9, 10]);
