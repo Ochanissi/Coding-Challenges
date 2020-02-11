@@ -18811,3 +18811,273 @@ sumMissingNumbers([7, 3, 8, 5, 12]);
 sumMissingNumbers([99, 2, 45, 4, 17]);
 sumMissingNumbers([10, 7, 5, 3, 1]);
 sumMissingNumbers([7, 8, 9, 10]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 416
+
+// Create a function that takes in a number as a string n and returns the number without trailing and leading zeros.
+
+// Trailing Zeros are the zeros after a decimal point which don't affect the value (e.g. the last three zeros in 3.4000 and 3.04000).
+// Leading Zeros are the zeros before a whole number which don't affect the value (e.g. the first three zeros in 000234 and 000230).
+
+
+function removeLeadingTrailing(n) {
+	return String(+n);
+}
+
+
+function removeLeadingTrailing(n) {
+	return Math.abs(n);
+}
+
+
+const removeLeadingTrailing = Number;
+
+removeLeadingTrailing("230.000");
+removeLeadingTrailing("00402");
+removeLeadingTrailing("03.1400");
+removeLeadingTrailing("30");
+removeLeadingTrailing("30.0000");
+removeLeadingTrailing("24340");
+removeLeadingTrailing("0404040");
+removeLeadingTrailing("0");
+removeLeadingTrailing("00");
+removeLeadingTrailing("0.000000");
+removeLeadingTrailing("0000.000");
+removeLeadingTrailing("00.0001");
+removeLeadingTrailing("10000");
+removeLeadingTrailing("1345");
+removeLeadingTrailing("30.000020");
+removeLeadingTrailing("00200.1900001");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 417
+
+// Create a function that takes an array of students and returns an array of their top notes. If student does not have notes then let's assume their top note is equal to 0.
+
+
+function getStudentTopNotes(students) {
+	return students.map(x => Math.max(...x.notes, 0));
+}
+
+
+
+function getStudentTopNotes(students) {
+    return students.map(s => s.notes.length ? Math.max(...s.notes) : 0)
+}
+
+
+
+function getStudentTopNotes(students) {
+    return students.map((a) => a.notes).map((v) => {
+        if(v.length === 0) return 0;
+        else return Math.max(...v)
+    })
+
+}
+
+
+const areEqual = (actual, expected) => expected.every(
+    (item, index) => item === actual[index]
+  )
+  const sets = [
+    [[5, 4, 3], [5], [4]],
+    [[1, 2, 3], [1, 1, 1], []],
+    [[], []],
+    []
+  ].map(
+    set => ({ 
+      actual: getStudentTopNotes(
+        set.map(notes => ({ notes }))
+      ), 
+      expected: set.map(notes => Math.max(...notes, 0))
+    })   
+  ).forEach(
+    ({ actual, expected }) => {
+      'Result should be an array', () => {
+        areEqual(actual, expected)
+      }
+    }
+  )
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 418
+
+// Create a function that determines whether a number is Oddish or Evenish. A number is Oddish if the sum of all of its digits is odd, and a number is Evenish if the sum of all of its digits is even. If a number is Oddish, return "Oddish". Otherwise, return "Evenish".
+
+// For example, oddishOrEvenish(121) should return "Evenish", since 1 + 2 + 1 = 4. oddishOrEvenish(41) should return "Oddish", since 4 + 1 = 5.
+
+
+function oddishOrEvenish(num) {
+	return  num.toString().split("").reduce((x, i) => +x + +i) % 2 === 0 ? "Evenish" : "Oddish";
+}
+
+
+function oddishOrEvenish(num) {
+	return [...String(num)].map(Number).reduce((a,v) => a + v) % 2 ? 'Oddish' : 'Evenish'
+}
+
+
+const oddishOrEvenish = n => ['Even','Odd'][[...''+n].reduce((a,v) => +v+a, 0) % 2]+'ish';
+
+
+oddishOrEvenish(43);
+oddishOrEvenish(373);
+oddishOrEvenish(55551);
+oddishOrEvenish(694);
+oddishOrEvenish(4433);
+oddishOrEvenish(11);
+oddishOrEvenish(211112);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 419
+
+// You can assign variables from arrays with destructuring like this:
+
+// const arr = ["eyes", "nose", "lips", "ears"]
+// let [eyes, nose, lips, ears] = arr
+// But you can also skip over items in the array being destructured.
+
+
+const arr = ["eyes", "nose", "lips", "ears"] 
+var [,,lips] = arr
+
+const arr = ["eyes", "nose", "lips", "ears"] 
+var [,,lips,] = arr
+
+
+
+lips, arr[2];
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 420
+
+// ES6 Destructuring can come in handy when you use regular expressions. Here is a function that uses a regular expression to parse a URL.
+
+// const parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url)
+
+// parseURL("https://developer.mozilla.org/en-US/Web/JavaScript")
+// // returns ["https://developer.mozilla.org/en-US/Web/JavaScript", "https", "developer.mozilla.org", "en-US/Web/JavaScript"]
+
+// // the protocol = https
+// // the host = developer.mozilla.org
+// // the path = en-US/Web/JavaScript
+
+// From the parsedURL result you could assign these segments using ES6 array destructuring.
+
+
+const str = `[,protocol, host, path] = parsedURL`
+
+
+const url1 = 'https://developer.mozilla.org/en-US/Web/JavaScript'
+
+const parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url1)
+eval(str)
+
+const validString = (str) => {
+  return /(protocol).*(host).*(path)/.test(str) ? "valid" : "not valid" 
+}
+
+const stringConstraints = (expression) => {
+	return /^\[.*\]\s\=\sparsedURL/.test(str) ? "valid" : "not valid" 
+}
+
+validString(str);
+stringConstraints(str);
+protocol;
+host;
+path;
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 421
+
+// Create a function that returns the thickness (in meters) of a piece of paper after folding it n number of times. The paper starts off with a thickness of 0.5mm.
+
+
+function numLayers(n) {
+	const a = Math.pow(2, n) * 0.0005
+	return a >= 18446744073709550 ? a.toExponential() + "m" : Number.isInteger(a) ? a + ".0m" : a + "m";
+}
+
+
+const rnd = n => n > 1e16 ? n.toExponential() :
+	(Number.isInteger(n) && !(''+n).includes('+')) ? n+'.0' : n;
+const numLayers = n => rnd(2**n / 2000) + 'm';
+
+
+function numLayers(n) {
+	if (n <= 60) return `${0.0005 * 2 ** n}m`;
+	if (n <= 64) return `${0.0005 * 2 ** n}.0m`;
+	return `${(0.0005 * 2 ** n).toExponential()}m`;
+}
+
+
+
+numLayers(0);
+numLayers(1);
+numLayers(2);
+numLayers(3);
+numLayers(4);
+numLayers(5);
+numLayers(6);
+numLayers(7);
+numLayers(8);
+numLayers(9);
+numLayers(10);
+numLayers(11);
+numLayers(12);
+numLayers(13);
+numLayers(14);
+numLayers(15);
+numLayers(16);
+numLayers(17);
+numLayers(18);
+numLayers(19);
+numLayers(20);
+numLayers(96);
+numLayers(97);
+numLayers(98);
+numLayers(99);
+numLayers(100);
