@@ -19081,3 +19081,345 @@ numLayers(97);
 numLayers(98);
 numLayers(99);
 numLayers(100);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 422
+
+// Create a function that takes an array of words and transforms it into an array of each word's length.
+
+
+function wordLengths(arr) {
+    return arr.map(x => x.length);
+}
+
+wordLengths(["hello", "world"]);
+wordLengths(["Halloween", "Thanksgiving", "Christmas"]);
+wordLengths(["She", "sells", "seashells", "down", "by", "the", "seashore"]);
+wordLengths(["Indiana", "Jones", "and", "the", "Temple", "of", "Doom"]);
+wordLengths(["Programming", "is", "fun"]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 423
+
+// It is important to be happy! Therefore, you must create a function that takes a sentence containing sad faces and turn them into happy ones! This involves changing only the mouths.
+
+// Sad face examples: :( 8( x( ;(
+// Happy face examples: :) 8) x) ;)
+// Make sure to only change the face if there are eyes before them, round(3.4) wouldn't become round)3.4) (for example).
+
+
+function makeHappy(str) {
+	return str.replace(/[^\(].*$/g, ")")
+}
+
+
+const makeHappy = str => str.replace(/([:8x;])\(/g, "$1)");
+
+
+
+const makeHappy = str => str.replace(/(?<=[:8x;])\(/g, ")");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 424
+
+// Write a function that takes an integer i and returns an integer with the integer backwards followed by the original integer.
+
+// To illustrate:
+
+// 123
+// We reverse 123 to get 321 and then add 123 to the end, resulting in 321123.
+
+
+function reverseAndNot(i) {
+	return +(i.toString().split("").reverse().join("") + i)
+}
+
+
+const reverseAndNot = i =>
+    +([...String(i)].reverse().join('') + String(i))
+    
+
+const reverseAndNot = n => +([...''+n].reverse().join('') + n);
+
+const reverseAndNot = number => (
+    +([...`${number}`].reverse().join("") + number)
+);
+
+reverseAndNot(123);
+reverseAndNot(123456789);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 425
+
+// Create a function that converts a string of letters to their respective number in the alphabet.
+
+
+function alphNum(str) {
+	return str.split("").map(x => x.charCodeAt(0) - 65).join(" ");
+}
+
+
+const alphNum = str =>
+	[...str]
+		.map(value => value.charCodeAt() - 65)
+		.join(' ')
+
+
+alphNum("ABCD");
+alphNum("BCDA");
+alphNum("AAA");
+alphNum("XYZ");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 426
+
+// Create a function that replaces "the" in the sentence with "an" or "a". Remember that if the next word begins with a vowel, use "an". In the case of a consonant, use "a".
+
+
+
+function replaceThe(str) {
+	const a = [];
+	for (let i = 0; i < str.split(" ").length; i++) {
+		if (str.split(" ")[i] === "the" && /[aeiou]/.test(str.split(" ")[i+1][0])) {
+			a.push("an");
+		} else if (str.split(" ")[i] === "the" && /([b-df-hj-np-tv-z])/.test(str.split(" ")[i+1][0])) {
+			a.push("a");
+		} else a.push(str.split(" ")[i])
+	}
+	return a.join(" ");
+}
+
+
+const replaceThe = str => str.replace(/the(?= [aeiou])/g, "an").replace(/the/g, "a");
+
+
+const replaceThe = str => {
+	return str.replace(/(the\s)(\w+)/g, (__,_,noun) => (
+		`${/^[aeiou]/g.test(noun) ? "an" : "a"} ${noun}`
+	));
+}
+
+
+const replaceThe = str =>
+	str
+		.replace(/the(?= [^aeiou])/g, 'a')
+        .replace(/the(?= [aeiou])/g, 'an')
+        
+
+const replaceThe = str => str.replace(/the ./g, v =>
+    (/[aeiou]/.test(v[4]) ? 'an ' : 'a ') + v[4]);
+
+
+replaceThe("the dog and the envelope");
+replaceThe("the boy ran at the wall");
+replaceThe("the egg, the spoon and the espionage");
+replaceThe("where is the spoon");
+replaceThe("the quick brown fox jumps over the lazy dog");
+replaceThe("this edabit thing is quite neat");
+replaceThe("the lion, witch and the wardrobe");
+replaceThe("enter the correct password to access the epic program");
+replaceThe("the man blew the final candle out and all was dark");
+replaceThe("the ant ate the egg salad which the eel had been intending to eat over the weekend");
+replaceThe("this the random english sentence which you have to pass");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 427
+
+// Create a function that squares every digit of a number.
+
+function squareDigits(n) {
+	return [...n.toString()].map(x => Math.pow(x, 2)).join("") * 1;
+}
+
+
+squareDigits(9119);
+squareDigits(8726);
+squareDigits(9763);
+squareDigits(2230);
+squareDigits(2797);
+squareDigits(233);
+squareDigits(7437);
+squareDigits(2483);
+squareDigits(5742);
+squareDigits(5636);
+squareDigits(841);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 427
+
+// In music, cadences act as punctuation in musical phrases, and help to mark the end of phrases. Cadences are the two chords at the end of a phrase. The different cadences are as follows:
+
+// V followed by I is a Perfect Cadence
+// IV followed by I is a Plagal Cadence
+// V followed by Any chord other than I is an Interrupted Cadence
+// Any chord followed by V is an Imperfect Cadence
+
+// Create a function where given a chord progression as an array, return the type of cadence the phrase ends on.
+
+function findCadence(chords) {
+	if (chords[chords.length - 2] === "V" && chords[chords.length - 1] === "I") {
+		return "perfect";
+	} else if (chords[chords.length - 2] === "IV" && chords[chords.length - 1] === "I") {
+		return "plagal";
+	} else if (chords[chords.length - 2] === "V" && chords[chords.length - 1] !== "I") {
+		return "interrupted";
+	} else if (chords[chords.length - 1] === "V") {
+		return "imperfect";
+	} else return "no cadence";
+}
+
+
+const findCadence = chords => {
+	let x = chords.slice(-2).join("");
+	return ["perfect","interrupted","plagal","imperfect","no cadence"]
+				 [[x == "VI", x[0] == "V", x == "IVI", x[1] == "V", true]
+					.indexOf(true)];
+}
+
+
+
+function findCadence(chords) {
+	let arr = chords.slice(-2),
+			a = arr[0], b = arr[1];
+	return a == "V" ? (b == "I" ? "perfect" : "interrupted") : 
+				a == "IV" ? (b == "I" ? "plagal" : b == "V" ? "imperfect" : "no cadence") : 
+				b == "V" ? "imperfect" : "no cadence";
+}
+
+
+findCadence(["I", "IV", "V"]);
+findCadence(["ii", "V", "I"]);
+findCadence(["I", "IV", "I", "V", "vi"]);
+findCadence(["I", "IV", "I", "V", "IV"]);
+findCadence(["I", "III", "IV", "V"]);
+findCadence(["I", "IV", "I"]);
+findCadence(["V", "IV", "I"]);
+findCadence(["V", "IV", "V", "I"]);
+findCadence(["V", "IV", "V", "I", "vi"]);
+findCadence(["V", "IV", "V", "III", "vi"]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 428
+
+// Write a function that takes an array of 10 integers (between 0 and 9) and returns a string in form of a phone number.
+
+
+function createPhoneNumber(numbers) {
+	return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`.replace(/,/g, "");
+}
+
+
+const createPhoneNumber = numbers => numbers.join("").replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+
+
+const TEST = [
+	// Input				 // Expected
+	[[1,2,3,4,5,6,7,8,9,0], "(123) 456-7890"],
+	[[1,4,7,6,1,2,5,7,9,5], "(147) 612-5795"],
+	[[1,1,1,1,1,1,1,1,1,1], "(111) 111-1111"],
+	[[8,7,4,1,2,5,6,5,8,2], "(874) 125-6582"]
+];
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 429
+
+// Create a function that takes an array and returns an array of the accumulating product.
+
+
+
+function accumulatingProduct(arr) {
+	const a = [];
+	if (arr[0]) a.push(arr[0]);
+	for (let i = 1; i < arr.length; i++) {
+		a.push(arr[i] * a[a.length - 1]);
+	}
+	return a;
+}
+
+
+const accumulatingProduct = arr => {
+    let product = 1;
+    return arr.map(num => (product *= num));
+};
+
+function accumulatingProduct(arr) {
+	return arr.reduce((acc , value) => (acc.length === 0) ? [value] : acc.concat(acc[acc.length-1]*value) , []);
+}
+
+
+
+accumulatingProduct([1, 2, 3, 4]);
+accumulatingProduct([5, 10, 1, 1]);
+accumulatingProduct([1, 5, 7]);
+accumulatingProduct([1, 0, 1, 0]);
+accumulatingProduct([1]);
+accumulatingProduct([1, 2, 2, 2, 2, 2, 2]);
+accumulatingProduct([1, 1, 1, 1, 1, 1, 1]);
+accumulatingProduct([]);
+
+
+
