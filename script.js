@@ -19423,3 +19423,127 @@ accumulatingProduct([]);
 
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 429
+
+// Create a function where given the number n, return the sum of all square numbers up to and including n.
+
+
+function squaresSum(n) {
+	const a = [];
+	for (let i = 1; i <= n; i++) {
+		a.push(Math.pow(i, 2));
+	}
+	return a.reduce((x, i) => x + i);
+}
+
+
+const squaresSum = length => Array.from({length}, (_,i) => (i+1) ** 2).reduce((a,b) => a + b, 0);
+
+
+const squaresSum = n => n++ * n * (2 * n - 1) / 6
+
+
+const squaresSum = n => (2*n**3 + 3*n**2 + n) / 6;
+
+
+function squaresSum(n) {
+	return [...new Array(n)].map((e,i) => e = (i+1)*(i+1)).reduce((a,c) => a+c,0);
+}
+
+squaresSum(1);
+squaresSum(2);
+squaresSum(3);
+squaresSum(4);
+squaresSum(5);
+squaresSum(6);
+squaresSum(7);
+squaresSum(8);
+squaresSum(9);
+squaresSum(10);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 430
+
+// A fuse melts when a current in an electrical device exceeds the fuse's rating, breaking the circuit and preventing the heat from building up too much (which can cause a fire). The ideal fuse to choose is higher than the device's current output, yet as close as possible to it as well.
+
+// Given an array of fuse ratings, and the device's current output, return which of the fuses is the best for the device.
+
+
+function chooseFuse(fuses, current) {
+	return fuses.map(x => +x.slice(0, -1)).filter(x => x >= +current.slice(0, -1)).sort((a, b) => a - b)[0] + 'V';
+}
+
+
+const chooseFuse = (fuses, voltage) => {
+	fuses.push(voltage);
+	fuses.sort((a,b) => +a.slice(0, -1) - +b.slice(0, -1));
+	return fuses[fuses.indexOf(voltage) + 1];
+}
+
+
+const p = parseFloat;
+const chooseFuse = (fuses, current) => fuses.sort((a, b) => p(a) - p(b)).find(v => p(v) >= p(current));
+
+chooseFuse(["3V", "5V", "12V"], "4.5V");
+chooseFuse(["5V", "14V", "2V"], "5.5V");
+chooseFuse(["17V", "15V", "12V"], "9V");
+chooseFuse(["1V", "2V", "3V"], "2.5V");
+chooseFuse(["17V", "15V", "12V"], "1V");
+chooseFuse(["7V", "135V", "12V"], "9.5V");
+chooseFuse(["17V", "15V", "12V"], "17V");
+chooseFuse(["3V", "11V", "12V"], "4.5V");
+chooseFuse(["3V", "5V", "12V"], "0.5V");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 431
+
+// Create a function that turns an array of words into a comma separated list, where the last word is separated by the word "and".
+
+function wordsToSentence(words) {
+	let a = [];
+	if (words !== null) a = words.filter(x => x.length > 0);
+	return a.length > 1 ? a.slice(0, -1).join(", ").trim() + " and " +  a.slice(-1): a.length === 1 ? a[0] : "";
+}
+
+
+function wordsToSentence(words) {
+	words ? words = words.filter(x => x != "") : words = "";
+	return !words || words.length < 1 ? "" : words.length == 1 ? words[0] :
+	words.slice(0, -1).join(", ") + ` and ${words.slice(-1)[0]}`;
+}
+
+
+
+const wordsToSentence = words => words ? (
+	words.filter(Boolean).join(', ').replace(/, ([^,]+)$/, ' and $1')
+) : '';
+
+wordsToSentence(["one", "two", "three", "four"]);
+wordsToSentence(["one", "two", "", "four"]);
+wordsToSentence(["one"]);
+wordsToSentence(["one", "", "three"]);
+wordsToSentence(["one", "two", ""]);
+wordsToSentence([""]);
+wordsToSentence([]);
+wordsToSentence(null);
+
+
