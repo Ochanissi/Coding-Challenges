@@ -19547,3 +19547,28 @@ wordsToSentence([]);
 wordsToSentence(null);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 432
+
+// Create a function that takes a number and returns an array with the digits of the number in reverse order.
+
+
+function reverseArr(num) {
+	return num.toString().split("").reverse().map(x => +x);
+}
+
+
+const reverseArr = n => 
+ [...String(n)].map(Number).reverse();
+
+reverseArr(1485979);
+reverseArr(623478);
+reverseArr(12345);
+reverseArr(202069);
+
