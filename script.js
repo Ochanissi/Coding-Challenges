@@ -19764,3 +19764,237 @@ hasHiddenFee(["$11", "$17", "$43", "$4", "$6", "$8", "$51", "$32", "$15", "$20",
 hasHiddenFee(["$28", "$2", "$7", "$50", "$28", "$40", "$51", "$29", "$18", "$49", "$18", "$44", "$39", "$44", "$3", "$16", "$10", "$19", "$7"], "$502");
 hasHiddenFee(["$40", "$37", "$36", "$50", "$33", "$27", "$27", "$50", "$39", "$29", "$3", "$40", "$13", "$10", "$2", "$37", "$35", "$33"], "$641");
 hasHiddenFee(["$23", "$13", "$5", "$12", "$28"], "$81");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 436
+
+// Create a function that takes a string as an argument and return a non-encoded, encrypted string.
+
+
+function encodeMorse(str) {
+	let morseCode = {
+  "0": "-----",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
+  "a": ".-",
+  "b": "-...",
+  "c": "-.-.",
+  "d": "-..",
+  "e": ".",
+  "f": "..-.",
+  "g": "--.",
+  "h": "....",
+  "i": "..",
+  "j": ".---",
+  "k": "-.-",
+  "l": ".-..",
+  "m": "--",
+  "n": "-.",
+  "o": "---",
+  "p": ".--.",
+  "q": "--.-",
+  "r": ".-.",
+  "s": "...",
+  "t": "-",
+  "u": "..-",
+  "v": "...-",
+  "w": ".--",
+  "x": "-..-",
+  "y": "-.--",
+  "z": "--..",
+  ".": ".-.-.-",
+  ",": "--..--",
+  "?": "..--..",
+  "!": "-.-.--",
+  "-": "-....-",
+  "/": "-..-.",
+  "@": ".--.-.",
+  "(": "-.--.",
+  ")": "-.--.-",
+    " ": " ",
+    ":": "---...",
+    "'": ".----.",
+}
+	
+	return str.split("").map(x => x = morseCode[x.toLowerCase()]).join(" ");
+}
+
+
+encodeMorse("EDABBIT CHALLENGE");
+encodeMorse("HELP ME !");
+encodeMorse("CHALLENGE");
+encodeMorse( "1 APPLE AND 5 CHERRY, 7 SANDWICHES, 2 TABLES, 9 INVITED GUYS ! THAT'S SO COOL...");
+encodeMorse("did you got my mail ?");
+encodeMorse("TWO THInGS TO KNOW : i FORGeT THeM :C");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 436
+
+// Create a function that determines whether elements in an array can be re-arranged to form a consecutive list of numbers where each number appears exactly once.
+
+
+function cons(arr) {
+	const a = arr.sort((a, b) => a - b);
+	const b = [];
+	for (let i = a[0]; i <= a[a.length - 1]; i++){
+		b.push(i);
+	}
+	return a.toString() === b.toString()
+}
+
+
+function cons(arr) {
+	return arr.sort((a,b) => a>b).slice(1).every((x,i) => arr[i] == x-1);
+}
+
+
+const cons = arr => {
+    if (new Set(arr).size !== arr.length) return false;
+    const sorted = arr.sort((a, b) => a - b);
+    return sorted.slice(1).every((num, i) => num - sorted[i] === 1);
+  };
+
+
+function cons(arr) {
+    arr = arr.sort(function(a,b){return a-b;});
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] != arr[i-1] + 1) return false;
+    }
+    return true;
+}
+
+
+cons([5, 1, 4, 3, 2]);
+cons([55, 59, 58, 56, 57]);
+cons([-3, -2, -1, 1, 0]);
+cons([5, 1, 4, 3, 2, 8]);
+cons([5, 6, 7, 8, 9, 9]);
+cons([5, 3]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 437
+
+// Given a number, return the difference between the maximum and minimum numbers that can be formed when the digits are rearranged.
+
+
+
+function rearrangedDifference(num) {
+	return num.toString().split("").sort((a, b) => b - a).join("") - num.toString().split("").sort((a, b) => a - b).join("");
+}
+
+
+const rearrangedDifference = num =>
+	+[...String(num)].sort((a, b) => b - a).join('') -
+	+[...String(num)].sort().join('')
+;
+
+function rearrangedDifference(num) {
+	min = +[...''+num].sort((a,b) => a-b).join('')
+	max = +[...''+num].sort((a,b) => b-a).join('')
+	return max - min
+}
+
+rearrangedDifference(9092564);
+rearrangedDifference(1308821);
+rearrangedDifference(8386568);
+rearrangedDifference(7794084);
+rearrangedDifference(6366093);
+rearrangedDifference(7863060);
+rearrangedDifference(3368327);
+rearrangedDifference(7218787);
+rearrangedDifference(7723188);
+rearrangedDifference(8816317);
+rearrangedDifference(8824349);
+rearrangedDifference(3320707);
+rearrangedDifference(1695488);
+rearrangedDifference(2120034);
+rearrangedDifference(5300586);
+rearrangedDifference(3538814);
+rearrangedDifference(1336939);
+rearrangedDifference(6290200);
+rearrangedDifference(5268866);
+rearrangedDifference(5155458);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 438
+
+// For each number in an array, check if that number is greater than the sum of all numbers that appear before it in the array. If all numbers in the array pass this test, return true. Return false otherwise.
+
+
+function greaterThanSum(nums) {
+	let a = 0;
+	for (let i = 0; i < nums.length; i++) {
+		if (a >= nums[i]) return false;
+		a += nums[i];
+	}
+	return true;
+}
+
+
+const greaterThanSum=nums=>
+    !!nums.reduce((acc,next)=>acc!=false && acc<next?acc+next:false)
+    
+
+
+const greaterThanSum = nums =>
+    nums.every((v, i) => v > nums.slice(0, i).reduce((a, c) => a + c, 0))
+
+
+greaterThanSum([1, -2, 11, 26]);
+greaterThanSum([5, 8, 18, 32, 67, 131, 265, 529, 1056, 2115]);
+greaterThanSum([8, 29, 62, 115, 232]);
+greaterThanSum([5, 7, 15, 52, 88, 173, 346, 686, 1393, 2765]);
+greaterThanSum([1, 25, 35, 74, 159, 305, 623]);
+greaterThanSum([21, 40, 58, 134, 250]);
+greaterThanSum([9, 32, 60, 107, 223, 442, 894, 1782, 3564]);
+greaterThanSum([4, 26, 51, 103, 204, 412, 821, 1638, 3257]);
+greaterThanSum([16, 35, 51, 120]);
+greaterThanSum([-4, 1, 2, 14, 9, 44, 67, 131, 286]);
+greaterThanSum([1, 4, 6, 14, 26, 56, 112]);
+greaterThanSum([1, 18, 25, 42, 82, 188]);
+greaterThanSum([13, 23, 36, 97, 186, 369, 728]);
+greaterThanSum([8, 30, 44, 97]);
+greaterThanSum([8, 31, 39, 102, 176, 363, 732, 1455, 2917, 5840]);
+greaterThanSum([9, 10, 20, 43]);
+greaterThanSum([25, 34, 68, 128, 262]);
+greaterThanSum([18, 34, 77, 129, 270, 544, 1075, -2148]);
+greaterThanSum([14, 34, 70, 123, 263, 506]);
+greaterThanSum([24, 29, 58, 115, 236, 468, 950, 1905, 3787, 7575]);
+
+
