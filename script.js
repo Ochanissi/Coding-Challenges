@@ -19998,3 +19998,306 @@ greaterThanSum([14, 34, 70, 123, 263, 506]);
 greaterThanSum([24, 29, 58, 115, 236, 468, 950, 1905, 3787, 7575]);
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 439
+
+// Create a function that returns the number of syllables in a simple string. The string is made up of short repeated words like "Lalalalalalala" (which would have 7 syllables).
+
+
+function countSyllables(str) {
+	return str.length / 2;	
+}
+
+
+const countSyllables = str => str.match(/[aeiou]/gi).length
+
+
+countSyllables("Hehehehehehe");
+countSyllables("bobobobobobobobo");
+countSyllables("NANANANA");
+countSyllables("lelelele");
+countSyllables("momomomomomomomomo");
+countSyllables("WiWiWiWiWiWiWiWiWiWi");
+countSyllables("RURURURURURUrurururuRURU");
+countSyllables("go");
+countSyllables("dede");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 440
+
+// Using the .test() method in your function, return whether a string contains the characters "a" and "c" (in that order) with any number of characters (including zero) between them.
+
+
+
+function asterisk(string) {
+	return /a.*c/.test(string);
+}
+
+function asterisk(string) {
+	return /ab*c/.test(string)
+}
+
+
+
+asterisk("abccount");
+asterisk("abbbcount");
+asterisk("account");
+asterisk("bbbccount");
+asterisk("ccount");
+asterisk("abbount");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 441
+
+// Closures are functions that remember their lexical environments. Lexical environments mean the environment in which the function was declared.
+
+function greetingMaker(salutation) {
+	return function closure(name) {
+	  return salutation + ", " + name; 	
+	}
+}
+
+
+const greetingMaker = salutation => name => salutation + ", " + name;
+
+
+const greeting = greetingMaker("Hello")
+
+greeting("James");
+greeting("John");
+greeting("Jacob");
+greeting("Joseph");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 442
+
+// Given a string, create a function which outputs an array, building and deconstructing the string letter by letter. See the examples below for some helpful guidance.
+
+// Examples
+// constructDeconstruct("Hello") ➞ [
+//   "H",
+//   "He",
+//   "Hel",
+//   "Hell",
+//   "Hello",
+//   "Hell",
+//   "Hel",
+//   "He",
+//   "H"
+// ]
+
+// constructDeconstruct("edabit") ➞ [
+//   "e",
+//   "ed",
+//   "eda",
+//   "edab",
+//   "edabi",
+//   "edabit",
+//   "edabi",
+//   "edab",
+//   "eda",
+//   "ed",
+//   "e"
+// ]
+
+// constructDeconstruct("the sun") ➞ [
+//   "t",
+//   "th",
+//   "the",
+//   "the ",
+//   "the s",
+//   "the su",
+//   "the sun",
+//   "the su",
+//   "the s",
+//   "the ",
+//   "the",
+//   "th",
+//   "t"
+// ]
+
+
+function constructDeconstruct(str) {
+	const a = [];
+
+	for (let i = 1; i < str.length; i++) {
+		a.push(str.slice(0, i));
+	}
+	const b = [...a];
+	if (a.length > 1) b.push(str);
+	return [...b, ...a.reverse()];
+}
+
+
+
+const constructDeconstruct = (str, x = str.length) => {
+	return Array.from({length: x * 2 - 1}, (_, i) => (
+		i >= x ? str.slice(0, x - i - 1) : str.slice(0, i + 1)
+	));
+}
+
+
+function constructDeconstruct(str) {
+	function range(n) {
+		let r = [...Array(n-1)].map((_,i) => i+1);
+		return r.concat(n).concat([...r].reverse());
+	}
+	return str.length ? range(str.length).map(v => str.slice(0, v)) : [];
+}
+
+
+constructDeconstruct("Hello"), [
+    "H",
+    "He",
+    "Hel",
+    "Hell",
+    "Hello",
+    "Hell",
+    "Hel",
+    "He",
+    "H"
+  ];
+  
+constructDeconstruct("edabit"), [
+    "e",
+    "ed",
+    "eda",
+    "edab",
+    "edabi",
+    "edabit",
+    "edabi",
+    "edab",
+    "eda",
+    "ed",
+    "e"
+  ];
+  
+constructDeconstruct("the sun"), [
+    "t",
+    "th",
+    "the",
+    "the ",
+    "the s",
+    "the su",
+    "the sun",
+    "the su",
+    "the s",
+    "the ",
+    "the",
+    "th",
+    "t"
+  ];
+  
+constructDeconstruct("so long partner");
+constructDeconstruct("s p a c e s");
+constructDeconstruct("edabit is a awesome");
+constructDeconstruct("123456789");
+constructDeconstruct("");
+constructDeconstruct("        ");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 442
+
+// We can assign variables by the same name properties of objects, but what if I wanted to assign obj.one to a different name like anotherOne?
+
+// Use ES6 object destructuring to assign obj.one to the variable anotherOne. Variable two needs to remain assigned to obj.two. Ignore the .toString() function (used for validation).
+
+
+let str = `({ one : anotherOne, two } = { one : 1, two : 2}).toString()`
+
+
+eval(str)
+
+const validString = (str) => {
+  return /\{.*(one).*:.*anotherOne.*(two).*\}.*\=/.test(str) ? "valid" : "not valid" 
+}
+ 
+validString(str);
+anotherOne, 1;
+two, 2;
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 443
+
+// The preceding code produces an error because no object was passed to the function. Fix the function to return the default size, even if nothing is passed to the function. Don't remove the {size = "big"} object in the parameter and don't change the return statement.
+
+
+
+const str = `
+function shirtSize({size = "big"} = {}) { 
+  return size
+}
+`
+
+
+eval(str)
+
+const result = shirtSize()
+
+const code = str.slice(str.lastIndexOf("return"), str.lastIndexOf('}'))
+const param = str.slice(0, 26) 
+
+const validParams = () => {
+	return /\{.*size/.test(param) ? "valid" : "not valid" 
+}
+
+const validReturn = () => {
+	return code.includes("size")  ? "valid" : "not valid" 
+}
+
+const doubleReturns = () => {
+	return str.match(/return/g).length >= 2 ?  "not valid" : "valid" 
+} 
+
+doubleReturns();
+validParams();
+validReturn();
+result;
+
+
