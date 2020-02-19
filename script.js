@@ -19998,3 +19998,789 @@ greaterThanSum([14, 34, 70, 123, 263, 506]);
 greaterThanSum([24, 29, 58, 115, 236, 468, 950, 1905, 3787, 7575]);
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 439
+
+// Create a function that returns the number of syllables in a simple string. The string is made up of short repeated words like "Lalalalalalala" (which would have 7 syllables).
+
+
+function countSyllables(str) {
+	return str.length / 2;	
+}
+
+
+const countSyllables = str => str.match(/[aeiou]/gi).length
+
+
+countSyllables("Hehehehehehe");
+countSyllables("bobobobobobobobo");
+countSyllables("NANANANA");
+countSyllables("lelelele");
+countSyllables("momomomomomomomomo");
+countSyllables("WiWiWiWiWiWiWiWiWiWi");
+countSyllables("RURURURURURUrurururuRURU");
+countSyllables("go");
+countSyllables("dede");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 440
+
+// Using the .test() method in your function, return whether a string contains the characters "a" and "c" (in that order) with any number of characters (including zero) between them.
+
+
+
+function asterisk(string) {
+	return /a.*c/.test(string);
+}
+
+function asterisk(string) {
+	return /ab*c/.test(string)
+}
+
+
+
+asterisk("abccount");
+asterisk("abbbcount");
+asterisk("account");
+asterisk("bbbccount");
+asterisk("ccount");
+asterisk("abbount");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 441
+
+// Closures are functions that remember their lexical environments. Lexical environments mean the environment in which the function was declared.
+
+function greetingMaker(salutation) {
+	return function closure(name) {
+	  return salutation + ", " + name; 	
+	}
+}
+
+
+const greetingMaker = salutation => name => salutation + ", " + name;
+
+
+const greeting = greetingMaker("Hello")
+
+greeting("James");
+greeting("John");
+greeting("Jacob");
+greeting("Joseph");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 442
+
+// Given a string, create a function which outputs an array, building and deconstructing the string letter by letter. See the examples below for some helpful guidance.
+
+// Examples
+// constructDeconstruct("Hello") ➞ [
+//   "H",
+//   "He",
+//   "Hel",
+//   "Hell",
+//   "Hello",
+//   "Hell",
+//   "Hel",
+//   "He",
+//   "H"
+// ]
+
+// constructDeconstruct("edabit") ➞ [
+//   "e",
+//   "ed",
+//   "eda",
+//   "edab",
+//   "edabi",
+//   "edabit",
+//   "edabi",
+//   "edab",
+//   "eda",
+//   "ed",
+//   "e"
+// ]
+
+// constructDeconstruct("the sun") ➞ [
+//   "t",
+//   "th",
+//   "the",
+//   "the ",
+//   "the s",
+//   "the su",
+//   "the sun",
+//   "the su",
+//   "the s",
+//   "the ",
+//   "the",
+//   "th",
+//   "t"
+// ]
+
+
+function constructDeconstruct(str) {
+	const a = [];
+
+	for (let i = 1; i < str.length; i++) {
+		a.push(str.slice(0, i));
+	}
+	const b = [...a];
+	if (a.length > 1) b.push(str);
+	return [...b, ...a.reverse()];
+}
+
+
+
+const constructDeconstruct = (str, x = str.length) => {
+	return Array.from({length: x * 2 - 1}, (_, i) => (
+		i >= x ? str.slice(0, x - i - 1) : str.slice(0, i + 1)
+	));
+}
+
+
+function constructDeconstruct(str) {
+	function range(n) {
+		let r = [...Array(n-1)].map((_,i) => i+1);
+		return r.concat(n).concat([...r].reverse());
+	}
+	return str.length ? range(str.length).map(v => str.slice(0, v)) : [];
+}
+
+
+constructDeconstruct("Hello"), [
+    "H",
+    "He",
+    "Hel",
+    "Hell",
+    "Hello",
+    "Hell",
+    "Hel",
+    "He",
+    "H"
+  ];
+  
+constructDeconstruct("edabit"), [
+    "e",
+    "ed",
+    "eda",
+    "edab",
+    "edabi",
+    "edabit",
+    "edabi",
+    "edab",
+    "eda",
+    "ed",
+    "e"
+  ];
+  
+constructDeconstruct("the sun"), [
+    "t",
+    "th",
+    "the",
+    "the ",
+    "the s",
+    "the su",
+    "the sun",
+    "the su",
+    "the s",
+    "the ",
+    "the",
+    "th",
+    "t"
+  ];
+  
+constructDeconstruct("so long partner");
+constructDeconstruct("s p a c e s");
+constructDeconstruct("edabit is a awesome");
+constructDeconstruct("123456789");
+constructDeconstruct("");
+constructDeconstruct("        ");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 442
+
+// We can assign variables by the same name properties of objects, but what if I wanted to assign obj.one to a different name like anotherOne?
+
+// Use ES6 object destructuring to assign obj.one to the variable anotherOne. Variable two needs to remain assigned to obj.two. Ignore the .toString() function (used for validation).
+
+
+let str = `({ one : anotherOne, two } = { one : 1, two : 2}).toString()`
+
+
+eval(str)
+
+const validString = (str) => {
+  return /\{.*(one).*:.*anotherOne.*(two).*\}.*\=/.test(str) ? "valid" : "not valid" 
+}
+ 
+validString(str);
+anotherOne, 1;
+two, 2;
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 443
+
+// The preceding code produces an error because no object was passed to the function. Fix the function to return the default size, even if nothing is passed to the function. Don't remove the {size = "big"} object in the parameter and don't change the return statement.
+
+
+
+const str = `
+function shirtSize({size = "big"} = {}) { 
+  return size
+}
+`
+
+
+eval(str)
+
+const result = shirtSize()
+
+const code = str.slice(str.lastIndexOf("return"), str.lastIndexOf('}'))
+const param = str.slice(0, 26) 
+
+const validParams = () => {
+	return /\{.*size/.test(param) ? "valid" : "not valid" 
+}
+
+const validReturn = () => {
+	return code.includes("size")  ? "valid" : "not valid" 
+}
+
+const doubleReturns = () => {
+	return str.match(/return/g).length >= 2 ?  "not valid" : "valid" 
+} 
+
+doubleReturns();
+validParams();
+validReturn();
+result;
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 444
+
+// Given a sentence spelling out a word, return true if the spelled letters match the word at the end of the string, or false otherwise.
+
+
+function validateSpelling(txt) {
+	const a = txt.match(/\w| /gi).join("").toLowerCase().split(" ");
+	return a.slice(0, -1).join("") === a.slice(-1)[0];
+}
+
+const validateSpelling = txt => txt.match(/\b\w(?=\.)/g).join("") === txt.match(/\w+(?=.$)/)[0].toUpperCase();
+
+
+validateSpelling('C. Y. T. O. P. L. A. S. M. Cytoplasm?');
+validateSpelling('P. H. A. R. A. O. H. Pharaoh!');
+validateSpelling('H. A. N. K. E. R. C. H. E. I. F. Handkerchief.');
+validateSpelling('M. E. C. O. M. M. E. N. N. Recommend.');
+validateSpelling('C. H. R. Y. S. A. N. T. H. E. M. U. M. Chrysanthemum!');
+validateSpelling('A. C. C. O. M. M. O. D. A. M. E. Accommodate!');
+validateSpelling('S. U. A. C. E. I. L. L. A. N. C. E. Surveillance.');
+validateSpelling('B. U. S. I. N. E. S. S. Business.');
+validateSpelling('C. O. N. V. E. N. I. E. N. T. Convenient.');
+validateSpelling('C. O. N. V. E. N. O. E. N. T. Convenient!');
+validateSpelling('C. H. A. U. F. F. E. U. R. Chauffeur.');
+validateSpelling('L. I. A. A. S. O. N. Liaison!');
+validateSpelling('O. C. C. U. R. R. E. N. C. E. Occurrence?');
+validateSpelling('E. C. C. C. R. R. E. N. C. E. Occurrence!');
+validateSpelling('E. A. B. A. R. R. A. S. S. Embarrass!');
+validateSpelling('C. O. N. V. E. N. I. E. N. T. Convenient?');
+validateSpelling('U. N. C. O. N. S. C. I. C. U. U. Unconscious!');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 445
+
+// What's the probability of someone making a certain amount of free throws in a row given their free throw success percentage? If Sally makes 50% of her free shot throws. Then Sally's probability of making 5 in a row would be 3%.
+
+
+function freeThrows(success, rows) {
+	return Math.round(Math.pow(+success.slice(0, -1) / 100, rows) * 100) + "%";
+}
+
+
+function freeThrows(success, rows) {
+    return Math.round(Math.pow(+success.replace("%", "")/100, rows)*100) + "%"
+  }
+
+
+freeThrows("50%", 5);
+freeThrows("75%", 10);
+freeThrows("25%", 3);
+freeThrows("90%", 30);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 446
+
+// Callbacks are first-class functions. This means they have first-class characteristics, like being able to be passed to other functions. There was a time when callbacks were used to handle async operations, but we needed something better because of a few shortcomings (like problems with nested callbacks).
+
+// Here's a simple example of a callback:
+
+// function asyncFunc(cb) {
+//   let result = ""
+//   // After some time the result of an async opertion comes back and is put in the "result" variable.  We'll use a string for this example.   
+//   result = "hello"
+//   cb(result)
+// }
+
+// function callback(str) {
+//   console.log(str)
+// }
+
+// asyncFunc(callback)
+// console.log("goodbye")
+
+// // goodbye
+// // hello
+// "goodbye" appears before "hello" because the async operation in asyncFunc() is non-blocking, meaning that it is set aside until it finishes but in the meantime we go ahead and call the next function.
+
+// Challenge
+// Fix anotherFunc() so that calls to it will change the doc variable to bye.
+// Keep the setTimeout to 100ms and do not change the callback function or the doc variable.
+
+
+function anotherFunc(callback) {
+	let str = "bye"
+	setTimeout(() => {
+		callback(str)
+	}, 100)
+}
+
+var doc = "hello"
+
+function callback(str) {
+	doc = str
+}
+
+
+
+function anotherFunc(cb) {
+	let str = "bye"
+	setTimeout(() => {
+		cb(str)
+	}, 100)
+}
+
+var doc = "hello"
+
+function callback(str) {
+	doc = str
+}
+
+
+
+
+doc;
+
+anotherFunc(callback);
+
+setTimeout(()=> {
+	doc;
+}, 1000);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 447
+
+// Create a function that returns the data type of a given variable. These are the eight data types this challenge will be testing for:
+
+// Array
+// Object
+// String
+// Number
+// Boolean
+// Null
+// Undefined
+// Date
+
+
+
+function dataType(value) {
+	return Array.isArray(value) ? "array" : value instanceof Date ? "date" : value === null ? "null" : typeof value;
+}
+
+
+const dataType = v => v ? v.constructor.name.toLowerCase() : String(v)
+
+
+function dataType(value) {
+	return Object.prototype.toString.call(value).slice(8,-1).toLowerCase();
+}
+
+
+function dataType(value) {
+    if (value === null)
+      return "null";
+    if (Array.isArray(value))
+      return "array";
+    if (value instanceof Date)
+      return "date";
+    return typeof(value);
+  }
+
+
+dataType([1, 2, 3, 4, 5]);
+dataType({key: "value"});
+dataType("This is an example string...");
+dataType(2017);
+dataType(true);
+dataType(null);
+dataType(undefined);
+dataType(new Date());
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 448
+
+// Create a function that returns the number of palindrome numbers in a specified range (inclusive).
+
+// For example, between 8 and 34, there are 5 palindromes: 8, 9, 11, 22 and 33. Between 1550 and 1552 there is exactly one palindrome: 1551.
+
+
+function countPalindromes(num1, num2) {
+	let a = [];
+	for (let i = num1; i <= num2; i++) {
+		if(i.toString() === i.toString().split("").reverse().join("")) {
+			a.push(i);
+		}
+	}
+	return a.length;
+}
+
+
+
+function countPalindromes(num1, num2) {
+	const isPalindrome = x => String(x) === String(x).split('').reverse().join('');
+	
+	let count = 0;
+	for (let i = num1; i <= num2; i++) {
+		if (isPalindrome(i)) { count++; }
+	}
+	return count;
+}
+
+
+
+const isPalindrome = str =>
+  str === str.split('').reverse().join('');
+
+const countPalindromes = (min, max) =>
+  Array.from({ length: max - min + 1 }, (_, i) => String(min + i))
+    .filter(isPalindrome).length;
+
+countPalindromes(1, 10);
+countPalindromes(555, 556);
+countPalindromes(878, 898);
+countPalindromes(8, 34);
+countPalindromes(1550, 1556);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 449
+
+// Create a function that takes an array as an argument and return an array of the sum of each of its slices. An array's slices are groups of consecutive values that add up to a maximum of 100. No slice's total sum should exceed 100.
+
+
+function sumOfSlices(arr) {
+	const a = [0];
+	for (let i = 0; i < arr.length; i++) {
+		if (a[a.length - 1] + arr[i] <= 100) {
+			a[a.length - 1] += arr[i];
+		} else {
+			a.push(arr[i]);
+		}
+	}
+	return a;
+}
+
+
+const sumOfSlices = arr =>
+	arr.reduce((a, b) => 
+	a[a.length-1] + b <= 100 
+	 	? (a[a.length-1] += b, a) 
+	 	: (a.push(b), a) , [0]
+	)
+;
+
+
+
+function sumOfSlices(arr) {
+	let list = [], sum = 0;
+	for (let num of arr) {
+		if (sum + num <= 100) {
+			sum += num;
+		} else {
+			list.push(sum);
+			sum = num;
+		}
+	}
+	return list.concat(sum);
+}
+
+
+sumOfSlices([10, 29, 13, 14, 15, 16, 17, 31, 20, 10, 29, 13, 14, 15, 16, 17, 31, 20, 100]);
+sumOfSlices([58,3,	38,	99,	10]);
+sumOfSlices([13]);
+sumOfSlices([62,	406,	343,	234,	244,	200,	304,	462,	212,	48,	166,	71,	80,	51,	307,	442,	368,	235,	199,	411,	100,	203,	330,	437,	226,	365,	337,	464,	14,	350]);
+sumOfSlices([315,	47]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 450
+
+// Suppose that you add all of the page numbers in a book. If the total is 21, the book would have only 6 pages because 1 + 2 + 3 + 4 + 5 + 6 = 21. If I had said the total is 25, that would be impossible because the next number in the series is 28 (21 + 7).
+
+// Create a function that has as it's argument the sum of all the page numbers and returns true if it is a valid number and false if it is not.
+
+// Can you devise a solution that is more efficient than simply adding consecutive integers as I did above?
+
+
+function pagesInBook(total) {
+	let a = 0;
+	let i = 1;
+	while (a + i <= total) {
+		a += i;
+		i++;
+	}
+	return a === total;
+}
+
+
+const pagesInBook = t => !(Math.sqrt(8*t+1)%1)
+
+
+function pagesInBook(total) {
+	return Math.sqrt(8*total+1)%1==0
+}
+
+
+function pagesInBook(total) {
+    var sum = 0;
+    for(var i = 0; ; i++){
+        sum +=i;
+    if(sum>=total){break;}
+    }
+    return sum===total;
+    }
+
+
+pagesInBook(5);
+pagesInBook(4005);
+pagesInBook(9453);
+pagesInBook(9474);
+pagesInBook(125250);
+pagesInBook(920046);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 450
+
+// Given the number n and an array of interior angles angles, return whether or not it's possible to make a polygon with n sides with the angles given. Remember that angles must be equals or under 180° and over 0°.
+
+
+function isShapePossible(n, angles) {
+	return angles.some(x => x <= 0 || x > 180) || angles.length < 3 ? false : Number.isInteger((n-2) * angles.reduce((x, i) => x + i) / n) ? true : false
+}
+
+
+const isShapePossible = (sides, angles) => {
+	return sides > 2
+		&& angles.reduce((a,b) => a + b) === (sides - 2) * 180
+		&& angles.every(angle => angle > 0 && angle <= 180);
+}
+
+
+const isShapePossible = (n, a) => n > 2 && 
+    a.every(el => el > 0 && el < 180) &&
+    a.reduce((sum, el) => sum + el) % 180 === 0;
+
+
+const isShapePossible = (n,A) => n-- > 2
+    && A.every(a => a > 0 && a < 180)
+    && eval(A.join`+`) == --n * 180
+
+
+isShapePossible(4, [90, 90, 90, 90]);
+isShapePossible(3, [20, 20, 140]);
+isShapePossible(1, [21]);
+isShapePossible(5, [100, 100, 100, 200, 40]);
+isShapePossible(7, [830, 20, 20, 10, 10, 5, 5]);
+isShapePossible(4, [90, 90, 90, 89]);
+isShapePossible(2, [21, 78]);
+isShapePossible(8, [135, 135, 135, 135, 135, 135, 135, 135]);
+isShapePossible(5, [500, 10, 10, 10, 10]);
+isShapePossible(10, [21, 12, 333, 2, 2532, 52, 2, 2, 1, 8]);
+isShapePossible(5, [108, 108, 108, 108, 108]);
+isShapePossible(3, [180, 0, 0]);
+isShapePossible(4, [180, 180, -10, 10]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 451
+
+// There are three methods (exclude compile) that you can use with regular expression literals. Use these two methods to fix the code. One method returns a boolean if there is a match. The other method returns an iterator from a search.
+
+
+function twoMethods() {
+	// find and equals are not regular expression methods.  Replace them. 
+	let methodOne = /hello/.exec("hello")[0] === "hello" 
+	let methodTwo = /hello/.test("hello") // returns a boolean
+	return methodOne && methodTwo
+}
+
+
+const twoMethods = (re = /hello/) => {
+	return re.exec("hello")[0] === "hello" && re.test("hello");
+}
+
+
+twoMethods();
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 451
+
+// Push the first names of all users in the names array.
+
+// Notes
+// You only have to change the "for...of" loop parameters.
+// Ignore the const str assignment. This is only used for validation purposes.
+// Check the MDN docs to find out more about object destructuring in "for...of" loops (check the Resources tab).
+
+
+let names = []
+
+let users = [
+  { name: "John", email: "john@example.com" },
+  { name: "Jason", email: "jason@example.com" },
+  { name: "Jeremy", email: "jeremy@example.com" },
+  { name: "Jacob", email: "jacob@example.com" }
+] 
+
+const str = `
+	for(let { name, email } of users) {
+			names.push(name)
+    }`
+    
+
+
+eval(str)
+
+function validation() {
+	return /for.*\{.*[a-zA-Z]+.*\}/.test(str) ? "valid" : "not valid" 
+}
+
+validation();
+names;
+
+
