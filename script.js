@@ -20784,3 +20784,161 @@ validation();
 names;
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 452
+
+// You can think of character classes as characters with special meaning. They are recognized as special when you place the \ before the character.
+
+// Here are a list of the characters classes in JavaScript:
+
+// ., \cX, \d, \D, \f, \n, \r, \s, \S, \t, \v, \w, \W, \0, \xhh, \uhhhh, \uhhhhh, [\b]
+// Given the below string, write a regex that will find all open compound words starting with the word best and the second word begins with the letter b.
+
+
+
+const REGEXP = /best\sb\w+/g
+
+const REGEXP = /best\sb\w+/g
+
+
+const str = "best buy best car best friend best-boy bestguest best dressed best bet best man best deal best boyfriend"
+
+const validate = (REGEXP) => {
+	 if(!/\\s/.test(String(REGEXP))) return () => "required"
+	 return function testReg(str) {
+		 return str.match(REGEXP)
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str);
+testExp(str);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 452
+
+// Given an age in human years, work out the coresponding age in dog years.
+
+// These are the general rules for the conversion:
+
+// Year 1 for a dog equals 15 years for a human.
+// Year 2 for a dog equals 9 years for a human.
+// And after that, each human year would be five years for a dog.
+
+
+
+
+function dogYears(humanAge) {
+	const a = [15, 9];
+	let x = 0;
+	for (let i = 0; i < humanAge; i++) {
+		if (a[i]) {
+			i += a[i] + 8;
+			x++;
+		} else {
+			x += 5;
+		}
+	}
+	return x > 1 ? x + 1 : x;
+}
+
+
+const dogYears = x => x == 15 ? 1 : x == 24 ? 2 : (x - 24) * 5 + 2;
+
+
+function dogYears(h) {
+	return h==15 ? 1 : h==24 ? 2 : (h-24)*5 + 2
+}
+
+
+const dogYears = humanAge => ({15: 1, 24: 2}[humanAge] || (humanAge - 24) * 5 + 2);
+
+
+dogYears(15);
+dogYears(100);
+dogYears(35);
+dogYears(53);
+dogYears(69);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 453
+
+// A number n is a Harshad (also called Niven) number if it is divisible by the sum of its digits.
+
+// For example, 666 is divisible by 6+6+6 so it is a Harshad number.
+
+function isHarshad(num) {
+	return num % num.toString().split("").reduce((x, i) => x + +i, 0) === 0;
+}
+
+
+const isHarshad = n => (
+	n > 0 && !(n % [...`${n}`].reduce((a,b) => a + +b, 0))
+);
+
+
+function isHarshad(n) {
+	let s = [...''+n].map(x=>+x).reduce((a,b)=>a+b)
+	return n%s == 0
+}
+
+
+function isHarshad(num) {
+	return num % [...'' + num].reduce((acc, cur)=> acc + +cur,0) == 0;
+}
+
+
+isHarshad(0);
+isHarshad(15);
+isHarshad(990);
+isHarshad(461);
+isHarshad(297);
+isHarshad(345);
+isHarshad(529);
+isHarshad(839);
+isHarshad(281);
+isHarshad(252);
+isHarshad(123);
+isHarshad(840);
+isHarshad(789);
+isHarshad(43);
+isHarshad(907);
+isHarshad(441);
+isHarshad(729);
+isHarshad(801);
+isHarshad(923);
+isHarshad(569);
+isHarshad(828);
+isHarshad(658);
+isHarshad(838);
+isHarshad(711);
+isHarshad(216);
+isHarshad(525);
+isHarshad(768);
+isHarshad(234);
+isHarshad(353);
+isHarshad(713);
+
+
