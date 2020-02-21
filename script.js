@@ -20942,3 +20942,216 @@ isHarshad(353);
 isHarshad(713);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 454
+
+// Create a function that returns the number of frames shown in a given number of minutes for a certain FPS.
+
+
+function frames(minutes, fps) {
+	return fps * minutes * 60;
+}
+
+
+
+frames(1, 1);
+frames(10, 1);
+frames(10, 25);
+frames(500, 60);
+frames(0, 60);
+frames(99, 1);
+frames(419, 70);
+frames(52, 33);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 455
+
+// Given a simple math expression as a string, neatly format it as an equation.
+
+
+function formatMath(expr) {
+	return `${expr} = ${eval(expr.replace("x", "*"))}`
+}
+
+
+const formatMath = expr => `${expr} = ${eval(expr.replace(/x/,'*'))}`;
+
+
+formatMath("3 + 4");
+formatMath("3 - 2");
+formatMath("4 x 5");
+formatMath("6 / 3");
+formatMath("9 / 3");
+formatMath("21 / 3");
+formatMath("24 / 3");
+formatMath("80 / 8");
+formatMath("60 / 30");
+formatMath("44 - 11");
+formatMath("48 + 35");
+formatMath("8 + 5");
+formatMath("46 - 11");
+formatMath("23 x 46");
+formatMath("11 + 1");
+formatMath("29 - 21");
+formatMath("24 x 26");
+formatMath("47 + 8");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 456
+
+// Your task is to create a fence worth $1 million. You are given the price of the material (per character), meaning the length of the fence will change depending on the cost of the material.
+
+// Create a function which constructs this pricey pricey fence, using the letter "H" to build.
+
+// constructFence("$50,000") ➞ "HHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+// 20 fence posts were set up ($1,000,000 / $50,000 = 20)
+
+
+function constructFence(price) {
+	return "H".repeat(1000000 / price.replace(/[^0-9.]/g, ""));
+}
+
+
+const constructFence = p => "H".repeat(1e6 / +p.replace(/[^\d]/g, ""));
+
+
+
+const constructFence = price =>
+    'H'.repeat(1000000 / price.match(/\d/g).join(''))
+    
+
+constructFence("$50,000");
+constructFence("$100,000");
+constructFence("$1,000,000");
+constructFence("$500,000");
+constructFence("$20,000");
+constructFence("$10,000");
+constructFence("$5000");
+constructFence("$1000");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 457
+
+// Given a two digit number, return true if that number contains one even and one odd digit.
+
+
+function oneOddOneEven(n) {
+	return String(n)[0] % 2 === 0 && String(n)[1] % 2 !== 0 || String(n)[0] % 2 !== 0 && String(n)[1] % 2 === 0; 
+}
+
+
+oneOddOneEven(10);
+oneOddOneEven(11);
+oneOddOneEven(12);
+oneOddOneEven(13);
+oneOddOneEven(14);
+oneOddOneEven(15);
+oneOddOneEven(16);
+oneOddOneEven(17);
+oneOddOneEven(18);
+oneOddOneEven(19);
+oneOddOneEven(20);
+oneOddOneEven(21);
+oneOddOneEven(22);
+oneOddOneEven(23);
+oneOddOneEven(24);
+oneOddOneEven(25);
+oneOddOneEven(26);
+oneOddOneEven(27);
+oneOddOneEven(28);
+oneOddOneEven(29);
+oneOddOneEven(30);
+oneOddOneEven(31);
+oneOddOneEven(32);
+oneOddOneEven(33);
+oneOddOneEven(34);
+oneOddOneEven(35);
+oneOddOneEven(36);
+oneOddOneEven(37);
+oneOddOneEven(38);
+oneOddOneEven(39);
+oneOddOneEven(40);
+oneOddOneEven(41);
+oneOddOneEven(42);
+oneOddOneEven(43);
+oneOddOneEven(44);
+oneOddOneEven(45);
+oneOddOneEven(46);
+oneOddOneEven(47);
+oneOddOneEven(48);
+oneOddOneEven(49);
+oneOddOneEven(50);
+oneOddOneEven(51);
+oneOddOneEven(52);
+oneOddOneEven(53);
+oneOddOneEven(54);
+oneOddOneEven(55);
+oneOddOneEven(56);
+oneOddOneEven(57);
+oneOddOneEven(58);
+oneOddOneEven(59);
+oneOddOneEven(60);
+oneOddOneEven(61);
+oneOddOneEven(62);
+oneOddOneEven(63);
+oneOddOneEven(64);
+oneOddOneEven(65);
+oneOddOneEven(66);
+oneOddOneEven(67);
+oneOddOneEven(68);
+oneOddOneEven(69);
+oneOddOneEven(70);
+oneOddOneEven(71);
+oneOddOneEven(72);
+oneOddOneEven(73);
+oneOddOneEven(74);
+oneOddOneEven(75);
+oneOddOneEven(76);
+oneOddOneEven(77);
+oneOddOneEven(78);
+oneOddOneEven(79);
+oneOddOneEven(80);
+oneOddOneEven(81);
+oneOddOneEven(82);
+oneOddOneEven(83);
+oneOddOneEven(84);
+oneOddOneEven(85);
+oneOddOneEven(86);
+oneOddOneEven(87);
+oneOddOneEven(88);
+oneOddOneEven(89);
+oneOddOneEven(90);
+oneOddOneEven(91);
+oneOddOneEven(92);
+oneOddOneEven(93);
+oneOddOneEven(94);
+oneOddOneEven(95);
+oneOddOneEven(96);
+oneOddOneEven(97);
+oneOddOneEven(98);
+oneOddOneEven(99);
