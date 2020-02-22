@@ -21155,3 +21155,142 @@ oneOddOneEven(96);
 oneOddOneEven(97);
 oneOddOneEven(98);
 oneOddOneEven(99);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 458
+
+// Create a function which adds zeros to the start of a binary string, so that its length is a mutiple of 8.
+
+
+function completeBinary(str) {
+	let a = str;
+	while (a.length % 8 !== 0) {
+		a = "0" + a;
+	}
+	return a;
+}
+
+
+const completeBinary = str => (
+	str.length % 8 ? completeBinary(0 + str) : str
+)
+
+
+const completeBinary = str =>
+    str.length % 8 === 0 ? str : '0'.repeat(8 - (str.length % 8)) + str;
+
+
+completeBinary("1100");
+completeBinary("1101100");
+completeBinary("110010100010");
+completeBinary("1001110001111011100101");
+completeBinary("111101100011001111100111010001001110010101011001000000001101100");
+completeBinary("1100110111000000010000110011001");
+completeBinary("011001100101100100100001110101110");
+completeBinary("10000010100000011");
+completeBinary("0010100101011110000000101010010");
+completeBinary("1111000010000101010011001110110000");
+completeBinary("100111110111011110101100");
+completeBinary("1111011011010101000001010001000011110000001100100001111110111110001100");
+completeBinary("000101011101010110000011100011000001001111001001000101111101011");
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 459
+
+// Create a function that takes in an array of full names and returns the initials.
+
+
+
+function initialize(names) {
+	return names.map(x => x.split(" ").map(x => x.slice(0, 1) + ".").join(" "));
+}
+
+
+function initialize(names) {
+	return names.map(v => v.match(/(^|\s)[A-Z]/g).join(".")+".");
+}
+
+
+function initialize(names) {
+	return names.map(x=> x.replace(/\B[a-z]+/gi,'.'))
+}
+
+
+function initialize(names) {
+	return names.map(name => {
+		const split = name.split(' ')
+		return `${split[0][0]}. ${split[1][0]}.`
+	})
+}
+
+
+initialize(['Sherlock Holmes', 'John Watson', 'Irene Adler']);
+initialize(['Harry Potter', 'Ron Weasley']);
+initialize(['Stephen Hawking']);
+initialize(['Atticus Finch']);
+initialize(['Leonardo DiCaprio']);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 460
+
+// Write a function that returns true if two arrays, when combined, form a consecutive sequence.
+
+
+function consecutiveCombo(a1, a2) {
+	const a = a1.concat(a2).sort((a, b) => a - b);
+	for (let i = 0; i < a.length - 1; i++) {
+		if (a[i] !== a[i+1] - 1) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+
+const consecutiveCombo = (arr1, arr2) => {
+    const combined = arr1.concat(arr2).sort((a, b) => a - b);
+    return combined.slice(1).every((num, i) => num - combined[i] === 1);
+  };
+
+
+const consecutiveCombo = (a1, a2) => {
+	const arr = [...new Set(a1.concat(a2))].sort((a, b) => a - b);
+	return Math.max(...arr) - Math.min(...arr) + 1 == arr.length;
+}
+
+
+
+consecutiveCombo([1, 4, 5, 7], [2, 3, 6]);
+consecutiveCombo([1, 4, 5, 6], [2, 7, 8, 9]);
+consecutiveCombo([1, 4, 5, 6], [2, 3, 7, 8, 10]);
+consecutiveCombo([7, 5, 4, 1], [2, 3, 6, 8]);
+consecutiveCombo([33, 34, 40], [39, 38, 37, 36, 35, 32, 31, 30]);
+consecutiveCombo([1, 4, 5, 6], [2, 3, 7, 8, 10]);
+consecutiveCombo([44, 46], [45]);
+consecutiveCombo([4, 3, 1], [2, 5]);
+consecutiveCombo([4, 3, 1], [2, 5, 7, 6]);
+consecutiveCombo([4, 3, 1], [7, 6, 5]);
+consecutiveCombo([4, 3, 1], [0, 7, 6, 5]);
+consecutiveCombo([44, 46], [45]);
+
+
