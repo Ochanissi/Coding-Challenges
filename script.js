@@ -21361,3 +21361,307 @@ isPositiveDominant([5, 4, 3, 0, 0, -1, -1, -2, -2]);
 isPositiveDominant([52, 52, 52, -3, 2, 2, 2, -4]);
 isPositiveDominant([3, 3, 3, 3, -1, -1, -1]);
 
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 462
+
+// Write a function that selects all words that have all the same vowels (in any order and/or number) as the first word, including the first word.
+
+
+function sameVowelGroup(w) {
+	return w.filter(x => [...new Set(x.match(/[aeiou]/gi))].sort().join("") === [...new Set(w[0].match(/[aeiou]/gi))].sort().join(""));
+}
+
+
+function sameVowelGroup(w) {
+    var keys =  w[0].match(/[aouie]/gi).sort().join('') || [];
+    return w.filter((word) => word.match(/[aouie]/gi).every((letter) => keys.indexOf(letter) != -1))
+
+}
+
+
+  
+function sameVowelGroup(w) {
+	const vowels = x => [...'aeiou'].map((v, i) => x.includes(v) * Math.pow(2,i)).reduce((a, v) => a + v, 0);
+	return w.filter(v => vowels(v) === vowels(w[0]));
+}
+
+
+const sameVowelGroup = words => {
+    const consonants = /[^aeiou]+/g;
+    const vowels = Array.from(new Set(words[0].replace(consonants, ''))).sort();
+  
+    return words.filter(word => {
+      const wordVowels = Array.from(new Set(word.replace(consonants, ''))).sort();
+      return vowels.join('') === wordVowels.join('');
+    });
+  };
+
+sameVowelGroup(["hoops", "chuff", "bot", "bottom"]);
+sameVowelGroup(["crop", "nomnom", "bolo", "yodeller"]);
+sameVowelGroup(["semantic", "aimless", "beautiful", "meatless icecream"]);
+sameVowelGroup(["many", "carriage", "emit", "apricot", "animal"]);
+sameVowelGroup(["toe", "ocelot", "maniac"]);
+sameVowelGroup(["a", "apple", "flat", "map", "shark"]);
+sameVowelGroup(["a", "aa", "ab", "abc", "aaac", "abe"]);
+
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 463
+
+// Create the instance properties fullname and email in the Employee class. Given a person's first and last names:
+
+// Form the fullname by simply joining the first and last name together, separated by a space.
+// Form the email by joining the first and last name together with a . in between, and follow it with @company.com at the end. Make sure everything is in lowercase.
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.fullname = this.firstname + ' ' + this.lastname;
+		this.email = `${this.firstname}.${this.lastname}@company.com`.toLowerCase();
+	}
+}
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		// Complete the code!
+		this.fullname = `${firstname} ${lastname}`;
+		this.email = `${firstname}.${lastname}@company.com`.toLowerCase();
+	}
+}
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.fullname = `${firstname} ${lastname}`;
+		this.email = `${firstname}.${lastname}@company.com`.toLowerCase();
+	}
+}
+
+emp1 = new Employee('John', 'Smith');
+emp2 = new Employee('Mary',  'Sue');
+emp3 = new Employee('Antony', 'Walker');
+emp4 = new Employee('Joshua', 'Senoron');
+
+emp3.firstname;
+emp3.lastname;
+emp3.fullname;
+emp3.email;
+emp4.firstname;
+emp4.lastname;
+emp4.fullname;
+emp4.email;
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 464
+
+// Create a function which takes an array of instances from the class IceCream and returns the sweetness value of the sweetest icecream.
+
+// Sweetness is calculated from the flavor and number of sprinkles. Each sprinkle has a sweetness value of 1, and the sweetness values for the flavors are as follows:
+
+// Flavours	Sweetness Value
+// Plain	0
+// Vanilla	5
+// ChocolateChip	5
+// Strawberry	10
+// Chocolate	10
+// You'll be given instance properties in the order flavor, numSprinkles.
+
+
+function sweetestIcecream(arr) {
+	return arr.map(x => {
+		if (x.flavor === 'Plain') return 0 + x.numSprinkles;
+		if (x.flavor === 'Vanilla') return 5 + x.numSprinkles;
+		if (x.flavor === 'ChocolateChip') return 5 + x.numSprinkles;
+		if (x.flavor === 'Strawberry') return 10 + x.numSprinkles;
+		if (x.flavor === 'Chocolate') return 10 + x.numSprinkles;	
+	}).sort((a, b) => b - a)[0];
+}
+
+
+const sweetestIcecream = a => Math.max(...a.map(x => (
+	{n:0,a:5,p:5,y:10,e:10}[x.flavor.slice(-1)] + x.numSprinkles
+)));
+
+
+class IceCream {
+	constructor(flavor, numSprinkles) {
+		this.flavor = flavor;
+		this.numSprinkles = numSprinkles;
+	}
+}
+
+ice1 = new IceCream('Chocolate', 13);
+ice2 = new IceCream('Vanilla', 0);
+ice3 = new IceCream('Strawberry', 7);
+ice4 = new IceCream('Plain', 18);
+ice5 = new IceCream('ChocolateChip', 3);
+ice6 = new IceCream('Chocolate', 23);
+ice7 = new IceCream('Strawberry', 0);
+ice8 = new IceCream('Plain', 34);
+ice9 = new IceCream('Plain', 81);
+ice10 = new IceCream('Vanilla', 12);
+
+sweetestIcecream([ice1, ice2, ice3, ice4, ice5]);
+sweetestIcecream([ice7, ice10, ice1, ice6, ice8, ice10, ice2, ice2]);
+sweetestIcecream([ice10, ice10, ice6, ice8, ice4]);
+sweetestIcecream([ice2, ice10, ice6, ice9, ice7]);
+sweetestIcecream([ice10, ice6, ice4, ice1, ice7, ice8, ice6]);
+sweetestIcecream([ice3, ice1]);
+sweetestIcecream([ice6, ice7, ice5, ice4, ice3]);
+sweetestIcecream([ice4, ice8, ice9]);
+sweetestIcecream([ice5, ice7]);
+sweetestIcecream([ice5, ice3, ice6, ice2, ice7, ice2, ice7, ice2]);
+sweetestIcecream([ice1, ice9, ice10, ice9, ice7, ice1, ice9]);
+sweetestIcecream([ice1, ice4]);
+sweetestIcecream([ice7, ice4]);
+sweetestIcecream([ice1, ice8, ice6, ice7, ice3, ice2, ice3, ice7]);
+sweetestIcecream([ice7, ice8, ice4, ice4, ice5, ice1]);
+sweetestIcecream([ice10, ice10, ice9, ice4, ice7, ice9]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 465
+
+// A man named Thomas Malthus described what is now called a Malthusian Catastrophe. According to him, food production grows by a fixed amount, but population grows by a percentage. So, the food supply would soon be insufficient for the population.
+
+// Your job is to find out when that will occur. For this challenge, assume 1 population needs 1 unit of food production. Food production & population both start at 100. The year starts at 0.
+
+// The catastrophe happens when the population is larger than food production.
+
+// The function will pass: foodGrowth - an integer - Food production increase per year; and popMult - a floating-point number - The population growth multiplier per year.
+
+
+function malthusian(foodGrowth, popMult) {	
+	let x = 0;
+	let a =  100;
+	let b = 100;
+	while (a >= b ) {
+		a += foodGrowth;
+		b *= popMult;
+		
+		x++;
+	}
+	return x;
+}
+
+
+
+const malthusian = (f, p, F = 100, P = 100, Y = 0) => (
+	P > F ? Y : malthusian(f, p, f + F, p * P, ++Y)
+);
+
+
+const malthusian = (g, r, P = 100, F = 100, t = 0) => (P > F) ? t : malthusian(g, r, P*=r, F+=g, ++t)
+
+
+malthusian(3900, 1.26);
+malthusian(3367, 1.16);
+malthusian(2393, 1.86);
+malthusian(6560, 1.66);
+malthusian(8481, 1.35);
+malthusian(3805, 1.98);
+malthusian(9492, 1.06);
+malthusian(8278, 1.35);
+malthusian(1228, 1.91);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 466
+
+// Create a function which constructs a rectangular birthday cake, based on someone's name and age! Build it out of strings in an array and makes sure to surround the birthday message with the character that fits the rule:
+
+// If the age is an even number, surround the message with "#".
+// If the age is an odd number, surround the message with "*".
+// Other important rules:
+
+// The message should be in the format: {age} Happy Birthday {name}! {age}
+// Leave a space between the edge of the cake and the age numbers.
+
+
+function getBirthdayCake(name, age) {
+	let x;
+	age % 2 === 0 ? x = "#" : x = "*";
+	const a = `${x} ${age} Happy Birthday ${name}! ${age} ${x}`;
+	return [x.repeat(a.length), a, x.repeat(a.length)]
+}
+
+const getBirthdayCake = (name, age) => {
+	let chr = age % 2 ? "*" : "#",
+			mss = `${chr} ${age} Happy Birthday ${name}! ${age} ${chr}`,
+			frm = chr.repeat(mss.length);
+	return [frm, mss, frm];
+}
+
+
+function getBirthdayCake(name, age) {
+    let b = (age%2)?'*':'#';
+   let msg = `${b} ${age} Happy Birthday ${name}! ${age} ${b}`;
+   return	[b.repeat(msg.length),msg,b.repeat(msg.length)];	 
+
+}
+
+
+const getBirthdayCake = (name, age) => {
+	const symbol = (age % 2) ? '*' : '#';
+	const msg = Array(2).fill(symbol).join(
+		` ${age} Happy Birthday ${name}! ${age} `
+	);
+	const layer = symbol.repeat(msg.length);
+	return [layer, msg, layer];
+};
+
+
+getBirthdayCake("Jack", 10);
+getBirthdayCake("Russell", 19);
+getBirthdayCake("Isabelle", 2);
+getBirthdayCake("Jacqulyn", 52);
+getBirthdayCake("Lucrecia", 95);
+getBirthdayCake("Shelia", 75);
+getBirthdayCake("Gayle", 59);
+getBirthdayCake("Margot", 25);
+getBirthdayCake("Hulda", 55);
+getBirthdayCake("Adrian", 23);
