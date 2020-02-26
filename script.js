@@ -21665,3 +21665,146 @@ getBirthdayCake("Gayle", 59);
 getBirthdayCake("Margot", 25);
 getBirthdayCake("Hulda", 55);
 getBirthdayCake("Adrian", 23);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 467
+
+// Create a function that creates a box based on dimension n.
+
+
+
+function makeBox(n) {
+	const a = [];
+	for (let i = 0; i < n; i++) {
+		if (i > 0 && i < n - 1 && n > 1) {
+			a.push("#" + ' '.repeat(n - 2) + "#");
+		} else {
+			a.push('#'.repeat(n));
+		}
+	}
+	return a;
+}
+
+
+const makeBox = num =>
+  Array.from({ length: num }, (_, i) =>
+    [0, num - 1].includes(i) ? '#'.repeat(num) : `#${' '.repeat(num - 2)}#`
+  );
+
+
+function makeBox(n) {
+	ret=[]
+	for (i=0;i<n;i++){i==0|i==n-1?ret[i]='#'.repeat(n):
+        ret[i]='#'+' '.repeat(n-2)+'#'}
+	return ret	
+}
+
+
+
+makeBox(5);
+makeBox(6);
+makeBox(4);
+makeBox(2);
+makeBox(1);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 468
+
+// Create a function that takes a number as an argument and return the a string like square.
+
+
+function createSquare(length){
+	const a = [];
+	for (let i = 0; i < length; i++) {
+		if (i > 0 && i < length - 1 && length > 1) {
+			a.push("#" + ' '.repeat(length - 2) + "#");
+		} else {
+			a.push('#'.repeat(length));
+		}
+	}
+	return a.length > 1 ? a.map((x, i) => x + "\n").join("").slice(0, -1) : a.join("");
+}
+
+
+const createSquare = (n) => {
+	if (n <= 0) return '';
+	const outsideRow = '#'.repeat(n);
+	const insideRow = n - 1 && `#${' '.repeat(n - 2)}#\n`
+	return n === 1 ?
+		outsideRow :
+		`${outsideRow}\n${insideRow.repeat(n - 2)}${outsideRow}`
+}
+
+
+
+const createSquare = size => {
+    size = size < 0 ? 0 : size;
+  
+    const topBottom = '#'.repeat(size);
+  
+    if (size === 2) {
+      return `${topBottom}\n${topBottom}`;
+    }
+  
+    if (size >= 3) {
+      const middle = Array.from(
+        { length: size - 2 },
+        () => `#${' '.repeat(size - 2)}#`
+      ).join('\n');
+  
+      return `${topBottom}\n${middle}\n${topBottom}`;
+    }
+  
+    return topBottom;
+  };
+
+
+  createSquare = l => l > 0
+	? Array(l).fill``.map((_,i) => i % (l-1)
+        ? `#${' '.repeat(l-2)}#`
+        : `#`.repeat(l)
+        ).join`\n`
+	: ``
+
+
+createSquare(-1);
+createSquare(0);
+createSquare(null);
+createSquare(1);
+createSquare(2);
+createSquare(3);
+createSquare(4);
+createSquare(10);
+createSquare(20);
+createSquare(12);                                                                          #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n################################################################################");
+getLength(createSquare(8000));
+getLength(createSquare(4025));
+getLength(createSquare(3018));
+getLength(createSquare(2020));
+getLength(createSquare(9856));
+
+function getLength(string){
+  if (typeof(string) != "string"){
+    return 0;
+  } else {
+    return string.length;
+  }
+}
+
+
+
