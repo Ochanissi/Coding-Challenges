@@ -21791,7 +21791,7 @@ createSquare(3);
 createSquare(4);
 createSquare(10);
 createSquare(20);
-createSquare(12);                                                                          #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n#                                                                              #\n################################################################################");
+createSquare(12);
 getLength(createSquare(8000));
 getLength(createSquare(4025));
 getLength(createSquare(3018));
@@ -21806,5 +21806,149 @@ function getLength(string){
   }
 }
 
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 469
+
+// Given a string including a bunch of characters and numbers, return the sum of all the numbers in the string. Note that multiple digits next to each other are counted as a whole number rather than separate digits.
+
+function grabNumberSum(s) {
+	return s.replace(/\D/g, " ").split(" ").reduce((x, i) => x + +i, 0);
+}
+
+
+function grabNumberSum(s) {
+	return s.match(/\d+/gi).map(x=>+x).reduce((a,b)=>a+b)
+}
+
+
+const grabNumberSum = s => s.match(/\d+/g).reduce((a, c) => a + +c, 0);
+
+
+const grabNumberSum = str => str.match(/\d+/g).reduce((a,b) => a + +b, 0)
+
+
+const grabNumberSum = s => (s.match(/\d+/g) || []).reduce((a,v) => +v+a, 0);
+
+
+
+grabNumberSum("aeiou5abc10");
+grabNumberSum("75shugeb15hvyff15");
+grabNumberSum("900uwu50uwuuwuuwu25uwu25");
+grabNumberSum("one1two2twenty20");
+grabNumberSum("1s1s11");
+grabNumberSum("75");
+grabNumberSum("aeiou250abc10");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 470
+
+// Create an ordered 2D array (matrix). A matrix is ordered if its (0, 0) element is 1, its (0, 1) element is 2, and so on. Your function needs to create an a × b matrix. a is the first argument and b is the second.
+
+
+function orderedMatrix(a, b) {
+	const x = [];
+	let v = 1;
+	for (let i = 0; i < a; i++) {
+		x.push([]);
+		for (let j = 0; j < b; j++) {
+			x[i].push(v)
+			v++;
+		}
+	}
+	return x;
+}
+
+
+const orderedMatrix = (a, b) => {
+	var matrix = []
+	var num = 1
+	for(var n = 0; n < a; n++) {
+		var arr = []
+		for(var e = 0; e < b; e++) {
+			arr.push(num)
+			num++
+		}
+		matrix.push(arr)
+	}
+	return matrix
+}
+
+
+function orderedMatrix(a, b) {
+	return Array(a).fill(Array(b).fill(1)).map((x,i) => x.map((y,j) => y+j+i*b))
+}
+
+
+const orderedMatrix=(a, b)=>
+    Array.from({length: a}, (_,i)=>Array.from({length: b},(_,j)=>j+i*b+1))
+    
+const orderedMatrix = (height, width) =>
+    Array.from({ length: height }, (_, y) =>
+        Array.from({ length: width }, (_, x) => y * width + 1 + x)
+);
+
+
+orderedMatrix(1,2);
+orderedMatrix(3,3);
+orderedMatrix(5,5);
+orderedMatrix(3,4);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 471
+
+// Write a function that returns true if all subsets in a list belong to a given set.
+
+
+function validateSubsets(subsets, set) {
+	return subsets.flat().every(x => set.includes(x));
+}
+
+
+const validateSubsets = (subsets, set) =>
+  subsets.every(subset => subset.every(num => set.includes(num)));
+
+
+function validateSubsets(subsets, set) {
+	return [...new Set(subsets.reduce((a,b) => a.concat(b)))].join('') == set.join('')
+}
+
+
+const validateSubsets = (s, S) => 
+	s.every(e => [...e].every(x => new Set(S).has(x)));
+
+validateSubsets([[1, 2], [2, 3], [1, 3]], [1, 2, 3]);
+validateSubsets([[1, 2, 3], [2], [3], []], [1, 2, 3]);
+validateSubsets([[1, 2], [2, 3], [1, 4]], [1, 2, 3]);
+validateSubsets([[1, 2, 3, 4]], [1, 2, 3]);
+validateSubsets([['a', 'b'], ['b', 'c'], ['a', 'c']], ['a', 'b', 'c']);
+validateSubsets([['a', 'b', 'c'], ['b'], ['c'], []], ['a', 'b', 'c']);
+validateSubsets([['a', 'b'], ['b', 'c'], ['a', 'd']], ['a', 'b', 'c']);
+validateSubsets([['a', 'b', 'c', 'd']], ['a', 'b', 'c']);
+validateSubsets([[true, false], [true]], [true, false]);
+validateSubsets([[true], [false], []], [true, false]);
+validateSubsets([[true], [true, false]], [true]);
+validateSubsets([[false]], [true]);
 
 
