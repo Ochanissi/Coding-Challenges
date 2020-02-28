@@ -21952,3 +21952,200 @@ validateSubsets([[true], [true, false]], [true]);
 validateSubsets([[false]], [true]);
 
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 472
+
+// Given an array of words, return the longest word which can fit on a 7 segment display.
+
+// Image of a 7 segment display
+
+// Letters which do not fit on a 7 segment display are K, M, V, W and X.
+// Therefore, do not count words which include these letters.
+
+
+function longest7SegmentWord(arr) {
+	return arr.filter(x => !(/[kmvwx]/.test(x))).sort((a, b) => b.length - a.length)[0] || '';
+}
+
+
+const longest7SegmentWord = arr => {
+	return arr
+		.sort((a,b) => b.length - a.length)
+		.filter(wrd => !/[kmvwx]/gi.test(wrd))[0] || "";
+}
+
+const longest7SegmentWord = arr =>
+	arr
+		.sort((a, b) => b.length - a.length)
+        .find(word => /^[^kmvwx]+$/.test(word)) || ''
+        
+function longest7SegmentWord(arr) {
+    return arr.filter(x => !(/[kmvwx]/.test(x))).sort((a, b) => b.length - a.length)[0] || '';
+}
+
+longest7SegmentWord(["knighthood", "parental", "fridge", "clingfilm"]);
+longest7SegmentWord(["coding", "crackers", "edabit", "celebration"]);
+longest7SegmentWord(["velocity", "mackerel", "woven", "kingsmen"]);
+longest7SegmentWord(["embarrassment", "perceive", "front"]);
+longest7SegmentWord(["truck", "accessible", "undermine", "unique", "tear", "cat", "avenue", "labour", "goat", "dance", "rise", "scale"]);
+longest7SegmentWord(["act", "adjust", "proud", "battery", "tear", "beautiful", "avenue", "thoughtful", "victory", "mobile", "straight"]);
+longest7SegmentWord(["fair", "tear", "truck"]);
+longest7SegmentWord(["scale", "pass", "act", "sector", "vain", "scale"]);
+longest7SegmentWord(["vegetarian", "unique", "sensitivity", "goat", "nature", "attract", "suntan", "mobile", "pillow", "economist", "arrest", "galaxy", "proud", "proud"]);
+longest7SegmentWord(["vat", "suntan", "murder", "dance", "course", "institution"]);
+longest7SegmentWord(["adjust", "garlic", "preoccupation", "nature", "garlic", "undermine", "pavement", "payment", "fair", "twin", "expertise", "pillow", "dance", "economist", "establish", "nervous", "sector"]);
+longest7SegmentWord(["embarrassment", "bell", "obese", "width", "singer", "strikebreaker", "width", "preoccupation", "nervous"]);
+longest7SegmentWord(["winner", "twin", "establish"]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 473
+
+// Create a function that takes both a string and an array of numbers as arguments. Rearrange the letters in the string to be in the order specified by the index numbers. Return the "remixed" string.
+
+
+function remix(str, arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		a[arr[i]] = str[i];
+	}
+	return a.join("");
+}
+
+
+function remix(str, arr) {
+    return arr.map((x,i,arr)=> str.charAt(arr.indexOf(i))).join('');
+  }
+
+
+function remix(str, arr) {
+    return arr.reduce((rmx, pos, i) => {
+      rmx[pos] = str.charAt(i);
+      return rmx;
+    }, []).join('')};
+
+
+
+remix = (s, a) => (f=[],a.map((v,i) => f[v] = s[i]),f).join``;
+
+
+const remix = (str, arr) => arr.reduce((chars, n, index) => {
+    chars[n] = str.charAt(index);
+    return chars;
+  }, []).join("");
+
+remix("abcd", [0, 3, 1, 2]);
+remix("PlOt", [1, 3, 0, 2]);
+remix("computer", [0, 2, 1, 5, 3, 6, 7, 4]);
+remix("twist", [4, 0, 1, 2, 3]);
+remix("responsibility", [0, 6, 8, 11, 10, 7, 13, 5, 3, 2, 4, 12, 1, 9]);
+remix("Interference", [6, 9, 10, 11, 7, 3, 0, 2, 5, 1, 8, 4]);
+remix("sequence", [5, 7, 3, 4, 0, 1, 2, 6]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 474
+
+// In this challenge, you have to build a word from the scrambled letters contained in the first given array. For establishing how to assign the spots to the letters, you will use the positions contained in the second given array.
+
+
+wordBuilder = (letters, positions) => ( f = [], positions.map((v, i) => f[v] = letters[i]), f).join``;
+
+
+const wordBuilder = (letters, pos, length = pos.length) => 
+    Array.from({length}, (_, i) => letters[pos.indexOf(i)]).join('');
+    
+
+function wordBuilder(letters, positions) {
+    res = []
+    positions.forEach((p,i) => (res[p] = letters[i]))
+    return res.join("");
+}
+
+
+const wordBuilder = (letters, positions) => (
+	letters.map((_, i) => letters[positions.indexOf(i)])
+).join('');
+
+
+const wordBuilder = (letters, positions) => {
+	let result = []
+	positions.forEach((position,i) => {
+		result[position] = letters[i]
+	})
+	return result.join('')
+}
+
+
+wordBuilder(["e", "t", "s", "t"], [1, 3, 2, 0]);
+wordBuilder(["b", "e", "t", "i", "d", "a"], [3, 0, 5, 4, 1, 2]);
+wordBuilder(["g", "e", "o"], [1, 0, 2]);
+wordBuilder(["l", "e", "h", "n", "l", "c", "a", "e", "g"], [3, 5, 1, 6, 4, 0, 2, 8, 7]);
+wordBuilder(["e", "i", "l", "g", "x", "h", "p", "o", "c", "r", "i", "a", "c"], [1, 3, 0, 6, 2, 10, 9, 5, 4, 7, 11, 8, 12]);
+wordBuilder(["s", "o", "r", "t", "e", "d"], [0, 1, 2, 3, 4, 5]);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 475
+
+// Using Camel Case (or camelCase) is where the first word is in lower case, and all words after it have their first letter capitalised. Note that there are no spaces in between words!
+
+// Create a function that takes a string and returns it back in camelCase.
+
+
+function camelCasing(str) {
+	const a = str.split(" ").map(x => x.split("_")).flat().map(x => x[0].toUpperCase() + x.slice(1, x.length).toLowerCase()).join("");
+	return a[0].toLowerCase() + a.slice(1, a.length);
+}
+
+
+const camelCasing = str => str.toLowerCase().replace(/[\s_](.)/g, (_, m) => m.toUpperCase());
+
+
+const camelCasing = string => {
+	return string.split(/[ _]/g).map((w,i) => (!i ?
+		w.toLowerCase(): w[0].toUpperCase() + w.slice(1).toLowerCase()
+	)).join("");
+}
+
+
+const camelCasing = str => str.split(/[ _]/).map((v,i) =>
+    v[0]['to'+(i?'Upp':'Low')+'erCase']() + v.slice(1).toLowerCase()).join('');
+    
+
+function camelCasing(str) {
+    return str.toLowerCase()
+        .replace(/[ _]([a-z])/gi,(_, word)=> word.toUpperCase());
+}
+
+
+camelCasing("Hello World");
+camelCasing("snake_case");
+camelCasing("low high_HIGH");
+camelCasing("unEcEsSARilY_loNG_vArIablE_NaME");
+camelCasing("camel casing");
+
+
