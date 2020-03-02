@@ -22149,3 +22149,93 @@ camelCasing("unEcEsSARilY_loNG_vArIablE_NaME");
 camelCasing("camel casing");
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 476
+
+// Given an array of math expressions, create a function which sorts the array by their answer. It should be sorted in ascending order.
+
+
+function sortByAnswer(arr) {
+	return arr.map(x => x.replace("x", "*")).sort((a, b) => eval(a) - eval(b)).map(x => x.replace("*", "x"));
+}
+
+
+const sortByAnswer = arr => {
+	const re = s => s.replace("x", "*");
+	return arr.sort((a,b) => eval(re(a)) - eval(re(b)));
+}
+
+
+const sortByAnswer = arr =>
+    arr.sort((a, b) => eval(a.replace('x','*')) - eval(b.replace('x','*')));
+    
+
+const sortByAnswer = arr =>
+    arr.sort((a,b) => eval(a.replace('x','*')) - eval(b.replace('x', '*')));
+
+
+sortByAnswer(["1 + 1", "1 + 7", "1 + 5", "1 + 4"]);
+sortByAnswer(["2 + 2", "2 - 2", "2 x 2", "2 / 2"]);
+sortByAnswer(["1 x 1", "3 x 3", "-1 x -1", "-3 x -3"]);
+sortByAnswer(["4 - 4", "2 - 2", "5 - 5", "10 - 10"]);
+sortByAnswer(["4 - 4", "2 - 2", "5 + 5", "10 - 10"]);
+sortByAnswer(["49 x -6", "21 - 25", "-11 / 26", "6 + -37", "1 / 49", "22 x -46", "-7 / 10", "16 + -34", "-37 x -27", "23 / -41"]);
+sortByAnswer(["18 / -13", "41 + -14", "6 x 19", "-7 x 3", "44 + 37", "-13 + -32", "47 + -15"]);
+sortByAnswer(["-45 - 30", "-6 / 21", "-31 x 40"]);
+sortByAnswer(["4 + 13", "14 + 42", "-25 / 39", "-18 / 49", "34 + 41", "21 / -32", "3 / -17", "-38 + 38", "22 + 15", "-11 x 33", "-20 x -25", "3 / -28", "44 - 15", "26 / -29", "-23 - 43", "4 / 26", "8 + -45", "-4 + 28", "0 / 46", "8 x -9"]);
+sortByAnswer(["-42 - 47", "7 x 17", "-36 + -30"]);
+sortByAnswer(["-45 / 7", "44 - 49", "-17 x 49", "-22 + -40"]);
+sortByAnswer(["2 + -18", "-22 + 11", "-49 + -31", "32 / -20", "-10 x 5", "35 x -3"]);
+sortByAnswer(["-35 - 27", "38 - 41", "47 x -44", "-6 x -38"]);
+sortByAnswer(["23 / 33", "-5 / 26", "36 + -1", "-35 / 26", "3 / 4", "-44 - 42", "-30 - 20", "-12 - 9", "33 - 23", "14 + 12", "-28 + 10", "14 + -24", "48 x -47", "35 x 47", "-28 x 9", "-26 + 2"]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 477
+
+// Given what is supposed to be typed and what is actually typed, write a function that returns the broken key(s). The function looks like:
+
+// findBrokenKeys(correct phrase, what you actually typed)
+
+
+function findBrokenKeys(str1, str2) {
+	const a = [];
+	for (let i = 0; i < str1.length; i++) {
+		if (str1[i] !== str2[i]) a.push(str1[i])
+	}
+	return [...new Set(a)];
+}
+
+
+function findBrokenKeys(str1, str2) {
+	return [...new Set(str1.split("").filter((a, index) => a !== str2[index]))];
+}
+
+
+function findBrokenKeys(str1, str2) {
+	return [...new Set([...str1].filter((val, i) => val !== str2[i]))]
+}
+
+
+
+let findBrokenKeys=(str1, str2)=>(ret=[],str1.split('').forEach((x,i)=>{if(x!=str2[i]&&!ret.includes(x)) ret.push(x);}),ret);
+
+
+findBrokenKeys("happy birthday", "hawwy birthday");
+findBrokenKeys("starry night", "starrq light");
+findBrokenKeys("beethoven", "affthoif5");
+findBrokenKeys("mozart", "aiwgvx");
+findBrokenKeys("5678", "4678");
+findBrokenKeys("!!??$$", "$$!!??");
+
