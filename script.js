@@ -22239,3 +22239,239 @@ findBrokenKeys("mozart", "aiwgvx");
 findBrokenKeys("5678", "4678");
 findBrokenKeys("!!??$$", "$$!!??");
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 478
+
+// Create a function that takes the width, height and character and returns a picture frame as a matrix.
+
+function getFrame(w, h, ch) {
+	if (w <= 2 || h <= 2) return 'invalid';
+	const a = [];
+	for (let i = 0; i < h; i++) {
+		if (i > 0 && i < h - 1) {
+			a.push([ch + ' '.repeat(w - 2) + ch]);
+		} else {
+			a.push([ch.repeat(w)]);
+		}
+	}
+	return a;
+}
+
+
+const getFrame = (w, h, c) => {
+	if (h < 3 || w < 3) return "invalid";
+	return Array.from({length: h}, (_, i) =>
+		(!i || i == h-1) ? [c.repeat(w)] : [c + " ".repeat(w-2) + c]
+	);
+}
+
+
+const getFrame = (w, h, ch) => (w < 3 || h < 3) ? 'invalid' : [...Array(h)]
+	.map((_,i) => [ch + ((!i || i === h-1) ? ch : ' ').repeat(w-2) + ch]);
+
+
+const getFrame = (w, h, ch) => w <= 2 || h <= 2 ? `invalid` :
+Array(h).fill``.map((_, i) => !i || i === h - 1 ? [ch.repeat(w)] :
+    [ch + ` `.repeat(w - 2) + ch]);
+
+
+function getFrame(w, h, ch) {
+    if (w <= 2 || h <= 2) return "invalid";
+
+    let frame = [];
+    for (let i = 0; i < h; i++) {
+        if (i === 0 || i === h - 1) frame.push([ch.repeat(w)]);
+        else frame.push([ch + " ".repeat(w - 2) + ch]);
+    }
+    return frame;
+}
+
+getFrame(3, 3, "0");
+getFrame(4, 5, "#");
+getFrame(10, 3, "*");
+getFrame(2, 5, "0");
+getFrame(1, 6, "[");
+getFrame(5, 4, "z");
+getFrame(3, 4, "A");
+getFrame(10, 2, "`");
+getFrame(10, 4, "l");
+getFrame(5, 9, "Z");
+getFrame(4, 6, "J");
+getFrame(3, 4, "R");
+getFrame(3, 6, "Q");
+getFrame(3, 3, "^");
+getFrame(5, 2, "F");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 479
+
+// Given an array of numbers, create a function which returns the same array but with each element's index in the array added to itself. This means you add 0 to the number at index 0, add 1 to the number at index 1, etc...
+
+
+function addIndexes(arr) {
+	return arr.map((x, i) => x + i)
+}
+
+
+
+addIndexes([0, 0, 0, 0, 0]);
+addIndexes([1, 2, 3, 4, 5]);
+addIndexes([5, 4, 3, 2, 1]);
+addIndexes([-25, -15, 3]);
+addIndexes([27]);
+addIndexes([-48, -20, 41, 29, -25, -17, -13, 5, 4, -5, 3, -17, 23]);
+addIndexes([-32, -24, -50, 48, 5, -27, -33, -3, 16, -16, -31, -11, 43]);
+addIndexes([38, -8, 40, -50, -26, -3, -29, -33, 13, 28]);
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 480
+
+// Wild Roger is participating in a Western Showdown, meaning he has to draw (pull out and shoot) his gun faster than his opponent in a gun standoff.
+
+// Given two strings,p1 and p2, return which person drew their gun the fastest. If both are drawn at the same time, return 'tie'.
+
+
+function showdown(p1, p2) {
+	const a1 = p1.split('Bang!')[0].length;
+	const a2 = p2.split('Bang!')[0].length;
+	return a1 < a2 ? 'p1' : a1 > a2 ? 'p2' : 'tie';
+}
+
+
+const showdown = (p1, p2) =>
+    ['p1','tie','p2'][Math.sign(p1.indexOf('B') - p2.indexOf('B')) + 1];
+    
+
+function showdown(p1, p2) {
+    let id1 = p1.indexOf('B');
+    let id2 = p2.indexOf('B');
+    return id1 == id2 ? 'tie' : id1 < id2 ? 'p1' : 'p2';
+}
+
+
+const showdown = (p1, p2) =>
+	p1.indexOf('B') < p2.indexOf('B') ? 'p1':
+	p1.indexOf('B') > p2.indexOf('B') ? 'p2':
+    'tie'
+    
+
+function showdown(p1, p2) {
+    return p1.indexOf("!") === p2.indexOf("!") ? "tie" : p1.indexOf("!") < p2.indexOf("!") ? "p1" : "p2"
+}
+
+showdown('  Bang!     ', '     Bang!  ');
+showdown(' Bang!  ', '  Bang! ');
+showdown('          Bang!       ', '       Bang!          ');
+showdown('    Bang!    ', '    Bang!    ');
+showdown('       Bang!       ', '       Bang!       ');
+showdown(' Bang!      ', '      Bang! ');
+showdown(' Bang!  ', '  Bang! ');
+showdown('       Bang!      ', '      Bang!       ');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 481
+
+// Given a pH value, return whether that value is 'alkaline', 'acidic', or 'neutral'. Return 'invalid' if the value given is less than 0 or greater than 14.
+
+
+function pHName(pH) {
+	return pH < 7 && pH >= 0 ? "acidic" : pH > 7 && pH <= 14 ? "alkaline" : pH === 7 ? "neutral" : 'invalid';
+}
+
+
+const pHName = pH => pH < 0 || pH > 14 ? 'invalid' :
+    pH < 7 ? 'acidic' : pH > 7 ? 'alkaline' : 'neutral';
+    
+
+function pHName(ph) {
+    if (ph>14||ph<0) return 'invalid';
+    if (ph<7) return 'acidic';
+    if (ph>7) return 'alkaline';
+    return 'neutral';
+}
+
+
+function pHName(pH) {
+	return pH < 0 || pH > 14 ? "invalid" : pH === 7 ? "neutral" : pH <= 6 ? "acidic" : "alkaline"  
+}
+
+
+pHName(7.0);
+pHName(7);
+pHName(13.52);
+pHName(-4.33);
+pHName(8.27);
+pHName(9.72);
+pHName(-4.58);
+pHName(14.85);
+pHName(17.76);
+pHName(3.9);
+pHName(14.21);
+pHName(-2.35);
+pHName(2.66);
+pHName(16.45);
+pHName(3.46);
+pHName(7.26);
+pHName(12.46);
+pHName(17.51);
+pHName(19.7);
+pHName(10.46);
+pHName(-4.83);
+pHName(3.13);
+pHName(11.38);
+pHName(5.23);
+pHName(18.85);
+pHName(15.82);
+pHName(9.17);
+pHName(2.73);
+pHName(10.99);
+pHName(-3.86);
+pHName(17.59);
+pHName(5.5);
+pHName(-3.35);
+pHName(16.02);
+pHName(8.78);
+pHName(18.94);
+pHName(-4.69);
+pHName(0.86);
+pHName(-3.45);
+pHName(19.05);
+pHName(5.41);
+pHName(0.44);
+pHName(8.82);
+pHName(-1.24);
+pHName(1.72);
+pHName(10.01);
+pHName(3.49);
+pHName(13.62);
+pHName(3.43);
+pHName(4.35);
+pHName(17.07);
+pHName(14.64);
