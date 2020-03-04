@@ -22475,3 +22475,685 @@ pHName(3.43);
 pHName(4.35);
 pHName(17.07);
 pHName(14.64);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 482
+
+// Create a method in the Person class which returns how another person's age compares. Given the instances p1, p2 and p3, which will be initialised with the attributes name and age, return a sentence in the following format:
+
+// {other person name} is {older than / younger than / the same age as} me.
+
+
+class Person {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+		
+	compareAge(other) {
+		this.name2 = other.name;
+		this.age2 = other.age;
+		
+		return `${this.name2} is ${this.age > this.age2 ? 'younger than' : this.age < this.age2 ? 'older than' : 'the same age as'} me.`;
+	}
+}
+
+
+class Person {
+	constructor(name, age) {
+		this.name = name
+		this.age = age
+	}
+		
+	compareAge(other) {
+		let i = Math.sign(other.age - this.age),
+				x = ["the same age as", "older than"][i] || "younger than";
+		return `${other.name} is ${x} me.`;
+	}
+}
+
+
+class Person {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+		
+	compareAge(other) {
+		let options = ['older than','the same age as','younger than'];
+		let text = options[Math.sign(this.age - other.age) + 1];
+		return `${other.name} is ${text} me.`;
+	}
+}
+
+
+p1 = new Person("Samuel", 24);
+p2 = new Person("Joel", 36);
+p3 = new Person("Lily", 24);
+
+p1.compareAge(p2);
+p1.compareAge(p3);
+
+p2.compareAge(p1);
+p2.compareAge(p3);
+
+p3.compareAge(p1);
+p3.compareAge(p2);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 483
+
+// Google's logo can be stretched depending on how many pages it lets you skip forward to.
+
+// Let's say we wanted to change the amount of pages that Google could skip to. Create a function where given a number of pages n, return the word 'Google' but with the correct number of 'o's.
+
+
+
+function googlify(n) {
+	return n <= 1 ? 'invalid' : `G${'o'.repeat(n)}gle`;
+}
+
+
+function googlify(n) {
+	return n > 1 ? `G${"o".repeat(n)}gle` : "invalid"
+}
+
+
+function googlify(n) {
+	return n > 1 ? 'G'+'o'.repeat(n)+'gle' : 'invalid' ;
+}
+
+
+googlify(-5);
+googlify(-4);
+googlify(-3);
+googlify(-2);
+googlify(-1);
+googlify(0);
+googlify(1);
+googlify(2);
+googlify(3);
+googlify(4);
+googlify(5);
+googlify(6);
+googlify(7);
+googlify(8);
+googlify(9);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 484
+
+// Write a function that sorts an array of characters alphabetically in ascending order (a-z) by the character at the n-th character.
+
+function sortByCharacter(arr, n) {
+	return arr.sort((a, b) => {
+    var a1= a[n-1], b1= b[n-1];
+    if(a1== b1) return 0;
+    return a1> b1? 1: -1;
+	});
+}
+
+
+sortByCharacter(['az16', 'by35', 'cx24'], 1);
+sortByCharacter(['az16', 'by35', 'cx24'], 2);
+sortByCharacter(['az16', 'by35', 'cx24'], 3);
+sortByCharacter(['az16', 'by35', 'cx24'], 4);
+sortByCharacter(['apple', 'mayor', 'bendy', 'petal'], 5);
+sortByCharacter(['team', 'mate', 'bade'], 3);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 485
+
+// Write a function that divides an array into chunks of size n, where n is the length of each chunk.
+
+
+function chunkify(arr, size) {
+    var a = [];
+    for(var i = 0; i < arr.length; i += size) {
+      a.push(arr.slice(i, i + size));
+    }
+    return a;
+}
+
+
+const chunkify = (arr, size) => {
+    const result = [];
+  
+    for (let i = 0; i < arr.length; i += size)
+      result.push(arr.slice(i, i + size));
+  
+    return result;
+};
+
+
+let chunkify=(arr, size)=>
+	'a'.repeat(Math.ceil(arr.length/size)).split("").map((x,y)=>
+                    arr.slice(size*y,size*(y+1)))
+                    
+
+
+
+chunkify([2, 3, 4, 5], 2);
+chunkify([2, 3, 4, 5, 6], 2);
+chunkify([2, 3, 4, 5, 6, 7], 3);
+chunkify([2, 3, 4, 5, 6, 7], 1);
+chunkify([2, 3, 4, 5, 6, 7], 7);
+chunkify([2, 3, 4, 5], 3);
+chunkify([2, 3, 4, 5, 6, 7, 8], 3);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 486
+
+// Create a function which replaces all the x's in the string in the following ways:
+
+// Replace all x's with "cks" UNLESS:
+
+// The word begins with "x", therefore replace it with "z".
+// The word is just the letter "x", therefore replace it with "ecks".
+
+function xPronounce(sentence) {
+	return sentence.split(" ").map(x => x.startsWith('x') && x.length === 1 ? 'ecks' : x.startsWith('x') ? 'z' + x.slice(1, x.length) : x.replace('x', 'cks')).join(" ");
+}
+
+
+const xPronounce = sentence => {
+	let re = /(\bx\b)|(\bx)|(x)/ig;
+	return sentence
+		.replace(re, (_, a, b, c) => a ? "ecks" : b ? "z" : "cks");
+}
+
+
+
+const xPronounce = sentence =>sentence.split(' ').map(a => a.match(/^x$/) ? 'ecks':a.startsWith('x')?'z'+a.slice(1):a.replace(/x/gi,"cks")).join(' ')
+
+
+const xPronounce = sentence =>
+	sentence.replace(/\bx\b/g, "ecks")
+					.replace(/\bx/g, "z")
+					.replace(/x/g, "cks");
+
+
+
+xPronounce("Inside the box was a xylophone");
+xPronounce("The x ray is excellent");
+xPronounce("OMG x box unboxing video x D");
+xPronounce("I gotta make bux but the clox are ticking!");
+xPronounce("this test does not have an x in it");
+xPronounce("Max bax pax");
+xPronounce("Anti vax");
+xPronounce("Who is xavier and why does he have my car");
+xPronounce("OMG xylem unboxing video x D");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 487
+
+// Carlos is a huge fan of something he calls smooth sentences. A smooth sentence is one where the last letter of each word is identical to the first letter the following word.
+
+// To illustrate, the following would be a smooth sentence: "Carlos swam masterfully."
+
+// Since "Carlos" ends with an "s" and swam begins with an "s" and swam ends with an "m" and masterfully begins with an "m".
+
+
+function isSmooth(sentence) {
+	const a = sentence.toLowerCase().split(" ").map(x => [x[0], x.slice(-1)]).flat().slice(1, -1);
+	return a.length / 2 === new Set(a).size;
+}
+
+
+function isSmooth(sentence) {
+    let words = sentence.toLowerCase().split(' ');
+  
+    for (let i = 1; i < words.length; i++) {
+      if (!words[i - 1].endsWith(words[i][0])) {
+        return false;
+      }
+    }
+  
+    return true;
+  }
+
+const isSmooth = sentence =>
+  sentence
+    .match(/\w \w/g)
+    .every(pair => new Set(pair.toLowerCase()).size === 2);
+
+
+isSmooth("Marta appreciated deep perpendicular right trapezoids");
+isSmooth("Someone is outside the doorway");
+isSmooth("She eats super righteously");
+isSmooth("Ben naps so often");
+isSmooth("Cute triangles are cute");
+isSmooth("Mad dislikes sharp pointy yoyos");
+isSmooth("Rita asks Sam mean numbered dilemmas");
+isSmooth("Marigold daffodils streaming happily.");
+isSmooth("Simply wonderful laughing.");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 488
+
+// Create a function that takes two numbers as arguments and return the LCM of the two numbers.
+
+
+function lcm(a, b) 
+{
+	return a * (b / gcd(a,b));
+}
+
+function gcd(a, b)
+{ 
+	return !b ? a : gcd(b, a % b);
+} 
+
+function range_lcm(arr)
+{
+	if(arr[0] > arr[1]) (arr = [arr[1], arr[0]]);
+
+	for(x = result = arr[0]; x <= arr[1]; x++) {
+		result = lcm(x, result);
+	}
+	
+	return result; 
+}
+
+
+function lcm(a, b) {
+	for(var i = 1; i <= a* b;i++){
+		if(i % a == 0 && i % b == 0){
+			return i;
+		}
+	}
+}
+
+
+const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+
+const lcm = (a, b) => a * (b / gcd(a, b));
+
+
+
+const gcd = (a, b) => b? gcd(b, a%b) : a;
+const lcm = (a, b) => a * b / gcd(a, b);
+
+
+
+function lcm(a, b) {
+	const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+    return (!a || !b) ? 0 : Math.abs((a * b) / gcd(a, b))}
+    
+
+
+function gcd(a, b){
+    let min = Math.min(a, b),
+            max = Math.max(a, b);
+    if (max % min === 0) return min;
+    return gcd(min, max % min);
+}
+function lcm(a, b) {
+    return a * b / gcd(a, b);
+}
+
+
+lcm(6, 10);
+lcm(30, 60);
+lcm(10000, 333);
+lcm(75, 135);
+lcm(102, 2);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 489
+
+// Create a function that takes an array containing nested arrays as an argument. Each subarray has 2 elements. The first element is the numerator and the second element is the denominator. Return the sum of the fractions rounded to the nearest whole number.
+
+
+function sumFractions(arr) {
+	return Math.round(arr.map(x => (x[0] / x[1])).reduce((x, i) => x + i));
+}
+
+
+const sumFractions = a => {
+	return Math.round(a.map(v => v[0]/v[1]).reduce((a,v) => a+v));
+}
+
+
+const sumFractions = arr => Math.round(arr.reduce((a,v) => a + v[0]/v[1], 0));
+
+
+const sumFractions = lst => Math.round(lst.reduce((a, [n, d]) => a + n / d, 0));
+
+
+function sumFractions(list) {
+	return Number(list.reduce((t,[a,b])=> t+a/b, 0).toFixed())
+}
+
+
+sumFractions([[36, 4], [22, 60]]);
+sumFractions([[-11, 12], [18, 13], [4, 5]]);
+sumFractions([[11, 12], [18, 13], [4, 5]]);
+sumFractions([[18, 13], [4, 5]]);
+sumFractions([[41, 14], [10, 91]]);
+sumFractions([[11, 2], [3, 4], [5, 4], [21, 11], [12, 6]]);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 490
+
+// Write a function that returns the least common multiple (LCM) of two integers.
+ 
+
+const lcm=(n1, n2)=>n2%n1?n1*n2:n2
+
+
+function lcm(a, b) 
+{
+	return a * (b / gcd(a,b));
+}
+
+function gcd(a, b)
+{ 
+	return !b ? a : gcd(b, a % b);
+} 
+
+function range_lcm(arr)
+{
+	if(arr[0] > arr[1]) (arr = [arr[1], arr[0]]);
+
+	for(x = result = arr[0]; x <= arr[1]; x++) {
+		result = lcm(x, result);
+	}
+	
+	return result; 
+}
+
+
+function lcm(a, b) {
+	for(var i = 1; i <= a* b;i++){
+		if(i % a == 0 && i % b == 0){
+			return i;
+		}
+	}
+}
+
+
+const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+
+const lcm = (a, b) => a * (b / gcd(a, b));
+
+
+
+const gcd = (a, b) => b? gcd(b, a%b) : a;
+const lcm = (a, b) => a * b / gcd(a, b);
+
+
+
+function lcm(a, b) {
+	const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+    return (!a || !b) ? 0 : Math.abs((a * b) / gcd(a, b))}
+    
+
+
+function gcd(a, b){
+    let min = Math.min(a, b),
+            max = Math.max(a, b);
+    if (max % min === 0) return min;
+    return gcd(min, max % min);
+}
+function lcm(a, b) {
+    return a * b / gcd(a, b);
+}
+
+
+lcm(6, 10);
+lcm(30, 60);
+lcm(10000, 333);
+lcm(75, 135);
+lcm(102, 2);
+lcm(9, 18);
+lcm(8, 5);
+lcm(17, 11);
+lcm(17, 5);
+lcm(3, 12);
+lcm(9, 9);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 491
+
+// Create a function that builds a staircase given the height and the type of building block.
+
+// Examples
+// buildStaircase(3, "#") ➞ [
+//   ["#", "_", "_"],
+//   ["#", "#", "_"],
+//   ["#", "#", "#"]
+// ]
+
+// buildStaircase(4, "#") ➞ [
+//   ["#", "_", "_", "_"],
+//   ["#", "#", "_", "_"],
+//   ["#", "#", "#", "_"],
+//   ["#", "#", "#", "#"]
+// ]
+
+// buildStaircase(3, "A") ➞ [
+//   ["A", "_", "_"],
+//   ["A", "A", "_"],
+//   ["A", "A", "A"]
+// ]
+
+// // height = 3 and building block = "A"
+
+// buildStaircase(4, "$") ➞ [
+//   ["$", "_", "_", "_"],
+//   ["$", "$", "_", "_"],
+//   ["$", "$", "$", "_"],
+//   ["$", "$", "$", "$"]
+// ]
+
+function buildStaircase(height, block) {
+	const a = [];
+	for (let i = 1; i <= height; i++) {
+		a.push((block.repeat(i) + "_".repeat(height - i)).split(""))
+	}
+	
+	return a;
+}
+
+
+const buildStaircase = (length, block) =>
+  Array.from({ length }, (_, y) =>
+    Array.from({ length }, (_, x) => (y >= x ? block : '_'))
+  );
+
+
+function buildStaircase(height, block) {
+    var r = [];
+    for (var i = 0; i < height; i++) {
+        r[i] = [];
+        for (var j = 0; j < height; j++) {
+            r[i][j] = (i >= j ? block : '_');
+        }
+    }
+    return r;
+}
+
+
+buildStaircase(0, '#');
+
+buildStaircase(1, '#');
+
+buildStaircase(2, '#');
+
+buildStaircase(3, '#');
+
+buildStaircase(4, '#');
+
+buildStaircase(3, 'A');
+
+buildStaircase(4, 'A');
+
+buildStaircase(4, '$');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 492
+
+// Someone has attempted to censor my strings by replacing every vowel with a *, l*k* th*s. Luckily, I've been able to find the vowels that were removed.
+
+// Given a censored string and a string of the censored vowels, return the original uncensored string.
+
+function uncensor(str, vowels) {
+	const a = [];
+	let b = 0;
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === "*") {
+			a.push(vowels[b]);
+			b++;
+		} else a.push(str[i]);
+	}
+	return a.join("");
+}
+
+
+const uncensor = (str, vowels) => {
+    const arr = vowels.split('');
+    return str.replace(/\*/g, () => arr.shift());
+  };
+
+
+function uncensor(str, vowels) {
+	for (let i=0;i<vowels.length; i++){
+		str = str.replace('*', vowels[i])
+	}
+ return str
+}
+
+
+uncensor('Wh*r* d*d my v*w*ls g*?', 'eeioeo');
+uncensor('abcd', '');
+uncensor('*PP*RC*S*', 'UEAE');
+uncensor('Ch**s*, Gr*mm*t -- ch**s*', 'eeeoieee');
+uncensor('*l*ph*nt', 'Eea');
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 493
+
+// Create a function that takes in a sentence and returns the average length of each word in that sentence. Round your result to two decimal places.
+
+
+function averageWordLength(str) {
+	return Math.round(str.replace(/[^\w\s]/g,'').split(" ").map(x => x.length).reduce((x, i) => x + i) / str.split(" ").length * 100) / 100;
+}
+
+
+function averageWordLength(str) {
+	let arr = str.split(' ').map(x=>x.match(/\w/g).join('').length)
+	return parseFloat((arr.reduce((a,b)=>a+b,0)/arr.length).toFixed(2))
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const average = arr => sum(arr) / arr.length;
+
+const averageWordLength = str => {
+  const words = str.match(/\w+/g);
+  const lengths = words.map(({ length }) => length);
+  return Number(average(lengths).toFixed(2));
+};
+
+
+averageWordLength('A B C.');
+averageWordLength('What a gorgeous day.');
+averageWordLength('Dude, this is so awesome!');
+averageWordLength('Working on my tan right now.');
+averageWordLength('Having a blast partying in Las Vegas.');
+averageWordLength('Have you ever wondered what Saturn looks like?');
+averageWordLength('I just planted a young oak tree, wonder how tall it will grow in a few years?');
+
+
