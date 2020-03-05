@@ -23157,3 +23157,166 @@ averageWordLength('Have you ever wondered what Saturn looks like?');
 averageWordLength('I just planted a young oak tree, wonder how tall it will grow in a few years?');
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 494
+
+// In this challenge, you have to establish if an integer num is Alternating. To be Alternating, num must be positive and every digit in its sequence must have a different parity than its next and its previous digit.
+
+// Given an integer num, implement a function that returns true is num is an Alternating number, or false if it's not.
+
+
+function isAlternating(num) {
+	const a = num.toString().split("").map(x => x % 2 === 0).every((x, i, arr) => x !== arr[i+1]);
+	return num > 0 ? a : false; 
+}
+
+
+function isAlternating(num) {
+	if(num<=0)
+		return false
+	let numArr=[...String(num)].map(Number)
+	for(let i=0;i<numArr.length-1;i++)
+		 if(numArr[i]%2===numArr[i+1]%2)
+			 return false
+	return true
+}
+
+
+const isAlternating = n => n <= 0 ? false : (digits = [...`${n}`])[`length`] == 1 ? true :
+    /^([01])(?!\1)([01])(?:\1\2)*\1?$/g.test(digits.reduce((b,n) => [...b, n % 2], []).join(``))
+
+
+const isAlternating = num => {
+const arr = [...String(num)]
+return num > 0 && arr
+    .slice(1)
+    .every((number,i) => number % 2 !== arr[i] % 2)
+}
+
+
+const isAlternating = num => num > 0 && [...`${num}`].every((d, i, n) => !i || d % 2 - n[i - 1] % 2);
+
+
+isAlternating(123);
+isAlternating(67);
+isAlternating(2380);
+isAlternating(75);
+isAlternating(3);
+isAlternating(903);
+isAlternating(444);
+isAlternating(0);
+isAlternating(14589);
+isAlternating(1234566789);
+isAlternating(-12);
+isAlternating(10);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 495
+
+// Create a function that alternates the case of the letters in a string (known as Spongecase).
+
+
+function alternatingCaps(s) {
+	return s.replace(/[a-z]/gi,c=>c[`to${(s=!s)?'Low':'Upp'}erCase`]());
+}
+
+
+function alternatingCaps(str) {
+	let upper = false
+	return [...str].map(c => {
+		if (c === ' ') return ' '
+		upper = !upper
+		return upper ? c.toUpperCase() : c.toLowerCase()
+	}).join('')
+}
+
+
+function alternatingCaps(str) {
+	let i = -1;
+	return [...str].map(x => {
+		i++;
+		if (x === ' ') i -= 1;
+		return i % 2 ? x.toLowerCase() : x.toUpperCase();
+	}).join('');
+}
+
+
+const alternatingCaps=(s,a=1)=>	
+ [...s].map(e=>e!=" "?((a++ && a%2)?e.toLowerCase():e.toUpperCase()):e).join``
+
+
+
+function alternatingCaps(str) {
+	let uc = false;
+	const swap = c => (uc = !uc) ? c.toUpperCase() : c.toLowerCase();
+	const isL = c => /[a-z]/i.test(c);
+	return [...str].reduce((a,v) => a + (isL(v) ? swap(v) : v), '');
+}
+
+
+alternatingCaps('alternating caps');
+alternatingCaps("What is your name?");
+alternatingCaps('Lorem ipsum dolor sit amet consectetur adipisicing elit.');
+alternatingCaps('OMG this website is awesome!');
+alternatingCaps('The quick brown fox jumps over the lazy dog');
+alternatingCaps('The intent is to provide players with a sense of pride and accomplishment for unlocking different heroes.');
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 496
+
+// Create a function that converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized.
+
+
+function toCamelCase(str) {
+	const a = str.split(/[_-]/);
+	return [a[0], ...a.slice(1, a.length).map(x => x[0].toUpperCase() + x.slice(1, x.length))].join("");
+}
+
+
+const toCamelCase = str =>
+  str.replace(/[_-](\w)/g, (_, g1) => g1.toUpperCase());
+
+
+function toCamelCase(str) {
+	let arr = str.split(/[-_]/);
+	for(let i=1;i<arr.length;i++) {
+		arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
+	}
+	return arr.join('');
+}
+
+
+function toCamelCase(str) {
+    return str.replace(/[^a-zA-Z]([a-zA-Z])/g, function($0, $1) {
+          return $1.toUpperCase();
+      })	
+}
+
+
+toCamelCase("the_stealth_warrior");
+toCamelCase("The-Stealth-Warrior");
+toCamelCase("A-B-C");
+toCamelCase('');
+
