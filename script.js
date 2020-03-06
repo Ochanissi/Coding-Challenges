@@ -23320,3 +23320,329 @@ toCamelCase("The-Stealth-Warrior");
 toCamelCase("A-B-C");
 toCamelCase('');
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 497
+
+// Create a function that takes a string (the string to truncate) and a number (the maximum length of the truncated string) as arguments and returns the truncated string at the given length.
+
+
+function truncate(string, length) {
+	return string.split(" ")[0].length < length ? string.replace(/^(.{11}[^\s]*).*/, "$1") : "";
+}
+
+
+function truncate(string, length) {
+	return string.split(" ")[0].length < length ? string.replace(/^([\s\S]{10}\S*)[\s\S]*/, "$1");
+}
+
+
+function truncate(string, length) {
+    const arr = string.split(' ');
+    const sliced = string.slice(0, length).split(' ');
+    return sliced.filter(
+      (slice, index) =>
+        slice === arr[index]
+    ).join(' ');
+}
+
+
+function truncate(string, length) {
+	let n = (string+' ').slice(0,length+1).lastIndexOf(' ');
+  if(n <= 0) return '';
+  return string.slice(0,n);
+}
+
+
+truncate = (s, l) => s.substring(0, l > s.length ? l : s.lastIndexOf(' ', l))
+
+
+function truncate(string, length) {
+	return string.substr(0, [" ", ""].includes(string.charAt(length)) ? length : string.lastIndexOf(" ", length)).trim();
+}
+
+
+// "Clean cut".
+truncate("Lorem ipsum dolor sit amet.", 11);
+
+// "Dirty cut", you have to discard the last word.
+truncate("Lorem ipsum dolor sit amet.", 16);
+
+// If length is greater than the strings length.
+truncate("Lorem ipsum", 20);
+
+// Some extra tests.
+truncate("Lorem ipsum", 4);
+truncate("Lorem ipsum", 0);
+truncate("", 30);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 498
+
+// Given an object with students and the grades that they made on the tests that they took, determine which student has the best Test Average. The key will be the student's name and the value will be an array of their grades. You will only have to return the student's name. You do not need to return their Test Average.
+
+
+function getBestStudent(grades) {
+	const a = [];
+		Object.keys(grades).forEach(x => {
+			a.push([x, grades[x].reduce((x, i) => x + i) / grades[x].length]);
+		})
+	return a.sort((a, b) => b[1] - a[1])[0][0];
+}
+
+
+function getBestStudent(grades) {
+    var newArr =  Object.entries(grades).sort(function(a,b){
+     var length = a[1].length;
+     a = a[1].reduce((accum,x) => accum + x)/length;
+       b = b[1].reduce((accum,x) => accum + x)/length;
+       return b - a;
+   });
+   return newArr[0][0];
+}
+
+
+const getBestStudent = data => {
+	let length = Object.keys(data).length,
+			bestAvg = 0,
+			bestStd = "";
+	for (let [student, notes] of Object.entries(data)) {
+		let avg = notes.reduce((a,v) => a + v) / length;
+		if (avg > bestAvg) { bestAvg = avg; bestStd = student }
+	}
+	return bestStd;
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const mean = arr => sum(arr) / arr.length;
+
+const getBestStudent = students => {
+  const avgs = Object.values(students).map(mean);
+  const maxAvg = Math.max(...avgs);
+  const index = avgs.indexOf(maxAvg);
+
+  return Object.keys(students)[index];
+};
+
+
+function getBestStudent(grades) {
+	let best = ["", -1];
+	for (let student in grades) {
+		const avg = grades[student].reduce((a, c) => a + c, 0) / grades[student].length;
+		if (avg > best[1]) best = [student, avg];
+	}
+	return best[0];
+}
+
+
+getBestStudent({
+	John: [100, 90, 80],
+	Bob: [100, 70, 80]
+});
+
+getBestStudent({
+	Susan: [67, 84, 75, 63],
+  Mike: [87, 98, 64, 71],
+  Jim: [90, 58, 73, 86]
+});
+
+getBestStudent({
+	Tim: [93, 84, 49, 71, 76, 83],
+  Nick: [88, 91, 74, 72, 63, 68],
+  Brad: [100, 94, 72, 64, 58, 81],
+	Annie: [79, 93, 82, 82, 63, 87]
+});
+
+getBestStudent({
+	Eddie: [65, 85, 72, 76],
+  Brock: [55, 97, 82, 91],
+  Jessica: [78, 62, 79, 99]
+});
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 499
+
+// Create a function that accepts a string as an argument. Find its shortest word(s) and return them as an array sorted alphabetically (if there are multiple shortest words).
+
+
+function findShortestWords(str) {
+	return str.toLowerCase().replace(/[^\w\s$]/g, "").split(" ").sort((a, b) => a.length - b.length).filter((x, i, arr) => x.length === arr[0].length && isNaN(x)).sort();
+}
+
+
+const findShortestWords = str => str.toLowerCase().split(' ').map(s => s.replace(/[^a-z]/i, '')).filter(s => s.length === str.split(' ').sort((a,b) => a.length - b.length)[0].length).sort()
+
+
+
+function findShortestWords(str) {
+    let arr = str.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
+    let lowest = Math.min(...arr.map(x => x.length));
+    return arr.filter(x => x.length === lowest).sort();
+}
+
+
+function findShortestWords(str) {
+    const regex = /([A-Za-z’])+/g;
+    return str.match(regex)
+      .sort((a, b) => a.length - b.length)
+      .filter((el, i, arr) => el.length <= arr[0].length)
+        .map(el => el.toLowerCase())
+        .sort();
+  }
+
+
+
+findShortestWords("Strive not to be a success, but rather to be of value.");
+findShortestWords("You miss 100% of the shots you don’t take.");
+findShortestWords("Life is what happens to you while you’re busy making other plans.");
+findShortestWords("We become what we think about.");
+findShortestWords("The most common way people give up their power is by thinking they don’t have any.");
+findShortestWords("The best time to plant the tree was 20 years ago. The second best time is now.");
+findShortestWords("Your time is limited, so don’t waste it living someone else’s life.");
+findShortestWords("You can never cross the ocean until you have the courage to lose sight of the shore.");
+findShortestWords("There is only one way to avoid criticism: do nothing, say nothing, and be nothing.");
+findShortestWords("The only person you are destined to become is the person you decide to be.");
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 500
+
+// Create a function that takes an array of "mostly" numbers and returns the total amount of missing numbers, given that the array is sorted in ascending order. Watch out for strings!
+
+
+function sumOfMissingNums(arr) {
+	const a = arr.map(x => +x).filter(x => !isNaN(x));
+	let x = 0;
+	for (let i = Math.min(...a); i <= Math.max(...a); i++) {
+		if (!a.includes(i)) x++;
+	}
+	return x;
+}
+
+
+function sumOfMissingNums(arr) {
+	const numbers = arr.filter(v => !isNaN(v));
+	return Math.max(...numbers) - Math.min(...numbers) + 1 - numbers.length;
+}
+
+
+function sumOfMissingNums(arr) {
+	arr = arr.filter(x => (/^[0-9]+$/gi).test(x));
+	return Math.max(...arr)-Math.min(...arr)-arr.length+1;
+}
+
+
+const sumOfMissingNums = arr => {
+	const justNums = arr.reduce((acc,cur) => +cur ? acc.concat(+cur) : acc, [])
+	const max = Math.max(...justNums)
+	const min = Math.min(...justNums)
+	
+	return Array(max - min + 1)
+		.fill()
+		.map((_,i) => min + i)
+		.filter(num => !justNums.includes(num))
+		.length
+}
+
+
+const sumOfMissingNums = arr => {
+	let a = arr.map(Number).filter(Number);
+	return (Math.max(...a) - Math.min(...a)) - a.length + 1;
+}
+
+
+sumOfMissingNums(['1', '3', '5', '7', '9']);
+sumOfMissingNums(['7', '3', '1', '9', '5']);
+sumOfMissingNums(['10', '20', '30', '40', '50']);
+sumOfMissingNums(['1', '78', 'B', '9', 'z']);
+sumOfMissingNums(['95', '96', '97', '98', '99']);
+sumOfMissingNums(['45', 'EDABIT', '56']);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 501
+
+// Write a function that returns the most frequent character in an array of words.
+
+
+function mostFrequentChar(arr) {
+	const a = arr.join("").split("").sort();
+	const x = [];
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] !== a[i-1]) {
+			x.push(a[i]);
+		} else x[x.length - 1] += a[i]
+	}
+	return x.sort((a, b) => b.length - a.length).filter((x, i, arr) => x.length === arr[0].length).map(x => x[0]);
+}
+
+
+
+function mostFrequentChar(arr) {
+	return arr.join``
+						.split``
+						.sort()
+						.join``
+						.match(/(\w)\1*/g)
+						.sort((a, b) => b.length - a.length)
+						.filter((el,i,a) => el.length === a[0].length)
+						.map(el => el[0])
+						.sort();
+}
+
+
+const frequencyMap = arr =>
+  arr.reduce((map, item) => map.set(item, map.get(item) + 1 || 1), new Map());
+
+const mostFrequentChar = arr => {
+  const chars = arr.reduce((result, str) => result.concat(str.split('')), []);
+  const freqMap = Array.from(frequencyMap(chars));
+  const max = Math.max(...freqMap.map(([, quantity]) => quantity));
+
+  return freqMap
+    .filter(([, quantity]) => quantity === max)
+    .map(([char]) => char)
+    .sort();
+};
+
+
+mostFrequentChar(["apple", "bandage", "yodel", "make"]);
+mostFrequentChar(["music", "madness", "maniac", "motion"]);
+mostFrequentChar(["the", "hills", "are", "alive", "with", "the", "sound", "of", "music"]);
+mostFrequentChar(["let", "them", "eat", "cake"]);
+mostFrequentChar(["potion", "master", "professor", "snape"]);
+
