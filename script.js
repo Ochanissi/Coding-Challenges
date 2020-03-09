@@ -23810,3 +23810,76 @@ digitSort([53219, 3772, 564, 32, 1]);
 digitSort([9, 667, 87, 56, 3023, 5555, 111]);
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 504
+
+// Given a common phrase, return false if any individual word in the phrase contains duplicate letters. Return true otherwise.
+
+
+function noDuplicateLetters(phrase) {
+	return phrase.split(" ").every(x => new Set(x.split("")).size === x.length)
+}
+
+
+const noDuplicateLetters = phr => phr.toLowerCase().split(' ').every(v => new Set(v).size === v.length);
+
+
+const noDuplicateLetters=phrase=>
+	!phrase.split(" ").map(e=>[...e].filter((e,i,a)=>
+    a.indexOf(e)!=a.lastIndexOf(e))).reduce((a,n)=>a+n).length
+    
+
+function noDuplicateLetters(phrase) {
+    return phrase.split(" ").every(p => new Set([...p]).size === p.length);
+}
+
+
+
+function noDuplicateLetters(phrase) {
+	phrase = phrase
+		.toLowerCase()
+		.replace(/[^a-z\s]/g, "")
+		.split(" ");
+	
+	for (let i = 0; i < phrase.length; i++) {
+		let set = new Set(phrase[i]);
+		if (set.size !== phrase[i].length) return false;
+	}
+	
+	return true;
+}
+
+
+
+
+noDuplicateLetters("Easy does it.");
+noDuplicateLetters("So far, so good.");
+noDuplicateLetters("Better late than never.");
+noDuplicateLetters("Beat around the bush.");
+noDuplicateLetters("Give them the benefit of the doubt.");
+noDuplicateLetters("Your guess is as good as mine.");
+noDuplicateLetters("Make a long story short.");
+noDuplicateLetters("Go back to the drawing board.");
+noDuplicateLetters("Wrap your head around something.");
+noDuplicateLetters("Get your act together.");
+noDuplicateLetters("To make matters worse.");
+noDuplicateLetters("No pain, no gain.");
+noDuplicateLetters("We'll cross that bridge when we come to it.");
+noDuplicateLetters("Call it a day.");
+noDuplicateLetters("It's not rocket science.");
+noDuplicateLetters("A blessing in disguise.");
+noDuplicateLetters("Get out of hand.");
+noDuplicateLetters("A dime a dozen.");
+noDuplicateLetters("Time flies when you're having fun.");
+noDuplicateLetters("The best of both worlds.");
+noDuplicateLetters("Speak of the devil.");
+noDuplicateLetters("You can say that again.");
+
+
