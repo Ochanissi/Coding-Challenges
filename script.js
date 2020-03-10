@@ -23883,3 +23883,387 @@ noDuplicateLetters("Speak of the devil.");
 noDuplicateLetters("You can say that again.");
 
 
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 505
+
+// You can think of character classes as characters with special meaning. They are recognized as special when you place the \ before the character.
+
+// Here are a list of the characters classes in JavaScript:
+
+// ., \cX, \d, \D, \f, \n, \r, \s, \S, \t, \v, \w, \W, \0, \xhh, \uhhhh, \uhhhhh, [\b]
+// There is a hidden word in this string:
+
+// const str = "**^&$Regular#$%Expressions$%$$%^**"
+// Write the regular expression that reveals the hidden word. You have to remove all of the special characters to reveal the word. Use the character class \w in your expression.
+
+
+const REGEXP = /\w/g
+
+
+const str = "**^&$Regular#$%Expressions$%$$%^**"
+
+const validate = (REGEXP) => {
+	 if(!/\\w/.test(String(REGEXP))) return () => "required"
+	 return function testReg(str) {
+		 return str.match(REGEXP).join("")
+	 }
+}
+
+const testExp = validate(REGEXP)
+console.log(testExp(str))
+
+testExp(str)
+testExp(str)
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 506
+
+// Given a class for a BasicPlan, write the classes for StandardPlan and PremiumPlan which have class properties of the following:
+
+// BasicPlan	StandardPlan	PremiumPlan
+// ✓	✓	✓	canStream
+// ✓	✓	✓	canDownload
+// ✓	✓	✓	hasSD
+// ✓	✓	hasHD
+// ✓	hasUHD
+// 1	2	4	numOfDevices
+// $8.99	$12.99	$15.99	price
+
+
+// class BasicPlan {
+// 	static canStream = true;
+// 	static canDownload = true;
+// 	static numOfDevices = 1;
+// 	static hasSD = true;
+// 	static hasHD = false;
+// 	static hasUHD = false;
+// 	static price = '$8.99';
+// }
+
+// // Write the classes for StandardPlan and PremiumPlan here!
+// class StandardPlan {
+// 	static canStream = true;
+// 	static canDownload = true;
+// 	static numOfDevices = 2;
+// 	static hasSD = true;
+// 	static hasHD = true;
+// 	static hasUHD = false;
+// 	static price = '$12.99';
+// }
+
+// class PremiumPlan {
+// 	static canStream = true;
+// 	static canDownload = true;
+// 	static numOfDevices = 4;
+// 	static hasSD = true;
+// 	static hasHD = true;
+// 	static hasUHD = true;
+// 	static price = '$15.99';
+// }
+
+
+class BasicPlan {
+	static canStream = true;
+	static canDownload = true;
+	static numOfDevices = 1;
+	static hasSD = true;
+	static hasHD = false;
+	static hasUHD = false;
+	static price = '$8.99';
+}
+
+class StandardPlan extends BasicPlan {
+	static numOfDevices = 2;
+	static hasHD = true;
+	static price = '$12.99';
+}
+
+class PremiumPlan extends BasicPlan {
+	static numOfDevices = 4;
+	static hasHD = true;
+	static hasUHD = true;
+	static price = '$15.99';
+}
+
+
+BasicPlan.canStream;
+BasicPlan.canDownload;
+BasicPlan.numOfDevices;
+BasicPlan.hasSD;
+BasicPlan.hasHD;
+BasicPlan.hasUHD;
+BasicPlan.price;
+StandardPlan.canStream;
+StandardPlan.canDownload;
+StandardPlan.numOfDevices;
+StandardPlan.hasSD;
+StandardPlan.hasHD;
+StandardPlan.hasUHD;
+StandardPlan.price;
+PremiumPlan.canStream;
+PremiumPlan.canDownload;
+PremiumPlan.numOfDevices;
+PremiumPlan.hasSD;
+PremiumPlan.hasHD;
+PremiumPlan.hasUHD;
+PremiumPlan.price;
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 507
+
+// Challenge
+// Create a regular expression to find all (opening and closing) HTML tags with their attributes
+// Assume that tag attributes may not contain < and > (inside quotes too)
+
+
+const REGEXP = /<[^<>]+>/g
+
+
+const REGEXP = /<[ \w'"\/=]+>/g
+
+
+// const str = '<> <a href="/"> <input type="radio" checked> <b>'
+
+// const validate = (REGEXP) => {
+// 	 // if(!//.test(String(REGEXP))) return () => "invalid" 
+// 	 return function testReg(str) {
+// 		 return str.match(REGEXP)
+// 	 }
+// }
+
+// const testExp = validate(REGEXP)
+
+// testExp(str)
+// testExp(str)
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 508
+
+// The time has a format: hours:minutes. Both hours and minutes has two digits, like 09:00.
+
+// Challenge
+// Make a regexp to find time in the string: Breakfast at 09:00 in the room 123:456.
+// In this task there’s no need to check time correctness yet, so 25:99 can also be a valid result.
+// The regexp should not match 123:456.
+
+
+const REGEXP = /\b\d\d:\d\d\b/
+
+
+const REGEXP = /\d{2}:\d{2}/;
+
+
+const str = "Breakfast at 09:00 in the room 123:456.";
+
+const validate = (REGEXP) => {
+	 // if(!//.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		 return str.match(REGEXP)
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str);
+testExp(str);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 509
+
+// Create a function that counts the number of blocks of two or more adjacent 1s in an array.
+
+
+function countOnes(arr) {
+	return arr.join("").split("0").filter(x => x.length > 1).length
+}
+
+
+const countOnes = arr =>
+  arr
+    .join('')
+    .split(/0+/)
+    .filter(str => str && str.length > 1).length;
+
+
+function countOnes(arr) {
+    let consecutiveOnes = arr.join("").match(/1{2,}/g);
+    return consecutiveOnes ?  consecutiveOnes.length : 0;
+}
+
+
+function countOnes(arr) {
+	var a = arr.join('').split(/0+/);
+	var c = 0;
+	for (var i in a) {
+		if (a[i].length > 1) c++;
+	}
+	return c;
+}
+
+
+function countOnes(arr) {
+	return arr.join("").split(/[^1]/g).filter(x => x.length > 1).length;
+}
+
+
+function countOnes(arr) {
+	return (arr.toString().match(/(1,1)(,0|$)/g)||[]).length
+}
+
+
+countOnes([1, 1, 1, 1, 1]);
+countOnes([1, 1, 1, 1, 0]);
+countOnes([0, 0, 0, 0, 0]);
+countOnes([1, 0, 0, 0, 0]);
+countOnes([1, 0, 1, 0, 1]);
+countOnes([1, 0, 0, 0, 1, 0, 0, 1, 1]);
+countOnes([1, 1, 0, 1, 1, 0, 0, 1, 1]);
+countOnes([1, 0, 0, 1, 1, 0, 0, 1, 1]);
+countOnes([1, 0, 0, 1, 1, 0, 1, 1, 1]);
+countOnes([1, 0, 1, 0, 1, 0, 1, 0]);
+countOnes([1, 1, 1, 1, 0, 0, 0, 0]);
+countOnes([1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1]);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 510
+
+// Create a function that, given a string with at least three characters, returns an array of its:
+
+// Length.
+// First character.
+// Last character.
+// Middle character, if the string has an odd number of characters. Middle TWO characters, if the string has an even number of characters.
+// Index of the second occurrence of the second character in the format "@ index #" and "not found" if the second character doesn't occur again.
+
+
+function allAboutStrings(str) {
+	const a = str.length % 2  === 0 ? str[Math.floor((str.length - 1) / 2)] + str[Math.floor(str.length / 2)] : str[Math.floor(str.length / 2)];
+	const b = str.indexOf(str[1], str.indexOf(str[1]) + 1);
+	return [str.length, str[0], str[str.length - 1], a, b > 1 ? `@ index ${b}` : `not found`];
+}
+
+
+const allAboutStrings = str => {
+    const len = str.length;
+    const first = str[0];
+    const second = str[1];
+    const midPoint = len / 2;
+    const middle = Number.isInteger(midPoint)
+      ? str.slice(midPoint - 1, midPoint + 1)
+      : str[Math.floor(midPoint)];
+    const last = str[len - 1];
+    const indexOfSecond = str.indexOf(second, 2);
+    const repeated =
+      indexOfSecond === -1 ? 'not found' : `@ index ${indexOfSecond}`;
+  
+    return [len, first, last, middle, repeated];
+};
+
+
+
+
+
+allAboutStrings('LASA');
+allAboutStrings('Computer');
+allAboutStrings('Science');
+allAboutStrings('homework');
+allAboutStrings('spring');
+allAboutStrings('break');
+allAboutStrings('programming');
+allAboutStrings('bad');
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 511
+
+// Groups and ranges indicate groups and ranges of expression characters. The regular expression x|y matches either "x" or "y".
+
+// const REGEXP = /blue|green/
+
+// "red flag".match(REGEXP)  // red
+// "blue flag".match(REGEXP)  // blue
+
+// // Matches "blue" in "blue flag" and "red" in "red flag".
+// Create a regular expression to match all red flag and blue flag in a string. You must use | in your expression. Flags can come in any order.
+
+
+const REGEXP = /red flag|blue flag/g
+
+
+const REGEXP = /(red|blue) flag/g
+
+
+const REGEXP = /red flag|blue flag/g
+
+
+const str1 = "red flag blue flag"
+const str2 = "yellow flag red flag blue flag green flag"
+const str3 = "pink flag red flag black flag blue flag green flag red flag"
+const str4 = "blue flag red flag red flag blue flag green flag red flag"
+
+const validate = (REGEXP) => {
+	 if(!/\|/.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		 console.log(str.match(REGEXP))
+		 return str.match(REGEXP)
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str1);
+testExp(str1);
+testExp(str2);
+testExp(str3);
+testExp(str4);
+
