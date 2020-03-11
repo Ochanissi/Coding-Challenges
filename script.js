@@ -24267,3 +24267,140 @@ testExp(str2);
 testExp(str3);
 testExp(str4);
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 512
+
+// Create a regexp to find ellipsis: 3 (or more?) dots in a row.
+// Use one of the 3 quantifiers above in your solution
+
+const REGEXP = /\.{3,}/g
+
+
+const str = "Hello!... Wait. How goes?..... GoodBye!.."
+
+const validate = (REGEXP) => {
+	 if(!/\{.*\}/.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		return str.match(REGEXP);
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str);
+testExp(str);
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 513
+
+// Create a function that sorts words by a given string.
+
+
+function sortByString(arr, str) {
+	const a = [];
+	for (let i = 0; i < str.split("").length; i++) {
+		for (let j = 0; j < arr.length; j++) {
+			if (arr[j][0] === str.split("")[i]) a.push(arr[j]);
+		}
+	}
+	return a;
+}
+
+
+const sortByString = (arr, str) =>
+  arr.sort(([a], [b]) => str.indexOf(a) - str.indexOf(b));
+
+
+function sortByString(arr, str) {
+    return arr.sort(function(a, b) {
+        var n1 = str.indexOf(a.charAt(0));
+        var n2 = str.indexOf(b.charAt(0));
+        return n1 - n2;
+    });
+}
+
+
+function sortByString(arr, str) {
+	return arr.sort((a,b) => str.indexOf(a[0]) - str.indexOf(b[0]));
+}
+
+
+function sortByString(arr, str) {
+	return [...str].reduce((sorted, char) =>
+		sorted.concat(arr.filter(word => word[0] == char))
+	, [])
+}
+
+
+function sortByString(arr, str) {
+	return arr.sort((a,b)=>str.indexOf(a[0])-str.indexOf(b[0]))
+}
+
+
+sortByString(["apple", "banana", "cherry", "date"], "dbca");
+
+sortByString(["small", "big", "medium"], "sazymtb");
+
+sortByString(["poof", "floof", "loop"], "flatp");
+
+sortByString(["yellow", "phone", "book"], "abcdpy");
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 514
+
+// In each input array, every number repeats at least once, except for two.
+
+// Write a function that returns the two unique numbers.
+
+
+function returnUnique(arr) {
+	return arr.filter((x, i, arr) => arr.indexOf(x) === arr.lastIndexOf(x));
+}
+
+
+function returnUnique(arr) {
+	return arr.filter(x => arr.filter(y => y === x).length == 1)
+}
+
+
+function returnUnique(arr) {
+	return arr.filter(a => arr.indexOf(a) === arr.lastIndexOf(a));
+}
+
+
+function returnUnique(arr) {
+	let unique = [...arr].sort().filter((val, i, ar) => val !== ar[i + 1] && val !== ar[i - 1])
+	return arr.filter(val => unique.includes(val))
+}
+
+
+returnUnique([1, 9, 8, 8, 7, 6, 1, 6]);
+returnUnique([5, 5, 2, 4, 4, 4, 9, 9, 9, 1]);
+returnUnique([9, 5, 6, 8, 7, 7, 1, 1, 1, 1, 1, 9, 8]);
+returnUnique([4, 3, 9, 9, 1, 1, 6, 1, 6, 2, 4]);
+returnUnique([44, 44, 44, 2, 55, 55, 55, 0, 66, 66, 66]);
+returnUnique([-9, -9, -9, 7, -9, -9, 1]);
+returnUnique([2, 2, -19, 2, 7, 7, 4, 9, 9, 0, 0, 3, 3, 3]);
+
