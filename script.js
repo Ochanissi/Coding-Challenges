@@ -24404,3 +24404,73 @@ returnUnique([44, 44, 44, 2, 55, 55, 55, 0, 66, 66, 66]);
 returnUnique([-9, -9, -9, 7, -9, -9, 1]);
 returnUnique([2, 2, -19, 2, 7, 7, 4, 9, 9, 0, 0, 3, 3, 3]);
 
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 515
+
+// A number can considered slidey if for every digit in the number, the next digit from that has an absolute difference of one. Check the examples below.
+
+
+function isSlidey(n) {
+	return n.toString().split("").every((x, i, arr) => +x === Math.abs(+arr[i+1] - 1) || +x === Math.abs(+arr[i+1] + 1) || i === arr.length - 1);
+}
+
+
+const isSlidey = (n, a = [...`${n}`]) => (
+	n < 10 || a.slice(1).every((d,i) => Math.abs(d - a[i]) === 1)
+);
+
+
+function isSlidey(n) {
+	n = n.toString();
+	return [...n].slice(1).every((x, i) => Math.abs(x - n[i]) === 1);
+}
+
+const isSlidey = (n, N = '' + n) =>
+    [...N].slice(1).every((v,i) => Math.abs(v - N[i]) === 1);
+    
+
+
+const isSlidey = (num) => Array.of(...num+``)
+    .map(Number)
+    .every((n,i,N) => i > 0 ? Math.abs(n-N[i-1]) == 1 : true)
+
+
+
+const isSlidey = n => [...`${n}`].every((d, i, a) => !i || Math.abs(d - a[i - 1]) === 1);
+
+
+function isSlidey(num) {
+	let digits  = `${num}`.split("").map(Number)
+	return digits.slice(1).every((d , idx) => Math.abs(d -digits[idx]) === 1)
+
+}
+
+
+isSlidey(123454321);
+isSlidey(54345);
+isSlidey(987654321);
+isSlidey(1123);
+isSlidey(1357);
+isSlidey(1);
+isSlidey(0);
+isSlidey(13578987);
+isSlidey(232323232);
+isSlidey(2323232322);
+isSlidey(2343456567878);
+isSlidey(999999999999);
+isSlidey(223322332233);
+isSlidey(7766554433);
+isSlidey(32);
+isSlidey(21);
+isSlidey(33);
+isSlidey(30);
+
+
