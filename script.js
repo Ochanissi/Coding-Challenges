@@ -24454,6 +24454,10 @@ function isSlidey(num) {
 }
 
 
+const isSlidey = n => 
+	[...`${n}`].every((d, i) => !i || Math.abs(+d - `${n}`[i-1]) == 1);
+
+
 isSlidey(123454321);
 isSlidey(54345);
 isSlidey(987654321);
@@ -24473,4 +24477,184 @@ isSlidey(21);
 isSlidey(33);
 isSlidey(30);
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 516
+
+// Dividing by 0 is a huge mistake and should be avoided at all costs.
+
+// Create a function that when given a math expression as a string, return True if at any point, the expression involves dividing by 0.
+
+
+function catchZeroDivision(expr) {
+	return !isFinite(eval(expr));
+}
+
+
+catchZeroDivision("2 / 0");
+catchZeroDivision("4 / (2 + 3 - 5)");
+catchZeroDivision("2 * 5 - 3");
+catchZeroDivision("3 / 0");
+catchZeroDivision("23 - 23 / 23");
+catchZeroDivision("0 + 1 + 2 + 3 + 0");
+catchZeroDivision("0+0+0+0+0+0+0");
+catchZeroDivision("0-0-0-0-0-0-0-0-0-0");
+catchZeroDivision("4 / 3");
+catchZeroDivision("5343456787543234567 / 743044830483009043909003");
+catchZeroDivision("0 / 0");
+catchZeroDivision("(-100 + 50 + 50) / (60 - 50 - 10)");
+catchZeroDivision("0 + 0 + (3 / (3 - 3))");
+catchZeroDivision("7 / ((7**2) - ((-7)**2))");
+
+
+const catchZeroDivision = exp => Number.isNaN(eval(exp)) || eval(exp) == Infinity;
+
+
+function catchZeroDivision(expr) {
+	return !isFinite(eval(expr));
+}
+
+
+const catchZeroDivision = expr => !isFinite(eval(expr));
+
+
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 517
+
+// If you've completed this RegEx series from I to XXII then you have been exposed to all of MDN's documentation on regular expressions special characters. You can check my Collections under Basic Reg Ex in my profile if you missed any. This next part of the series is to help solidify what you've learned. In order to save time I will be searching the web to find regular expression exercises to post here.
+
+// You can test for empty string like this:
+
+// "".length === 0 ➞ true
+
+
+const REGEXP = /^$/
+
+
+
+const str = "";
+
+const validate = (REGEXP) => {
+	 // if(!//.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		 return REGEXP.test(str)
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str);
+testExp(str);
+
+
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 518
+
+// Groups and ranges indicate groups and ranges of expression characters. Negated character sets match any characters that are NOT inside of brackets [ ]. You differentiate a negated character set from a regular character set by inserting a ^ inside of the [ ].
+
+// "1234cba5678".match(/[^abc]/g)
+// // "12345678", matches any character that are not a, b, or c.
+// You can also negate ranges, but like with regular character sets, if the hyphen is at the beginning or ending of a range then it will be considered a literal hyphen.
+
+// "excludenumbers123".match(/[^1-3]/g)
+// // "excludenumbers", matches any character that are not the numbers 1, 2 or 3.
+// Create a REGEXP that matches any characters except letters, digits and spaces. You must use a negated character set in your expression.
+
+//  "alice15@gmail.com".match(/REGEXP/gi) ➞ ["@", "."]
+
+
+const REGEXP = /[^\d\w]/gi
+
+
+const REGEXP = /[^a-z0-9 ]/gi
+
+
+const REGEXP = /[^\d\w\s]/gi
+
+
+const str = "alice15@gmail.com"
+
+const validate = (REGEXP) => {
+	 if(!/\[\^/.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		return str.match(REGEXP);
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str);
+testExp(str);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 519
+
+// Noddy has written a mysterious function which takes in a word and returns true if it's passed a specific test. Solve the riddle of what Noddy's function is by having a look at some of the examples below.
+
+
+function noddyFunction(str) {
+	return !str.toLowerCase().includes("d")
+}
+
+
+
+const noddyFunction = s => !/d/gi.test(s);
+
+
+const noddyFunction = s => !/d/i.test(s);
+
+
+const noddyFunction = str => !(/d/gi).test(str)
+
+
+const noddyFunction = str => !/d/i.test(str);
+
+
+
+noddyFunction("fantastic");
+noddyFunction("wonderful");
+noddyFunction("noddy");
+noddyFunction("blessed");
+noddyFunction("Wonder");
+noddyFunction("waterfall");
+noddyFunction("nature");
+noddyFunction("ADVENTUROUS");
+noddyFunction("Benevolent");
+noddyFunction("courageous");
+noddyFunction("End");
+noddyFunction("virtue");
+noddyFunction("Kindness");
+noddyFunction("CREATURE");
+noddyFunction("Planet");
+noddyFunction("disaster");
+noddyFunction("possibility");
+noddyFunction("Inspiration");
+noddyFunction("Hope");
+noddyFunction("nurture");
+noddyFunction("UNDERSTANDING");
+noddyFunction("Edabit");
 
