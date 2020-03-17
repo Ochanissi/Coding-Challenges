@@ -24658,3 +24658,51 @@ noddyFunction("nurture");
 noddyFunction("UNDERSTANDING");
 noddyFunction("Edabit");
 
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 520
+
+// You can think of character classes as characters with special meaning. They are recognized as special when you place the \ before the character.
+
+// Here are a list of the characters classes in JavaScript:
+
+// ., \cX, \d, \D, \f, \n, \r, \s, \S, \t, \v, \w, \W, \0, \xhh, \uhhhh, \uhhhhh, [\b]
+// Write a regex that will return true if the bio does not have any spaces before the last ending punctuation ?. You must use the \S character class in your expression.
+
+// "Can read a spray chart and a balance sheet. 1 part Executive, 1 part entrepreneur, 2 parts geek and 3 parts baseball coach. Too many parts?"
+// The bio above is in the correct format. Therefore your regex should return true for it.
+
+
+const REGEXP = /\S\?$/g
+
+
+const REGEXP = /\w+\S\?/g
+
+
+const REGEXP = /\S(?=\?)/g
+
+
+const str1 = "Can read a spray chart and a balance sheet. 1 part Executive, 1 part entrepreneur, 2 parts geek and 3 parts baseball coach. Too many parts?"
+const str2 = "Can read a spray chart and a balance sheet. 1 part Executive, 1 part entrepreneur, 2 parts geek and 3 parts baseball coach. Too many parts ?"
+const str3 = "Can read a spray chart and a balance sheet. 1 part Executive, 1 part entrepreneur, 2 parts geek and 3 parts baseball coach. Too many parts  ?"
+
+const validate = (REGEXP) => {
+	 if(!/\\S/.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		 return REGEXP.test(str)
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str3);
+testExp(str1);
+testExp(str2);
+testExp(str3);
+
+
