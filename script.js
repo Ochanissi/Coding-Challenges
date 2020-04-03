@@ -24706,3 +24706,32 @@ testExp(str2);
 testExp(str3);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 521
+
+// Create a function that takes a number and return an array of three numbers: half of the number, quarter of the number and an eighth of the number.
+
+const halfQuarterEighth = (n) => {
+	return [n/2, n/4, n/8];
+}
+
+
+const halfQuarterEighth = n => [n / 2, n / 4, n / 8];
+
+
+const halfQuarterEighth = (n) => {
+	return [n*0.5, n*0.25, n*0.125];
+}
+
+halfQuarterEighth(6);
+halfQuarterEighth(22);
+halfQuarterEighth(25);
+halfQuarterEighth(18);
+halfQuarterEighth(98);
+halfQuarterEighth(14);
+
+
