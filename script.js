@@ -24735,3 +24735,21 @@ halfQuarterEighth(98);
 halfQuarterEighth(14);
 
 
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 522
+
+// Create a function that takes the number of wins, draws and losses and calculates the number of points a football team has obtained so far. A win receives 3 points, a draw 1 point and a loss 0 points.
+
+function footballPoints(wins, draws, losses) {
+	return wins * 3 + draws * 1;
+}
+
+footballPoints(1, 2, 3);
+footballPoints(5, 5, 5);
+footballPoints(1, 0, 0);
+footballPoints(0, 7, 0);
+footballPoints(0, 0, 15);
