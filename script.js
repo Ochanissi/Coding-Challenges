@@ -24753,3 +24753,43 @@ footballPoints(5, 5, 5);
 footballPoints(1, 0, 0);
 footballPoints(0, 7, 0);
 footballPoints(0, 0, 15);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 523
+
+// Create a function that takes an array and a string as arguments and returns the list of CMSs that include the given string. Return the names in an array in alphabetical order.
+
+function cmsSelector(arr, str) {
+	return arr.filter(x => x.includes(str)).sort();
+}
+
+
+let cmsSelector =(a,s)=> a.filter(x => x.includes(s)).sort();
+
+
+function cmsSelector(arr, str) {
+  let finalArr = [];
+  let regex = new RegExp(str,'g');
+  for (let i = 0; i<arr.length; i++){
+    if (arr[i].match(regex)){
+      finalArr.push(arr[i]);
+    }
+  }
+return finalArr.sort();
+}
+
+
+function cmsSelector(arr, str) {
+  return arr.sort().filter(item => item.indexOf(str) >= 0)
+}
+
+
+cmsSelector(["WordPress", "Joomla", "Drupal", "Magento", "Shopify", "Blogger"], "er");
+cmsSelector(["WordPress", "Joomla", "Drupal", "Magento", "Shopify", "Blogger"], "");
+cmsSelector(["WordPress", "Joomla", "Drupal", "Magento", "Shopify", "Blogger"], "oJ");
+
