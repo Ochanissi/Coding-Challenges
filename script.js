@@ -24793,3 +24793,46 @@ cmsSelector(["WordPress", "Joomla", "Drupal", "Magento", "Shopify", "Blogger"], 
 cmsSelector(["WordPress", "Joomla", "Drupal", "Magento", "Shopify", "Blogger"], "");
 cmsSelector(["WordPress", "Joomla", "Drupal", "Magento", "Shopify", "Blogger"], "oJ");
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 524
+
+// Given a string of numbers separated by a comma and space, return the product of the numbers.
+
+function multiplyNums(nums) {
+	return nums.split(', ').map(x => x * 1).reduce((x, i) => x * i);
+}
+
+
+function multiplyNums(nums) {
+	return nums.split(', ').reduce((a, b) => a * +b, 1);
+}
+
+
+const multiplyNums = a => a.split(', ').map(Number).reduce((a,b)=> a*b);
+
+
+function multiplyNums(nums) {
+	let reducer = (accumulator, currentValue) => accumulator * currentValue
+	return nums.split(', ').map(x => parseInt(x)).reduce(reducer)
+}
+
+
+const multiplyNums = str => str.split(', ').reduce((total, num) => total * num, 1);
+
+
+multiplyNums("2, 3");
+multiplyNums("1, 2, 3, 4");
+multiplyNums("54, 75, 453, 0");
+multiplyNums("10, -2");
+multiplyNums("-26, 1, -27, -12, -19");
+multiplyNums("16, 8");
+multiplyNums("-19, -22, -14, 20, -15, -24, -17, 19, 30, -10");
+multiplyNums("1, 13, 0, -11, 26, -17, 21");
+multiplyNums("-25, -19, 7, -26, -26");
+multiplyNums("-4, -16, -22, -3, -6");
+multiplyNums("-22, 11, 19, 5, 19, -9, -13, 20, -29");
+multiplyNums("-25, 22");
+
+
