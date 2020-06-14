@@ -24836,3 +24836,16 @@ multiplyNums("-22, 11, 19, 5, 19, -9, -13, 20, -29");
 multiplyNums("-25, 22");
 
 
+
+/////////////////////////////////
+// CODING CHALLENGE 525
+
+// The ternary operator (sometimes called Conditional Expressions) in JavaScript is an alternative to the if... else... statement.
+
+function yeah_nope(bool) {
+	return bool ? 'yeah' : 'nope';
+}
+
+yeah_nope(true);
+yeah_nope(false);
+
