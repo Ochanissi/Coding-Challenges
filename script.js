@@ -24849,3 +24849,87 @@ function yeah_nope(bool) {
 yeah_nope(true);
 yeah_nope(false);
 
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 526
+
+// JavaScript has a logical operator &&. The && operator takes two boolean values, and returns true if both values are true.
+
+function and(a, b) {
+	return a && b;
+}
+
+
+
+and = (a, b) => a && b
+
+
+and(true, true);
+and(true, false);
+and(false, true);
+and(false, false);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 527
+
+// Create a recursive function that takes two parameters and repeats the string n number of times. The first parameter txt is the string to be repeated and the second parameter is the number of times the string is to be repeated.
+
+// String.prototype.repeat() is not allowed
+
+
+function repetition(txt, n) {
+	return txt.repeat(n);
+}
+
+
+const repetition = (txt, n) => n <= 0 ? '' : txt + repetition(txt, n - 1);
+
+
+const repetition = (t, n) => n <= 0 ? '': t + repetition(t,n-1);
+
+
+const repetition = function repeats(txt, n) {
+    return n > 0 ? txt + repeats(txt, n - 1) : "";
+  };
+
+repetition("soccer", 2);
+repetition("ab", 3);
+repetition("bonita", 1);
+repetition("ciao", 4);
+repetition("amigo", 5);
+repetition("torque", 2);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 528
+
+// Create a function that takes an angle in radians and converts it into degrees.
+
+
+function toDegree(radian) {
+	return Math.round(radian * 180 * Math.PI / 10 / 15) * 15;
+}
+
+
+function toDegree(radian){
+	return (radian/Math.PI) * 180;
+}
+
+
+const toDegree = r => Math.round(r * (180/Math.PI));
+
+
+const toDegree = radian => (radian/Math.PI) * 180;
+
+
+toDegree(2 * Math.PI);
+toDegree(Math.PI);
+toDegree(Math.PI / 2);
+toDegree(Math.PI / 4);
+toDegree(Math.PI / 3);
+
