@@ -24933,3 +24933,95 @@ toDegree(Math.PI / 2);
 toDegree(Math.PI / 4);
 toDegree(Math.PI / 3);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 529
+
+// Create a function that takes a string and returns it as an integer.
+
+function stringInt(str) {
+	return +str;
+}
+
+
+function stringInt(str) {
+	return parseInt(str);
+}
+
+
+let  stringInt = str => Number(str);
+
+
+stringInt("6");
+stringInt("2");
+stringInt("10");
+stringInt("666");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 530
+
+// Smash factor is a term in golf that relates to the amount of energy transferred from the club head to the golf ball. The formula for calculating smash factor is ball speed divided by club speed.
+
+// Create a function that takes ball speed bs and club speed cs as arguments and returns the smash factor to the nearest hundredth.
+
+
+function smashFactor(bs, cs) {
+	return Math.round(bs / cs * 100) / 100;
+}
+
+
+function smashFactor(bs, cs) {
+    return +(bs / cs).toFixed(2);
+}
+
+
+function smashFactor(bs, cs) {
+	return +(bs / cs).toFixed(2);
+}
+
+
+smashFactor(139.4, 93.8);
+smashFactor(181.2, 124.5);
+smashFactor(154.7, 104.3);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 531
+
+// Create a function which validates whether a number n is exclusively within the bounds of lower and upper. Return false if n is not an integer.
+
+
+function intWithinBounds(n, lower, upper) {
+	return n >= lower && n < upper && Number.isInteger(n);
+}
+
+
+const intWithinBounds = (n, l, u) => (Number.isInteger(n) && l<=n && u>n)
+
+
+function intWithinBounds(n, lower, upper) {
+	return lower <= n && n < upper && Number.isSafeInteger(n);
+}
+
+intWithinBounds(3, 1, 9);
+intWithinBounds(6, 1, 6);
+intWithinBounds(4.5, 3, 8);
+intWithinBounds(-5, -10, 6);
+intWithinBounds(4, 0, 0);
+intWithinBounds(10, 9, 11);
+intWithinBounds(6.3, 2, 6);
+intWithinBounds(6.3, 2, 10);
+intWithinBounds(9, 2, 3);
+intWithinBounds(9, 9, 9);
+intWithinBounds(-3, -5, -2);
+intWithinBounds(-3, -5, -3);
+intWithinBounds(-3, -10, 10);
+intWithinBounds(0, -3, 3);
+intWithinBounds(0, 0, 1);
+intWithinBounds(7, 7, 12);
+
+
