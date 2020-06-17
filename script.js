@@ -25025,3 +25025,161 @@ intWithinBounds(0, 0, 1);
 intWithinBounds(7, 7, 12);
 
 
+
+/////////////////////////////////
+// CODING CHALLENGE 532
+
+// Create a function that takes an array and returns the sum of all items in the array.
+
+
+function sumArray(arr) {
+	return arr.flat(Infinity).reduce((x, i) => x + i);
+}
+
+
+const sumArray=(arr)=>eval(arr.flat().join("+"))
+
+
+
+sumArray([1, 2, 3]);
+sumArray([1, [1, 2], [3, 1]]);
+sumArray([[1, 1], [2, 8], 8]);
+sumArray([1, 2]);
+sumArray([1, [2, [1]], 3]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 533
+
+// Create a function that takes an equation (e.g. "1+1"), and returns the answer.
+
+
+function equation(s) {
+	return eval(s);
+}
+
+
+let equation = eval;
+
+
+equation("1+1");
+equation("7*4-2");
+equation("1+1+1+1+1");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 534
+
+// Create a function that takes a string and replaces the vowels with another character.
+
+// a = 1
+// e = 2
+// i = 3
+// o = 4
+// u = 5
+
+
+function replaceVowel(word) {
+	const z = ['a', 'e', 'i', 'o', 'u'];
+	
+	return [...word].map(x => z.includes(x) ? z.indexOf(x) + 1 : x).join('');
+}
+
+
+function replaceVowel(word){
+	return word.replace(/[aeiou]/g,v=> "aeiou".indexOf(v)+1)
+}
+
+
+const replacements = { a:1, e:2, i:3, o:4, u: 5}
+function replaceVowel(word){
+	return word.replace(/[aeiou]/g, el => replacements[el])
+}
+
+
+function replaceVowel(word){
+	const vowels = {'a': 1, 'e': 2, 'i': 3, 'o': 4, 'u': 5};
+  	return [...word].map(i => i in vowels ? vowels[i] : i).join('');
+}
+
+
+function replaceVowel(word){
+    return word.replace(/[aeiou]/g,(x)=>{
+        let t=''
+        switch(x){
+            case 'a':
+                t='1'
+                break;
+                        case 'e':
+                t='2'
+                break;
+                        case 'i':
+                t='3'
+                break;
+                        case 'o':
+                t='4'
+                break;
+                        case 'u':
+                t='5'
+                break;
+        }
+        return t
+    })
+}
+
+
+replaceVowel("karachi");
+replaceVowel("dang");
+replaceVowel("aen");
+replaceVowel("chembur");
+replaceVowel("khandbari");
+replaceVowel("thamel");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 535
+
+// Given a sandwich (as an array), return an array of fillings inside the sandwich. This involves ignoring the first and last elements.
+
+
+
+function getFillings(sandwich) {
+	return sandwich.slice(1, -1); 
+}
+
+
+const getFillings = sandwich => sandwich.slice(1, -1);
+
+
+function getFillings(sandwich) {
+	sandwich.pop();
+	sandwich.shift();
+	return sandwich;
+}
+
+
+const getFillings = sandwich => sandwich.slice(1, -1);
+
+
+function getFillings(sandwich) {
+	return sandwich.slice(1,sandwich.length-1)
+}
+
+
+getFillings(["bread", "ham", "cheese", "ham", "bread"]);
+getFillings(["bread", "sausage", "tomato", "bread"]);
+getFillings(["bread", "lettuce", "bacon", "tomato", "bread"]);
+getFillings(["bread", "bacon", "lettuce", "tomato", "bread"]);
+getFillings(["bread", "tomato", "tomato", "ham", "sausage", "bread"]);
+getFillings(["bread", "lettuce", "bread"]);
+getFillings(["bread", "cheese", "bread"]);
+getFillings(["bread", "lettuce", "tomato", "ham", "bread"]);
+getFillings(["bread", "ham", "cheese", "lettuce", "ham", "bread"]);
+getFillings(["bread", "lettuce", "lettuce", "bread"]);
+getFillings(["bread", "sausage", "ham", "bread"]);
+getFillings(["bread", "bacon", "bread"]);
+getFillings(["bread", "ham", "bread"]);
+getFillings(["bread", "ham", "bread"]);
+
