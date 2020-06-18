@@ -25183,3 +25183,95 @@ getFillings(["bread", "bacon", "bread"]);
 getFillings(["bread", "ham", "bread"]);
 getFillings(["bread", "ham", "bread"]);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 536
+
+// Create a function that evaluates an equation.
+
+
+function eq(evaluate) {
+	return eval(evaluate);
+}
+
+
+eq = eval
+
+
+eq("1+2");
+eq("6/(9-7)");
+eq("3+2-4");
+eq("3*4+1");
+eq("5*8-4*9");
+eq("3**7");
+eq("(6**3)+3");
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 537
+
+// Éowyn has written the function isOdd() to check if a given number is odd or not. Unfortunately, the function does not return the correct result for all the inputs. Help her fix the error.
+
+function isOdd(num) {
+	return num % 2 !== 0;
+}
+
+
+const isOdd = num => num%2 !== 0;
+
+
+function isOdd(num){
+	return ((num % 2) !== 0) ? true : false;
+}
+
+
+isOdd(-5);
+isOdd(-50);
+isOdd(0);
+isOdd(25);
+isOdd(-19);
+isOdd(12);
+isOdd(23);
+isOdd(-71);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 537
+
+// Create a function that takes a word and returns the new word without including the first character.
+
+
+function newWord(txt) {
+	return txt.slice(1);
+}
+
+
+function newWord(txt){
+    return txt.substr(1)
+}
+
+
+function newWord(txt){
+	let str = txt.substring(1);
+	return str
+}
+
+
+function newWord(txt){
+	return [...txt].slice(1).join('');
+}
+
+
+newWord("pokhara");
+newWord("biratnagar");
+newWord("nepal");
+newWord("damak");
+newWord("itahari");
+newWord("rasuwa");
+newWord("rolpa");
+
+
