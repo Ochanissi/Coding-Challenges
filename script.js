@@ -25275,3 +25275,86 @@ newWord("rasuwa");
 newWord("rolpa");
 
 
+
+/////////////////////////////////
+// CODING CHALLENGE 538
+
+// Booleans can also be written as integers, where 1 = True and 0 = False. Make a function that returns the opposite of the boolean given.
+
+
+function flipBool(b) {
+	return b ? 0 : 1;
+}
+
+
+const flipBool=b=> b ? 0 : 1;
+
+
+function flipBool(b) {
+	return (!b)*1;
+}
+
+flipBool(1);
+flipBool(true);
+flipBool(0);
+flipBool(false);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 539
+
+// Creates a function that takes a string and returns the concatenated first and last character.
+
+
+function firstLast(name) {
+	return name[0] + name[name.length - 1];
+}
+
+
+const firstLast = n => n[0] + n.slice(-1);
+
+
+const firstLast = name => name[0] + name[name.length - 1];
+
+
+function firstLast(name){
+	return name.charAt(0) + name.charAt(name.length - 1);
+}
+
+
+firstLast("ganesh");
+firstLast("kali");
+firstLast("shiva");
+firstLast("vishnu");
+firstLast("durga");
+firstLast("brahma");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 540
+
+// Create a function to find NaN in an array of numbers. The return value should be the index where NaN is found. If NaN is not found in the array, then return -1.
+
+
+function findNaN(number) {
+	return number.findIndex(x => isNaN(x));
+}
+
+
+const findNaN = arr => arr.findIndex(isNaN);
+
+
+const findNaN=n=> n.findIndex(Number.isNaN);
+
+
+const findNaN = r => r.map(String).indexOf('NaN')
+
+
+findNaN([1, 2, NaN, 3]);
+findNaN([1, 2, 3, NaN, 3, 4, 5, 3]);
+findNaN([1, 2, 3, 4 ,5]);
+findNaN([NaN, 2, 3, 4]);
+findNaN([1, 2, 3]);
+
