@@ -25358,3 +25358,99 @@ findNaN([1, 2, 3, 4 ,5]);
 findNaN([NaN, 2, 3, 4]);
 findNaN([1, 2, 3]);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 541
+
+// Create a function that takes three parameters and returns an array with the first parameter x, the second parameter y, and every number in between the first and second parameter in ascending order. Then filter through the array and return the array with numbers that are only divisible by the third parameter n.
+
+
+function arrayOperation(x, y, n) {
+	const a = [];
+	for (let i = x; i <= y; i++) {
+		if (i % n === 0) a.push(i);
+	}
+	return a;
+}
+
+
+const arrayOperation = (x, y, n) =>
+    Array.from({length: y-x+1}, (_, i) => x+i).filter(v => !(v%n));
+    
+
+function arrayOperation(x, y, n) {
+    return Array.from({length: ++y - x}, (v, i) => i + x).filter(int => !(int % n));
+}
+
+
+function arrayOperation(x, y, n) {
+	let arr =[]
+for(let i=x;i<=y;i++){
+	arr.push(i)
+}
+	return arr.filter(x=>x%n===0)
+}
+
+
+arrayOperation(1, 10, 3);
+arrayOperation(7, 9, 2);
+arrayOperation(15, 20, 7);
+arrayOperation(10, 50, 10);
+arrayOperation(1, 10, 2);
+arrayOperation(1, 100, 17);
+arrayOperation(15, 20, 5);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 542
+
+// Create a function that returns the string "Burp" with the amount of "r's" determined by the input parameters of the function.
+
+function longBurp(num) {
+	return `Bu${'r'.repeat(num)}p`;
+}
+
+
+const longBurp = n => `Bu${'r'.repeat(n)}p`;
+
+
+function longBurp(num) {
+	return "Bu" + "r".repeat(num) + "p";
+}
+
+function longBurp(num) {
+	let str = '';
+	for (let i = 0; i < num; i++) {
+		str = str.concat('r');
+	}
+	return `Bu${str}p`;
+}
+
+longBurp(3);
+longBurp(5);
+longBurp(9);
+longBurp(10);
+longBurp(13);
+longBurp(18);
+longBurp(1);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 543
+
+// Write a method that returns array of all the numbers from 1 to an interger argument. But for multiples of three use “Fizz” instead of the number and for the multiples of five use “Buzz”. For numbers which are multiples of both three and five use “FizzBuzz”.
+
+
+function fizzBuzz(number) {
+	return Array.from(Array(number), (_, i) => i + 1).map(x => x % 3 === 0 && x % 5 === 0 ? 'FizzBuzz' : x % 3 === 0 ? 'Fizz' : x % 5 === 0 ? 'Buzz' : x);
+}
+
+
+fizzBuzz(10);
+fizzBuzz(15);
+fizzBuzz(100);
+
