@@ -25450,7 +25450,145 @@ function fizzBuzz(number) {
 }
 
 
+const fizzBuzz = n => [...Array(n)].map((_, i) =>
+	(i + 1) % 15 === 0 ? "FizzBuzz" : 
+	(i + 1) %  3 === 0 ? "Fizz" : 
+	(i + 1) %  5 === 0 ? "Buzz" :
+  i + 1
+);
+
+
+function fizzBuzz(number){
+	let arr = [];
+	for (let i = 1; i <= number; i++) {
+		arr.push(i % 15 == 0 ? "FizzBuzz": i % 5 == 0 ? "Buzz": i % 3 == 0 ? "Fizz" : i);
+	}
+	return arr
+}
+
+
+const fizzBuzz = length => 
+	Array.from({length}, (_, i) => (((i+1)%3? '' : 'Fizz') + ((i+1)%5? '' : 'Buzz')) || i+1);
+
+
 fizzBuzz(10);
 fizzBuzz(15);
 fizzBuzz(100);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 544
+
+// Given an array and an integer n, return the sum of the first n numbers in the array.
+
+
+function sliceSum(arr, n) {
+	return n === 0 ? 0 :arr.slice(0, n).reduce((x, i) => x + i);
+}
+
+
+const sliceSum = (arr, n) => {
+	return arr.slice(0, n).reduce((acc, cv) => acc + cv, 0)
+}
+
+
+function sliceSum(arr, n) {
+	return [0, ...arr].slice(0, n+1).reduce((x,y) => x+y)
+}
+
+sliceSum([1, 3, 2], 2);
+sliceSum([4, 2, 5, 7], 4);
+sliceSum([3, 6, 2], 0);
+sliceSum([2, 4], 9);
+sliceSum([-5, 2], 2);
+sliceSum([0, 0, 0, 3, 4], 3);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 545
+
+// Given a number between 1-26, return what letter is at that position in the alphabet. Return "invalid" if the number given is not within that range, or isn't an integer.
+
+
+function letterAtPosition(n) {
+	return !Number.isInteger(n) || n < 1 ? 'invalid' : String.fromCharCode(97 + n - 1);
+}
+
+
+function letterAtPosition(n) {
+	const alphabet = "abcdefghijklmnopqrstuvwxyz";
+	
+	if (n % 1 !== 0 || n > 26 || n <= 0) return 'invalid';
+	
+	return alphabet[n-1];
+}
+
+
+const letterAtPosition = a => a==0||!Number.isInteger(a) ? 'invalid':
+ (a + 9).toString(36);
+
+
+function letterAtPosition(n) {
+	if (Number.isInteger(n) && 1 <= n && n <= 26) return String.fromCharCode(96 + n);
+	return "invalid";
+}
+
+
+const letterAtPosition = n =>
+ Number.isInteger(n)&& n>0? (n+9).toString(36) : 'invalid';
+
+letterAtPosition(1);
+letterAtPosition(2);
+letterAtPosition(3);
+letterAtPosition(4);
+letterAtPosition(5);
+letterAtPosition(0);
+letterAtPosition(4.5);
+letterAtPosition(4.0);
+letterAtPosition(1.0);
+letterAtPosition(26.0);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 546
+
+// Write a function that returns an anonymous function, which adds n to its input
+
+
+function addsNum(n) {
+	return (m) => m + n;
+}
+
+
+const addsNum = a => b => a + b;
+
+
+const addsNum = n => a => n+a;
+
+
+const addsNum = (n) => (num) => n + num;
+
+
+function addsNum(n) {
+	return function(m){
+		return n + m;
+	}
+}
+
+adds1 = addsNum(1)
+adds10 = addsNum(10)
+adds5neg = addsNum(-5)
+adds0 = addsNum(0)
+
+adds1(3);
+adds1(5.7);
+adds10(44);
+adds10(20);
+
+adds5neg(0);
+adds5neg(77);
+adds0(77);
 
