@@ -25592,3 +25592,466 @@ adds5neg(0);
 adds5neg(77);
 adds0(77);
 
+
+/////////////////////////////////
+// CODING CHALLENGE 547
+
+// Create a function which validates whether a bridge is safe to walk on (i.e. has no gaps in it to fall through).
+
+
+function isSafeBridge(str) {
+	return !str.includes(" ");
+}
+
+
+function isSafeBridge(s){
+	return s.split(' ').length === 1
+}
+
+
+
+function isSafeBridge(str) {
+	let regex = /\s/g;
+	let res = str.match(regex);
+	return result = res===null? true:false
+}
+
+
+const isSafeBridge = b => !/[ ]/g.test(b)
+
+
+
+const isSafeBridge = s => !/ /.test(s);
+
+
+isSafeBridge("####");
+isSafeBridge("## ####");
+isSafeBridge("#");
+isSafeBridge("# #");
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 548
+
+// Create a function that takes an array of two numbers and checks if the square root of the first number is equal to the cube root of the second number.
+
+
+function checkSquareAndCube(arr) {
+	return Math.sqrt(arr[0]) === Math.cbrt(arr[1]);
+}
+
+
+const checkSquareAndCube = ([a, b]) => Math.sqrt(a) === Math.cbrt(b);
+
+
+const checkSquareAndCube = ns => Math.sqrt(ns[0]) ** 3 === ns[1];
+
+
+function checkSquareAndCube(arr) {
+	return Math.sqrt(arr[0]) === Math.cbrt(arr[1]);
+}
+
+
+checkSquareAndCube([4, 8]);
+checkSquareAndCube([5, 12]);
+checkSquareAndCube([9, 27]);
+checkSquareAndCube([25, 120]);
+checkSquareAndCube([25, 125]);
+checkSquareAndCube([36, 215]);
+checkSquareAndCube([36, 217]);
+checkSquareAndCube([144, 1728]);
+checkSquareAndCube([1, 1]);
+checkSquareAndCube([676, 17576]);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 549
+
+// Create a function which validates whether a given number exists, and could represent a real life quantity. Inputs will be given as a string.
+
+
+function validStrNumber(n) {
+	return !Number.isNaN(Number(n));
+}
+
+
+function validStrNumber(n) {
+	return !isNaN(n)
+}
+
+
+const validStrNumber = n => n == +n;
+
+
+validStrNumber("3.2");
+validStrNumber("324");
+validStrNumber("54..4");
+validStrNumber("number");
+validStrNumber(".5");
+validStrNumber("03");
+validStrNumber("3.e");
+validStrNumber("1234321");
+validStrNumber(".42.3");
+validStrNumber("0000000");
+validStrNumber("000.000");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 550
+
+// Create a function which returns the number of true values there are in an array.
+
+
+function countTrue(arr) {
+    return arr.filter(x => x).length;
+}
+
+
+const count_true = r => r.filter(Boolean).length
+
+
+function countTrue(arr) {
+    return arr.filter(x=>x==true).length
+}
+
+
+countTrue([true, false, false, true, false]);
+countTrue([false, false, false, false]);
+countTrue([]), 0)
+countTrue([false, false, true, true, false, false, false, true, true, true, true, false, true, true, false]);
+countTrue([true, false, true, true, false, false, false, false, false]);
+countTrue([false, true, true, false, true, true, false, true, false, true, false, true, false, true, false]);
+countTrue([true, false, true, true, true, false, true, true, false, false]);
+countTrue([false, false, false, false, true, false, true, false, true, false, false]);
+countTrue([true, false, false, false, true, false, false, true, false, false, false]);
+countTrue([true, true, false, true, false, false, false, false, true, false]);
+countTrue([true, false, true, true, false, true, true, true, true, false, true, false, true, false]);
+countTrue([true, false, true, true, true, true, false, true, true, false, true, false, false, false, false]);
+countTrue([true, true, false, false, false, false, true, false, true, true, false, true]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 551
+
+// Try to remove any repeated charcters in a word that will be passed to our function. Any character could be used, even special ones and numbers.
+
+
+function unrepeated(str) {
+	return [...new Set(str)].join("");
+}
+
+
+function removeRepeats(str) {
+	return str.split("").filter((x, i) => i === str.indexOf(x)).join("");
+}
+
+
+const unrepeated = s => Array.from(new Set(s)).join('')
+
+
+function unrepeated(str) {
+    return [...new Set(str)].join('');
+}
+
+
+const unrepeated = str => [...new Set(str)].join("");
+
+
+unrepeated("hello");
+unrepeated("aaaaa");
+unrepeated("WWE!!!");
+unrepeated("call 911");
+unrepeated("altwaff test");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 552
+
+// Remove enemies from the list of people, even if the enemy shows up twice.
+
+
+function removeEnemies(names, enemies) {
+	return names.filter(x => !enemies.includes(x));
+}
+
+
+function removeEnemies(names, enemies) {
+	
+    return names.filter(name => enemies.indexOf(name) < 0)
+}
+
+
+const removeEnemies = (a,b) => a.filter(x => !b.includes(x));
+
+
+
+removeEnemies(["Steve", "Eleanor"], []);
+removeEnemies(["Jeff", "Charlie", "James", "Fredrick"], ["James", "Jeff"]);
+removeEnemies(["Amelia", "Max", "Isobel", "Alex", "Phil"], ["Phil", "Max"]);
+removeEnemies(["John", "Skye", "Alexander", "Skye", "Tony"], ["Skye", "John"]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 553
+
+// Given a string of numbers separated by a comma and space, return the total of all the numbers.
+
+
+function addNums(nums) {
+	return eval(nums.replace(/, /g, '+'));
+}
+
+
+function addNums(nums) {
+	return nums.split(', ').reduce((a, b) => a + +b, 0);
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+
+const addNums = str => sum(str.split(', ').map(Number));
+
+
+function addNums(nums) {
+	return nums.split(", ").map(x => parseInt(x)).reduce((a,b) => a + b)
+}
+
+
+addNums("2, 5, 1, 8, 4");
+addNums("1, 2, 3, 4, 5, 6, 7");
+addNums("10");
+addNums("-12, -8, 2, 11, -16, 16");
+addNums("25, -4, -15, -7, 27, 12, 29, -6, 20, 9");
+addNums("24, 7, -15, -28, -21, 6, 5, -6, 23, 24, -22, 30, -21, -10, -10, -12, 24, -18, -13, -27, 22, -30, -11, -13, 6, 7, 27, 1");
+addNums("-28, 14, -19, -24, -17, 30, -1, 8, -13, -21, -4, 29, 4, 6, 29, -23, -9, -26, 8, -20, -14, -22");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 554
+
+// Create a function which adds spaces before every capital in a word. Uncapitalize the whole string afterwards.
+
+
+function capSpace(txt) {
+	return txt.split("").map(x => x === x.toUpperCase() ? ` ${x.toLowerCase()}` : x).join("");
+}
+
+
+function capSpace(txt) {
+	return txt.replace(/[A-Z]/g, letter => ` ${letter.toLowerCase()}`);
+}
+
+
+capSpace = s => s.replace(/([A-Z])/g, " $1").toLowerCase()
+
+
+function capSpace(txt) {
+	let val= txt.replace(/([A-Z])/g, ' $1').trim();
+	return val.toLowerCase();
+}
+
+
+capSpace("helloWorld");
+capSpace("iLoveMyTeapot");
+capSpace("stayIndoors");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 554
+
+// Create a function which replaces all repeated letters in a word with single letters.
+
+
+function removeRepeats(str) {
+	return str.split("").filter((x, i) => x !== str[i-1]).join("");
+}
+
+
+const removeRepeats = s => s.replace(/(.)\1+/g,'$1');
+
+
+function removeRepeats(str) {
+	return str.replace(/(.)\1+/gi,x=>x[0])
+}
+
+
+
+function removeRepeats(str) {
+	const answer = [str[0]]
+	for (const v of [...str]) {
+		if (answer[answer.length-1] !== v) {
+			answer.push(v)
+		}
+	}
+	return answer.join('')
+}
+
+
+function removeRepeats(str) {
+	return [...str].filter((char, i) => char !== str[i + 1]).join('');
+}
+
+
+removeRepeats("aaabbbccc");
+removeRepeats("bookkeeper");
+removeRepeats("nananana");
+removeRepeats("accddbccabadcabccdababaacbdaadcccbcaabaaddbabbaadd");
+removeRepeats("aabbcabdcddddacdccacbbcabadccbbaadcccbddacbdbabbbd");
+removeRepeats("dacbaabacbabacabcabaabdccccbdbbcaadddacdbdbdacbada");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 555
+
+// Create a function that takes two number strings and returns their sum as a string.
+
+
+function add(numberOne, numberTwo) {
+	return Number.isNaN(parseInt(numberOne)) || Number.isNaN(parseInt(numberTwo)) ? "Invalid Operation" : eval(numberOne + '+' + numberTwo).toString();
+}
+
+
+function add(numberOne, numberTwo) {
+    return !numberOne || !numberTwo ? 'Invalid Operation' : `${+numberOne + +numberTwo}`;
+}
+
+
+const sum = arr => arr.reduce((a, e) => a + e, 0);
+
+const add = (...nums) => {
+	const isInvalid = nums.some(e => [undefined, null, ''].includes(e));
+	return isInvalid ? 'Invalid Operation' : String(sum(nums.map(Number)));
+};
+
+
+const add = (n1, n2) => 
+	/^-?\d+-?\d+$/.test(n1+n2)? String(+n1 + +n2) : 'Invalid Operation';
+
+
+add('91', '19');
+add('123456789', '987654322');
+add('9999999', '1');
+add('300', '3000');
+add('1000', '6200');
+add('-10', '-20');
+add('-100', '100');
+add('0', '6200');
+add('', '6');
+add('', undefined);
+add(null, '23');
+add('', '20');
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 556
+
+// Given two unique integer arrays a and b, and an integer target value v, create a function to determine whether there is a pair of numbers that add up to the target value v, where one number comes from one array a and the other comes from the second array b.
+
+// Return true if there is a pair that adds up to the target value and false if otherwise.
+
+
+function sumOfTwo(a, b, v) {
+	return a.map(x => b.map(y => x + y)).flat().includes(v);
+}
+
+
+function sumOfTwo(a, b, v) {
+	return a.some(x => b.includes(v - x));
+}
+
+
+function sumOfTwo(a, b, v) {
+    return a.some(n=>b.some(x=>(n+x)==v))	
+}
+
+
+
+function sumOfTwo(a, b, v) {
+	return a.some(x=>  b.find(y=> y===v-x))
+}
+
+
+
+
+sumOfTwo([1,2,3], [10,20,30,40,50], 42);
+sumOfTwo([1,2,3], [10,20,30,40,50], 44);
+sumOfTwo([1,2,3], [10,20,30,40,50], 11);
+sumOfTwo([1,2,3], [10,20,30,40,50], 60);
+sumOfTwo([1,2,3], [10,20,30,40,50], 53);
+sumOfTwo([1,2,3], [10,20,30,40,50], 4);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 557
+
+// Given a range of years as a string, return the number of leap years there are within the range (inclusive).
+
+
+function numLeapYears(years) {
+	let a = 0;
+	for (let i = +years.split("-")[0]; i <= +years.split("-")[1]; i++) {
+		if (new Date(i, 1, 29).getMonth() === 1) a++;
+	}
+	return a;
+}
+
+
+const numLeapYears = y => {
+	const years = y.split('-')
+  let count = 0;
+  for(var i=years[0]; i< +years[1] + 1; i++){
+    if(new Date(i,1,29).getMonth() === 1){
+      count = count+1
+    }
+  }
+  return count;
+}
+
+
+
+function numLeapYears(years) {
+	let total = 0;
+  	let [start, end] = years.split('-');
+  	for (let i = +start; i <= +end; i++) {
+	  	if (((i%4 == 0) && (i%100 != 0)) || (i%400 == 0)) {
+		  	total++;
+		}
+	} return total;
+}
+
+
+function numLeapYears(years) {
+	let arr = years.split('-');
+	let result = 0;
+	for (let i = Number(arr[0]); i <= Number(arr[1]); i++) {
+		if(i % 400 === 0 || (i % 4 === 0 && i % 100 !== 0)) {
+			result++;
+		}
+	}										 
+	return result;
+}
+
+
+numLeapYears("2000-2020");
+numLeapYears("1600-2000");
+numLeapYears("1980-1984");
+numLeapYears("1224-8090");
+numLeapYears("2486-7607");
+numLeapYears("1813-4354");
+numLeapYears("772-1849");
+numLeapYears("2228-7099");
+
+
