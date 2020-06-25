@@ -26055,3 +26055,163 @@ numLeapYears("772-1849");
 numLeapYears("2228-7099");
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 558
+
+// Create a function that takes an array of strings and numbers, and filters out the array so that it returns an array of integers only.
+
+function filterArray(arr) {
+	return arr.filter(x => Number.isInteger(x));
+}
+
+
+let filterArray = a => a.filter(x=> x % 1 == 0);
+
+
+function filterArray(arr){
+	return arr.filter(el => Number.isInteger(el));
+}
+
+
+const filterArray = arr => arr.filter(Number.isInteger);
+
+
+filterArray([1, 2, 3, "a", "b", 4]);
+filterArray(["A", 1, "&amp", 0, -9, "Edabit"]);
+filterArray(["Nothing", "here"]);
+filterArray([1, 2, 3, 3.5 , "a", "b", 4 , 5.8 , 6]);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 559
+
+// Can you spare a square?
+
+// Try to imagine a world in which you might have to stay home for 14 days at any given time. Do you have enough TP to make it through?
+
+// Although the number of squares per roll of TP varies significantly, we'll assume each roll has 500 sheets, and the average person uses 57 sheets per day.
+
+// Create a function that will receive an object with two key/values:
+
+// people ⁠— Number of people in the household.
+// tp ⁠— Number of rolls.
+// Return a statement telling the user if they need to buy more TP!
+
+
+
+function tpChecker(home) {
+	const a = parseInt((home.tp * 500) / (57 * home.people));
+	return a >= 14 ? `Your TP will last ${a} days, no need to panic!` : `Your TP will only last ${a} days, buy more!`;
+}
+
+
+const tpChecker = ({people, tp}) => {
+	const days = Math.floor((tp*500)/(people*57));
+	return `Your TP will ${days>=14? '' : 'only '}last ${days} days, ${days>=14? 'no need to panic' : 'buy more'}!`;
+};
+
+
+function tpChecker(home) {
+    let totalDay = home.tp * 500 / (home.people * 57);
+
+    if (totalDay < 14){
+        return `Your TP will only last ${Math.floor(totalDay)} days, buy more!`
+    }
+    else{
+       return `Your TP will last ${Math.floor(totalDay)} days, no need to panic!`
+    }
+}
+
+
+function tpChecker({ people: p, tp: t }) {
+    const spd = 57;
+    const spr = 500;
+    let days = Math.floor((spr * t) / (p * spd));
+  
+    return days < 14
+      ? `Your TP will only last ${days} days, buy more!`
+      : `Your TP will last ${days} days, no need to panic!`;
+}
+
+
+tpChecker({people: 4, tp: 1});
+tpChecker({people: 2, tp: 4});
+tpChecker({people: 3, tp: 20});
+tpChecker({people: 4, tp: 12});
+tpChecker({people: 6, tp: 8});
+tpChecker({people: 1, tp: 1});
+
+
+/////////////////////////////////
+// CODING CHALLENGE 560
+
+// Create a function that returns the number of characters shared between two words.
+
+
+function sharedLetters(str1, str2) {
+	return new Set(str1.split("").filter(x => str2.includes(x))).size;
+}
+
+
+function sharedLetters(str1, str2) {
+    return [...new Set(str1)].filter(x=> str2.includes(x)).length
+}
+
+const sharedLetters = (str1, str2) => [...new Set(str1)].filter(x => new Set(str2).has(x)).length;
+
+
+const sharedLetters = (str1, str2) => [...new Set([...str1].filter(c => str2.includes(c)))].length;
+
+
+sharedLetters("apple", "meaty");
+sharedLetters("fan", "forsook");
+sharedLetters("spout", "shout");
+sharedLetters("took", "taken");
+sharedLetters("mentor", "terminal");
+sharedLetters("class", "last");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 561
+
+// The instructor assigns Boron two tasks (regarding the use of reduce() method after lecturing in array methods).
+
+// The first task is to create a function calculateSum() that takes a string and returns the sum of the ASCII values of all the characters in the string using reduce().
+// The second task is to create a function reverseString() that reverses and returns an input string using reduce().
+// While solving the problem, Boron has encountered errors. Help him fix the errors.
+
+
+function calculateSum(txt) {
+    return [...txt].map(x => x.charCodeAt(0)).reduce((ch, x) => ch + x);
+  }
+  
+function reverseString(txt) {
+    return [...txt].reverse().reduce((ch, x) => ch + x);
+}
+
+
+const calculateSum = txt => [...txt].reduce((a, ch) => a + ch.charCodeAt(), 0);
+
+const reverseString = txt => [...txt].reduce((a, ch) => ch + a, '');
+
+
+function calculateSum(txt) {
+    return [...txt].reduce((s,v) => s + v.charCodeAt(),0);
+  }
+  
+function reverseString(txt) {
+    return [...txt].reduce((s,v) => v + s,'');
+}
+
+
+calculateSum("orange");
+calculateSum("lime");
+calculateSum("mushroom");
+reverseString("Think");
+reverseString("world");
+reverseString("people");
