@@ -26215,3 +26215,77 @@ calculateSum("mushroom");
 reverseString("Think");
 reverseString("world");
 reverseString("people");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 562
+
+// Create a function that takes a string and returns it as an integer.
+
+
+function strInt(str) {
+    return +str;
+}
+
+
+const strInt = Number;
+
+
+function strInt(str) {
+	return parseFloat(str);
+}
+
+
+strInt('45');
+strInt('-36');
+strInt('49.095');
+strInt('-3.8396');
+strInt('-98445');
+strInt('-6.00009');
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 563
+
+// Create a function that takes a multidimensional array and return the total count of numbers in that array.
+
+
+const countNumber = arr => {
+	return arr.flat(Infinity).filter(x => typeof x === 'number').length;
+};
+
+
+const countNumber = arr => (
+	arr.flat(Infinity).filter(e => typeof e === 'number').length
+);
+
+
+const countNumber = arr => {
+    const flat = arr.flat(Infinity);
+    let answer = 0;
+        const mapped = flat.map((x)=> {
+            typeof x === 'number' ? answer+=1 : null
+        })
+        return answer
+};
+
+
+const countNumber = arr => {
+    const flat = arr.flat(Infinity);
+    let answer = 0;
+        const mapped = flat.map((x)=> {
+            typeof x === 'number' ? answer+=1 : null
+        })
+        return answer
+};
+
+
+countNumber([["", 17.2,5,"edabit"]]);
+countNumber([[[[[2,14,"nepal"]]], 2,3,4]]);
+countNumber([0, [12,"biratnagar",[[2]]]]);
+countNumber([["balkot"]]);
+countNumber([1,2,3,4,5,6]);
+
+
