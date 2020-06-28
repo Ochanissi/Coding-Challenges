@@ -26289,3 +26289,42 @@ countNumber([["balkot"]]);
 countNumber([1,2,3,4,5,6]);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 564
+
+// Create a function that takes a number as an argument and returns the highest digit in that number.
+
+const highestDigit = number => {
+	const a = number.toString().split("").sort();
+	return +a[a.length - 1];
+};
+
+
+const highestDigit = n => Math.max(...[...n.toString()].map(Number));
+
+
+
+const highestDigit = number => {
+  return String(number).split('').map(el=>eval(el)).sort((a,b)=>b-a)[0]
+};
+
+
+const highestDigit = number => {
+	const arr = number.toString().split("") 
+	return Math.max.apply(null, arr);
+};
+
+
+const highestDigit = number => {
+  const numArr = String(number).split('').map(n => Number(n));
+  return Math.max(...numArr)
+};
+
+
+const highestDigit = n => +('' + n).split('').sort((a, b) => b - a)[0];
+
+highestDigit(51);
+highestDigit(0);
+highestDigit(7495037);
+highestDigit(222222);
+
