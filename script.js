@@ -26328,3 +26328,93 @@ highestDigit(0);
 highestDigit(7495037);
 highestDigit(222222);
 
+
+/////////////////////////////////
+// CODING CHALLENGE 565
+
+// Create a function that takes an array of numbers or letters and returns a string.
+
+function arrayToString(arr) {
+	return arr.join("");
+}
+
+
+arrayToString([1,2,3,4,5,6]);
+arrayToString(['a','b','c','d','e','f']);
+arrayToString([1,2,3,'a','s','d']);
+arrayToString(['a','s','d','f','e','r',1,2,3,4,5,0]);
+arrayToString(['A','D','F','G','H','Y','TR','NNHJK']);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 566
+
+// The Code tab has a code which attempts to add a clone of an array to itself. There is no error message, but the results are not as expected. Can you fix the code?
+
+
+function clone(arr) {
+	arr.push([...arr]);
+	return arr;
+}
+
+
+const clone = r => [...r, r]
+
+
+function clone(arr) {
+	arr.push(arr.slice(0))
+	return arr
+}
+
+
+const clone = arr => [...arr, arr.slice(0)];
+
+
+const clone = arr => [...arr, arr];
+
+
+clone([1,2,3]);
+clone(["x","y"]);
+clone([1,1]);
+clone(['a','b','c']);
+clone([]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 567
+
+// Create a function that takes two vectors as arrays and checks if the two vectors are orthogonal or not. The return value is boolean. Two vectors a and b are orthogonal if their dot product is equal to zero.
+
+
+function isOrthogonal(arr1, arr2) {
+	return arr1.map((x, i) => x * arr2[i]).reduce((x, i) => x + i) === 0;
+}
+
+
+const isOrthogonal = (a, b) => !a.reduce((t, e, i) => t + e * b[i], 0);
+
+
+const isOrthogonal = ([x1, y1, z1 = 0], [x2, y2, z2 = 0]) =>
+  x1 * x2 + y1 * y2 + z1 * z2 === 0;
+
+
+
+function isOrthogonal(arr1, arr2) {
+	return !arr1.reduce((t,c,i)=> t+c*arr2[i],0)
+}
+
+
+const isOrthogonal = (arr1, arr2) =>
+    arr1.map((el,i) => arr2[i] * el).reduce((sum, el) => sum + el) === 0;
+    
+
+isOrthogonal([7, 8], [7, -6]);
+isOrthogonal([-13, -26], [-8, 4]);
+isOrthogonal([1, 2], [2, -1]);
+isOrthogonal([2, 4, 1], [2, 1, -8]);
+isOrthogonal([1, 2, 0], [2, -1, 10]);
+isOrthogonal([3, 8, 9], [16, 17, -18]);
+
