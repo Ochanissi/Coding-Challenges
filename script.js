@@ -26482,3 +26482,72 @@ numberSquares(9);
 numberSquares(11);
 numberSquares(15);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 570
+
+// Create a function that takes multidimensional array, converts into one dimensional array and returns it.
+
+
+function flatten(arr) {
+	return arr.flat(Infinity);
+}
+
+
+function flatten(arr) {
+    let elements = [];
+    for (let e of arr) {
+      if (Array.isArray(e)) elements.push(...flatten(e));
+      else elements.push(e);
+    }
+    return elements;
+}
+
+
+const flatten = (arr) => {
+    const result = [];
+  
+    arr.forEach(element => {
+      Array.isArray(element) ? result.push(...flatten(element)) : result.push(element)
+    });
+  
+    return result;
+  }
+
+
+flatten([[17.2,5,"edabit"]]);
+flatten([[[[[2,14,"rubber"]]], 2,3,4]]);
+flatten([0, [12,"biratnagar",[[2]]]]);
+flatten([["balkot"]]);
+flatten([1,2,3,4,5,6]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 571
+
+// The "Reverser" takes a string as input and returns that string in reverse order, with the opposite case.
+
+
+function reverse(txt){
+    return txt.split("").map(x => x === x.toLowerCase() ? x.toUpperCase() : x.toLowerCase()).reverse().join("");
+}
+        
+
+const reverse = txt =>
+  [...txt]
+    .reverse()
+    .map((v) => (v === v.toLowerCase() ? v.toUpperCase() : v.toLowerCase()))
+    .join("");
+
+
+const reverse = txt => [...txt].reverse().map(c => c < "a" ? c.toLowerCase() : c.toUpperCase()).join("");    
+
+
+reverse("Hello World");
+reverse("ReVeRsE");
+reverse("");
+reverse("Radar");
+
+
