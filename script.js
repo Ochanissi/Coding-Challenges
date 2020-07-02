@@ -26551,3 +26551,83 @@ reverse("");
 reverse("Radar");
 
 
+
+/////////////////////////////////
+// CODING CHALLENGE 572
+
+// Write a function that returns an anonymous function, which transforms its input by adding a particular suffix at the end.
+
+
+function add_suffix(suffix) {
+	return x => x + suffix;
+}
+
+
+const add_suffix = suffix => str => str + suffix;
+
+
+const add_suffix = suffix => x => x + suffix
+
+
+function add_suffix(suffix) {
+	return function(y){
+		return y + suffix;
+	}
+}
+
+
+add_ly = add_suffix("ly") 
+add_less = add_suffix("less") 
+add_ing = add_suffix("ing") 
+
+
+add_ly("hopeless");
+add_ly("total");
+
+add_less("fear");
+add_less("ruth");
+
+add_ing("cheer");
+add_ing("book");
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 573
+
+// Create a function that returns an array of booleans from a given number by iterating through the number one digit at a time and appending true into the array if the digit is 1 and false otherwise.
+
+
+function integerBoolean(n) {
+	return [...n].map(x => x === '1');
+}
+
+
+const integerBoolean = n => [...n].map(a => a == 1);
+
+
+function integerBoolean(n){
+	return [...`${n}`].map(digit => Boolean(+digit));
+}
+
+
+const integerBoolean = n => [...n+''].map(e => Boolean(+e))
+
+
+function integerBoolean(n){
+	return [...n].map(el=>+el).map(l=>{
+		return l===1?true:false
+	})
+}
+
+
+integerBoolean("100101");
+integerBoolean("10");
+integerBoolean("001");
+integerBoolean("");
+integerBoolean("111");
+integerBoolean("000");
+integerBoolean("10010110");
+
+
