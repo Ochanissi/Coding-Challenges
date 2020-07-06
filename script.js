@@ -26654,3 +26654,72 @@ halloween(new Date("2011/10/12"));
 halloween(new Date("2008/10/11"));
 
 
+/////////////////////////////////
+// CODING CHALLENGE 575
+
+// Welcome to the beginning of this collection on Computer Science Algorithms. Admittedly there are other challenges on Edabit that deal with recursion and algorithmic processes, but these particular challenges are designed to give examples and to educate users on the topics being covered.
+
+// Recursion
+// In computer science, "recursion" is the act of writing a function that calls itself from within its own code.
+
+
+function factorial(num) {
+    if(num == 0) {
+      return 1;
+  } else {
+      return num * factorial(num - 1);
+  }
+}
+
+
+const factorial = num => num === 0 ? 1 : num * factorial(--num);
+
+
+const factorial = n => n <= 2 ? n : n * factorial(n-1);
+
+
+factorial(7);
+factorial(1);
+factorial(9);
+factorial(2);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 576
+
+// One cause for speeding is the desire to shorten the time spent traveling. While in long distance trips speeding does save an appreciable amount of time, the same cannot be said about short distance trips.
+
+// Create a function that calculates the amount of time saved (in minutes) were you traveling with an average speed that is above the speed-limit as compared to traveling with an average speed exactly at the speed-limit.
+
+
+function timeSaved(lim, avg, d) {
+
+	return +((d / lim * 60) - (d / avg * 60)).toFixed(1);
+}
+
+
+const timeSaved = (lim, avg, d) => +((d / lim - d / avg) * 60).toFixed(1);
+
+
+const timeSaved = (speedLimit, avgSpeed, distance) =>
+  Number(((distance / speedLimit - distance / avgSpeed) * 60).toFixed(1));
+
+
+const timeSaved = (lim, avg, d) => Math.round(
+	10 * 60 * (d / lim - d / avg)
+) / 10;
+
+timeSaved(80, 90, 40);
+timeSaved(80, 90, 4000);
+timeSaved(80, 100, 40);
+timeSaved(80, 100, 10);
+timeSaved(60, 65, 25);
+timeSaved(60, 60, 20);
+timeSaved(80, 95, 200);
+timeSaved(70, 92, 50);
+timeSaved(70, 92, 20);
+timeSaved(70, 100, 12);
+
+
