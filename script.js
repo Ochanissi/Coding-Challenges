@@ -26723,3 +26723,43 @@ timeSaved(70, 92, 20);
 timeSaved(70, 100, 12);
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 577
+
+// In normal object literals you can create dynamic property names by using computed values:
+
+// let key = "name"
+// let foo = {[key]: "bar"}
+
+// console.log(foo.name); // "bar"
+// However, in object destructuring it works a little different:
+
+// let key = "foo"
+// let {[key]: "foo"} = {foo: "Jessie"}
+
+// console.log(foo)  // Invalid destructuring assignment target
+// The error above is caused by the literal string "foo". You cannot rename variables this way. You can read the MDN Docs Assigning to new variable names section to find the correct way.
+
+// Fix the function so console.log(foo) returns Jessie. Leave all variable names unchanged. Ignore the .toString() function (used for validation).
+
+
+
+let key = "foo"
+const str = `({[key] : foo} = {foo: "Jessie"}).toString()`
+
+
+
+eval(str)
+
+function testStructure() {
+  return  /\{.*\[.*key.*\].*\:.*(?!\")foo/.test(str) ? "valid" : "not valid"	
+}  
+
+console.log("console.log(foo) outputs " + foo)
+
+testStructure();
+foo;
+
+
