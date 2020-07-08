@@ -26763,3 +26763,85 @@ testStructure();
 foo;
 
 
+/////////////////////////////////
+// CODING CHALLENGE 578
+
+// const user = {
+//     first: 'James',
+//     last: 'Baker',
+//     bestFriend: {
+//       first: 'Scott',
+//       last: 'Parkman'
+//     }
+//   }
+  
+//   function welcomeMsg(user) {
+//     console.log("Welcome " +  user.first + " " + user.last  )
+//   }
+  
+//   welcomeMsg(user)
+//   // outputs Welcome James Baker
+//   With ES6 object destructuring you make this less terse by destructuring the function parameters which reduces duplication when scaling:
+  
+//   function welcomeMsg({ first, last }) {
+//     console.log("Welcome " + first + " " + last)
+//   }
+//   Use ES6 object destructuring to unpack the object inside of the function parameters. You will need to assign user.bestFriend.first to the variable name best. Don't remove the parameters { first, last } and don't change the return statement.
+
+
+const str = `
+function bio({first, last, bestFriend}) {
+	const best = bestFriend.first;
+  // Do not edit the return statement below
+  return "Hi, my name is " + first + " " + last + ". " + best + " is my best friend."  
+ }
+`
+
+
+const user = {
+    first: 'James',
+    last: 'Baker',
+    bestFriend: {
+      first: 'Scott',
+          last: 'Parkman'
+    }
+  }
+  
+  eval(str)
+  
+  const result = bio(user)
+  
+  const code = str.slice(str.lastIndexOf("return")+8, str.lastIndexOf('"'))
+  
+  const untouched = (str) => {
+      return code === `Hi, my name is " + first + " " + last + ". " + best + " is my best friend.` ? "valid" : "not valid" 
+  }
+  
+untouched(str);
+result, "Hi, my name is James Baker. Scott is my best friend.";
+
+
+
+
+const str = `
+function bio({first, last, bestFriend}) {
+	const best = bestFriend.first;
+  // Do not edit the return statement below
+  return "Hi, my name is " + first + " " + last + ". " + best + " is my best friend."  
+ }
+`
+
+
+const str = `
+function bio({first, last, bestFriend: { first: best } }) {
+  return "Hi, my name is " + first + " " + last + ". " + best + " is my best friend."  
+ }
+`
+
+
+const str = `
+function bio({first, last, bestFriend : {first : best}}) {
+  // Do not edit the return statement below
+  return "Hi, my name is " + first + " " + last + ". " + best + " is my best friend."  
+ }
+`
