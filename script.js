@@ -26928,3 +26928,51 @@ last, "Baker";
 nickname, "JD";
 
 
+/////////////////////////////////
+// CODING CHALLENGE 581
+
+// The 2nd of February 2020 is a palindromic date in both dd/mm/yyyy and mm/dd/yyyy format (02/02/2020). Given a date in dd/mm/yyyy format, return true if the date is palindromic in both date formats.
+
+
+function palindromicDate(date) {
+	return date === `${date.split('/')[1]}/${date.split('/')[0]}/${date.split('/')[2]}` && date.split('/')[2] === date.split('/')[2].slice(2, 4) + date.split('/')[2].slice(0, 2);
+}
+
+
+function palindromicDate(date) {
+	const [m, d, y] = date.split('/');
+	return m === d && m + d === [...y].reverse().join('');
+}
+
+
+function palindromicDate(date) {
+	const reverse = s => [...s].reverse().join("");
+	const date1 = date.replace(/(\d+)\/(\d+)\/(\d+)/, "$1$2$3");
+	const date2 = date.replace(/(\d+)\/(\d+)\/(\d+)/, "$2$1$3");
+	return date1 === reverse(date1) && date2 === reverse(date2);
+}
+
+
+const palindromicDate = date => {
+	let [d,m,y] = date.split("/");
+	date = [...date.replace(/\//g, "")].reverse().join("");
+	return (d+m+y) === date && (m+d+y) === date;
+}
+
+
+palindromicDate("02/02/2020");
+palindromicDate("11/12/2019");
+palindromicDate("11/02/2011");
+palindromicDate("06/10/1469");
+palindromicDate("06/05/3133");
+palindromicDate("12/12/2121");
+palindromicDate("09/09/9090");
+palindromicDate("11/04/2203");
+palindromicDate("07/07/7070");
+palindromicDate("06/11/2923");
+palindromicDate("03/08/8030");
+palindromicDate("01/01/1010");
+palindromicDate("03/11/3369");
+palindromicDate("11/03/2775");
+palindromicDate("03/03/1822");
+
