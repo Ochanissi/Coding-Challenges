@@ -26976,3 +26976,33 @@ palindromicDate("03/11/3369");
 palindromicDate("11/03/2775");
 palindromicDate("03/03/1822");
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 582
+
+// Create a function that returns how many possible outcomes can come from a certain number of switches (on / off).
+
+
+function posCom(num) {
+	return Math.pow(2, num);
+}
+
+
+function posCom(num) {
+	return 2**num
+}
+
+
+posCom(5);
+posCom(4);
+posCom(3);
+posCom(2);
+posCom(1);
+posCom(6);
+posCom(7);
+posCom(8);
+posCom(9);
+posCom(10);
+posCom(25);
+
