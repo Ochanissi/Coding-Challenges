@@ -27006,3 +27006,57 @@ posCom(9);
 posCom(10);
 posCom(25);
 
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 583
+
+// Create a function to return the amount of potatoes there are in a string.
+
+
+function potatoes(str) {
+	return str.match(/potato/g).length
+}
+
+
+function potatoes(str) {
+	return str.split('potato').length - 1
+}
+
+
+function potatoes(str) {
+	let rx = /potato/g;
+	return str.match(rx).length;
+}
+
+
+function potatoes(str) {
+	potato=0;
+	for (i=0; i<str.length-5; i++){
+		if ( str.slice(i,i+6) == "potato" ){
+			potato++;
+		}
+	}
+	return potato;
+}
+
+
+function potatoes(str) {
+	return (str.match(/potato/g) || []).length;
+}
+
+
+function potatoes(str) {
+	return str.match(/potato/g).length || 0;
+}
+
+
+potatoes("potato");
+potatoes("potatopotatocherry");
+potatoes("potatopotatopotatoorange");
+potatoes("potatopotatobananapotatopotato");
+potatoes("potatopotatomangopotatopotatopotato");
+potatoes("potatocucumberpotatopotatopotatopotatopotato");
+
+
