@@ -27060,3 +27060,24 @@ potatoes("potatopotatomangopotatopotatopotato");
 potatoes("potatocucumberpotatopotatopotatopotatopotato");
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 584
+
+// A typical car can hold 4 passengers and 1 driver, overall allowing 5 people to travel around. Given n number of people, return how many cars are needed to seat everyone comfortably.
+
+
+function carsNeeded(n) {
+	return Math.ceil(n / 5);
+}
+
+
+carsNeeded(0);
+carsNeeded(1);
+carsNeeded(4);
+carsNeeded(5);
+carsNeeded(6);
+carsNeeded(18);
+
+
