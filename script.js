@@ -27242,3 +27242,23 @@ hasSameBread(
 	["white bread", "lettuce", "brown bread"],
 	["white bread", "tomato", "white bread"]
 );
+
+
+/////////////////////////////////
+// CODING CHALLENGE 589
+
+// Write a function that searches an array of names (unsorted) for the name "Bob" and returns the location in the array. If Bob is not in the array, return -1.
+
+
+
+function findBob(names) {
+	return names.indexOf('Bob');
+}
+
+
+findBob(["Jimmy", "Layla", "Mandy"]);
+findBob(["Bob", "Nathan", "Hayden"]);
+findBob(["Paul", "Layla", "Bob"]);
+findBob(["Garry", "Maria", "Bethany", "Bob", "Pauline"]);
+
+
