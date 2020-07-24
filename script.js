@@ -27081,3 +27081,66 @@ carsNeeded(6);
 carsNeeded(18);
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 585
+
+// Create a function that returns true if the first array is a subset of the second. Return false otherwise.
+
+
+function isSubset(arr1, arr2) {
+	return arr1.every(x => arr2.includes(x));
+}
+
+
+function isSubset(arr1, arr2) {
+	return String(arr2.sort((a,b) => a - b)).indexOf(String(arr1.sort((a,b) => a - b))) >= 0
+}
+
+
+const isSubset= (a,b) => a.every(c => b.includes(c));
+
+
+function isSubset(arr1, arr2) {
+	for (var i in arr1){
+		if (arr2.indexOf(arr1[i]) === -1){
+			return false;
+		}
+	}
+	return true;
+}
+
+function isSubset(arr1, arr2) {
+	return arr2.sort().join('').includes(arr1.sort().join(''));
+}
+
+isSubset([3, 2, 5], [5, 3, 7, 9, 2]);
+isSubset([8, 9], [7, 1, 9, 8, 4, 5, 6]);
+isSubset([1, 2], [1, 2, 3]);
+isSubset([1, 2], [3, 5, 9, 1]);
+isSubset([1, 2, 3, 4], [4, 3, 2, 1]);
+isSubset([7, 9, 8, 4, 2], [7, 9, 5, 8, 4]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 586
+
+// Create a function that returns an array of strings sorted by length in ascending order.
+
+
+function sortByLength(arr) {
+	return arr.sort((a, b) => a.length - b.length);
+}
+
+
+const sortByLength = a => a.sort((b,c) => b.length - c.length);
+
+
+sortByLength(["a", "ccc", "dddd", "bb"]);
+sortByLength(["apple", "pie", "shortcake"]);
+sortByLength(["may", "april", "september", "august"]);
+sortByLength(["maybe"]);
+sortByLength([]);
+
