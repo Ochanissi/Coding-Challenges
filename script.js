@@ -27144,3 +27144,101 @@ sortByLength(["may", "april", "september", "august"]);
 sortByLength(["maybe"]);
 sortByLength([]);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 587
+
+// Create a function which makes the last character of a string repeat n number of times.
+
+
+
+function modifyLast(str, n) {
+	return str.slice(0, -1) + str.slice(-1).repeat(n);
+}
+
+
+function modifyLast(str, n) {
+	return str + str.slice(-1).repeat(n - 1)
+}
+
+
+const modifyLast = (str, n) => str.replace(/.$/, m => m.repeat(n));
+
+
+
+let modifyLast=(rat, n) => rat+rat[rat.length-1].repeat(n-1)
+
+
+
+
+modifyLast("Hello", 3);
+modifyLast("hey", 6);
+modifyLast("plsssss!1!", 5);
+modifyLast("gr", 2);
+modifyLast("excuse me what?", 5);
+modifyLast("123", 5);
+modifyLast("a", 3);
+modifyLast("STOP", 3);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 588
+
+// Given two arrays, which represent two sandwiches, return whether both sandwiches use the same type of bread. The bread will always be found at the start and end of the array.
+
+
+function hasSameBread(arr1, arr2) {
+	return arr1[0] === arr2[0] && arr1[2] === arr2[2];
+}
+
+
+const hasSameBread = (arr1, arr2) => arr1[0] === arr2[0] && arr1[2] === arr2[2];
+
+
+function hasSameBread(arr1, arr2) {
+	var x1 = arr1[0];
+	var x2 = arr1[arr1.length-1];
+	var y1 = arr2[0];
+	var y2 = arr2[arr2.length-1];
+	
+	return x1===y1 && x2===y2;
+}
+
+
+hasSameBread(
+	["white bread", "lettuce", "white bread"],
+	["white bread", "tomato", "white bread"]
+);
+
+hasSameBread(
+	["brown bread", "chicken", "brown bread"],
+	["white bread", "chicken", "white bread"]
+);
+
+hasSameBread(
+	["toast", "cheese", "toast"],
+	["brown bread", "cheese", "toast"]
+);
+
+hasSameBread(
+	["white bread", "lettuce", "toast"],
+	["white bread", "tomato", "toast"]
+);
+
+hasSameBread(
+	["white bread", "lettuce", "toast"],
+	["brown bread", "tomato", "toast"]
+);
+
+hasSameBread(
+	["white bread", "lettuce", "brown bread"],
+	["brown bread", "tomato", "white bread"]
+);
+
+hasSameBread(
+	["white bread", "lettuce", "brown bread"],
+	["white bread", "tomato", "white bread"]
+);
