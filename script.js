@@ -27262,3 +27262,41 @@ findBob(["Paul", "Layla", "Bob"]);
 findBob(["Garry", "Maria", "Bethany", "Bob", "Pauline"]);
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 590
+
+// Write a function that returns the string "something" joined with a space and the given parameter a.
+
+function giveMeSomething(a) {
+	return `something ${a}`;
+}
+
+
+giveMeSomething("a");
+giveMeSomething("is cooking");
+giveMeSomething(" is cooking");
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 591
+
+// Given an array of numbers, return an array which contains all the even numbers in the orginal array, which also have even indices.
+
+function getOnlyEvens(nums) {
+	return nums.filter((x, i) => x % 2 === 0 && i % 2 === 0);
+}
+
+getOnlyEvens([1, 3, 2, 6, 4, 8]);
+getOnlyEvens([0, 1, 2, 3, 4]);
+getOnlyEvens([1, 2, 3, 4, 5]);
+getOnlyEvens([37, 26, 18, 42, 2, 30]);
+getOnlyEvens([49, 41, 30, 44, 26, 0, 5]);
+getOnlyEvens([47, 47, 12, 3, 48]);
+getOnlyEvens([30, 26, 0, 13, 20, 38, 50, 2]);
+getOnlyEvens([34, 21, 38, 28, 13, 8, 26, 29, 24, 5]);
+getOnlyEvens([47, 31, 24, 37, 29, 41, 31, 49, 4, 24]);
+getOnlyEvens([45, 47, 20, 49]);
