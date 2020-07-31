@@ -27290,6 +27290,21 @@ function getOnlyEvens(nums) {
 	return nums.filter((x, i) => x % 2 === 0 && i % 2 === 0);
 }
 
+
+function getOnlyEvens(nums) {
+	return nums.filter((item,index) => !(item % 2) && !(index % 2))
+}
+
+
+function getOnlyEvens(nums) {
+	return nums.filter((x,i) => !(x%2) && !(i%2))
+}
+
+
+function getOnlyEvens(nums) {
+	return nums.filter((x,i)=>x%2==0&&i%2==0)	
+}
+
 getOnlyEvens([1, 3, 2, 6, 4, 8]);
 getOnlyEvens([0, 1, 2, 3, 4]);
 getOnlyEvens([1, 2, 3, 4, 5]);
@@ -27300,3 +27315,36 @@ getOnlyEvens([30, 26, 0, 13, 20, 38, 50, 2]);
 getOnlyEvens([34, 21, 38, 28, 13, 8, 26, 29, 24, 5]);
 getOnlyEvens([47, 31, 24, 37, 29, 41, 31, 49, 4, 24]);
 getOnlyEvens([45, 47, 20, 49]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 592
+
+// Given an n * n * n Rubik's cube, return the number of individual stickers that are needed to cover the whole cube.
+
+function howManyStickers(n) {
+	return 6 * n * n;
+}
+
+
+function howManyStickers(n) {
+	return 6 * Math.pow(n,2);
+}
+
+
+howManyStickers(1);
+howManyStickers(2);
+howManyStickers(3);
+howManyStickers(4);
+howManyStickers(5);
+howManyStickers(6);
+howManyStickers(7);
+howManyStickers(8);
+howManyStickers(9);
+howManyStickers(10);
+howManyStickers(11);
+howManyStickers(12);
+howManyStickers(13);
+howManyStickers(15);
+
+
