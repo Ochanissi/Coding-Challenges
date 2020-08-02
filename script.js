@@ -27348,3 +27348,33 @@ howManyStickers(13);
 howManyStickers(15);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 593
+
+// Write a function that stutters a word as if someone is struggling to read it. The first two letters are repeated twice with an ellipsis ... and space after each, and then the word is pronounced with a question mark ?.
+
+function stutter(word) {
+	return `${word.slice(0, 2)}... ${word.slice(0, 2)}... ${word}?`
+}
+
+
+const stutter = word => `${`${word.slice(0, 2)}... `.repeat(2)}${word}?`;
+
+
+function stutter(word) {
+	let repeat = word.substring(0, 2);
+	
+	return `${repeat}... ${repeat}... ${word}?`;
+}
+
+
+function stutter(word) {
+	let stuttered = word[0] + word[1] + "... "
+	return `${stuttered}${stuttered}${word}?`
+}
+
+
+stutter("incredible");
+stutter("am");
+stutter("outstanding");
+
