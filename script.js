@@ -27378,3 +27378,174 @@ stutter("incredible");
 stutter("am");
 stutter("outstanding");
 
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 594
+
+// In this challenge you will be given a relation between two numbers, written as a string.
+
+// Here are some example inputs:
+
+// "2 = 2", "8 < 7", "5 = 13", "15 > 4"
+// Write a function that determines if the relation is true or false.
+
+
+function isTrue(relation) {
+	return eval(relation.split('=').join('=='));
+}
+
+
+function isTrue(relation) {
+	return eval(relation.replace('=', '==='))
+}
+
+
+isTrue=r=>eval(r.replace(/=/g,'=='))
+
+
+function isTrue(relation) {
+	return relation.indexOf('=') > -1 ? relation.split('=')[0] === relation.split('=')[1] : eval(relation)
+}
+
+
+function isTrue(relation) {
+	return eval(relation.replace(/[=]/, "=="))
+}
+
+
+isTrue("8<7");
+isTrue("15>4");
+isTrue("6>6");
+isTrue("10<10");
+isTrue("10<9");
+isTrue("5>6");
+isTrue("2=2");
+isTrue("5=13");
+isTrue("15=137");
+isTrue("101=101");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 595
+
+// Create a function that can turn Yen (Japanese dollar) to USD (American dollar).
+
+
+function yenToUsd(yen) {
+	return Math.round(yen / 107.5 * 100) / 100;
+}
+
+
+function yenToUsd(yen){
+    return +(yen/107.5).toFixed(2);
+}
+
+
+const yenToUsd = yen => Number((yen / 107.5).toFixed(2));
+
+
+const yenToUsd = yen => Number((yen / 107.5).toFixed(2));
+
+
+yenToUsd(1);
+yenToUsd(500);
+yenToUsd(649);
+yenToUsd(1000);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 596
+
+// A word is on the loose and now has tried to hide amongst a crowd of tall letters! Help write a function to detect what the word is, knowing the following rules:
+
+// The wanted word is in lowercase.
+// The crowd of letters is all in uppercase.
+// Note that the word will be spread out amongst the random letters, but their letters remain in the same order.
+
+
+function detectWord(str) {
+	return str.split("").filter(x => x === x.toLowerCase()).join("");
+}
+
+
+const detectWord = str => str.replace(/[A-Z]/g, '');
+
+
+const detectWord = str => str.match(/[a-z]/g).join('');
+
+
+function detectWord(str) {
+	return [...str].filter(c => c.toLowerCase()===c).join('')
+}
+
+
+const detectWord = s => [...s].filter(a => /[a-z]/.test(a)).join('');
+
+function detectWord(str) {
+	let regex = (/[a-z]/g);
+	let arr = str.split("");
+	let filteredArr = arr.filter(x => x.match(regex));
+	return filteredArr.join("");
+}
+
+
+detectWord("UcUNFYGaFYFYGtNUH");
+detectWord("bEEFGBuFBRrHgUHlNFYaYr");
+detectWord("YFemHUFBbezFBYzFBYLleGBYEFGBMENTment");
+detectWord("cLXSNVVJVOJBIQRVKIZWKJOIVHXELVReLXSNVVJVOJBIQRVKIZWKJOIVHXELVRrLXSNVVJVOJBIQRVKIZWKJOIVHXELVRtLXSNVVJVOJBIQRVKIZWKJOIVHXELVRaLXSNVVJVOJBIQRVKIZWKJOIVHXELVRiLXSNVVJVOJBIQRVKIZWKJOIVHXELVRn");
+detectWord("cUEOYCSUXVOaUEOYCSUXVOt");
+detectWord("vJAQSZNYRQTFUHDHSDMBDPUNFQJXSXeJAQSZNYRQTFUHDHSDMBDPUNFQJXSXgJAQSZNYRQTFUHDHSDMBDPUNFQJXSXeJAQSZNYRQTFUHDHSDMBDPUNFQJXSXtJAQSZNYRQTFUHDHSDMBDPUNFQJXSXaJAQSZNYRQTFUHDHSDMBDPUNFQJXSXbJAQSZNYRQTFUHDHSDMBDPUNFQJXSXlJAQSZNYRQTFUHDHSDMBDPUNFQJXSXe");
+detectWord("dATIQTJLBZFHSRXWOZQMOKZPANOUGMeATIQTJLBZFHSRXWOZQMOKZPANOUGMlATIQTJLBZFHSRXWOZQMOKZPANOUGMiATIQTJLBZFHSRXWOZQMOKZPANOUGMgATIQTJLBZFHSRXWOZQMOKZPANOUGMhATIQTJLBZFHSRXWOZQMOKZPANOUGMt");
+detectWord("pUBOKJGODIJBSXPMTODCGHATrUBOKJGODIJBSXPMTODCGHATiUBOKJGODIJBSXPMTODCGHATcUBOKJGODIJBSXPMTODCGHATeUBOKJGODIJBSXPMTODCGHATy");
+detectWord("sWRRKMVJVHHZTKAQTJUQDPKHSHPOYCnWRRKMVJVHHZTKAQTJUQDPKHSHPOYCaWRRKMVJVHHZTKAQTJUQDPKHSHPOYCkWRRKMVJVHHZTKAQTJUQDPKHSHPOYCe");
+detectWord("aJULRJHMOVLEFVJZnJULRJHMOVLEFVJZgJULRJHMOVLEFVJZlJULRJHMOVLEFVJZe");
+detectWord("aJWCHXONGQCXGPXLZQBKEIHZWwJWCHXONGQCXGPXLZQBKEIHZWaJWCHXONGQCXGPXLZQBKEIHZWrJWCHXONGQCXGPXLZQBKEIHZWe");
+detectWord("nNUZKGKNEVZBPQZQQLHZZPaNUZKGKNEVZBPQZQQLHZZPmNUZKGKNEVZBPQZQQLHZZPe");
+detectWord("cLBFKXYQFLLElLBFKXYQFLLEeLBFKXYQFLLEvLBFKXYQFLLEeLBFKXYQFLLEr");
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 597
+
+// Create a function that returns the selected filename from a path. Include the extension in your answer.
+
+
+function getFilename(path) {
+	return path.split("/").slice(-1).toString();
+}
+
+function getFilename(path){
+    return path.split('/').pop();
+}
+
+
+const getFilename = p => p.split('/').slice(-1)[0]
+
+
+function getFilename(path){
+	let f=path.split("/");
+	return f[f.length-1];
+}
+
+
+function getFilename(path){
+	return path.split('/').reverse()[0]
+	
+}
+
+
+
+getFilename("C:/Projects/pil_tests/ascii/edabit.txt");
+getFilename("C:/Users/johnsmith/Music/Beethoven_5.mp3");
+getFilename("ffprobe.exe");
+getFilename("Music/Drafts/unfinished2.midi");
+getFilename("C:/Users/chad/OneDrive/Desktop/Atom.lnk");
+getFilename("senoron/OneDrive/Desktop/DDLC-1.1.1-pc/lib/windows-i686/DDLC.exe");
+
+
