@@ -27549,3 +27549,53 @@ getFilename("C:/Users/chad/OneDrive/Desktop/Atom.lnk");
 getFilename("senoron/OneDrive/Desktop/DDLC-1.1.1-pc/lib/windows-i686/DDLC.exe");
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 598
+
+// Write a function that takes a year and returns its corresponding century.
+
+
+
+function centuryFromYear(year) {
+	return Math.ceil(year / 100);
+}
+
+
+const centuryFromYear = year => Math.ceil(year / 100);
+
+centuryFromYear(2020);
+centuryFromYear(200);
+centuryFromYear(2005);
+centuryFromYear(1700);
+centuryFromYear(1705);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 599
+
+// Create a function that finds the word "bomb" in the given string. If there is a bomb, return "Duck!!!" otherwise return "There is no bomb, relax.".
+
+
+function bomb(str) {
+	return str.toLowerCase().includes('bomb') ? "Duck!!!" : "There is no bomb, relax.";
+}
+
+
+const bomb = s => 
+ /bomb/i.test(s) ? 'Duck!!!' : "There is no bomb, relax.";
+
+
+const bomb = s => s.toLowerCase().includes("bomb") ? "Duck!!!" : "There is no bomb, relax."
+
+const bomb = str => /bomb/gi.test(str) ? "Duck!!!" : "There is no bomb, relax.";
+
+bomb("There is a bomb.");
+bomb("Hey, did you find it?");
+bomb("Hey, did you think ther is a bomb?");
+bomb("This goes boom!!!");
+bomb("Hey, did you find the BoMb?");
+
