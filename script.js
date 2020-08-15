@@ -27599,3 +27599,53 @@ bomb("Hey, did you think ther is a bomb?");
 bomb("This goes boom!!!");
 bomb("Hey, did you find the BoMb?");
 
+
+/////////////////////////////////
+// CODING CHALLENGE 600
+
+// Create a function which concantenates the number 7 to the end of every chord in an array. Ignore all chords which already end with 7.
+
+
+function jazzify(arr) {
+	return arr.map(x => x.endsWith('7') ? x : x + '7');
+}
+
+
+const jazzify = arr => arr.map(x => x.split(7)[0] + 7);
+
+
+function jazzify(arr) {
+	if (arr.length === 0) {
+		return []
+	}
+	
+	return arr.map((chord) => {
+		let pattern = /[ABCDEFG][bm]?7/
+		
+		if (pattern.test(chord)) {
+			return chord
+		}
+		
+		return chord + "7"
+	})
+}
+
+
+function jazzify(arr) {
+	for(let i=0; i<arr.length; i++)
+		{
+			if(arr[i][arr[i].length-1] != '7')
+				{
+					arr[i] = arr[i] + '7';
+				}
+		}
+	return arr;
+}
+
+jazzify(['G', 'F', 'C']);
+jazzify(['Dm', 'G', 'E', 'A']);
+jazzify(['F7', 'E7', 'A7', 'Ab7', 'Gm7', 'C7']);
+jazzify(['G', 'C7']);
+jazzify([]);
+
+
