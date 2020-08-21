@@ -27693,3 +27693,38 @@ gradePercentage("65%", "90%");
 gradePercentage("65%", "66%");
 gradePercentage("5%", "8%");
 gradePercentage("8%", "5%");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 602
+
+// Create a function that takes two numbers and a mathematical operator and returns the result.
+
+
+function calculate(num1, num2, op) {
+	return eval(num1 + op + num2);
+}
+
+
+function calculate(num1, num2, op) {
+    return {
+      "+": num1 + num2,
+      "-": num1 - num2,
+      "*": num1 * num2,
+      "/": num1 / num2,
+      "%": num1 % num2,
+    }[op];
+  }
+
+
+const calculate = (num1, num2, op) => eval(num1 + op + num2);
+
+
+calculate(24,100, "-");
+calculate(-20,-30, "+");
+calculate(1500,5, "/");
+calculate(38,3, "*");
+calculate(49,5, "%");
+
+
+
