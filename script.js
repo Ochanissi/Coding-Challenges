@@ -27649,3 +27649,47 @@ jazzify(['G', 'C7']);
 jazzify([]);
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 601
+
+// The challenge is to fix all of the bugs in this incredibly messy code, which the code in the image might've actually looked like (probably not)! The code given will output the same middle two lines as in the image shown above.
+
+// First parameter is the user's score.
+// Second parameter is the required score.
+
+
+function gradePercentage(userScore, passScore) {
+	return parseInt(userScore) >= parseInt(passScore) ? 'You PASSED the Exam' : 'You FAILED the Exam';
+}
+
+
+const gradePercentage = (u, p) =>
+    `You ${u >= p ? 'PASSED' : 'FAILED'} the Exam`;
+    
+
+const gradePercentage = (u, p) => 
+    (+u.split("%").join("") >= +p.split("%").join("")) ? 
+        "You PASSED the Exam" : 
+        "You FAILED the Exam";
+
+
+function gradePercentage(userScore, passScore) {
+    let s = 'You ';
+    userScore = userScore.substring(0, userScore.length - 1);
+    passScore = passScore.substring(0, passScore.length - 1);
+    if (userScore < passScore)
+        s = 'FAILED';
+    if (userScore >= passScore)
+        s = 'PASSED';
+    return 'You' + ' ' + s + ' ' + 'the Exam';
+}
+        
+        
+gradePercentage("85%", "85%");
+gradePercentage("99%", "85%");
+gradePercentage("65%", "90%");
+gradePercentage("65%", "66%");
+gradePercentage("5%", "8%");
+gradePercentage("8%", "5%");
