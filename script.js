@@ -27693,3 +27693,25 @@ gradePercentage("65%", "90%");
 gradePercentage("65%", "66%");
 gradePercentage("5%", "8%");
 gradePercentage("8%", "5%");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 602
+
+// The challenge is to fix all of the bugs in this incredibly messy code, which the code in the image might've actually looked like (probably not)! The code given will output the same middle two lines as in the image shown above.
+
+// Create a function that takes two numbers as arguments and return their sum.
+
+function addition(a, b) {
+	return a + b;
+}
+
+
+const addition = (a, b) => a + b;
+
+addition(2, 3);
+addition(-3, -6);
+addition(7, 3);
+addition(88, 2);
+
