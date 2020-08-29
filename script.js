@@ -27903,3 +27903,30 @@ tuckIn([[1, 2], [5, 6]], [[3, 4]]);
 tuckIn([true, false], [false, true, null, undefined]);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 609
+
+// The challenge is to try and fix this buggy code, given the inputs true and false. See the examples below for the expected output.
+
+
+function has_bugs(buggy_code) {
+  return buggy_code ? "sad days" : "it's a good day";
+}
+
+
+function has_bugs(buggy_code) {
+	if (buggy_code) {
+		return 'sad days';
+	} else {
+		return "it's a good day";
+	}
+}
+
+
+
+has_bugs(true);
+has_bugs(false);
+
+
+
+
