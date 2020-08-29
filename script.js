@@ -27693,3 +27693,240 @@ gradePercentage("65%", "90%");
 gradePercentage("65%", "66%");
 gradePercentage("5%", "8%");
 gradePercentage("8%", "5%");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 602
+
+// The challenge is to fix all of the bugs in this incredibly messy code, which the code in the image might've actually looked like (probably not)! The code given will output the same middle two lines as in the image shown above.
+
+// Create a function that takes two numbers and a mathematical operator and returns the result.
+
+
+function calculate(num1, num2, op) {
+	return eval(num1 + op + num2);
+}
+
+
+function calculate(num1, num2, op) {
+    return {
+      "+": num1 + num2,
+      "-": num1 - num2,
+      "*": num1 * num2,
+      "/": num1 / num2,
+      "%": num1 % num2,
+    }[op];
+  }
+
+
+const calculate = (num1, num2, op) => eval(num1 + op + num2);
+
+
+calculate(24,100, "-");
+calculate(-20,-30, "+");
+calculate(1500,5, "/");
+calculate(38,3, "*");
+calculate(49,5, "%");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 603
+
+// Create a function that takes two numbers as arguments and return their sum.
+
+function addition(a, b) {
+	return a + b;
+}
+
+
+const addition = (a, b) => a + b;
+
+addition(2, 3);
+addition(-3, -6);
+addition(7, 3);
+addition(88, 2);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 604
+
+// Create a function that will return an integer number containing the amount of digits in the given integer num.
+
+function num_of_digits(num) {
+	return String(Math.abs(num)).length
+}
+
+
+const num_of_digits = n => [...`${Math.abs(n)}`].length;
+
+
+function num_of_digits(num){
+	return (''+num).replace('-','').length
+}
+
+
+const num_of_digits=(num)=> (''+Math.abs(num)).split('').length
+
+
+num_of_digits(13124);
+num_of_digits(0);
+num_of_digits(-12381428);
+num_of_digits(12);
+num_of_digits(42);
+num_of_digits(1000);
+num_of_digits(136);
+num_of_digits(1000000000);
+num_of_digits(2147483647);
+num_of_digits(-2147483647);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 605
+
+// Given an array of numbers, return true if the sum of the array is less than 100; otherwise return false.
+
+
+function arrayLessThan100(arr) {
+	return arr.reduce((x, i) => x + i) < 100;
+}
+
+
+function arrayLessThan100(arr) {
+	let sum = 0;
+	for(let i=0; i<arr.length; i++) {
+		sum += arr[i];
+	}
+	return sum < 100;
+}
+
+
+function arrayLessThan100(arr) {
+	return arr.reduce((acc, num) => acc + num) < 100 ? true: false;
+}
+
+
+function arrayLessThan100(arr) {
+	return arr.reduce((s,v) => s + v , 0) < 100;
+}
+
+
+arrayLessThan100([5, 57]);
+arrayLessThan100([77, 30]);
+arrayLessThan100([0, 59,15]);
+arrayLessThan100([0]);
+arrayLessThan100([35, 59,15]);
+arrayLessThan100([25, 50, 25]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 606
+
+// Given an object containing counts of both upvotes and downvotes, return what vote count should be displayed. This is calculated by subtracting the number of downvotes from upvotes.
+
+
+function getVoteCount(votes) {
+	return votes.upvotes - votes.downvotes;
+}
+
+
+function getVoteCount(votes) {
+	const { upvotes, downvotes } = votes
+	return  upvotes - downvotes
+}
+
+
+getVoteCount({ upvotes: 13, downvotes: 0 });
+getVoteCount({ upvotes: 2, downvotes: 33 });
+getVoteCount({ upvotes: 132, downvotes: 132 });
+getVoteCount({ upvotes: 0, downvotes: 0 });
+getVoteCount({ downvotes: 4, upvotes: 1 });
+
+
+/////////////////////////////////
+// CODING CHALLENGE 607
+
+// Write a function that checks whether a person can watch an MA15+ rated movie. One of the following two conditions is required for admittance:
+
+// The person is at least 15 years old.
+// They have parental supervision.
+// The function accepts two parameters, age and isSupervised. Return a boolean.
+
+function acceptIntoMovie(age, isSupervised) {
+	return isSupervised || age >= 15;
+}
+
+
+
+
+acceptIntoMovie(14, true);
+acceptIntoMovie(15, true);
+acceptIntoMovie(16, true);
+acceptIntoMovie(14, false);
+acceptIntoMovie(15, false);
+acceptIntoMovie(16, false);
+acceptIntoMovie(14.99999, true);
+acceptIntoMovie(14.99999, false);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 608
+
+// Create a function that takes two arrays and insert the second array in the middle of the first array.
+
+
+function tuckIn(arr1, arr2) {
+	return [arr1[0], ...arr2, arr1[1]];
+}
+
+
+function tuckIn(arr1, arr2) {
+    arr1.splice(1, 0, ...arr2)
+       return arr1
+}
+
+
+function tuckIn(arr1, arr2) {
+    arr2.push(arr1[1]);
+    arr2.unshift(arr1[0]);
+    return arr2;
+}
+
+
+tuckIn([1, 10], [2, 3, 4, 5, 6, 7, 8, 9]);
+tuckIn([15, 150], [45, 75, 35]);
+tuckIn(["bottom", "topping"], ["tomatosauce", "vegetables", "cheese"]);
+tuckIn([[1, 2], [5, 6]], [[3, 4]]);
+tuckIn([true, false], [false, true, null, undefined]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 609
+
+// The challenge is to try and fix this buggy code, given the inputs true and false. See the examples below for the expected output.
+
+
+function has_bugs(buggy_code) {
+  return buggy_code ? "sad days" : "it's a good day";
+}
+
+
+function has_bugs(buggy_code) {
+	if (buggy_code) {
+		return 'sad days';
+	} else {
+		return "it's a good day";
+	}
+}
+
+
+
+has_bugs(true);
+has_bugs(false);
+
+
+
+
