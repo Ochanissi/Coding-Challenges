@@ -27930,3 +27930,227 @@ has_bugs(false);
 
 
 
+/////////////////////////////////
+// CODING CHALLENGE 610
+
+// A bartender is writing a simple program to determine whether he should serve drinks to someone. He only serves drinks to people 18 and older and when he's not on break.
+
+// Given the person's age, and whether break time is in session, create a function which returns whether he should serve drinks.
+
+
+function shouldServeDrinks(age, onBreak) {
+	return age >= 18 && !onBreak;
+}
+
+
+const shouldServeDrinks = (age, onBreak) => age >= 18 && !onBreak;
+
+
+function shouldServeDrinks(age, onBreak) {
+	return  age >= 18 && !onBreak ? true : false
+}
+
+
+shouldServeDrinks(17, true);
+shouldServeDrinks(30, true);
+shouldServeDrinks(24, false);
+shouldServeDrinks(18, false);
+shouldServeDrinks(3, false);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 611
+
+// You just returned home to find your mansion has been robbed! Given an object of the stolen items, return the total amount of the burglary (number). If nothing was robbed, return the string "Lucky you!".
+
+
+function calculateLosses(obj) {
+	const a = Object.values(obj).reduce((x, i) => x + i, 0);
+	return a === 0 ? 'Lucky you!' : a;
+}
+
+
+function calculateLosses(obj) {
+    return Object.values(obj).reduce((a,b)=>a+b,0) || 'Lucky you!'
+    }
+
+
+const calculateLosses = obj =>
+Object.values(obj).reduce((a,v) => a + v, 0) || `Lucky you!`;
+
+
+function calculateLosses(obj) {
+	const itemValues = Object.values(obj);
+	return itemValues.reduce((sum, itemValue) => sum + itemValue, 0) || "Lucky you!";	
+}
+
+
+function calculateLosses(obj) {
+    let acc = 0
+	for (let val of Object.values(obj)) {
+        acc += val;
+    }
+    return acc === 0 ? "Lucky you!" : acc;
+}
+
+
+function calculateLosses(obj) {
+    var num = Object.values(obj)
+    var sum = 0
+    
+    if (Object.keys(obj).length === 0) {
+        return 'Lucky you!'
+    }
+    
+    for (var i = 0; i < num.length; i++) {
+      sum += num[i]
+    }
+    return sum
+    }
+    
+
+calculateLosses({
+    tv: 30,
+    skate: 20,
+    stereo: 50,
+  });
+  
+  calculateLosses({
+    ring: 30000,
+    painting: 20000,
+    bust: 1,
+  });
+  
+  calculateLosses({
+    chair: 3500,
+  });
+  
+  calculateLosses({});
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 612
+
+// Create a function that takes two numbers num1, num2, and an array arr and returns an array containing all the numbers in arr greater than num1 and less than num2.
+
+
+function arrBetween(num1, num2, arr) {
+	return arr.filter(x => x > num1 && x < num2);
+}
+
+
+const arrBetween = (a,b,c) => c.filter(x => x > a && x < b);
+
+
+
+function arrBetween(num1, num2, arr) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > num1 && arr[i] < num2) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  }
+
+  
+
+arrBetween(7, 32, [1, 2, 3, 78]);
+arrBetween(0, 9, [1, 2, 3, 78]);
+arrBetween(-5, 3, [-8, 0, 0, 20, -3]);
+arrBetween(1, 1, [1, 0, 3, 7]);
+arrBetween(0, 310, [1, -2, 300, 78765, 100, 99, 98, 234]);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 613
+
+// You will be given a list, showing how far James travels away from his home for each day. He may choose to travel towards or away from his house, so negative values are to be expected.
+
+// Create a function which calculates how far James must walk to get back home.
+
+function distanceHome(arr) {
+	return Math.abs(arr.reduce((x, i) => x + i));
+}
+
+
+function distanceHome (arr) {
+	return Math.abs(arr.reduce((acc, num) => num + acc));
+}
+
+
+const distanceHome = r => Math.abs(r.reduce((a,b) => a + b))
+
+
+function distanceHome (arr) {
+	var sum = 0;
+	for (let i = 0; i<arr.length; i++){
+		sum += arr[i];
+	}
+	return Math.abs(sum);
+}
+
+
+distanceHome([2, 4, 2, 5]);
+distanceHome([-1, -4, -3, -2]);
+distanceHome([3, 4, -5, -2]);
+distanceHome([12, 12]);
+distanceHome([10, 8, -4, -10, -15, 14, -13]);
+distanceHome([-3, -6, -15, -14, -11, 3, 0, -15, 0]);
+distanceHome([-11, -4, -14, 4, -2, 7, 0, -1, 10, -1]);
+distanceHome([-7, 1, 0, -9, 0, 0]);
+distanceHome([-15, -7, 4, -3, -8]);
+distanceHome([-11, 10, -6, 8, 0, 12, -11]);
+distanceHome([-4, -5, -14, -13]);
+distanceHome([5, 8]);
+distanceHome([10, -15, -3, 2, 4, -15, 11, 1]);
+distanceHome([9, 13, -11, -11, -10, -12, 15, -3]);
+distanceHome([13, -1, -12, -4, 0, 10, 8, 10]);
+distanceHome([-9, 1, -10, 10, -9, -10, 0, 11, -2, -3]);
+distanceHome([13, 2, 12, 12, -15, 11, 9, 0, 13]);
+distanceHome([0, 5, 8, -3]);
+distanceHome([-10, 2, -1, -12]);
+distanceHome([-9, -11, 11, -15, -8]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 614
+
+// Given an array, return true if there are more odd numbers than even numbers, otherwise return false.
+
+function oddeven(arr) {
+	return arr.filter(x => x % 2 === 0).length * 2 < arr.length;
+}
+
+
+function oddeven(lst){
+	return lst.filter(ele => ele % 2 !== 0).length > lst.length / 2 
+}
+
+
+function oddeven(lst){
+	return 2*lst.filter(x=>x%2).length > lst.length
+}
+
+
+function oddeven(lst){
+	let odd = 0
+	let even = 0
+	
+	lst.forEach(num => num%2==0 ? even++ : odd++)
+	return odd > even
+}
+
+
+oddeven([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+oddeven([1]);
+oddeven([1, 2, 3, 4, 5, 6, 7, 9]);
+oddeven([42, 1, 66]);
+oddeven([2, 3, 4, 5, 6, 7, 8]);
+oddeven([43264573658142353463158]);
+
+
