@@ -28154,3 +28154,55 @@ oddeven([2, 3, 4, 5, 6, 7, 8]);
 oddeven([43264573658142353463158]);
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 615
+
+// HackerRank
+// https://www.hackerrank.com/challenges/birthday-cake-candles/problem
+
+function birthdayCakeCandles(candles) {
+  // Write your code here
+  const a = candles.sort((a, b) => b - a)
+  return a.filter(x => x === a[0]).length;
+}
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 616
+
+// HackerRank
+// https://www.hackerrank.com/challenges/mini-max-sum/problem
+
+function miniMaxSum(arr) {
+  console.log(arr.sort((a, b) => b - a).slice(1).reduce((a, x) => a + x, 0), arr.sort((a, b) => a - b).slice(1).reduce((a, x) => a + x, 0));
+
+}
+
+
+/////////////////////////////////
+// CODING CHALLENGE 617
+
+// HackerRank
+// https://www.hackerrank.com/challenges/plus-minus/problem
+
+
+function plusMinus(arr) {
+  const a = [0, 0, 0];
+
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > 0) {
+          a[0]++;
+      } else if (arr[i] < 0) {
+          a[1]++;
+      } else a[2]++;
+  }
+
+  const b = a.map(x => (x / arr.length).toFixed(6))
+
+  console.log(b[0]);
+  console.log(b[1]);
+  console.log(b[2]);
+}
