@@ -28236,3 +28236,26 @@ secondLargest([513, 211, 131, 417, 11]);
 secondLargest([63, 44, 11, 22, 33, 66, 65]);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 619
+
+// Create a function that takes the number of daily average recovered cases recovers, daily average newCases, current activeCases, and returns the number of days it will take to reach zero cases.
+
+
+function endCorona(recovers, newCases, activeCases) {
+	return Math.ceil(activeCases / (recovers - newCases));
+}
+
+
+function endCorona(recovers, newCases, activeCases) {
+	let a = recovers - newCases;
+  let b = Math.ceil(activeCases/a);
+  return Math.round(b);
+}
+
+
+endCorona(4000, 2000, 77000);
+endCorona(3000, 2000, 50699);
+endCorona(30000, 25000, 390205);
+endCorona(260000, 255000, 20511691);
+
