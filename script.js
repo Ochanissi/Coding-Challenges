@@ -28259,3 +28259,94 @@ endCorona(3000, 2000, 50699);
 endCorona(30000, 25000, 390205);
 endCorona(260000, 255000, 20511691);
 
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 620
+
+// In this series we're going to see common redundancies and superfluities that make our code unnecessarily complicated and less readable, and we're going to learn how to avoid them.
+
+// In line with the spirit of the series, we can summarize the general rules of minimalist code in two simple principles:
+
+// Keep your code clean and readable.
+// While not violating the first principle: get rid of everything superfluous.
+// In order to achieve this you should:
+
+// Deepen your knowledge of logics.
+// Deepen your understanding of the particular language you're coding with.
+// I would also add: observe and learn from the pros. Make a habit of checking the Solutions tab after solving a challenge on Edabit. There is absolutely nothing wrong in assimilating features of someone else's coding style, especially if yours is not yet fully developed.
+
+// Goal
+// In the Code tab you will find a code that is missing a single character in order to pass the tests. However, YOUR GOAL is to submit a function as minimalist as possible. Use the tips in the Tips section down below.
+
+// Write a function that returns true if the given integer is even, and false if it's odd.
+
+
+function isEven(n) {
+	return n % 2 === 0
+}
+
+
+const isEven = n => n % 2 ? false : true;
+
+
+function isEven(n) {
+	if (n%2 == 0)
+		return true;
+	else
+		return false;
+}
+
+
+isEven(2);
+isEven(3);
+isEven(10);
+isEven(31);
+isEven(666);
+isEven(777);
+isEven(3482034);
+isEven(3482035);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 621
+
+// Given a string, return true if its length is even or false if the length is odd.
+
+
+function oddOrEven(s) {
+	return s.length % 2 === 0;
+}
+
+
+const oddOrEven = s => s.length % 2 === 0;
+
+
+const oddOrEven = s => Boolean(s.length % 2 == 0);
+
+
+
+function oddOrEven(s) {
+	if(s.length % 2 === 0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+function oddOrEven(s) {
+	return [true, false][s.length % 2];
+}
+    
+
+oddOrEven("apples");
+oddOrEven("banana");
+oddOrEven("cherry");
+oddOrEven("mango");
+oddOrEven("peach");
+oddOrEven("pears");
+
+
