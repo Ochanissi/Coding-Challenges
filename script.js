@@ -28350,3 +28350,82 @@ oddOrEven("peach");
 oddOrEven("pears");
 
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 622
+
+// You call your spouse in anger and a "little" argument takes place. Count the total amount of adjectives used. Given an object with a list of adjectives, return the total amount of adjectives used.
+
+
+function totalAmountAdjectives(obj) {
+	return Object.values(obj).length;
+}
+
+
+function totalAmountAdjectives(obj) {
+    return Object.keys(obj).length
+
+}
+
+
+const totalAmountAdjectives = o => Object.keys(o).length;
+
+
+const obj = { a: "moron" }
+const obj2 = { a: "moron", b: "scumbag", c: "moron", d: "dirtbag" } 
+const obj3 = {b: "scumbag", c: "moron", d: "dirtbag" } 
+let dynamic = {}
+const random = Test.randomNumber()
+let arr = new Array(random).fill(".")
+arr.forEach((item, i) => dynamic[i] = item)
+
+totalAmountAdjectives(obj);
+totalAmountAdjectives(obj2);
+totalAmountAdjectives(obj3);
+totalAmountAdjectives(dynamic);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 623
+
+// Create a function that takes a string and returns dashes on the left and right side of every vowel (a e i o u).
+
+
+function dashed(str) {
+	return [...str].map(x => 'aeiou'.includes(x.toLowerCase()) ? `-${x}-` : x).join('');
+}
+
+
+const dashed = str =>	str.replace(/([aeiou])/gi, '-$1-')
+
+
+const dashed = str => str.replace(/[aeiou]/gi, '-$&-');
+
+
+function dashed(str) {
+	return [...str].map((x) => (/[aeiou]/i.test(x) ? `-${x}-` : x)).join('');
+}
+
+
+
+function dashed(str) {
+	let vow = 'aeiouAEIOU'
+	let s=''
+	for(let i=0;i<str.length;i++){
+		if(vow.includes(str[i]))s+='-' + str[i] + '-'
+		else s+=str[i]
+	}
+	return s
+}
+
+
+dashed("Edabit");
+dashed("Carpe Diem");
+dashed("Fight for your right to party!");
+dashed("Finishing off someone’s sentence is annoying, even if you have guessed correctly. Add to that rude, if they stutter.");
+dashed("Fear the soldier who stammers, for he is very fast at pulling the triger.");
+dashed("Thank you, I said bravely, dropping the syllables cleanly, like marbles, and secretly full of the most pathetic pride imaginable.");
+
