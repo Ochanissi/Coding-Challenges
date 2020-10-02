@@ -28429,3 +28429,48 @@ dashed("Finishing off someone’s sentence is annoying, even if you have guessed
 dashed("Fear the soldier who stammers, for he is very fast at pulling the triger.");
 dashed("Thank you, I said bravely, dropping the syllables cleanly, like marbles, and secretly full of the most pathetic pride imaginable.");
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 624
+
+// Create a function that takes voltage and current and returns the calculated power.
+
+
+function circuitPower(voltage, current) {
+	return voltage * current;
+}
+
+
+const circuitPower=(voltage, current)=>voltage*current
+
+
+circuitPower(110, 3);
+circuitPower(230, 10);
+circuitPower(480, 20);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 625
+
+// Create a function that returns the last value of the last item in an array or string.
+
+
+function lastItem(input) {
+	return input[input.length - 1];
+}
+
+
+lastItem([0, 4, 19, 34, 50, -9, 2]);
+lastItem(["Hello", "There", "JavaScript", "User"]);
+lastItem([]);
+lastItem([true, false, false, true]);
+lastItem([(5, 0), (0, 5, 6, 7), (3, 5, 67, 7), (0, -9, 3, 45, 5)]);
+lastItem("JavaScript is a great programming langauge.");
+lastItem(["H", "E", "L", "L", "O"]);
+lastItem("The quick brown fox jumped over the lazy dog");
+
+
+
