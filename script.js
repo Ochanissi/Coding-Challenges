@@ -28463,6 +28463,13 @@ function lastItem(input) {
 }
 
 
+
+const lastItem = input => input[input.length - 1];
+
+
+const lastItem = i => i[i.length - 1];
+
+
 lastItem([0, 4, 19, 34, 50, -9, 2]);
 lastItem(["Hello", "There", "JavaScript", "User"]);
 lastItem([]);
@@ -28471,6 +28478,77 @@ lastItem([(5, 0), (0, 5, 6, 7), (3, 5, 67, 7), (0, -9, 3, 45, 5)]);
 lastItem("JavaScript is a great programming langauge.");
 lastItem(["H", "E", "L", "L", "O"]);
 lastItem("The quick brown fox jumped over the lazy dog");
+
+
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 626
+
+// Create a function that takes an angle in radians and returns the corresponding angle in degrees.
+
+
+function radiansToDegrees(rad) {
+	return rad * 180 / Math.PI;
+}
+
+
+const radiansToDegrees = rad => (180 * rad) / Math.PI;
+
+
+const radiansToDegrees = r => r * 180/Math.PI
+
+
+
+radiansToDegrees(1);
+radiansToDegrees(5);
+radiansToDegrees(7);
+radiansToDegrees(60);
+radiansToDegrees(100);
+radiansToDegrees(180);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 627
+
+// Create a function that receives a non-negative integer and returns the factorial of that number.
+
+
+function fact(n) {
+	if (n === 0) {
+        return 1;
+ 	}
+	
+  return n * fact(n - 1);
+}
+
+
+function fact(n) {
+	return n < 2 ? 1 : n * fact(n - 1)
+}
+
+
+
+function fact(n) {
+	if (n <= 1) { 
+		return 1 
+	}
+	return n * fact(n - 1)
+}
+
+
+fact(0);
+fact(1);
+fact(2);
+fact(3);
+fact(7);
+fact(9);
+fact(15);
+
 
 
 
