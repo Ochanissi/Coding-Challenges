@@ -28552,3 +28552,42 @@ fact(15);
 
 
 
+/////////////////////////////////
+// CODING CHALLENGE 628
+
+// Create a function that takes the age and return the age in days.
+
+
+function calcAge(age) {
+    return age * 365;
+}
+
+
+const calcAge = a => a * 365;
+
+calcAge(10);
+calcAge(0);
+calcAge(73);
+
+
+   
+
+/////////////////////////////////
+// CODING CHALLENGE 629
+
+// Create a function that accepts a measurement value in inches and returns the equivalent of the measurement value in feet.
+
+
+function inchesToFeet(inches) {
+	return Math.floor(inches / 12);
+}
+
+
+inchesToFeet(12);
+inchesToFeet(360);
+inchesToFeet(3612);
+inchesToFeet(324);
+inchesToFeet(3012);
+inchesToFeet(11);
+
+
