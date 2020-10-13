@@ -28591,3 +28591,66 @@ inchesToFeet(3012);
 inchesToFeet(11);
 
 
+
+/////////////////////////////////
+// CODING CHALLENGE 630
+
+// Given two arguments, return an array which contains these two arguments.
+
+
+function makePair(num1, num2) {
+	return [...arguments];
+}
+
+const makePair = (a,b) => [a,b];
+
+const makePair = (...a) => a;
+
+
+const makePair = (num1, num2) => {
+    const result = [];
+    result.push(num1, num2);
+    return result;
+}
+
+
+makePair(1, 2);
+makePair(21, 82);
+makePair(4213, 526);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 630
+
+// Create a function that takes an integer n and returns the nth tetrahedral number.
+
+
+function tetra(n) {
+	return (n * (n + 1) * (n + 2)) / 6;
+}
+
+
+function tetra(n) {
+	return n>0?(1+n)*n/2+tetra(n-1):0
+}
+
+
+function tetra(n) {
+	let res = 0 
+	for(let x=1;x<=n;x++){
+		for(let y=1;y<=x;y++){
+			res +=y
+		}
+	}
+	return res
+}
+
+
+tetra(1);
+tetra(2);
+tetra(3);
+tetra(4);
+tetra(5);
+tetra(9);
+
