@@ -28706,9 +28706,94 @@ function format(a, b, c) {
 }
 
 
+function format(a, b, c) {
+	return `Their names were: ${a}, ${b} and ${c}.`
+}
+
+
+const format = (a, b, c) =>`Their names were: ${a}, ${b} and ${c}.`;
+
+
+
 format("John", "Joe", "Jack");
 format("Peter", "Pin", "Pan");
 format("E", "Da", "Bit");
 format("Bulbasaur", "Charmander", "Squirtle");
 
+
+/////////////////////////////////
+// CODING CHALLENGE 634
+
+// Create a sorting function which sorts numbers not by numerical order, but by number length! This means sorting numbers with the least amount of digits first, up to the numbers with the most digits.
+
+
+function numberLenSort(arr) {
+	return arr.sort((a, b) => a.toString().length - b.toString().length);
+}
+
+
+const numberLenSort = arr => 
+	arr.sort((a, b) => String(a).length - String(b).length)
+
+
+
+numberLenSort([1, 54, 1, 2, 463, 2]);
+numberLenSort([999, 421, 22, 990, 32]);
+numberLenSort([9, 8, 7, 6, 5, 4, 31, 2, 1, 3]);
+numberLenSort([755, 1109, 9374, 94, 3683, 8695, 4135, 5177, 3216]);
+numberLenSort([8013, 1753, 7283, 6830, 73, 6278, 4931, 4556]);
+numberLenSort([2762, 5905, 9433, 9809, 6511, 7141, 1050, 2610, 8123]);
+numberLenSort([9103, 5630, 7273, 2024]);
+numberLenSort([1342, 7567, 3504, 4378, 3070, 6592, 3645]);
+numberLenSort([237, 574, 3703, 2251, 4963, 2640]);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 635
+
+// Create a function which returns the length of a string, WITHOUT using String.length property.
+
+
+
+function length(s) {
+	return [...s].reduce(a => a + 1, 0)
+}
+
+
+
+function length(s) {
+	return s.lastIndexOf('');
+}
+
+
+function length(s) {
+	let count = 0;
+  	for(let c of s){
+		count++;
+	}
+  	return count;
+}
+
+
+const length = (str, len = 0) => str ? length(str.slice(1), len + 1) : len;
+
+
+function length(s, i = -1) {
+    while (1) if (s[++i] === undefined) return i;
+}
+
+
+const length = s => [...s].map((_, idx) => idx + 1).pop() || 0;
+
+
+
+length("Hello World");
+length("Edabit");
+length("wash your hands!");
+length("34445");
+length("   ");
+length("");
+length("%%$");
 
