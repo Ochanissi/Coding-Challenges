@@ -28621,7 +28621,7 @@ makePair(4213, 526);
 
 
 /////////////////////////////////
-// CODING CHALLENGE 630
+// CODING CHALLENGE 631
 
 // Create a function that takes an integer n and returns the nth tetrahedral number.
 
@@ -28653,4 +28653,62 @@ tetra(3);
 tetra(4);
 tetra(5);
 tetra(9);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 632
+
+// Given a number, return an array containing the two halves of the number. If the number is odd, make the rightmost number higher.
+
+
+function numberSplit(n) {
+	return [Math.floor(n / 2), Math.ceil(n / 2)];
+}
+
+
+function numberSplit(n) {
+	x=n/2
+	return x%1?[x-.5,x+.5]:[x,x]
+}
+
+
+const numberSplit = n => n % 2 == 0 ? [n/2,n/2] : [(n/2)-.5, (n/2)+.5];
+
+
+numberSplit(4);
+numberSplit(10);
+numberSplit(11);
+numberSplit(1);
+numberSplit(-4);
+numberSplit(-5);
+numberSplit(-9);
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 633
+
+// Write a template string according to the following example:
+
+// Example
+// const a = "John";
+// const b = "Joe";
+// const c = "Jack";
+// const template = "your template string" ➞ "Their names were:  John,  Joe  and  Jack."
+
+
+function format(a, b, c) {
+	const template = `Their names were: ${a}, ${b} and ${c}.`;
+	return template;
+}
+
+
+format("John", "Joe", "Jack");
+format("Peter", "Pin", "Pan");
+format("E", "Da", "Bit");
+format("Bulbasaur", "Charmander", "Squirtle");
+
 
