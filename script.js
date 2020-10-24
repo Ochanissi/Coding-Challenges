@@ -28797,3 +28797,44 @@ length("   ");
 length("");
 length("%%$");
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 636
+
+// Create a function that will put the first argument, a character, between every word in the second argument, a string.
+
+
+function add(char, str) {
+	return str.replace(/ /g, char);
+}
+
+
+function add(char, txt) {
+	return txt.split(' ').join(char)
+}
+
+
+const add = (char, txt) => txt.split(' ').join(char)
+
+
+function add(char, txt) {
+	let newTxt = "";
+	for (let i = 0; i < txt.length; i++) {
+		if (txt[i] === ' ') {
+			newTxt+=char;
+		} else {
+			newTxt+=txt[i];
+		}
+	}
+	return newTxt;
+}
+
+
+
+add("#", "hello world");
+add("R", "python is fun");
+add("*", "use .join() for this challenge");
+add("#", " ");
+
+
