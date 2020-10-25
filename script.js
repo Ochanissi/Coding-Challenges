@@ -28838,3 +28838,53 @@ add("*", "use .join() for this challenge");
 add("#", " ");
 
 
+/////////////////////////////////
+// CODING CHALLENGE 637
+
+// The Math.abs() function returns the absolute value of a number. This means that it returns a number's positive value. You can think of it as the distance away from zero.
+
+// Create a function that recreates this functionality.
+
+
+function absolute(n) {
+	return +n.toString().replace('-', '');
+}
+
+
+function absolute(n) {
+	if (n < 0) {
+		return 0 - n; 
+	} else return n; 
+}
+
+
+function absolute(n) {
+	return( n**2)**0.5
+}
+
+
+const absolute = n => n < 0 ? -n : n;
+
+
+function absolute(n) {
+	return n * Math.sign(n);
+}
+
+
+const absolute = n => [n, -n][+(n < 0)]
+
+
+function absolute(n) {
+	return n < 0 ? -n : n
+}
+
+
+const absolute = n => Math.max(n, -n);
+
+const excludes = f => !RegExp('Math.abs').test(f)
+Test.assertNotEquals(excludes(absolute), false, "A restricted function is found!")
+
+let [numVector, resVector] = [[ -5, -3.14, 250, 0, 6.28, 11037 ], [5, 3.14, 250, 0, 6.28, 11037]]
+for (let i in numVector) Test.assertEquals(absolute(numVector[i]), resVector[i])
+
+
