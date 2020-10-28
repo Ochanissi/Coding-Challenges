@@ -28798,7 +28798,6 @@ length("");
 length("%%$");
 
 
-
 /////////////////////////////////
 // CODING CHALLENGE 636
 
@@ -28885,6 +28884,118 @@ const excludes = f => !RegExp('Math.abs').test(f)
 Test.assertNotEquals(excludes(absolute), false, "A restricted function is found!")
 
 let [numVector, resVector] = [[ -5, -3.14, 250, 0, 6.28, 11037 ], [5, 3.14, 250, 0, 6.28, 11037]]
-for (let i in numVector) Test.assertEquals(absolute(numVector[i]), resVector[i])
+for (let i in numVector) absolute(numVector[i]), resVector[i])
+
+
+/////////////////////////////////
+// CODING CHALLENGE 638
+
+// Create a function that returns a number, based on the string provided. Here is a list of all digits (if you are non english speaker):
+
+// String	Number
+// "one"	1
+// "two"	2
+// "three"	3
+// "four"	4
+// "five"	5
+// "six"	6
+// "seven"	7
+// "eight"	8
+// "nine"	9
+// "zero"	0
+
+
+function word(s) {
+	switch(s) {
+		case "one": return	1;
+		case "two": return	2;
+		case "three": return	3;
+		case "four": return	4;
+		case "five": return	5;
+		case "six": return	6;			
+		case "seven": return	7;
+		case "eight": return	8;
+		case "nine": return	9;
+		case "zero": return	0;
+	}
+}
+
+
+word=s=>["zero","one","two","three","four","five","six","seven","eight","nine"].indexOf(s)
+
+
+function word(s) {
+	const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+	return words.indexOf(s)
+}
+
+
+const word = s =>
+    'zero one two three four five six seven eight nine'.split(' ').indexOf(s);
+    
+
+const word = n => ({zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9})[n];
+
+
+word("zero");
+word("one");
+word("two");
+word("three");
+word("four");
+word("five");
+word("six");
+word("seven");
+word("eight");
+word("nine");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 639
+
+// Create a function that will remove the letters "a", "b" and "c" from the given string and return the modified version. If the given string does not contain "a", "b", or "c", return null.
+
+
+
+function removeABC(str) {
+	return str.match(/[abc]/) ? str.replace(/[abc]/gi, '') : null;
+}
+
+
+function removeABC(str) {
+	const res = str.replace(/[abc]/g, '');
+	return str === res ? null : res;
+}
+
+
+function removeABC(str) {
+	return str.match(/[abc]/ig) ? str.replace(/[abc]/ig, "") : null
+}
+
+
+const removeABC = str => {
+	const regex = /[abc]/gi;
+	if (!regex.test(str)) return null;
+	return str.replace(regex, '');
+};
+
+
+function removeABC(str) {
+	return (/[abc]/gi).test(str) ? str.replace(/[abc]/gi,'') : null;
+}
+
+
+function removeABC(str) {
+    const res = str.replace(/[abc]/g, "");
+    return res === str ? null : res;
+  }
+
+
+removeABC("This might be a bit hard");
+removeABC("This is awesome");
+removeABC("hello world!");
+removeABC("coding is fun!");
+removeABC("");
+
 
 
