@@ -28999,3 +28999,29 @@ removeABC("");
 
 
 
+
+/////////////////////////////////
+// CODING CHALLENGE 640
+
+// Help fix all the bugs in the function incrementItems! It is intended to add 1 to every element in the array!
+
+
+function incrementItems(arr) {
+	return arr.map(x => x + 1);
+}
+
+
+function incrementItems(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		arr[i]++
+	}
+	return arr
+}
+
+
+const incrementItems = arr => arr.map(n => n + 1);
+
+
+incrementItems([0, 1, 2, 3]);
+incrementItems([2, 4, 6, 8]);
+incrementItems([-1, -2, -3, -4]);
