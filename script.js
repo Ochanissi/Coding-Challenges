@@ -29025,3 +29025,32 @@ const incrementItems = arr => arr.map(n => n + 1);
 incrementItems([0, 1, 2, 3]);
 incrementItems([2, 4, 6, 8]);
 incrementItems([-1, -2, -3, -4]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 641
+
+// A strong Scottish accent makes every vowel similar to an "e", so you should replace every vowel with an "e". Additionally, it is being screamed, so it should be in block capitals.
+
+// Create a function that takes a string and returns a string.
+
+
+function toScottishScreaming(str) {
+	return str.replace(/[aiou]/gi, 'e').toUpperCase();
+}
+
+
+const toScottishScreaming = s => s.toUpperCase().replace(/[AIOU]/g, 'E');
+
+
+function toScottishScreaming(str) {
+	return str.replace(/[aeiou]/ig,'e').toUpperCase();
+}
+
+
+toScottishScreaming("lorem ipsum");
+toScottishScreaming("Leeroy jenkins!");
+toScottishScreaming("A, wonderful, day, don't, you, think?");
+toScottishScreaming("Hello world");
+toScottishScreaming("start queueing you oafs");
+
