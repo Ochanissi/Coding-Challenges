@@ -29054,3 +29054,33 @@ toScottishScreaming("A, wonderful, day, don't, you, think?");
 toScottishScreaming("Hello world");
 toScottishScreaming("start queueing you oafs");
 
+/////////////////////////////////
+// CODING CHALLENGE 642
+
+// Create a function that counts how many D's are in a sentence.
+
+
+function countDs(sentence) {
+	return sentence.toLowerCase().split('').filter(x => x === 'd').length;
+}
+
+
+const countDs = s => s.match(/d/ig).length;
+
+
+function countDs(sentence) {
+	return [...sentence].filter(x=> x=='d'|| x=='D').length
+}
+
+
+const countDs = sentence => {
+  let arr = sentence.split('');
+ let result = arr.filter(x => x === 'D' || x === 'd');
+ return result.length;
+}
+
+
+countDs("My friend Dylan got distracted at school");
+countDs("Debris was scattered all over the place.");
+countDs("The rodents hibernated in their den.");
+
