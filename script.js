@@ -29084,3 +29084,81 @@ countDs("My friend Dylan got distracted at school");
 countDs("Debris was scattered all over the place.");
 countDs("The rodents hibernated in their den.");
 
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 643
+
+// You need to create two functions to substitute toString() and parseInt(); A function called intToString() that converts integers into strings and a function called stringToInt() that converts strings into integers.
+
+function intToString(num) {
+	return num + '';
+}
+
+
+function stringToInt(num) {
+	return +num;
+}
+
+
+const intToString = n => ''+n;
+const stringToInt = n => +n;
+
+
+const [intToString, stringToInt] = [String, Number];
+
+
+function intToString(num) {
+	return String(num)
+}
+
+
+function stringToInt(num) {
+	return parseInt(num)
+}
+
+
+function intToString(num) {
+	return String (num);
+}
+
+
+function stringToInt(num) {
+	return Number (num);
+}
+
+
+let flag = true;
+function toggleFlag() {
+	flag = false;
+}
+oldToString = Object.prototype.toString;
+Number.prototype.toString = function() {
+	toggleFlag();
+	return "" + this
+}
+oldParseInt = parseInt;
+parseInt = function() {
+	toggleFlag();
+	return oldParseInt(...arguments);
+}
+oldParseFloat = parseFloat;
+parseFloat = function() {
+	toggleFlag();
+	return oldParseFloat(...arguments);
+}
+
+intToString(4);
+intToString(65);
+intToString(29348);
+intToString(49583908545);
+
+stringToInt('4');
+stringToInt('65');
+stringToInt('29348');
+stringToInt('49583908545');
+
+console.log(flag ? "Bonus points!" : "You recieve no bonus points.")
+
+
