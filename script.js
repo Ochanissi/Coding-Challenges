@@ -29162,3 +29162,37 @@ stringToInt('49583908545');
 console.log(flag ? "Bonus points!" : "You recieve no bonus points.")
 
 
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 644
+
+// Create a function that returns a capitalized version of the string passed. The first letter of each word in the string should be capitalized while the rest of each word should be lowercase.
+
+
+function emphasise(str) {
+	return str.length ? str.split(' ').map(x => x[0].toUpperCase() + x.slice(1).toLowerCase()).join(' ') : '';
+}
+
+
+function emphasise(str) {
+	return str.toLowerCase().replace(/\b./g, m => m.toUpperCase());
+}
+
+
+function emphasise(str) {
+	return str.length === 0 ? '' : str.split(' ')
+		.map(word => word[0].toUpperCase() + word.substring(1).toLowerCase())
+		.join(' ')
+}
+
+
+emphasise("hello world");
+emphasise("GOOD MORNING");
+emphasise("99 red balloons!");
+emphasise("1 2 3 4 5 6 7 8 9");
+emphasise("");
+emphasise("joshua senoron");
+
+
