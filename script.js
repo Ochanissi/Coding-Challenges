@@ -29196,3 +29196,50 @@ emphasise("");
 emphasise("joshua senoron");
 
 
+/////////////////////////////////
+// CODING CHALLENGE 645
+
+// Create a function that determines if the temp of the water is considered boiling or not. temp will be measured in fahrenheit and celsius.
+
+
+function isBoiling(temp) {
+	const grades = temp.slice(0, -1);
+	const unit = temp.slice(-1);
+	return unit === 'F' ? grades >= 212 : grades >= 100;
+}
+
+
+const isBoiling = temp => {
+	return ( temp >= "100C" || temp >= "212F") ? true : false
+}
+
+
+function isBoiling(temp) {
+	return temp.indexOf('C') > -1 ? parseInt(temp) >= 100 : parseInt(temp) >= 212
+}
+
+
+function isBoiling(temp) {
+  return temp.endsWith("C") ? parseInt(temp) >= 100 : parseInt(temp) >= 212;
+}
+
+
+function isBoiling(temp) {
+  return parseInt(temp) >= (temp.endsWith("C") ? 100 : 212);
+}
+
+
+function isBoiling(temp) {
+	return temp>='100'
+}
+
+
+isBoiling("212F");
+isBoiling("100C");
+isBoiling("0F");
+isBoiling("-1F");
+isBoiling("213F");
+isBoiling("104C");
+isBoiling("-10F");
+
+
