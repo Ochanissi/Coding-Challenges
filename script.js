@@ -29266,3 +29266,35 @@ cubes(3);
 cubes(4);
 cubes(5);
 cubes(10);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 647
+
+// Fix the code in the code tab to pass this challenge (only syntax errors). Look at the examples below to get an idea of what the function should do.
+
+
+function maxNum(n1, n2) {
+	if (n1 < n2) {
+	  return n2;
+	}
+  else {
+		return n1;
+  }
+}
+
+
+const maxNum = (n1, n2) => (n1 < n2) ? n2 : n1;
+
+
+let maxNum=(n1,n2)=>Math.max(n1,n2)
+
+
+maxNum(3, 7);
+maxNum(-1, 0);
+maxNum(1000, 400);
+maxNum(-3, -9);
+maxNum(88, 90);
+
+
