@@ -29298,3 +29298,29 @@ maxNum(-3, -9);
 maxNum(88, 90);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 648
+
+// Fix the code in the code tab to pass this challenge (only syntax errors). Look at the examples below to get an idea of what the function should do.
+
+
+function sumArray(arr) {
+	let sum = 0;
+  for (i = 0; i < arr.length; i++) {
+	  sum += arr[i];
+	}
+  return sum;
+}
+
+
+let sumArray = a => a.reduce((a,b)=> a+b);
+
+
+function sumArray(arr) {
+	return arr.reduce((a, b) => a + b, 0);
+}
+
+
+sumArray([1, 2, 3, 4, 5]);
+sumArray([-1, 0, 1]);
+sumArray([0, 4, 8, 12]);
