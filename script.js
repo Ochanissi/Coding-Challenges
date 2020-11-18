@@ -29324,3 +29324,52 @@ function sumArray(arr) {
 sumArray([1, 2, 3, 4, 5]);
 sumArray([-1, 0, 1]);
 sumArray([0, 4, 8, 12]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 649
+
+// Create a function that takes damage and speed (attacks per second) and returns the amount of damage after a given time.
+
+
+function damage(damage, speed, time) {
+	const a = time === 'hour' ? 3600 : time === 'minute' ? 60 : 1;
+	return damage < 0 || speed < 0 ? 'invalid' : damage * speed * a;
+}
+
+
+function damage(damage, speed, time) {
+	return damage > 0 && speed > 0 ? {
+	  	second: 1,
+	  	minute: 60,
+	  	hour: 3600
+	}[time] * damage * speed : 'invalid'
+}
+
+
+function damage(damage, speed, time) {
+	if (damage < 0 || speed < 0) return "invalid";
+	return damage * speed * {second:1, minute:60, hour:3600}[time];
+}
+
+
+const damage = (d, s, t) => 
+   d < 0 || s < 0 ? 'invalid'
+    : d * s * (t === 'minute' ? 60 : t === 'hour' ? 3600 : 1);
+    
+
+const damage = (d, s, t) => (d < 0 || s < 0) && 'invalid' ||
+	Math.pow(60, ['second', 'minute', 'hour'].indexOf(t)) * d * s
+
+
+damage(40, 5, "second");
+damage(100, 1, "minute");
+damage(2, 100, "hour");
+damage(20, 0.5, "minute");
+damage(2, 400, "hour");
+damage(-23, 20, "second");
+damage(-23, -5, "second");
+damage(20, -492321, "hour");
+
+
