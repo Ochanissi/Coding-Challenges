@@ -29373,3 +29373,42 @@ damage(-23, -5, "second");
 damage(20, -492321, "hour");
 
 
+/////////////////////////////////
+// CODING CHALLENGE 650
+
+// You will be given two extremely similar arrays, but exactly one of the items in an array will be valued slightly higher than its counterpart (which means that evaluating the value > the other value will return true).
+
+// Create a function that returns whether the first array is slightly superior to that of the second.
+
+
+function isFirstSuperior(arr1, arr2) {
+	return arr1.some((x, i) => x > arr2[i]);
+}
+
+
+function isFirstSuperior(arr1, arr2) {
+	return arr1 > arr2;
+}
+
+
+function isFirstSuperior(arr1, arr2) {
+  return arr1.join('') > arr2.join('');
+}
+
+
+const isFirstSuperior = (arr1, arr2) => arr1 > arr2;
+
+
+const isFirstSuperior = (r,s) => r.some((e,i) => e > s[i])
+
+
+isFirstSuperior([1, 2, 3, 4], [1, 2, 3, 3]);
+isFirstSuperior(['a', 'b', 'c'], ['a', 'd', 'c']);
+isFirstSuperior([true, 10, 'zebra'], [true, 10, 'zebra']);
+isFirstSuperior([true, 10, 'zebra'], [true, 10, 'ant']);
+isFirstSuperior([true, true, false, true], [true, true, true, true]);
+isFirstSuperior([9.1, 8.1, 7.1, 6.1], [9.1, 8.1, 7.1, 5.1]);
+isFirstSuperior(['llama', 'alligator'], ['llama', 'buffalo']);
+isFirstSuperior(['zebra', 'ostrich', 'whale'], ['ant', 'ostrich', 'whale']);
+isFirstSuperior([1, 2, 3, 4], [1, 2, 4, 4]);
+
