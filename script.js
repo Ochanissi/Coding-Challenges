@@ -29412,3 +29412,26 @@ isFirstSuperior(['llama', 'alligator'], ['llama', 'buffalo']);
 isFirstSuperior(['zebra', 'ostrich', 'whale'], ['ant', 'ostrich', 'whale']);
 isFirstSuperior([1, 2, 3, 4], [1, 2, 4, 4]);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 651
+
+// Create a function that inverts the rgb values of a given tuple.
+
+
+function colorInvert(rgb) {
+	return rgb.map(x => 255 - x);
+}
+
+
+const colorInvert = (rgb) => rgb.map( x => 255 - x);
+
+
+colorInvert([165, 170, 119]);
+colorInvert([165, 170, 136]);
+colorInvert([165, 170, 153]);
+colorInvert([165, 170, 170]);
+colorInvert([165, 170, 204]);
+colorInvert([165, 170, 221]);
+colorInvert([165, 170, 238]);
