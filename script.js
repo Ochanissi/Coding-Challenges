@@ -29435,3 +29435,59 @@ colorInvert([165, 170, 170]);
 colorInvert([165, 170, 204]);
 colorInvert([165, 170, 221]);
 colorInvert([165, 170, 238]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 652
+
+// Jay and Silent Bob have been given a fraction of an ounce but they only understand grams. Convert a fraction passed as a string to grams with up to two decimal places. An ounce weighs 28 grams.
+
+
+function jayAndBob(str) {
+	return str === "half" ? "14 grams" : str === "quarter" ? "7 grams" : str === "eighth" ? "3.5 grams" : "1.75 grams";
+}
+
+
+function jayAndBob(ounces) {
+	return `${28 * {
+	  	half: 0.5,
+	  	quarter: 0.25,
+	  	eighth: 0.125,
+	  	sixteenth: 0.0625
+	}[ounces]} grams`
+}
+
+
+function jayAndBob(str) {
+	var obj = {
+		"half": "14 grams",
+		"quarter": "7 grams",
+		"eighth": "3.5 grams",
+		"sixteenth": "1.75 grams"
+	}
+	return obj[str]
+}
+
+
+const jayAndBob = s => 28 / {h:2, q:4, e:8, s:16}[s[0]] + ' grams';
+
+
+
+const jayAndBob = str => {
+	let fraction;
+
+	if (str === 'half') fraction = 1 / 2;
+	if (str === 'quarter') fraction = 1 / 4;
+	if (str === 'eighth') fraction = 1 / 8;
+	if (str === 'sixteenth') fraction = 1 / 16;
+	
+	return `${fraction * 28} grams`;
+};
+
+
+jayAndBob("half");
+jayAndBob("quarter");
+jayAndBob("eighth");
+jayAndBob("sixteenth");
+
+
