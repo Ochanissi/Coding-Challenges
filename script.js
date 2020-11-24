@@ -29491,3 +29491,40 @@ jayAndBob("eighth");
 jayAndBob("sixteenth");
 
 
+/////////////////////////////////
+// CODING CHALLENGE 653
+
+// Create a function that takes a string and changes the word amazing to not amazing. Return the string without any change if the word edabit is part of the string.
+
+function amazingEdabit(str) {
+	return !str.includes('edabit') ? str.replace('amazing', 'not amazing') : str;
+}
+
+
+amazingEdabit=s=>/edabit/.test(s) ? s : s.replace("is","is not")
+
+
+function amazingEdabit(str){
+  if (!str.includes("edabit")) 
+    return str.replace("amazing","not amazing");
+return str;
+}
+
+
+function amazingEdabit(str){
+  if(str.search("edabit")==-1){return str.replace("amazing","not amazing");}
+else return str;
+}
+
+
+const amazingEdabit = str => str.includes("edabit") ? str : str.replace("amazing", "not amazing");
+
+
+
+amazingEdabit("edabit is amazing.");
+amazingEdabit("Mubashir is amazing.");
+amazingEdabit("Trump is amazing.");
+amazingEdabit("Infinity is amazing.");
+amazingEdabit("Mubashir and edabit are amazing.");
+amazingEdabit("Matt is amazing.");
+
