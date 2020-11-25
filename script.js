@@ -29528,3 +29528,29 @@ amazingEdabit("Infinity is amazing.");
 amazingEdabit("Mubashir and edabit are amazing.");
 amazingEdabit("Matt is amazing.");
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 654
+
+// Create a function that will handle simple math expressions. The input is an expression in the form of a string.
+
+
+function calculator(str) {
+	return eval(str);
+}
+
+
+const calculator = eval;
+
+
+const calculator = str => eval(str);
+
+
+calculator("23+4");
+calculator("45-15");
+calculator("49/7*2-3");
+calculator("5/2");
+calculator("-34/4");
+calculator("0+43-0+56*0");
+calculator("-14*2-37-0");
