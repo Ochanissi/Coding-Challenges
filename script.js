@@ -29554,3 +29554,33 @@ calculator("5/2");
 calculator("-34/4");
 calculator("0+43-0+56*0");
 calculator("-14*2-37-0");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 655
+
+// You are given two numbers a and b. Create a function that returns the next number greater than a and b and divisible by b.
+
+
+function divisibleByB(a, b) {
+	return a - a % b + b;
+}
+
+
+const divisibleByB = (a, b) => (b - (a % b)) + a;
+
+
+const divisibleByB = (a, b) => b * Math.ceil(a / b);
+
+
+const divisibleByB = (a, b) => b * (~~(a / b) + 1);
+
+
+divisibleByB(17, 8);
+divisibleByB(98, 3);
+divisibleByB(14, 11);
+divisibleByB(11, 8);
+divisibleByB(450, 36);
+divisibleByB(1019, 13);
+
+
