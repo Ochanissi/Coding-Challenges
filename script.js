@@ -29584,3 +29584,47 @@ divisibleByB(450, 36);
 divisibleByB(1019, 13);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 656
+
+// Create a function that takes an array of integers and strings. Convert integers to strings and return the new array.
+
+
+
+
+function parseArray(arr) {
+	return arr.map(x => String(x));
+}
+
+
+function parseArray(arr) {
+	return arr.map(String);
+}
+
+
+function parseArray(arr) {
+	return arr.map(m=>m+'')
+}
+
+
+function parseArray(arr) {
+	return (arr.map(x => x.toString()))
+}
+
+
+function parseArray(arr) {
+	if (arr.length == 0) {
+		return arr;
+	} else {
+	return arr.join().split(',')
+	}
+}
+
+
+
+parseArray([1, 2, "a", "b"]);
+parseArray([1, 2, 3, 17, 24, 3, "a", "123b"]),;
+parseArray(["abc", 123, "def", 456]);
+parseArray([]);
+
+
