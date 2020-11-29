@@ -29628,3 +29628,50 @@ parseArray(["abc", 123, "def", 456]);
 parseArray([]);
 
 
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 657
+
+// Check the principles of minimalist code in the intro to the first challenge.
+
+// In the Code tab you will find a code that is missing a single character in order to pass the tests. However, your goal is to submit a function as minimalist as possible. Use the tips in the tips section down below.
+
+// Write a function that returns the string "even" if the given integer is even, and the string "odd" if it's odd.
+
+// Tips
+// Converting a boolean, or something that will ultimately be interpreted as a boolean, into a boolean is redundant.
+
+
+function parity(n) {
+	return n % 2 === 0 ? 'even' : 'odd';
+}
+
+
+const parity = n => ['even', 'odd'][n % 2];
+
+
+function parity(n) {
+	return n % 2 ? 'odd' : 'even'
+}
+
+
+const parity = n => n % 2 === 0 ? "even" : "odd"
+
+
+function parity(n) {
+  return n%2==0?'even':'odd'
+  }
+
+
+parity(2);
+parity(3);
+parity(10);
+parity(31);
+parity(666);
+parity(777);
+parity(3482034);
+parity(3482035);
+
+
