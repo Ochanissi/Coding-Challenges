@@ -29675,3 +29675,37 @@ parity(3482034);
 parity(3482035);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 658
+
+// Many IDS (for emails or Google ID) are created using the person's name.
+
+// Create a function that will return a four-character ID using the person's first name and last name. The first character will be the first letter of the first name but in lowercase. The next three characters will be the first three characters of the last name, but the first letter will be capitalized and the other two will be in lower case.
+
+
+function createID(firstname, lastname) {
+	return firstname[0].toLowerCase() + lastname[0].toUpperCase() + lastname.slice(1, 3).toLowerCase();
+}
+
+
+const createID = (first, last) => first[0].toLowerCase() + last[0].toUpperCase() + last.slice(1, 3).toLowerCase();
+
+
+
+function createID(firstname, lastname) {
+	let firstLetter = firstname.slice(0,1);
+	let secondLetter = lastname.slice(0,1);
+	let lastLetters = lastname.slice(1,3)
+	return firstLetter.toLowerCase() + secondLetter.toUpperCase() + lastLetters.toLowerCase()
+}
+
+
+const createID = (f,l) =>
+ f[0].toLowerCase() + l[0].toUpperCase() + l.slice(1,3).toLowerCase();
+ 
+
+createID("mary","smith");
+createID("S","WORKING");
+createID("joHN","wAShington");
+
+
