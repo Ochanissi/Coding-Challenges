@@ -29709,3 +29709,45 @@ createID("S","WORKING");
 createID("joHN","wAShington");
 
 
+/////////////////////////////////
+// CODING CHALLENGE 659
+
+// In the Code tab you will find code that is missing a single character in order to pass the tests. However, your goal is to submit a function as minimalist as possible. Use the tips in the tips section below.
+
+// Write a function that returns the strings:
+
+// "both" if both given booleans a and b are true.
+// "first" if only a is true.
+// "second" if only b is true .
+// "neither" if both a and b are false.
+
+
+function areTrue(a, b) {
+	return a && b ? 'both' : !a && !b ? 'neither' : a ? 'first' : 'second';
+}
+
+
+const areTrue = (a, b) => ["neither", "first", "second", "both"][a + b * 2];
+
+
+function areTrue(a, b) {
+	return a && b ? 'both' 
+	: a ? 'first' 
+	: b ? 'second' 
+	: 'neither'
+}
+
+
+const areTrue = (a, b) => 
+['neither', 'first', 'second', 'both'][a + b * 2];
+
+
+const areTrue = (a, b) => a & b ? 'both' : a ? 'first' : b ? 'second': 'neither'
+
+
+
+areTrue(true, true);
+areTrue(true, false);
+areTrue(false, true);
+areTrue(false, false);
+
