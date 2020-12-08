@@ -29792,3 +29792,28 @@ greeting("Matt");
 greeting("Helen");
 greeting("Mubashir");
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 661
+
+// In the Code tab is a function which is meant to return how many uppercase letters there are in a list of various words. Fix the list comprehension so that the code functions normally!
+
+
+function countUppercase(str) {
+	return str.join('').split('').filter(x => x === x.toUpperCase()).length;
+}
+
+
+const countUppercase = s=>s.map(q=>(q.match(/[A-Z]/g)||[]).length).reduce((a,c)=>a+c,0)
+
+
+function countUppercase(str){
+	var a = str.join("").match(/[A-Z]/g)
+  return a == null ? 0 : a.length
+  }
+  
+
+countUppercase(["SOLO", "hello", "Tea", "wHat"]);
+countUppercase(["little", "lower", "down"]);
+countUppercase(["EDAbit", "Educate", "Coding"]);
