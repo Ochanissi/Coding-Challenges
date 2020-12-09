@@ -29817,3 +29817,31 @@ function countUppercase(str){
 countUppercase(["SOLO", "hello", "Tea", "wHat"]);
 countUppercase(["little", "lower", "down"]);
 countUppercase(["EDAbit", "Educate", "Coding"]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 662
+
+// Given an index and an array, return the value of the array with the given index.
+
+
+function valueAt(arr,i){
+	return arr[Math.floor(i)];
+}
+  
+
+const valueAt = (arr,i) => arr[~~i];
+
+
+const valueAt = (arr, i) => arr[Math.floor(i, 1)];
+
+
+let valueAt = (a,i) => a[Math.floor(eval(i))];
+
+
+valueAt([1, 2, 3, 4, 5, 6], 10 / 2);
+valueAt([1, 2, 3, 4], 6.535355314 / 2);
+valueAt([1, 2], 1.0 / 2);
+valueAt([1, 2, 3, 4, 5, 6], 8.0 / 2);
+
+
