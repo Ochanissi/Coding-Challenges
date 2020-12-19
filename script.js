@@ -29845,3 +29845,37 @@ valueAt([1, 2], 1.0 / 2);
 valueAt([1, 2, 3, 4, 5, 6], 8.0 / 2);
 
 
+/////////////////////////////////
+// CODING CHALLENGE 663
+
+// Create a function that takes two arguments. Both arguments are integers, a and b. Return true if one of them is 10 or if their sum is 10.
+
+
+function makesTen(a, b) {
+	return a === 10 || b === 10 || a + b === 10;
+}
+
+
+const makesTen = (a , b) => [a , b , a + b].includes(10);
+
+
+function makesTen(a,b){
+	if(a ===10||b === 10){
+		return true
+	} else if(a+b === 10){
+		return true
+	} else {
+		return false
+	}
+}
+
+
+makesTen(9, 10);
+makesTen(9, 9);
+makesTen(1, 9);
+makesTen(10, 1);
+makesTen(10, 10);
+makesTen(8, 2);
+makesTen(8, 3);
+makesTen(10, 42);
+makesTen(12, -2);
