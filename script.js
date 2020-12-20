@@ -29879,3 +29879,55 @@ makesTen(8, 2);
 makesTen(8, 3);
 makesTen(10, 42);
 makesTen(12, -2);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 664
+
+// Create a function that takes a number as an argument and returns negative of that number. Return negative numbers without any change.
+
+
+function returnNegative(n){
+  return n > 0 ? -n : n;
+}
+
+
+function returnNegative(n){
+  return -Math.abs(n)
+}
+
+
+function returnNegative(n){
+  return n<0?n:n*-1
+}
+
+
+let returnNegative = n => n > 0 ? -n : n;
+
+
+function returnNegative(n){
+  if (n < 0 || n === 0) {
+		return n;
+	} else {
+		return n * (-1);
+	}
+}
+
+
+function returnNegative(n){
+  if (n > 0) return -n
+	
+	else
+		return n
+}
+
+
+returnNegative(4);
+returnNegative(15);
+returnNegative(-4);
+returnNegative(42);
+returnNegative(-9);
+returnNegative(0);
+returnNegative(1);
+returnNegative(-1);
