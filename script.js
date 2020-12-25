@@ -29931,3 +29931,28 @@ returnNegative(-9);
 returnNegative(0);
 returnNegative(1);
 returnNegative(-1);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 665
+
+// You are counting points for a basketball game, given the amount of 2-pointers scored and 3-pointers scored, find the final points for the team and return that value.
+
+
+function points(twoPointers, threePointers) {
+	return 2 * twoPointers + 3 * threePointers;
+}
+
+
+let points = (a,b,c = a*2+b*3) => c;
+
+
+let points = (a,b)=> a*2 + b*3;
+
+
+points(1, 1);
+points(1, 2);
+points(2, 1);
+points(2, 2);
+points(69, 420);
