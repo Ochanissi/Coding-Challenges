@@ -29956,3 +29956,37 @@ points(1, 2);
 points(2, 1);
 points(2, 2);
 points(69, 420);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 666
+
+// Mubashir created an infinite loop! Help him by fixing the code in the code tab to pass this challenge (only syntax errors). Look at the examples below to get an idea of what the function should do.
+
+
+function printArray(number) {
+  var newArray = [];
+
+  for(var i = 1; i <= number; i++) {
+    newArray.push(i);
+  }
+
+  return newArray;
+}
+
+
+const printArray = n => Array(...Array(n)).map((v, i) => i + 1);
+
+
+function printArray(number) {
+  return Array.from(new Array(number), (el, i) => i + 1)
+}
+
+
+printArray(1);
+printArray(2);
+printArray(4);
+printArray(6);
+printArray(8);
+printArray(10);
+
