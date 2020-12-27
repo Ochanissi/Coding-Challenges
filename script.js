@@ -29990,3 +29990,32 @@ printArray(6);
 printArray(8);
 printArray(10);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 667
+
+// Create a function that calculates the area of a rectangle. If the arguments are invalid, your function must return -1.
+
+
+function area(h, w) {
+	return h > 0 && w > 0 ? h * w : -1;
+}
+
+
+function area(h, w) {
+	if(h <=0 || w <= 0) {
+		return -1;
+	}
+	return h * w;
+}
+
+
+const area = (h, w) => h > 0 && w > 0 ? h * w : -1;
+
+
+area(5, 3);
+area(8, 5);
+area(5, 4);
+area(2, 3);
+area(10000, 10000);
