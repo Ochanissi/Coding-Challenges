@@ -30019,3 +30019,37 @@ area(8, 5);
 area(5, 4);
 area(2, 3);
 area(10000, 10000);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 668
+
+// Some basic arithmetic operators are +, -, *, /, and %. In this challenge you will be given three parameters, num1, num2, and an operator. Use the operator on number 1 and 2.
+
+function operate(num1, num2, operator) {
+	return eval(num1 + operator + num2);
+}
+
+
+const operate = (num1, num2, operator) => eval(`${num1}${operator}${num2}`);
+
+
+function operate(num1, num2, operator){
+	return eval(num1.toString()+operator+num2.toString())
+}
+
+
+const operate = (x, y, op) => eval(x + op + y);
+
+
+operate(1, 1, "+");
+operate(1, 1, "-");
+operate(1, 1, "*");
+operate(1, 1, "/");
+operate(1, 1, "%");
+operate(2, 1, "+");
+operate(2, 1, "-");
+operate(2, 1, "*");
+operate(2, 1, "/");
+operate(2, 1, "%");
+
