@@ -30053,3 +30053,50 @@ operate(2, 1, "*");
 operate(2, 1, "/");
 operate(2, 1, "%");
 
+
+/////////////////////////////////
+// CODING CHALLENGE 669
+
+// The 50-30-20 strategy is a simple way to budget, which involves spending 50% of after-tax income on needs, 30% after tax income on wants, and 20% after-tax income on savings or paying off debt.
+
+// Given the after-tax income as ati, what you are supposed to do is to make a function that will return an object that shows how much a person needs to spend on needs, wants, and savings.
+
+
+function fiftyThirtyTwenty(ati) {
+	return { "Needs": ati * .5, "Wants": ati *  .3, "Savings": ati * .2};
+}
+
+
+function fiftyThirtyTwenty(ati) {
+	return { "Needs": ati*0.5, "Wants": ati*0.3, "Savings": ati*0.2 }
+}
+
+
+function fiftyThirtyTwenty(a) {
+	return b = {Needs:a/2,Wants:a*0.3,Savings:a/5};
+}
+
+
+const fiftyThirtyTwenty = ati => {
+	return 	{
+			Needs: ati * 0.5,
+			Wants: ati * 0.3,
+			Savings: ati * 0.2
+		};
+}
+
+
+function fiftyThirtyTwenty(ati) {
+  let ten = ati/10;
+	let needs = ten*5;
+  let wants = ten*3;
+  let saving = ten*2;
+ return { "Needs": needs, "Wants": wants, "Savings": saving };
+}
+
+
+fiftyThirtyTwenty(10000);
+fiftyThirtyTwenty(17610);
+fiftyThirtyTwenty(25000);
+fiftyThirtyTwenty(100000);
+fiftyThirtyTwenty(347100);
