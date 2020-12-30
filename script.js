@@ -30100,3 +30100,25 @@ fiftyThirtyTwenty(17610);
 fiftyThirtyTwenty(25000);
 fiftyThirtyTwenty(100000);
 fiftyThirtyTwenty(347100);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 670
+
+// Given an n-sided regular polygon n, return the total sum of internal angles (in degrees).
+
+
+function sumPolygon(n) {
+	return (n-2) * 180;
+}
+
+
+let sumPolygon = n => (n-2)*180;
+
+
+sumPolygon(3);
+sumPolygon(4);
+sumPolygon(5);
+sumPolygon(6);
+sumPolygon(7);
+
