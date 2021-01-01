@@ -30182,3 +30182,53 @@ mergeArrays(["e"], [1, 2, 3, 4, 5, 6, 7]);
 mergeArrays([1, 2, 3, 4, 5, 6, 7], ["e"]);
 mergeArrays([123, 456], ["c", "b", "a"]);
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 672
+
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits. Your task is to create a function that takes a string and returns true if the PIN is valid and false if it's not.
+
+
+function validatePIN(pin) {
+	let a = "";
+	for (let i = 0; i < pin.length; i++) {
+		if (!Number.isInteger(Number(pin[i]))) {
+			return false;
+			console.log(pin[i]);
+		} else a += pin[i];
+	}
+	return a.length === 4 || a.length === 6 ? true : false;
+}
+
+function validatePIN(pin) {
+    var regEx =  new RegExp(/^(\d{4}|\d{6})$/);
+    return regEx.test(pin);
+}
+
+
+function validatePIN(pin) {
+    return (/^\d{4}(\d\d)?$/).test(pin);
+}
+
+
+validatePIN("1234");
+validatePIN("12345");
+validatePIN("a234");
+validatePIN("");
+validatePIN("%234");
+validatePIN("`234");
+validatePIN("@234");
+validatePIN("#234");
+validatePIN("$234");
+validatePIN("*234");
+validatePIN("5678");
+validatePIN("^234");
+validatePIN("(234");
+validatePIN(")234");
+validatePIN("123456");
+validatePIN("-234");
+validatePIN("_234");
+validatePIN("+234");
+validatePIN("=234");
+validatePIN("?234");
