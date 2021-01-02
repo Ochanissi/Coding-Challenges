@@ -30232,3 +30232,35 @@ validatePIN("_234");
 validatePIN("+234");
 validatePIN("=234");
 validatePIN("?234");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 673
+
+// Write a regular expression that matches any valid Canadian postal code with any of the following formats:
+
+// A1A 1A1
+// A1A-1A1
+// A1A1B1
+// Make the match case insensitive.
+
+
+const x = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+
+
+function validate(zip) {
+	return x.test(zip)
+}
+
+validate("M3M 0A9");
+validate("M3M-0A9");
+validate("M3M0A9");
+validate("m4c 1t1");
+validate("m4c-1t1");
+validate("m4c1t1");
+
+!validate("m45 1t1");
+!validate("M4F 1TY");
+!validate("M4C A1T");
+!validate("M4C-1T1Z");
+!validate("M4C1T1Z");
