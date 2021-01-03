@@ -30264,3 +30264,24 @@ validate("m4c1t1");
 !validate("M4C A1T");
 !validate("M4C-1T1Z");
 !validate("M4C1T1Z");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 674
+
+// Write a function that takes a string name and a number num (either 0 or 1) and return "Hello" + name if num is 1, otherwise return "Bye" + name.
+
+
+
+function sayHelloBye(name, num) {
+	return (num === 1) ? `Hello ${name[0].toUpperCase() + name.slice(1)}` : `Bye ${name[0].toUpperCase() + name.slice(1)}`;
+}
+
+
+sayHelloBye("jose", 1);
+sayHelloBye("barry", 1);
+sayHelloBye("jon", 0);
+sayHelloBye("khloy", 1);
+sayHelloBye("sara", 0);
+sayHelloBye("Jon", 0);
+sayHelloBye("Matt", 1);
