@@ -30285,3 +30285,36 @@ sayHelloBye("khloy", 1);
 sayHelloBye("sara", 0);
 sayHelloBye("Jon", 0);
 sayHelloBye("Matt", 1);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 675
+
+// Given two integers, a and b, return True if a can be divided evenly by b. Return False otherwise.
+
+function dividesEvenly(a, b) {
+	return a % b === 0;
+}
+
+
+dividesEvenly(98, 7);
+dividesEvenly(87, 49);
+dividesEvenly(34, 14);
+dividesEvenly(78, 6);
+dividesEvenly(30, 4);
+dividesEvenly(87, 73);
+dividesEvenly(74, 7);
+dividesEvenly(87, 29);
+dividesEvenly(48, 24);
+dividesEvenly(99, 20);
+dividesEvenly(98, 49);
+dividesEvenly(100, 6);
+dividesEvenly(64, 4);
+dividesEvenly(70, 35);
+dividesEvenly(38, 38);
+dividesEvenly(29, 3);
+dividesEvenly(20, 8);
+dividesEvenly(66, 50);
+dividesEvenly(95, 1);
+dividesEvenly(58, 2);
