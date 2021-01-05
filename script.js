@@ -30318,3 +30318,108 @@ dividesEvenly(20, 8);
 dividesEvenly(66, 50);
 dividesEvenly(95, 1);
 dividesEvenly(58, 2);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 678
+
+// In this challenge, you have to convert a weight weighed on a planet of the Solar System to the corresponding weight on another planet.
+
+// To convert the weight, you have to divide it by the gravitational force of the planet on which is weighed and multiply the result (the mass) for the gravitational force of the other planet. See the table below for a list of gravitational forces:
+
+// Planet	m/s²
+// Mercury	3.7
+// Venus	8.87
+// Earth	9.81
+// Mars	3.711
+// Jupiter	24.79
+// Saturn	10.44
+// Uranus	8.69
+// Neptune	11.15
+// Given a weight weighed on planetA, return the converted value for planetB rounded to the nearest hundredth.
+
+
+function spaceWeights(planetA, weight, planetB) {
+	switch(planetA) {
+		case 'Mercury':
+			planetA = 3.7;
+			break;
+		case 'Venus':
+			planetA = 8.87;
+			break;
+		case 'Earth':
+			planetA = 9.81;
+			break;
+		case 'Mars':
+			planetA = 3.711;
+			break;
+		case 'Jupiter':
+			planetA = 24.79;
+			break;
+		case 'Saturn':
+			planetA = 10.44;
+			break;
+		case 'Uranus':
+			planetA = 8.69;
+			break;
+		case 'Neptune':
+			planetA = 11.15;
+			break;
+	}
+	
+		switch(planetB) {
+			case 'Mercury':
+				planetB = 3.7;
+				break;
+			case 'Venus':
+				planetB = 8.87;
+				break;
+			case 'Earth':
+				planetB = 9.81;
+				break;
+			case 'Mars':
+				planetB = 3.711;
+				break;
+			case 'Jupiter':
+				planetB = 24.79;
+				break;
+			case 'Saturn':
+				planetB = 10.44;
+				break;
+			case 'Uranus':
+				planetB = 8.69;
+				break;
+			case 'Neptune':
+				planetB = 11.15;
+				break;
+	}
+	
+	return Math.round(weight  / planetA * planetB * 100) / 100;
+}
+
+
+
+function spaceWeights(planetA, weight, planetB) {
+	const GF = {"Mercury": 3.7,
+                "Venus": 8.87,
+                "Earth": 9.81,
+                "Mars": 3.711,
+                "Jupiter": 24.79,
+                "Saturn": 10.44,
+                "Uranus": 8.69,
+                "Neptune": 11.15};
+	return +((weight / GF[planetA]) * GF[planetB]).toFixed(2);
+}
+
+
+spaceWeights("Earth", 1, "Mars");
+spaceWeights("Earth", 1, "Jupiter");
+spaceWeights("Earth", 1, "Neptune");
+spaceWeights("Jupiter", 100, "Mercury");
+spaceWeights("Venus", 75, "Jupiter");
+spaceWeights("Uranus", 10, "Saturn");
+spaceWeights("Mars", 120, "Mercury");
+spaceWeights("Neptune", 1421, "Earth");
+spaceWeights("Jupiter", 33, "Mercury");
+spaceWeights("Saturn", 555, "Venus");
+spaceWeights("Jupiter", 3.141592, "Earth");
