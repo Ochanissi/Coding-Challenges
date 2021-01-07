@@ -30462,3 +30462,26 @@ oldest({Brooke: 8, Lucy: 44, Cooper: 33, Ellie: 82, Millie: 7});
 oldest({Piper: 10, Quinn: 62, David: 20, John: 61, Noah: 17});
 oldest({Cara: 5, Max: 81, Lucas: 62, Sophie: 71, Amelia: 79});
 oldest({Leo: 29, Clara: 8, Florence: 69, Lewis: 38, James: 47});
+
+
+/////////////////////////////////
+// CODING CHALLENGE 680
+
+// Create a function that squares every digit of a number.
+
+function squareDigits(n) {
+	return [...n.toString()].map(x => Math.pow(x, 2)).join("") * 1;
+}
+
+
+squareDigits(9119);
+squareDigits(8726);
+squareDigits(9763);
+squareDigits(2230);
+squareDigits(2797);
+squareDigits(233);
+squareDigits(7437);
+squareDigits(2483);
+squareDigits(5742);
+squareDigits(5636);
+squareDigits(841);
