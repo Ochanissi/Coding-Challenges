@@ -30536,3 +30536,30 @@ reverseArr(1485979);
 reverseArr(623478);
 reverseArr(12345);
 reverseArr(202069);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 683
+
+// Create a function that takes in a current mood and return a sentence in the following format: "Today, I am feeling {mood}". However, if no argument is passed, return "Today, I am feeling neutral".
+
+function moodToday(mood) {
+	return mood ? `Today, I am feeling ${mood}` : "Today, I am feeling neutral";
+}
+
+
+function moodToday(mood) {
+	return `Today, I am feeling ${mood || "neutral"}`
+}
+
+
+function moodToday(mood = "neutral") {
+	return `Today, I am feeling ${mood}`;
+}
+
+moodToday("happy");
+moodToday("sad");
+moodToday("very happy");
+moodToday("rather empty inside");
+moodToday("confused");
+moodToday();
