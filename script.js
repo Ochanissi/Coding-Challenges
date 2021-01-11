@@ -30563,3 +30563,49 @@ moodToday("very happy");
 moodToday("rather empty inside");
 moodToday("confused");
 moodToday();
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 684
+
+// Given a number, return the difference between the maximum and minimum numbers that can be formed when the digits are rearranged.
+
+
+
+function rearrangedDifference(num) {
+	return num.toString().split("").sort((a, b) => b - a).join("") - num.toString().split("").sort((a, b) => a - b).join("");
+}
+
+
+const rearrangedDifference = num =>
+	+[...String(num)].sort((a, b) => b - a).join('') -
+	+[...String(num)].sort().join('')
+;
+
+function rearrangedDifference(num) {
+	min = +[...''+num].sort((a,b) => a-b).join('')
+	max = +[...''+num].sort((a,b) => b-a).join('')
+	return max - min
+}
+
+rearrangedDifference(9092564);
+rearrangedDifference(1308821);
+rearrangedDifference(8386568);
+rearrangedDifference(7794084);
+rearrangedDifference(6366093);
+rearrangedDifference(7863060);
+rearrangedDifference(3368327);
+rearrangedDifference(7218787);
+rearrangedDifference(7723188);
+rearrangedDifference(8816317);
+rearrangedDifference(8824349);
+rearrangedDifference(3320707);
+rearrangedDifference(1695488);
+rearrangedDifference(2120034);
+rearrangedDifference(5300586);
+rearrangedDifference(3538814);
+rearrangedDifference(1336939);
+rearrangedDifference(6290200);
+rearrangedDifference(5268866);
+rearrangedDifference(5155458);
