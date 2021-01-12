@@ -30609,3 +30609,64 @@ rearrangedDifference(1336939);
 rearrangedDifference(6290200);
 rearrangedDifference(5268866);
 rearrangedDifference(5155458);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 685
+
+// Create a function that counts the number of times a particular letter shows up in the word search.
+
+
+
+function letterCounter(arr, letter) {
+	return arr.flat().filter(x => x === letter).length;
+}
+
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'D');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'H');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'Z');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'R');
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'X');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'S');
