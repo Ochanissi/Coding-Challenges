@@ -30670,3 +30670,43 @@ letterCounter([
 	['F', 'G', 'G', 'R', 'S', 'R'],
 	['V', 'X', 'H', 'A', 'S', 'S']
 ], 'S');
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 686
+
+// Create a function that takes a Present Value of Cash pv, an Investment Rate ir and the Number of Years years to be Invested and returns the Net Present Value.
+
+// In the world of finance, the time value of money must be taken into account. In simple terms, this is because $100 now would buy more than $100 a year from now. Therefore, if we receive $100 in one years time, it will not be worth as much to us today.
+
+// Assuming we received the Present Value of Cash at the end of each year over a period of time, this can be calculated by multipying the Present Value of Cash by the cumulative present value interest rate.
+
+// The result should always be rounded to the nearest whole dollar.
+
+// It is not possible to receive a negative amount of money, use a negative investment rate or invest for a negative number of years. These should return false.
+
+const netPresentValue = (pv, ir, y) => {
+	return [pv, ir, y].every(arg => arg > 0) ?
+				 `$${Math.round(pv*((1-((1+ir)**-y))/ir))}`
+				 : false;
+}
+
+
+const netPresentValue = (pv, ir, years) => {
+	const npv = (1 - (1 + ir) ** -years) / ir * pv;
+	return npv < 0? false : `$${Math.round(npv)}`
+}
+
+function netPresentValue(pv, ir, years) {
+	return [...arguments].every(x=>x>=0)?`$${(pv*(1-Math.pow(1+ir,-years))/ir).toFixed(0)}`:false
+}
+
+
+netPresentValue(100, 0.10, 1);
+netPresentValue(100, 0.2, 1);
+netPresentValue(100, 0.1, 20);
+netPresentValue(10000, 0.05, 20);
+netPresentValue(250, 0.01, 1);
+netPresentValue(250, 0.01, -1);
+netPresentValue(15, 0.50, 100);
