@@ -30710,3 +30710,34 @@ netPresentValue(10000, 0.05, 20);
 netPresentValue(250, 0.01, 1);
 netPresentValue(250, 0.01, -1);
 netPresentValue(15, 0.50, 100);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 687
+
+// Create a function that takes an integer and outputs an n x n square solely consisting of the integer n.
+
+function squarePatch(n) {
+	return Array(n).fill().map(()=>Array(n).fill(n))
+}
+
+const squarePatch = length =>
+  Array.from({ length }, () => Array.from({ length }).fill(length));
+
+function squarePatch(n) {
+    return Array(n).fill().map(()=>Array(n).fill(n))
+}
+
+squarePatch(3);
+
+squarePatch(2);
+
+squarePatch(4);
+
+squarePatch(6);
+
+squarePatch(5);
+
+squarePatch(1);
+
+squarePatch(0);
