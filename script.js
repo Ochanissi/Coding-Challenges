@@ -30869,3 +30869,30 @@ constructDeconstruct("edabit is a awesome");
 constructDeconstruct("123456789");
 constructDeconstruct("");
 constructDeconstruct("        ");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 689
+
+// Array A is contained inside array B if each element in A also exists in B.
+
+// The number of times a number is present doesn't matter. In other words, if we transformed both arrays into sets, A would be a subset of B.
+
+
+// Create a function that determines with the first array is a subset of the second.
+
+
+function subset(arr1, arr2) {
+	return arr1.every(x => arr2.includes(x));
+}
+
+
+subset([1, 3], [1, 3, 3, 5]);
+subset([4, 8, 7], [7, 4, 4, 4, 9, 8]);
+subset([1, 3], [1, 33]);
+subset([1, 3, 10], [10, 8, 8, 8]);
+subset([5, 9, 13], [13, 9, 5]);
+subset([5, 9, 13], [13, 9, 5, 1, 1, 1]);
+subset([5, 9, 13], [13, 5, 1, 1, 1]);
+
