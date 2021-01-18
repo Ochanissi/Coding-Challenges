@@ -30935,3 +30935,54 @@ oldest({Brooke: 8, Lucy: 44, Cooper: 33, Ellie: 82, Millie: 7});
 oldest({Piper: 10, Quinn: 62, David: 20, John: 61, Noah: 17});
 oldest({Cara: 5, Max: 81, Lucas: 62, Sophie: 71, Amelia: 79});
 oldest({Leo: 29, Clara: 8, Florence: 69, Lewis: 38, James: 47});
+
+
+/////////////////////////////////
+// CODING CHALLENGE 691
+
+// Create a function that takes in two arrays and returns true if the second array follows the first array by one element, and false otherwise. In other words, determine if the second array is the first array shifted to the right by 1.
+
+
+
+
+function simonSays(arr1, arr2) {
+	for (let i = 1; i < arr2.length; i++) {
+		if (arr2[i] !== arr1[i - 1]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+function simonSays(arr1, arr2) {
+	return arr1.slice(-1) - arr2.slice(-1)  === 1 ? true : false
+}
+
+const simonSays = (arr1, arr2) =>
+  arr2.slice(1).every((num, i) => num === arr1[i]);
+
+simonSays(
+	[1, 2, 3, 4, 5],
+	[0, 1, 2, 3, 4]
+);
+
+simonSays(
+	[1, 2, 3, 4, 5],
+	[5, 5, 1, 2, 3]
+);
+
+simonSays(
+	[1, 2],
+	[5, 1]
+);
+
+simonSays(
+	[1, 2],
+	[5, 5]
+);
+
+simonSays(
+	[1, 2, 3],
+	[0, 1, 2]
+);
