@@ -30986,3 +30986,29 @@ simonSays(
 	[1, 2, 3],
 	[0, 1, 2]
 );
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 692
+
+// Suppose that you invest $10,000 for 10 years at an interest rate of 6% compounded monthly. What will be the value of your investment at the end of the 10 year period?
+
+// Create a function that accepts the principal p, the term in years t, the interest rate r, and the number of compounding periods per year n. The function returns the value at the end of term rounded to the nearest cent.
+
+
+function compoundInterest(p, t, r, n) {
+	return Number((p * Math.pow((1 + r / n), n * t)).toFixed(2));
+}
+
+
+function compoundInterest(p, t, r, n) {
+	return +(p * (1 + r / n) ** (n * t)).toFixed(2);
+}
+
+compoundInterest(100, 1, 0.05, 1);
+compoundInterest(3500, 15, 0.1, 4);
+compoundInterest(100000, 20, 0.15, 365);
