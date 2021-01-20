@@ -31012,3 +31012,31 @@ function compoundInterest(p, t, r, n) {
 compoundInterest(100, 1, 0.05, 1);
 compoundInterest(3500, 15, 0.1, 4);
 compoundInterest(100000, 20, 0.15, 365);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 693
+
+// Your job is to find out whether the lamp is on or off.
+
+// C heck the test tab to find out what you have to do to make this work..
+
+
+function lampStatus() {
+	return lamp === 'on' ? true : false;
+}
+
+const lampStatus = () => lamp === `on`;
+
+
+(lamp = `off`, lampStatus());
+lampStatus();
+(lamp = `on`, lampStatus());
+(lamp = `off`, lampStatus());
+(lamp = `on`, lampStatus());
+lampStatus();
+(lamp = `off`, lampStatus());
+(lamp = `on`, lampStatus());
+lampStatus();
+(lamp = `off`, lampStatus());
+(lamp = `on`, lampStatus());
