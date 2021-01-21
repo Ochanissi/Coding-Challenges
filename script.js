@@ -31040,3 +31040,43 @@ lampStatus();
 lampStatus();
 (lamp = `off`, lampStatus());
 (lamp = `on`, lampStatus());
+
+
+/////////////////////////////////
+// CODING CHALLENGE 694
+
+// Create a function where given the number n, return the sum of all square numbers up to and including n.
+
+
+function squaresSum(n) {
+	const a = [];
+	for (let i = 1; i <= n; i++) {
+		a.push(Math.pow(i, 2));
+	}
+	return a.reduce((x, i) => x + i);
+}
+
+
+const squaresSum = length => Array.from({length}, (_,i) => (i+1) ** 2).reduce((a,b) => a + b, 0);
+
+
+const squaresSum = n => n++ * n * (2 * n - 1) / 6
+
+
+const squaresSum = n => (2*n**3 + 3*n**2 + n) / 6;
+
+
+function squaresSum(n) {
+	return [...new Array(n)].map((e,i) => e = (i+1)*(i+1)).reduce((a,c) => a+c,0);
+}
+
+squaresSum(1);
+squaresSum(2);
+squaresSum(3);
+squaresSum(4);
+squaresSum(5);
+squaresSum(6);
+squaresSum(7);
+squaresSum(8);
+squaresSum(9);
+squaresSum(10);
