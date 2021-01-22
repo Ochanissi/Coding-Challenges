@@ -31080,3 +31080,54 @@ squaresSum(7);
 squaresSum(8);
 squaresSum(9);
 squaresSum(10);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 695
+
+// Create a function that takes an integer and returns an array from 1 to the given number, where:
+
+// If the number can be divided evenly by 4, amplify it by 10 (i.e. return 10 times the number).
+// If the number cannot be divided evenly by 4, simply return the number.
+
+
+function amplify(num) {
+	let a = [];
+	let c = num;
+	for (let i = 1; i <= num; i++) {
+		if (c % 4 === 0) {
+			a.push(c * 10);
+			c--;
+		} else {
+			a.push(c);
+			c--;
+		}
+	}
+	return a.reverse();
+}
+
+
+function amplify(num) {
+	var a = [];
+	for(var i = 1; i <= num; i++){
+		if(i % 4 == 0){
+			a.push(i*10);
+		}else{
+			a.push(i);
+		}
+	}
+	return a;
+}
+
+
+const amplify = num =>
+  Array.from({ length: num }, (_, i) => {
+    const num = i + 1;
+    return num % 4 === 0 ? num * 10 : num;
+});
+
+
+amplify(1);
+amplify(4);
+amplify(25);
