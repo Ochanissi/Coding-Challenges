@@ -31131,3 +31131,49 @@ const amplify = num =>
 amplify(1);
 amplify(4);
 amplify(25);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 696
+
+// Create a function that determines whether elements in an array can be re-arranged to form a consecutive list of numbers where each number appears exactly once.
+
+
+function cons(arr) {
+	const a = arr.sort((a, b) => a - b);
+	const b = [];
+	for (let i = a[0]; i <= a[a.length - 1]; i++){
+		b.push(i);
+	}
+	return a.toString() === b.toString()
+}
+
+
+function cons(arr) {
+	return arr.sort((a,b) => a>b).slice(1).every((x,i) => arr[i] == x-1);
+}
+
+
+const cons = arr => {
+    if (new Set(arr).size !== arr.length) return false;
+    const sorted = arr.sort((a, b) => a - b);
+    return sorted.slice(1).every((num, i) => num - sorted[i] === 1);
+  };
+
+
+function cons(arr) {
+    arr = arr.sort(function(a,b){return a-b;});
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] != arr[i-1] + 1) return false;
+    }
+    return true;
+}
+
+
+cons([5, 1, 4, 3, 2]);
+cons([55, 59, 58, 56, 57]);
+cons([-3, -2, -1, 1, 0]);
+cons([5, 1, 4, 3, 2, 8]);
+cons([5, 6, 7, 8, 9, 9]);
+cons([5, 3]);
