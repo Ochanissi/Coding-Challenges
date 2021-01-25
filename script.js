@@ -31201,3 +31201,39 @@ const TEST = [
 	[[1,1,1,1,1,1,1,1,1,1], "(111) 111-1111"],
 	[[8,7,4,1,2,5,6,5,8,2], "(874) 125-6582"]
 ];
+
+
+/////////////////////////////////
+// CODING CHALLENGE 698
+
+// Given an array, transform that array into a mirror.
+
+
+function mirror(arr) {
+	const a = arr;
+	for (let i = arr.length - 2; i >= 0; i--) {
+		a.push(arr[i]);
+	}
+	return a;
+}
+
+
+function mirror(arr) {
+	return [... arr, ... arr.splice(0, arr.length - 1).reverse()]
+}
+
+
+function mirror(arr) {
+	return arr.concat(arr.concat().reverse().slice(1));
+}
+
+
+const mirror = ar => {
+    let a = ar.slice().reverse().slice(1);
+    let b = ar.concat(a);
+    return b;
+}
+
+mirror([1,2,3,4,5]);
+mirror([0,2,4,6]);
+mirror([1,2,2,3,3,4]);
