@@ -31237,3 +31237,33 @@ const mirror = ar => {
 mirror([1,2,3,4,5]);
 mirror([0,2,4,6]);
 mirror([1,2,2,3,3,4]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 699
+
+// Create a function that takes a string of four numbers. These numbers represent two separat points on a graph known as the x-axis (horizontal axis) and y-axis (vertical axis). Each number corresponds as follows: "x1, y1, x2, y2". Calculate the distance between x and y.
+
+
+function shortestDistance(str) {
+	return Number(Math.hypot((str.split(",")[0] - str.split(",")[2]), (str.split(",")[1] - str.split(",")[3])).toFixed(2));
+}
+
+
+function shortestDistance(str) {
+	let [x1,y1,x2,y2] = str.split(",").map(a => Number(a));
+	return Number(Math.hypot(x1 - x2, y1 - y2).toFixed(2));
+};
+
+shortestDistance('1,1,2,1');
+shortestDistance('1,1,3,1');
+shortestDistance('-5,1,3,1');
+shortestDistance('-5,2,3,1');
+shortestDistance('18174,773931,851747,490653');
+shortestDistance('737017,82252,882429,883228');
+shortestDistance('700230,523734,877217,172766');
+shortestDistance('354972,19774,976623,664356');
+shortestDistance('587568,609626,654834,18784');
+shortestDistance('66662,790481,873587,545905');
+shortestDistance('332500,825806,905569,98242');
