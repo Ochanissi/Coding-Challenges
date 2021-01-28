@@ -31293,3 +31293,32 @@ lettersOnly(')^/|,!!09]=/1<G2?`=[l{a}d9]^i7a0|t6_o2*r');
 lettersOnly(']8;]V9e{=0r!.5t>i<^_g"4o"5~');
 lettersOnly('%%)?"?B#>/_4a#,;t8|m8675a(n');
 lettersOnly('97H^)~a8567ll*o?"6%)w63e37e<n?@=');
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 701
+
+// Write a function that maps files to their extension names.
+
+
+function getExtension(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		a.push(arr[i].split(".")[1]);
+	}
+	return a;
+}
+
+function getExtension(arr) {
+	return arr.map(x => x.split(".").pop())
+}
+
+function getExtension(arr) {
+	return arr.map(x => x.split('.')[1])
+}
+
+getExtension(["project1.jpg", "project1.pdf", "project1.mp3"]);
+getExtension(["ruby.rb", "cplusplus.cpp", "python.py", "javascript.js"]);
+getExtension(["code.html", "code.css"]);
+getExtension(["minesweeper.java", "game.java", "my_project.java"]);
