@@ -31322,3 +31322,27 @@ getExtension(["project1.jpg", "project1.pdf", "project1.mp3"]);
 getExtension(["ruby.rb", "cplusplus.cpp", "python.py", "javascript.js"]);
 getExtension(["code.html", "code.css"]);
 getExtension(["minesweeper.java", "game.java", "my_project.java"]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 702
+
+// Create a function that flips M's to W's (all uppercase).
+
+
+function wumbo(words) {
+	return words.replace(/M/g, "W");
+}
+
+
+function wumbo(words) {
+    return words
+      .split("")
+      .map(x => (x === "M" ? "W" : x))
+      .join("");
+  }
+
+
+wumbo("WHAT DO YOU MEAN WE'RE OUT OF MONEY");
+wumbo("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+wumbo("1 WUMBO 2 WUMBO 3 WUMBO 4");
