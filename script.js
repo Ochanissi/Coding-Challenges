@@ -31346,3 +31346,39 @@ function wumbo(words) {
 wumbo("WHAT DO YOU MEAN WE'RE OUT OF MONEY");
 wumbo("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 wumbo("1 WUMBO 2 WUMBO 3 WUMBO 4");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 703
+
+// Write a function that reverses the subarray between the start and end index (inclusive). The rest of the array should be kept the same.
+
+
+function rangedReversal(arr, start, end) {
+	const a = arr.slice(start, end + 1).reverse();
+	return [arr.slice(0, start), a, arr.slice(end + 1, arr.length)].flat();
+}
+
+
+function rangedReversal(arr, start, end) {
+    let prev=arr.slice(0,start)
+    let revesed=arr.slice(start,end+1).reverse()
+    let next=arr.slice(end+1)
+    return [...prev, ...revesed, ...next]
+}
+
+
+const rangedReversal = (arr, start, end) =>
+  arr
+    .slice(0, start)
+    .concat(arr.slice(start, end + 1).reverse())
+    .concat(arr.slice(end + 1));
+
+
+rangedReversal([1, 2, 3, 4, 5, 6], 1, 3);
+rangedReversal([1, 2, 3, 4, 5, 6], 0, 4);
+rangedReversal([9, 8, 7, 4], 0, 0);
+rangedReversal([9, 8, 7, 4], 0, 3);
+rangedReversal([8, 9, 3, 3, 2, 7, 4], 5, 6);
+rangedReversal([1, 2], 0, 1);
+rangedReversal([7, 8, 9, 4], 1, 2);
