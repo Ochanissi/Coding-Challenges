@@ -31416,3 +31416,46 @@ FizzBuzz(5);
 FizzBuzz(15);
 FizzBuzz(10);
 FizzBuzz(98);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 705
+
+// Given the number n and an array of interior angles angles, return whether or not it's possible to make a polygon with n sides with the angles given. Remember that angles must be equals or under 180° and over 0°.
+
+
+function isShapePossible(n, angles) {
+	return angles.some(x => x <= 0 || x > 180) || angles.length < 3 ? false : Number.isInteger((n-2) * angles.reduce((x, i) => x + i) / n) ? true : false
+}
+
+
+const isShapePossible = (sides, angles) => {
+	return sides > 2
+		&& angles.reduce((a,b) => a + b) === (sides - 2) * 180
+		&& angles.every(angle => angle > 0 && angle <= 180);
+}
+
+
+const isShapePossible = (n, a) => n > 2 && 
+    a.every(el => el > 0 && el < 180) &&
+    a.reduce((sum, el) => sum + el) % 180 === 0;
+
+
+const isShapePossible = (n,A) => n-- > 2
+    && A.every(a => a > 0 && a < 180)
+    && eval(A.join`+`) == --n * 180
+
+
+isShapePossible(4, [90, 90, 90, 90]);
+isShapePossible(3, [20, 20, 140]);
+isShapePossible(1, [21]);
+isShapePossible(5, [100, 100, 100, 200, 40]);
+isShapePossible(7, [830, 20, 20, 10, 10, 5, 5]);
+isShapePossible(4, [90, 90, 90, 89]);
+isShapePossible(2, [21, 78]);
+isShapePossible(8, [135, 135, 135, 135, 135, 135, 135, 135]);
+isShapePossible(5, [500, 10, 10, 10, 10]);
+isShapePossible(10, [21, 12, 333, 2, 2532, 52, 2, 2, 1, 8]);
+isShapePossible(5, [108, 108, 108, 108, 108]);
+isShapePossible(3, [180, 0, 0]);
+isShapePossible(4, [180, 180, -10, 10]);
