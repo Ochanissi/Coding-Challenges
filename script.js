@@ -31459,3 +31459,48 @@ isShapePossible(10, [21, 12, 333, 2, 2532, 52, 2, 2, 1, 8]);
 isShapePossible(5, [108, 108, 108, 108, 108]);
 isShapePossible(3, [180, 0, 0]);
 isShapePossible(4, [180, 180, -10, 10]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 706
+
+// Create a function that takes both a string and an array of numbers as arguments. Rearrange the letters in the string to be in the order specified by the index numbers. Return the "remixed" string.
+
+
+function remix(str, arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		a[arr[i]] = str[i];
+	}
+	return a.join("");
+}
+
+
+function remix(str, arr) {
+    return arr.map((x,i,arr)=> str.charAt(arr.indexOf(i))).join('');
+  }
+
+
+function remix(str, arr) {
+    return arr.reduce((rmx, pos, i) => {
+      rmx[pos] = str.charAt(i);
+      return rmx;
+    }, []).join('')};
+
+
+
+remix = (s, a) => (f=[],a.map((v,i) => f[v] = s[i]),f).join``;
+
+
+const remix = (str, arr) => arr.reduce((chars, n, index) => {
+    chars[n] = str.charAt(index);
+    return chars;
+  }, []).join("");
+
+remix("abcd", [0, 3, 1, 2]);
+remix("PlOt", [1, 3, 0, 2]);
+remix("computer", [0, 2, 1, 5, 3, 6, 7, 4]);
+remix("twist", [4, 0, 1, 2, 3]);
+remix("responsibility", [0, 6, 8, 11, 10, 7, 13, 5, 3, 2, 4, 12, 1, 9]);
+remix("Interference", [6, 9, 10, 11, 7, 3, 0, 2, 5, 1, 8, 4]);
+remix("sequence", [5, 7, 3, 4, 0, 1, 2, 6]);
