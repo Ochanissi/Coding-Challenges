@@ -31504,3 +31504,65 @@ remix("twist", [4, 0, 1, 2, 3]);
 remix("responsibility", [0, 6, 8, 11, 10, 7, 13, 5, 3, 2, 4, 12, 1, 9]);
 remix("Interference", [6, 9, 10, 11, 7, 3, 0, 2, 5, 1, 8, 4]);
 remix("sequence", [5, 7, 3, 4, 0, 1, 2, 6]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 707
+
+// An array is positive dominant if it contains strictly more unique positive values than unique negative values.
+
+// Write a function that returns true if an array is positive dominant.
+
+function isPositiveDominant(a) {
+	const s = [...new Set(a)]
+	const x = [0, 0];
+	for (let i = 0; i < s.length; i++) {
+		if (s[i] > 0) {
+			x[0]++;
+		} else if (s[i] < 0) {
+			x[1]++;
+		}
+	}
+	return x[0] > x[1];
+}
+
+
+function isPositiveDominant(a) {
+	return new Set(a.filter(x=>x>0)).size>new Set(a.filter(x=>x<0)).size
+}
+
+
+const isPositiveDominant=a=> 
+	a.filter((e,i,a)=>e>0 && a.indexOf(e)==i).length>
+            a.filter((e,i,a)=>e<0 && a.indexOf(e)==i).length
+            
+
+const isPositiveDominant = a => {
+    let vals = [...new Set(a)];
+    let pos = vals.filter(num => num >= 0);
+    let neg = vals.filter(num => num <= 0);
+    
+    return pos.length > neg.length;
+}
+
+
+function isPositiveDominant(a) {
+	a = a.filter(function(x, i, self) { return self.indexOf(x) === i; });
+	var r = [0,0];
+	for (var i in a) {
+		if (a[i] > 0) r[0]++;
+		if (a[i] < 0) r[1]++;
+	};
+	return r[0] > r[1];
+}
+
+
+isPositiveDominant([1, 1, 1, 1, -3, -4]);
+isPositiveDominant([5, 99, 832, -3, -4]);
+isPositiveDominant([5, 0]);
+isPositiveDominant([0, -4, -1]);
+isPositiveDominant([1, 2, 3, -1]);
+isPositiveDominant([1, 0, 0, -1]);
+isPositiveDominant([5, 4, 3, 0, 0, -1, -1, -2, -2]);
+isPositiveDominant([52, 52, 52, -3, 2, 2, 2, -4]);
+isPositiveDominant([3, 3, 3, 3, -1, -1, -1]);
