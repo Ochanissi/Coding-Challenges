@@ -31566,3 +31566,51 @@ isPositiveDominant([1, 0, 0, -1]);
 isPositiveDominant([5, 4, 3, 0, 0, -1, -1, -2, -2]);
 isPositiveDominant([52, 52, 52, -3, 2, 2, 2, -4]);
 isPositiveDominant([3, 3, 3, 3, -1, -1, -1]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 708
+
+// You are to read each part of the date into its own integer type variable. The year should be a 4 digit number. You can assume the user enters a correct date (no error checking required).
+
+// Determine whether the entered date is a magic date. Here are the rules for a magic date:
+
+// mm * dd is a 1-digit number that matches the last digit of yyyy or
+// mm * dd is a 2-digit number that matches the last 2 digits of yyyy or
+// mm * dd is a 3-digit number that matches the last 3 digits of yyyy
+// The program should then display true if the date is magic, or false if it is not.
+
+
+function Magic(str) {
+	const m = str.split(" ")[0];
+	const d = str.split(" ")[1];
+	
+	const a = str.split(" ")[2].slice(-1);
+	const b = str.split(" ")[2].slice(2, 4);
+	const c = str.split(" ")[2].slice(1, 4);
+	
+	return Number(m * d) === Number(c) || m + d === b;
+}
+
+
+const Magic = str => {
+    const [day, month, year] = str.split(' ').map(Number);
+  
+    return String(year).endsWith(day * month);
+};
+
+
+function Magic(str) {
+    const [d, m, y] = str.split(' ')
+    return y.endsWith(d * m)
+}
+
+
+Magic('1 1 2011');
+Magic('4 1 2001');
+Magic('2 4 2008');
+Magic('3 3 2009');
+Magic('5 2 2010');
+Magic('1 2 2011');
+Magic('9 2 2011');
+Magic('1 4 2011');
