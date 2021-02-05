@@ -31614,3 +31614,47 @@ Magic('5 2 2010');
 Magic('1 2 2011');
 Magic('9 2 2011');
 Magic('1 4 2011');
+
+
+/////////////////////////////////
+// CODING CHALLENGE 708
+
+// Create a function which replaces all the x's in the string in the following ways:
+
+// Replace all x's with "cks" UNLESS:
+
+// The word begins with "x", therefore replace it with "z".
+// The word is just the letter "x", therefore replace it with "ecks".
+
+function xPronounce(sentence) {
+	return sentence.split(" ").map(x => x.startsWith('x') && x.length === 1 ? 'ecks' : x.startsWith('x') ? 'z' + x.slice(1, x.length) : x.replace('x', 'cks')).join(" ");
+}
+
+
+const xPronounce = sentence => {
+	let re = /(\bx\b)|(\bx)|(x)/ig;
+	return sentence
+		.replace(re, (_, a, b, c) => a ? "ecks" : b ? "z" : "cks");
+}
+
+
+
+const xPronounce = sentence =>sentence.split(' ').map(a => a.match(/^x$/) ? 'ecks':a.startsWith('x')?'z'+a.slice(1):a.replace(/x/gi,"cks")).join(' ')
+
+
+const xPronounce = sentence =>
+	sentence.replace(/\bx\b/g, "ecks")
+					.replace(/\bx/g, "z")
+					.replace(/x/g, "cks");
+
+
+
+xPronounce("Inside the box was a xylophone");
+xPronounce("The x ray is excellent");
+xPronounce("OMG x box unboxing video x D");
+xPronounce("I gotta make bux but the clox are ticking!");
+xPronounce("this test does not have an x in it");
+xPronounce("Max bax pax");
+xPronounce("Anti vax");
+xPronounce("Who is xavier and why does he have my car");
+xPronounce("OMG xylem unboxing video x D");
