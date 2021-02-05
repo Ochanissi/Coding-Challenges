@@ -31617,7 +31617,8 @@ Magic('1 4 2011');
 
 
 /////////////////////////////////
-// CODING CHALLENGE 708
+// CODING CHALLENGE 709
+
 
 // Create a function which replaces all the x's in the string in the following ways:
 
