@@ -31659,3 +31659,89 @@ xPronounce("Max bax pax");
 xPronounce("Anti vax");
 xPronounce("Who is xavier and why does he have my car");
 xPronounce("OMG xylem unboxing video x D");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 710
+
+// Given an object with students and the grades that they made on the tests that they took, determine which student has the best Test Average. The key will be the student's name and the value will be an array of their grades. You will only have to return the student's name. You do not need to return their Test Average.
+
+
+function getBestStudent(grades) {
+	const a = [];
+		Object.keys(grades).forEach(x => {
+			a.push([x, grades[x].reduce((x, i) => x + i) / grades[x].length]);
+		})
+	return a.sort((a, b) => b[1] - a[1])[0][0];
+}
+
+
+function getBestStudent(grades) {
+    var newArr =  Object.entries(grades).sort(function(a,b){
+     var length = a[1].length;
+     a = a[1].reduce((accum,x) => accum + x)/length;
+       b = b[1].reduce((accum,x) => accum + x)/length;
+       return b - a;
+   });
+   return newArr[0][0];
+}
+
+
+const getBestStudent = data => {
+	let length = Object.keys(data).length,
+			bestAvg = 0,
+			bestStd = "";
+	for (let [student, notes] of Object.entries(data)) {
+		let avg = notes.reduce((a,v) => a + v) / length;
+		if (avg > bestAvg) { bestAvg = avg; bestStd = student }
+	}
+	return bestStd;
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const mean = arr => sum(arr) / arr.length;
+
+const getBestStudent = students => {
+  const avgs = Object.values(students).map(mean);
+  const maxAvg = Math.max(...avgs);
+  const index = avgs.indexOf(maxAvg);
+
+  return Object.keys(students)[index];
+};
+
+
+function getBestStudent(grades) {
+	let best = ["", -1];
+	for (let student in grades) {
+		const avg = grades[student].reduce((a, c) => a + c, 0) / grades[student].length;
+		if (avg > best[1]) best = [student, avg];
+	}
+	return best[0];
+}
+
+
+getBestStudent({
+	John: [100, 90, 80],
+	Bob: [100, 70, 80]
+});
+
+getBestStudent({
+	Susan: [67, 84, 75, 63],
+  Mike: [87, 98, 64, 71],
+  Jim: [90, 58, 73, 86]
+});
+
+getBestStudent({
+	Tim: [93, 84, 49, 71, 76, 83],
+  Nick: [88, 91, 74, 72, 63, 68],
+  Brad: [100, 94, 72, 64, 58, 81],
+	Annie: [79, 93, 82, 82, 63, 87]
+});
+
+getBestStudent({
+	Eddie: [65, 85, 72, 76],
+  Brock: [55, 97, 82, 91],
+  Jessica: [78, 62, 79, 99]
+});
