@@ -31785,3 +31785,71 @@ multiplyNums("-25, -19, 7, -26, -26");
 multiplyNums("-4, -16, -22, -3, -6");
 multiplyNums("-22, 11, 19, 5, 19, -9, -13, 20, -29");
 multiplyNums("-25, 22");
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 712
+
+// Create a function that takes the width, height and character and returns a picture frame as a matrix.
+
+function getFrame(w, h, ch) {
+	if (w <= 2 || h <= 2) return 'invalid';
+	const a = [];
+	for (let i = 0; i < h; i++) {
+		if (i > 0 && i < h - 1) {
+			a.push([ch + ' '.repeat(w - 2) + ch]);
+		} else {
+			a.push([ch.repeat(w)]);
+		}
+	}
+	return a;
+}
+
+
+const getFrame = (w, h, c) => {
+	if (h < 3 || w < 3) return "invalid";
+	return Array.from({length: h}, (_, i) =>
+		(!i || i == h-1) ? [c.repeat(w)] : [c + " ".repeat(w-2) + c]
+	);
+}
+
+
+const getFrame = (w, h, ch) => (w < 3 || h < 3) ? 'invalid' : [...Array(h)]
+	.map((_,i) => [ch + ((!i || i === h-1) ? ch : ' ').repeat(w-2) + ch]);
+
+
+const getFrame = (w, h, ch) => w <= 2 || h <= 2 ? `invalid` :
+Array(h).fill``.map((_, i) => !i || i === h - 1 ? [ch.repeat(w)] :
+    [ch + ` `.repeat(w - 2) + ch]);
+
+
+function getFrame(w, h, ch) {
+    if (w <= 2 || h <= 2) return "invalid";
+
+    let frame = [];
+    for (let i = 0; i < h; i++) {
+        if (i === 0 || i === h - 1) frame.push([ch.repeat(w)]);
+        else frame.push([ch + " ".repeat(w - 2) + ch]);
+    }
+    return frame;
+}
+
+getFrame(3, 3, "0");
+getFrame(4, 5, "#");
+getFrame(10, 3, "*");
+getFrame(2, 5, "0");
+getFrame(1, 6, "[");
+getFrame(5, 4, "z");
+getFrame(3, 4, "A");
+getFrame(10, 2, "`");
+getFrame(10, 4, "l");
+getFrame(5, 9, "Z");
+getFrame(4, 6, "J");
+getFrame(3, 4, "R");
+getFrame(3, 6, "Q");
+getFrame(3, 3, "^");
+getFrame(5, 2, "F");
