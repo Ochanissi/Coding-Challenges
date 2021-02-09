@@ -31853,3 +31853,75 @@ getFrame(3, 4, "R");
 getFrame(3, 6, "Q");
 getFrame(3, 3, "^");
 getFrame(5, 2, "F");
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 713
+
+// Create a function that takes a string as an argument. The function must return a string containing 1s and 0s based on the string argument's words. If any word in the argument is not equal to "zero" or "one" (case insensitive), you should ignore it. The returned string's length should be a multiple of 8, if the string is not a multiple of 8 you should remove the numbers in excess.
+
+
+
+function textToNumberBinary(str) {
+	const a = str.toLowerCase().split(" ");
+	let x = '';
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] === 'one') {
+			x += 1;
+		} else if (a[i] === 'zero') {
+			x += 0;
+		}
+	}
+	
+	for (let i = 0; i < x.length; i++) {
+		if (x.length %  8 !== 0) {
+			x = x.slice(0, -1);
+		}
+	}
+	return x.length < 8 ? '' : x;
+}
+
+
+
+
+const textToNumberBinary = str => {
+    const cleanStr = str
+        .replace(/zero/gi, '0')
+        .replace(/one/gi, '1')
+      .replace(/[^01]/g, '');
+    
+    const strLength = Math.floor(cleanStr.length / 8) * 8;
+    
+    return cleanStr.slice(0, strLength);
+  }
+
+  
+function textToNumberBinary(str) {
+    str = str.replace(/one/gi, '1').replace(/zero/gi,'0').match(/[0-1]/g).join('');
+    return str.substr(0,str.length - str.length % 8); 
+}
+
+
+
+function textToNumberBinary(str) {
+    var arr = str.toLowerCase().split(" ");
+    arr = arr.map( x => { 
+      if (x == "one") return "1"; 
+      if (x == "zero") return "0"; 
+      return ""; 
+    }).filter( x => x.length > 0);
+    
+    var rem = arr.length % 8;
+    if (rem === 0) return arr.join("");
+    return arr.splice(0, arr.length - rem).join("");
+}
+
+
+textToNumberBinary('one one one one zero zero zero zero');
+textToNumberBinary('one Zero zero one zero zero one one one one one zero oNe one one zero one zerO');
+textToNumberBinary('one zero one');
+textToNumberBinary('one zero zero one zero ten one one one one two');
+textToNumberBinary('One zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero');
+textToNumberBinary('TWO one zero one one zero one zero');
+textToNumberBinary('TWO one zero one one zero one zero one');
