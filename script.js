@@ -31925,3 +31925,47 @@ textToNumberBinary('one zero zero one zero ten one one one one two');
 textToNumberBinary('One zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero one one one zero one one zero zero zero zero one zero');
 textToNumberBinary('TWO one zero one one zero one zero');
 textToNumberBinary('TWO one zero one one zero one zero one');
+
+
+/////////////////////////////////
+// CODING CHALLENGE 714
+// Write a function that takes a string and calculates the number of letters and digits within it. Return the result as an object.
+
+
+
+function countAll(str) {
+	const a = {
+		LETTERS: 0,
+		DIGITS: 0
+	}
+	
+	for (let i = 0; i < str.length; i++) {
+		if (str[i].match(/[A-Za-z]/)) {
+			a.LETTERS += 1;
+		} else if (str[i].match(/[0-9]/)) {
+			a.DIGITS += 1;
+		}
+	}
+	return a;
+}
+
+
+const countAll = str => ({
+    LETTERS: (str.match(/[a-z]/gi) || []).length,
+    DIGITS: (str.match(/\d/g) || []).length
+  });
+
+
+function countAll(str) {
+	var letters = [...str].filter(item => /[a-zA-Z]/.test(item));
+	var digits = [...str].filter(item => /[0-9]/.test(item));
+	return {"LETTERS" : letters.length, "DIGITS" : digits.length}
+}
+
+
+countAll('Hello');
+countAll('137');
+countAll('H3LL0');
+countAll('149990');
+countAll('edabit 2018');
+countAll('    ');
