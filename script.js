@@ -31969,3 +31969,69 @@ countAll('H3LL0');
 countAll('149990');
 countAll('edabit 2018');
 countAll('    ');
+
+
+/////////////////////////////////
+// CODING CHALLENGE 715
+
+// As you complete questions on Edabit, you gain experience points depending on the difficulty of the question. The points for each difficulty are as follows:
+
+// Difficulty	Experience Points
+// Very Easy	5XP
+// Easy	10XP
+// Medium	20XP
+// Hard	40XP
+// Very Hard	80XP
+// Given an object of how many questions a person has completed of each difficulty, return how many experience points they'll have.
+
+
+function getXP(obj) {
+	const a = [];
+	let xp = 5;
+	for (var key of Object.keys(obj)) {
+    a.push(obj[key]);
+	}
+	for (let i = 0; i < a.length; i++) {
+		a[i] *= xp;
+		xp *= 2;
+	}
+	return a.reduce((x, i) => x + i) + "XP";
+}
+
+
+const getXP = list => {
+	return Object.values(list)
+		.map((v,i) => v * [5, 10, 20, 40, 80][i])
+		.reduce((a,b) => a + b) + "XP";
+}
+
+
+const getXP = obj => Object.values(obj)
+ .reduce((t, c, i) => t + [5, 10, 20, 40, 80][i] * c, 0) + `XP`;
+
+
+getXP({
+	'Very Easy' : 89,
+	'Easy' : 77,
+	'Medium' : 30,
+	'Hard' : 4,
+	'Very Hard' : 1
+});
+
+getXP({
+	'Very Easy' : 254,
+	'Easy' : 32,
+	'Medium' : 65,
+	'Hard' : 51,
+	'Very Hard' : 34
+});
+
+
+getXP({
+	'Very Easy' : 11,
+	'Easy' : 0,
+	'Medium' : 2,
+	'Hard' : 0,
+	'Very Hard' : 27
+});
+
