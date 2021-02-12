@@ -32035,3 +32035,50 @@ getXP({
 	'Very Hard' : 27
 });
 
+
+/////////////////////////////////
+// CODING CHALLENGE 716
+
+// Create a function which changes all the elements in an array as follows:
+
+// Add 1 to all even integers, nothing to odd integers.
+// Concatenates "!" to all strings and capitalises them.
+// Changes all boolean values to its opposite.
+
+
+function changeTypes(arr) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if(typeof arr[i] === "number") (arr[i] % 2 === 0) ? a.push(arr[i] + 1) : a.push(arr[i]);
+		if (typeof arr[i] === "string") a.push(arr[i].slice(0, 1).toUpperCase() + arr[i].slice(1)  + "!");
+		if (typeof arr[i] === "boolean") (!arr[i]) ? a.push(true) : a.push(false);	
+	}
+	return a;
+}
+
+
+const changeTypes = arr =>
+arr.map(el => typeof el === 'string' ? el.charAt(0).toUpperCase() + el.slice(1) + '!' :
+    typeof el === 'boolean' ? !el :
+    el % 2 === 0 ? el += 1 : el);
+    
+
+const changeTypes = arr => arr.map(el => {
+    if (typeof(el) === 'boolean') return !el;
+    if (typeof(el) === 'string') return el[0].toUpperCase() + el.slice(1) + '!';
+    return el + !(el % 2);
+});
+
+
+
+const changeTypes = arr => arr.map(v => {
+	if (typeof v === "number" && v % 2 === 0) return v + 1;
+	if (typeof v === "string") return v[0].toUpperCase() + v.slice(1) + "!";
+	if (typeof v === "boolean") return !v;
+	return v;
+});
+
+
+changeTypes(["a", 12, true]);
+changeTypes([13, "13", "12", "twelve"]);
+changeTypes([false, "false", "true"]);
