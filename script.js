@@ -32082,3 +32082,42 @@ const changeTypes = arr => arr.map(v => {
 changeTypes(["a", 12, true]);
 changeTypes([13, "13", "12", "twelve"]);
 changeTypes([false, "false", "true"]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 717
+
+// Write a function that takes two arrays and adds the first element in the first array with the first element in the second array, the second element in the first array with the second element in the second array, etc, etc. Return true if all element combinations add up to the same number. Otherwise, return false.
+
+
+
+function puzzlePieces(a1, a2) {
+	const a = [];
+	
+	for (let i = 0; i < Math.max(a1.length, a2.length); i++) {
+		a.push(a1[i] + a2[i]);
+	}
+	
+	return a.every(x => x === a[0]);
+}
+
+
+
+function puzzlePieces(a1, a2) {
+	return a1.length === a2.length && new Set(a1.map((v,i) => v + a2[i])).size === 1;
+}
+
+
+puzzlePieces([1, 2, 3, 4], [4, 3, 2, 1]);
+puzzlePieces([1, 8, 5, 0, -1, 7], [0, -7, -4, 1, 2, -6]);
+puzzlePieces([2, 1, 1], [-2, -1, -1]);
+puzzlePieces([2], [-2]);
+puzzlePieces([5, -1], [-6, 0]);
+puzzlePieces([0, 0, 0, 0, 0], [1, 1, 1, 1, 1]);
+puzzlePieces([1, 2], [-1, -1]);
+puzzlePieces([9, 8, 7], [7, 8, 9, 10]);
+puzzlePieces([9, 8, 7], [7, 8, 9, 16]);
+puzzlePieces([1, 1, 1], [1, 1, 2]);
+puzzlePieces([1, 8, 1], [1, -8, -1]);
+puzzlePieces([0, 0, 0, 0, 0], [1, 1, 0, 1, 1]);
+puzzlePieces([0, 0, 0, 0, 0], [1, 1, 1, 1]);
