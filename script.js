@@ -32121,3 +32121,54 @@ puzzlePieces([1, 1, 1], [1, 1, 2]);
 puzzlePieces([1, 8, 1], [1, -8, -1]);
 puzzlePieces([0, 0, 0, 0, 0], [1, 1, 0, 1, 1]);
 puzzlePieces([0, 0, 0, 0, 0], [1, 1, 1, 1]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 718
+
+// A word is on the loose and now has tried to hide amongst a crowd of tall letters! Help write a function to detect what the word is, knowing the following rules:
+
+// The wanted word is in lowercase.
+// The crowd of letters is all in uppercase.
+// Note that the word will be spread out amongst the random letters, but their letters remain in the same order.
+
+
+function detectWord(str) {
+	return str.split("").filter(x => x === x.toLowerCase()).join("");
+}
+
+
+const detectWord = str => str.replace(/[A-Z]/g, '');
+
+
+const detectWord = str => str.match(/[a-z]/g).join('');
+
+
+function detectWord(str) {
+	return [...str].filter(c => c.toLowerCase()===c).join('')
+}
+
+
+const detectWord = s => [...s].filter(a => /[a-z]/.test(a)).join('');
+
+function detectWord(str) {
+	let regex = (/[a-z]/g);
+	let arr = str.split("");
+	let filteredArr = arr.filter(x => x.match(regex));
+	return filteredArr.join("");
+}
+
+
+detectWord("UcUNFYGaFYFYGtNUH");
+detectWord("bEEFGBuFBRrHgUHlNFYaYr");
+detectWord("YFemHUFBbezFBYzFBYLleGBYEFGBMENTment");
+detectWord("cLXSNVVJVOJBIQRVKIZWKJOIVHXELVReLXSNVVJVOJBIQRVKIZWKJOIVHXELVRrLXSNVVJVOJBIQRVKIZWKJOIVHXELVRtLXSNVVJVOJBIQRVKIZWKJOIVHXELVRaLXSNVVJVOJBIQRVKIZWKJOIVHXELVRiLXSNVVJVOJBIQRVKIZWKJOIVHXELVRn");
+detectWord("cUEOYCSUXVOaUEOYCSUXVOt");
+detectWord("vJAQSZNYRQTFUHDHSDMBDPUNFQJXSXeJAQSZNYRQTFUHDHSDMBDPUNFQJXSXgJAQSZNYRQTFUHDHSDMBDPUNFQJXSXeJAQSZNYRQTFUHDHSDMBDPUNFQJXSXtJAQSZNYRQTFUHDHSDMBDPUNFQJXSXaJAQSZNYRQTFUHDHSDMBDPUNFQJXSXbJAQSZNYRQTFUHDHSDMBDPUNFQJXSXlJAQSZNYRQTFUHDHSDMBDPUNFQJXSXe");
+detectWord("dATIQTJLBZFHSRXWOZQMOKZPANOUGMeATIQTJLBZFHSRXWOZQMOKZPANOUGMlATIQTJLBZFHSRXWOZQMOKZPANOUGMiATIQTJLBZFHSRXWOZQMOKZPANOUGMgATIQTJLBZFHSRXWOZQMOKZPANOUGMhATIQTJLBZFHSRXWOZQMOKZPANOUGMt");
+detectWord("pUBOKJGODIJBSXPMTODCGHATrUBOKJGODIJBSXPMTODCGHATiUBOKJGODIJBSXPMTODCGHATcUBOKJGODIJBSXPMTODCGHATeUBOKJGODIJBSXPMTODCGHATy");
+detectWord("sWRRKMVJVHHZTKAQTJUQDPKHSHPOYCnWRRKMVJVHHZTKAQTJUQDPKHSHPOYCaWRRKMVJVHHZTKAQTJUQDPKHSHPOYCkWRRKMVJVHHZTKAQTJUQDPKHSHPOYCe");
+detectWord("aJULRJHMOVLEFVJZnJULRJHMOVLEFVJZgJULRJHMOVLEFVJZlJULRJHMOVLEFVJZe");
+detectWord("aJWCHXONGQCXGPXLZQBKEIHZWwJWCHXONGQCXGPXLZQBKEIHZWaJWCHXONGQCXGPXLZQBKEIHZWrJWCHXONGQCXGPXLZQBKEIHZWe");
+detectWord("nNUZKGKNEVZBPQZQQLHZZPaNUZKGKNEVZBPQZQQLHZZPmNUZKGKNEVZBPQZQQLHZZPe");
+detectWord("cLBFKXYQFLLElLBFKXYQFLLEeLBFKXYQFLLEvLBFKXYQFLLEeLBFKXYQFLLEr");
