@@ -32230,3 +32230,39 @@ getBirthdayCake("Gayle", 59);
 getBirthdayCake("Margot", 25);
 getBirthdayCake("Hulda", 55);
 getBirthdayCake("Adrian", 23);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 720
+
+// Create a function that takes two arguments. Both arguments are integers, a and b. Return true if one of them is 10 or if their sum is 10.
+
+
+function makesTen(a, b) {
+	return a === 10 || b === 10 || a + b === 10;
+}
+
+
+const makesTen = (a , b) => [a , b , a + b].includes(10);
+
+
+function makesTen(a,b){
+	if(a ===10||b === 10){
+		return true
+	} else if(a+b === 10){
+		return true
+	} else {
+		return false
+	}
+}
+
+
+makesTen(9, 10);
+makesTen(9, 9);
+makesTen(1, 9);
+makesTen(10, 1);
+makesTen(10, 10);
+makesTen(8, 2);
+makesTen(8, 3);
+makesTen(10, 42);
+makesTen(12, -2);
