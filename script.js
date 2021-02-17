@@ -32266,3 +32266,54 @@ makesTen(8, 2);
 makesTen(8, 3);
 makesTen(10, 42);
 makesTen(12, -2);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 721
+
+// Create a function that takes in two arrays and returns true if the second array follows the first array by one element, and false otherwise. In other words, determine if the second array is the first array shifted to the right by 1.
+
+
+
+
+function simonSays(arr1, arr2) {
+	for (let i = 1; i < arr2.length; i++) {
+		if (arr2[i] !== arr1[i - 1]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+function simonSays(arr1, arr2) {
+	return arr1.slice(-1) - arr2.slice(-1)  === 1 ? true : false
+}
+
+const simonSays = (arr1, arr2) =>
+  arr2.slice(1).every((num, i) => num === arr1[i]);
+
+simonSays(
+	[1, 2, 3, 4, 5],
+	[0, 1, 2, 3, 4]
+);
+
+simonSays(
+	[1, 2, 3, 4, 5],
+	[5, 5, 1, 2, 3]
+);
+
+simonSays(
+	[1, 2],
+	[5, 1]
+);
+
+simonSays(
+	[1, 2],
+	[5, 5]
+);
+
+simonSays(
+	[1, 2, 3],
+	[0, 1, 2]
+);
