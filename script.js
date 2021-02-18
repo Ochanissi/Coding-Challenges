@@ -32317,3 +32317,55 @@ simonSays(
 	[1, 2, 3],
 	[0, 1, 2]
 );
+
+/////////////////////////////////
+// CODING CHALLENGE 722
+
+// Create a function that returns the thickness (in meters) of a piece of paper after folding it n number of times. The paper starts off with a thickness of 0.5mm.
+
+
+function numLayers(n) {
+	const a = Math.pow(2, n) * 0.0005
+	return a >= 18446744073709550 ? a.toExponential() + "m" : Number.isInteger(a) ? a + ".0m" : a + "m";
+}
+
+
+const rnd = n => n > 1e16 ? n.toExponential() :
+	(Number.isInteger(n) && !(''+n).includes('+')) ? n+'.0' : n;
+const numLayers = n => rnd(2**n / 2000) + 'm';
+
+
+function numLayers(n) {
+	if (n <= 60) return `${0.0005 * 2 ** n}m`;
+	if (n <= 64) return `${0.0005 * 2 ** n}.0m`;
+	return `${(0.0005 * 2 ** n).toExponential()}m`;
+}
+
+
+
+numLayers(0);
+numLayers(1);
+numLayers(2);
+numLayers(3);
+numLayers(4);
+numLayers(5);
+numLayers(6);
+numLayers(7);
+numLayers(8);
+numLayers(9);
+numLayers(10);
+numLayers(11);
+numLayers(12);
+numLayers(13);
+numLayers(14);
+numLayers(15);
+numLayers(16);
+numLayers(17);
+numLayers(18);
+numLayers(19);
+numLayers(20);
+numLayers(96);
+numLayers(97);
+numLayers(98);
+numLayers(99);
+numLayers(100);
