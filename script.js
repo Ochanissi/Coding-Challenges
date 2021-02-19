@@ -32369,3 +32369,56 @@ numLayers(97);
 numLayers(98);
 numLayers(99);
 numLayers(100);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 723
+
+// Create a function that takes a phrase and transforms each word using the following rules:
+
+// Keep first and last character the same.
+// Transform middle characters into a dash -.
+
+
+function partiallyHide(phrase) {
+	return phrase.split(" ").map(x => x[0] + x.slice(1, -1).split("").map(x => x = "-").join("") + x[x.length - 1]).join(" ");
+}
+
+
+
+function partiallyHide(phrase) {
+	const pat = /(\B.)(?=\B)/g
+	return phrase.replace(pat, '-')
+}
+
+
+const partiallyHide = p => p.replace(/\B\w\B/g, "-");
+
+
+function partiallyHide(phrase) {
+    const words = phrase.split(" ")
+    const coded = words.map(word => word[0] + "-".repeat(word.length - 2) + word[word.length - 1])
+    return coded.join(" ")
+}
+
+
+const partiallyHide = sentence =>
+  sentence
+    .split(' ')
+    .map(word =>
+      word
+        .split('')
+        .map((char, i, arr) => (i === 0 || i === arr.length - 1 ? char : '-'))
+        .join('')
+    )
+    .join(' ');
+
+
+
+partiallyHide('Harry went to fight the basilisk');
+partiallyHide('She rolled her eyes');
+partiallyHide('skies were so beautiful');
+partiallyHide('red is not my color');
+partiallyHide('so many options');
+partiallyHide('the orient express');
+partiallyHide('went to the post office');
