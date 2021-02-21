@@ -32456,3 +32456,61 @@ wordsToSentence(["one", "two", ""]);
 wordsToSentence([""]);
 wordsToSentence([]);
 wordsToSentence(null);
+
+/////////////////////////////////
+// CODING CHALLENGE 725
+
+// Create a function which outputs the result of a math expression in words.
+
+
+function wordedMath(expr) {
+	const a = expr.toLowerCase().split(" ");
+	const b = [];
+	for (let i = 0; i < a.length; i++) {
+		switch (a[i]) {
+			case "zero": b.push("0");
+				break;
+			case "one": b.push("1");
+				break;
+			case "plus": b.push("+");
+				break;
+			case "minus": b.push("-");
+				break;
+		}
+	}
+	if (eval(b.join(" ")) === 0) {
+		return "Zero";
+	} else 	if (eval(b.join(" ")) === 1) {
+		return "One";
+	} else 	if (eval(b.join(" ")) === 2) {
+		return "Two";
+	}
+}
+
+
+const wordedMath = e => {
+	let d = {E: 0, N: 1, W: 2, H: 3, L: "+", I: "-"};
+	return ["Zero", "One", "Two"]
+	[eval(e.toUpperCase().split(" ").map(v => d[v[1]]).join(""))];
+}
+
+
+function wordedMath(expr) {
+	var nums = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+	var operations = {"plus" : "+", "minus" : "-"};
+	var words = expr.split(" ");
+	var e = nums[eval(nums.indexOf(words[0].toLowerCase()).toString() + operations[words[1].toLowerCase()] + nums.indexOf(words[2]).toString())];
+	return e[0].toUpperCase() + e.slice(1,e.length);
+}
+
+
+function wordedMath(expr) {
+	let e = expr.replace(/one/gi,1).replace(/plus/i,"+").replace(/minus/i,"-")
+					.replace(/zero/i,"0");
+	return eval(e) == 0 ? "Zero" : eval(e) == 1 ? "One" : "Two";
+}
+
+wordedMath('One plus one');
+wordedMath('zero Plus one');
+wordedMath('one minus one');
+
