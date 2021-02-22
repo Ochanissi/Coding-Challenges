@@ -32514,3 +32514,28 @@ wordedMath('One plus one');
 wordedMath('zero Plus one');
 wordedMath('one minus one');
 
+
+/////////////////////////////////
+// CODING CHALLENGE 726
+
+// You will be given an array of drinks, with each drink being an object with two properties: name and price. Create a function that has the drinks array as an argument and return the drinks object sorted by price in ascending order.
+
+
+function sortDrinkByPrice(drinks) {
+	return drinks.sort((a, b) => a.price - b.price);
+}
+
+
+const drinks = [
+	{name: 'lemonade', price: 90}, 
+	{name: 'lime', price: 432}, 
+	{name: 'peach', price: 23}
+]
+
+const sorted = [
+	{name: 'peach', price: 23},
+	{name: 'lemonade', price: 90}, 
+	{name: 'lime', price: 432}
+]
+
+sortDrinkByPrice(drinks);
