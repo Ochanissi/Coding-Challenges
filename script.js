@@ -32539,3 +32539,46 @@ const sorted = [
 ]
 
 sortDrinkByPrice(drinks);
+
+/////////////////////////////////
+// CODING CHALLENGE 727
+
+// Javascript has a String prototype default in the language which contains properties and methods such as .length and .toLowerCase(). Extend the String prototype by creating two new methods:
+
+// .consonants(), which returns the number of consonants in a word when called.
+// .vowels(), which returns the number of vowels in a word when called.
+
+
+String.prototype.consonants = function() {
+	// Write your code here
+	return this.match(/[bcdfghjklmnpqrstvwxys]/gi).length;
+}
+
+String.prototype.vowels = function() {
+	// Write your code here
+	return this.match(/[aeiou]/gi).length;
+}
+
+
+String.prototype.consonants = function() {
+	return this.match(/[^aeiou]/gi).length;	
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[aeiou]/gi).length;	
+}
+
+
+
+'hello'.consonants();
+'hello'.vowels();
+'greatly'.consonants();
+'greatly'.vowels();
+'Smithsonian'.consonants();
+'Smithsonian'.vowels();
+'fudge'.consonants();
+'fudge'.vowels();
+'lemony'.consonants();
+'lemony'.vowels();
+'chocolate'.consonants();
+'chocolate'.vowels();
