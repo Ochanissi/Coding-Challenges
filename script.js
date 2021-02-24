@@ -32582,3 +32582,121 @@ String.prototype.vowels = function() {
 'lemony'.vowels();
 'chocolate'.consonants();
 'chocolate'.vowels();
+
+
+/////////////////////////////////
+// CODING CHALLENGE 728
+
+// Given an array of strings (depicting a skyline of several buildings), return in meters the height of the tallest building. Each line in the list represents 20m.
+
+
+function tallestBuildingHeight(arr) {
+	return `${arr.filter(x => x.includes("#")).length * 20}m`;
+}
+
+
+
+const tallestBuildingHeight = arr => {
+	return arr.filter(r => r.includes("#")).length * 20 + "m";
+}
+
+
+const tallestBuildingHeight = S => S.filter(s => /#/.test(s)).length * 20 + 'm'
+
+
+tallestBuildingHeight([
+	"         ",
+	" ##      ",
+	" ##      ",
+	"###   ## ",
+	"###   ## ",
+	"###   ###",
+	"###   ###"
+]);
+
+tallestBuildingHeight([
+	"            ##",
+	"            ##",
+	"            ##",
+	"###   ###   ##",
+	"###   ###   ###",
+	"###   ###   ###",
+	"###   ###   ###"
+]);
+
+tallestBuildingHeight([
+	"               ",
+	"               ",
+	"               ",
+	"       #    ###",
+	"      # #   ###",
+	"###   ###   ###",
+	"###   ###   ###"
+]);
+
+tallestBuildingHeight([
+	"               ",
+	"               ",
+	"               ",
+	"               ",
+	"               ",
+	"###   ###   ###",
+	"###   ###   ###"
+]);
+
+tallestBuildingHeight([
+	"                  ",
+	" #                ",
+	" #     #          ",
+	"###    #    ###   ",
+	"###   # #   ###   #",
+	"###   ###   ###   #",
+	"###   ###   ###   #"
+]);
+
+tallestBuildingHeight([
+	"          ",
+	"###   # # ",
+	"###   ### ",
+	"###   ### "
+]);
+
+tallestBuildingHeight([
+	"###                    #####  ",
+	"###      #             #####  ",
+	"###     ###            #####  ",
+	"######  ###            #######",
+	"######  ######  ###    #######",
+	"###################    #######",
+	"###############################",
+	"###############################"
+]);
+
+tallestBuildingHeight([
+	"                              ",
+	"                              ",
+	"                              ",
+	"###                    #####  ",
+	"###      #             #####  ",
+	"###     ###            #####  ",
+	"######  ###            #######",
+	"######  ######  ###    #######",
+	"###################    #######",
+	"###############################",
+	"###############################"
+]);
+
+tallestBuildingHeight([
+	"                              ",
+	"                         ###  ",
+	"                         ###  ",
+	"###                    #####  ",
+	"###      #             #####  ",
+	"###     ###            #####  ",
+	"######  ###            #######",
+	"######  ######  ###    #######",
+	"###################    #######",
+	"###############################",
+	"###############################"
+]);
+
