@@ -32700,3 +32700,47 @@ tallestBuildingHeight([
 	"###############################"
 ]);
 
+
+/////////////////////////////////
+// CODING CHALLENGE 729
+
+// Write a function that returns true if two arrays, when combined, form a consecutive sequence.
+
+
+function consecutiveCombo(a1, a2) {
+	const a = a1.concat(a2).sort((a, b) => a - b);
+	for (let i = 0; i < a.length - 1; i++) {
+		if (a[i] !== a[i+1] - 1) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+
+const consecutiveCombo = (arr1, arr2) => {
+    const combined = arr1.concat(arr2).sort((a, b) => a - b);
+    return combined.slice(1).every((num, i) => num - combined[i] === 1);
+  };
+
+
+const consecutiveCombo = (a1, a2) => {
+	const arr = [...new Set(a1.concat(a2))].sort((a, b) => a - b);
+	return Math.max(...arr) - Math.min(...arr) + 1 == arr.length;
+}
+
+
+
+consecutiveCombo([1, 4, 5, 7], [2, 3, 6]);
+consecutiveCombo([1, 4, 5, 6], [2, 7, 8, 9]);
+consecutiveCombo([1, 4, 5, 6], [2, 3, 7, 8, 10]);
+consecutiveCombo([7, 5, 4, 1], [2, 3, 6, 8]);
+consecutiveCombo([33, 34, 40], [39, 38, 37, 36, 35, 32, 31, 30]);
+consecutiveCombo([1, 4, 5, 6], [2, 3, 7, 8, 10]);
+consecutiveCombo([44, 46], [45]);
+consecutiveCombo([4, 3, 1], [2, 5]);
+consecutiveCombo([4, 3, 1], [2, 5, 7, 6]);
+consecutiveCombo([4, 3, 1], [7, 6, 5]);
+consecutiveCombo([4, 3, 1], [0, 7, 6, 5]);
+consecutiveCombo([44, 46], [45]);
