@@ -32796,3 +32796,32 @@ replaceThe("enter the correct password to access the epic program");
 replaceThe("the man blew the final candle out and all was dark");
 replaceThe("the ant ate the egg salad which the eel had been intending to eat over the weekend");
 replaceThe("this the random english sentence which you have to pass");
+
+/////////////////////////////////
+// CODING CHALLENGE 731
+
+// Creates a function that takes a string and returns the concatenated first and last character.
+
+
+function firstLast(name) {
+	return name[0] + name[name.length - 1];
+}
+
+
+const firstLast = n => n[0] + n.slice(-1);
+
+
+const firstLast = name => name[0] + name[name.length - 1];
+
+
+function firstLast(name){
+	return name.charAt(0) + name.charAt(name.length - 1);
+}
+
+
+firstLast("ganesh");
+firstLast("kali");
+firstLast("shiva");
+firstLast("vishnu");
+firstLast("durga");
+firstLast("brahma");
