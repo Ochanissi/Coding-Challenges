@@ -32825,3 +32825,45 @@ firstLast("shiva");
 firstLast("vishnu");
 firstLast("durga");
 firstLast("brahma");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 732
+
+// Create a function that takes two number strings and returns their sum as a string.
+
+
+function add(numberOne, numberTwo) {
+	return Number.isNaN(parseInt(numberOne)) || Number.isNaN(parseInt(numberTwo)) ? "Invalid Operation" : eval(numberOne + '+' + numberTwo).toString();
+}
+
+
+function add(numberOne, numberTwo) {
+    return !numberOne || !numberTwo ? 'Invalid Operation' : `${+numberOne + +numberTwo}`;
+}
+
+
+const sum = arr => arr.reduce((a, e) => a + e, 0);
+
+const add = (...nums) => {
+	const isInvalid = nums.some(e => [undefined, null, ''].includes(e));
+	return isInvalid ? 'Invalid Operation' : String(sum(nums.map(Number)));
+};
+
+
+const add = (n1, n2) => 
+	/^-?\d+-?\d+$/.test(n1+n2)? String(+n1 + +n2) : 'Invalid Operation';
+
+
+add('91', '19');
+add('123456789', '987654322');
+add('9999999', '1');
+add('300', '3000');
+add('1000', '6200');
+add('-10', '-20');
+add('-100', '100');
+add('0', '6200');
+add('', '6');
+add('', undefined);
+add(null, '23');
+add('', '20');
