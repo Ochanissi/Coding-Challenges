@@ -32867,3 +32867,31 @@ add('', '6');
 add('', undefined);
 add(null, '23');
 add('', '20');
+
+/////////////////////////////////
+// CODING CHALLENGE 733
+
+// Create a function that returns the number of characters shared between two words.
+
+
+function sharedLetters(str1, str2) {
+	return new Set(str1.split("").filter(x => str2.includes(x))).size;
+}
+
+
+function sharedLetters(str1, str2) {
+    return [...new Set(str1)].filter(x=> str2.includes(x)).length
+}
+
+const sharedLetters = (str1, str2) => [...new Set(str1)].filter(x => new Set(str2).has(x)).length;
+
+
+const sharedLetters = (str1, str2) => [...new Set([...str1].filter(c => str2.includes(c)))].length;
+
+
+sharedLetters("apple", "meaty");
+sharedLetters("fan", "forsook");
+sharedLetters("spout", "shout");
+sharedLetters("took", "taken");
+sharedLetters("mentor", "terminal");
+sharedLetters("class", "last");
