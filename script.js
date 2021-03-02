@@ -32895,3 +32895,25 @@ sharedLetters("spout", "shout");
 sharedLetters("took", "taken");
 sharedLetters("mentor", "terminal");
 sharedLetters("class", "last");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 734
+
+// Given an array of numbers, create a function which returns the same array but with each element's index in the array added to itself. This means you add 0 to the number at index 0, add 1 to the number at index 1, etc...
+
+
+function addIndexes(arr) {
+	return arr.map((x, i) => x + i)
+}
+
+
+
+addIndexes([0, 0, 0, 0, 0]);
+addIndexes([1, 2, 3, 4, 5]);
+addIndexes([5, 4, 3, 2, 1]);
+addIndexes([-25, -15, 3]);
+addIndexes([27]);
+addIndexes([-48, -20, 41, 29, -25, -17, -13, 5, 4, -5, 3, -17, 23]);
+addIndexes([-32, -24, -50, 48, 5, -27, -33, -3, 16, -16, -31, -11, 43]);
+addIndexes([38, -8, 40, -50, -26, -3, -29, -33, 13, 28]);
