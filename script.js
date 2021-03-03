@@ -32917,3 +32917,48 @@ addIndexes([27]);
 addIndexes([-48, -20, 41, 29, -25, -17, -13, 5, 4, -5, 3, -17, 23]);
 addIndexes([-32, -24, -50, 48, 5, -27, -33, -3, 16, -16, -31, -11, 43]);
 addIndexes([38, -8, 40, -50, -26, -3, -29, -33, 13, 28]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 735
+
+// Groups and ranges indicate groups and ranges of expression characters. The regular expression x|y matches either "x" or "y".
+
+// const REGEXP = /blue|green/
+
+// "red flag".match(REGEXP)  // red
+// "blue flag".match(REGEXP)  // blue
+
+// // Matches "blue" in "blue flag" and "red" in "red flag".
+// Create a regular expression to match all red flag and blue flag in a string. You must use | in your expression. Flags can come in any order.
+
+
+const REGEXP = /red flag|blue flag/g
+
+
+const REGEXP = /(red|blue) flag/g
+
+
+const REGEXP = /red flag|blue flag/g
+
+
+const str1 = "red flag blue flag"
+const str2 = "yellow flag red flag blue flag green flag"
+const str3 = "pink flag red flag black flag blue flag green flag red flag"
+const str4 = "blue flag red flag red flag blue flag green flag red flag"
+
+const validate = (REGEXP) => {
+	 if(!/\|/.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		 console.log(str.match(REGEXP))
+		 return str.match(REGEXP)
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str1);
+testExp(str1);
+testExp(str2);
+testExp(str3);
+testExp(str4);
