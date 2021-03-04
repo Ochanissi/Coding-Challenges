@@ -32962,3 +32962,27 @@ testExp(str1);
 testExp(str2);
 testExp(str3);
 testExp(str4);
+
+/////////////////////////////////
+// CODING CHALLENGE 736
+
+// Given an array of 10 numbers, return the maximum possible total made by summing just 5 of the 10 numbers.
+
+
+function maxTotal(nums) {
+	return nums.sort((a, b) => b - a).slice(0, 5).reduce((x, i) => x + i);
+}
+
+
+
+maxTotal([70, -25, 78, -58, -49, -42, -77, -52, 93, -37]);
+maxTotal([-30, -29, 32, -60, 84, -13, 67, -77, 94, 64]);
+maxTotal([-54, 7, 18, 83, -45, 68, 0, 78, 55, -30]);
+maxTotal([-81, -51, 63, 94, 22, -91, -75, 75, 28, -97]);
+maxTotal([69, -34, -94, -50, -94, -38, -73, 33, 39, -99]);
+maxTotal([-60, -69, -55, -69, 5, 14, 97, 59, 93, 15]);
+maxTotal([48, 77, -31, 74, 39, 8, -22, 24, 87, 10]);
+maxTotal([56, 24, 46, 28, 61, 38, -32, 85, -36, -80]);
+maxTotal([-73, 72, 94, -5, 72, 0, 30, -93, -24, -10]);
+maxTotal([-48, 75, 31, -31, 29, 74, -56, -14, 7, -55]);
+maxTotal([-11, -92, 89, -23, -67, 45, 89, 10, -28, 76]);
