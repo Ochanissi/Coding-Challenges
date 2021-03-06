@@ -33032,3 +33032,44 @@ longest7SegmentWord(["vat", "suntan", "murder", "dance", "course", "institution"
 longest7SegmentWord(["adjust", "garlic", "preoccupation", "nature", "garlic", "undermine", "pavement", "payment", "fair", "twin", "expertise", "pillow", "dance", "economist", "establish", "nervous", "sector"]);
 longest7SegmentWord(["embarrassment", "bell", "obese", "width", "singer", "strikebreaker", "width", "preoccupation", "nervous"]);
 longest7SegmentWord(["winner", "twin", "establish"]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 738
+
+// Using Camel Case (or camelCase) is where the first word is in lower case, and all words after it have their first letter capitalised. Note that there are no spaces in between words!
+
+// Create a function that takes a string and returns it back in camelCase.
+
+
+function camelCasing(str) {
+	const a = str.split(" ").map(x => x.split("_")).flat().map(x => x[0].toUpperCase() + x.slice(1, x.length).toLowerCase()).join("");
+	return a[0].toLowerCase() + a.slice(1, a.length);
+}
+
+
+const camelCasing = str => str.toLowerCase().replace(/[\s_](.)/g, (_, m) => m.toUpperCase());
+
+
+const camelCasing = string => {
+	return string.split(/[ _]/g).map((w,i) => (!i ?
+		w.toLowerCase(): w[0].toUpperCase() + w.slice(1).toLowerCase()
+	)).join("");
+}
+
+
+const camelCasing = str => str.split(/[ _]/).map((v,i) =>
+    v[0]['to'+(i?'Upp':'Low')+'erCase']() + v.slice(1).toLowerCase()).join('');
+    
+
+function camelCasing(str) {
+    return str.toLowerCase()
+        .replace(/[ _]([a-z])/gi,(_, word)=> word.toUpperCase());
+}
+
+
+camelCasing("Hello World");
+camelCasing("snake_case");
+camelCasing("low high_HIGH");
+camelCasing("unEcEsSARilY_loNG_vArIablE_NaME");
+camelCasing("camel casing");
