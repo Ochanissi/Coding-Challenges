@@ -33073,3 +33073,42 @@ camelCasing("snake_case");
 camelCasing("low high_HIGH");
 camelCasing("unEcEsSARilY_loNG_vArIablE_NaME");
 camelCasing("camel casing");
+
+/////////////////////////////////
+// CODING CHALLENGE 739
+
+// Groups and ranges indicate groups and ranges of expression characters. Negated character sets match any characters that are NOT inside of brackets [ ]. You differentiate a negated character set from a regular character set by inserting a ^ inside of the [ ].
+
+// "1234cba5678".match(/[^abc]/g)
+// // "12345678", matches any character that are not a, b, or c.
+// You can also negate ranges, but like with regular character sets, if the hyphen is at the beginning or ending of a range then it will be considered a literal hyphen.
+
+// "excludenumbers123".match(/[^1-3]/g)
+// // "excludenumbers", matches any character that are not the numbers 1, 2 or 3.
+// Create a REGEXP that matches any characters except letters, digits and spaces. You must use a negated character set in your expression.
+
+//  "alice15@gmail.com".match(/REGEXP/gi) ➞ ["@", "."]
+
+
+const REGEXP = /[^\d\w]/gi
+
+
+const REGEXP = /[^a-z0-9 ]/gi
+
+
+const REGEXP = /[^\d\w\s]/gi
+
+
+const str = "alice15@gmail.com"
+
+const validate = (REGEXP) => {
+	 if(!/\[\^/.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		return str.match(REGEXP);
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str);
+testExp(str);
