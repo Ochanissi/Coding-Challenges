@@ -33112,3 +33112,36 @@ const testExp = validate(REGEXP)
 
 testExp(str);
 testExp(str);
+
+/////////////////////////////////
+// CODING CHALLENGE 740
+
+// Your task is to create a fence worth $1 million. You are given the price of the material (per character), meaning the length of the fence will change depending on the cost of the material.
+
+// Create a function which constructs this pricey pricey fence, using the letter "H" to build.
+
+// constructFence("$50,000") ➞ "HHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+// 20 fence posts were set up ($1,000,000 / $50,000 = 20)
+
+
+function constructFence(price) {
+	return "H".repeat(1000000 / price.replace(/[^0-9.]/g, ""));
+}
+
+
+const constructFence = p => "H".repeat(1e6 / +p.replace(/[^\d]/g, ""));
+
+
+
+const constructFence = price =>
+    'H'.repeat(1000000 / price.match(/\d/g).join(''))
+    
+
+constructFence("$50,000");
+constructFence("$100,000");
+constructFence("$1,000,000");
+constructFence("$500,000");
+constructFence("$20,000");
+constructFence("$10,000");
+constructFence("$5000");
+constructFence("$1000");
