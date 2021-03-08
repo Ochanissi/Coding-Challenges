@@ -33145,3 +33145,37 @@ constructFence("$20,000");
 constructFence("$10,000");
 constructFence("$5000");
 constructFence("$1000");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 741
+
+// Create a function that turns an array of words into a comma separated list, where the last word is separated by the word "and".
+
+function wordsToSentence(words) {
+	let a = [];
+	if (words !== null) a = words.filter(x => x.length > 0);
+	return a.length > 1 ? a.slice(0, -1).join(", ").trim() + " and " +  a.slice(-1): a.length === 1 ? a[0] : "";
+}
+
+
+function wordsToSentence(words) {
+	words ? words = words.filter(x => x != "") : words = "";
+	return !words || words.length < 1 ? "" : words.length == 1 ? words[0] :
+	words.slice(0, -1).join(", ") + ` and ${words.slice(-1)[0]}`;
+}
+
+
+
+const wordsToSentence = words => words ? (
+	words.filter(Boolean).join(', ').replace(/, ([^,]+)$/, ' and $1')
+) : '';
+
+wordsToSentence(["one", "two", "three", "four"]);
+wordsToSentence(["one", "two", "", "four"]);
+wordsToSentence(["one"]);
+wordsToSentence(["one", "", "three"]);
+wordsToSentence(["one", "two", ""]);
+wordsToSentence([""]);
+wordsToSentence([]);
+wordsToSentence(null);
