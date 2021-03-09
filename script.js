@@ -33145,3 +33145,139 @@ constructFence("$20,000");
 constructFence("$10,000");
 constructFence("$5000");
 constructFence("$1000");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 741
+
+// Create a function that turns an array of words into a comma separated list, where the last word is separated by the word "and".
+
+function wordsToSentence(words) {
+	let a = [];
+	if (words !== null) a = words.filter(x => x.length > 0);
+	return a.length > 1 ? a.slice(0, -1).join(", ").trim() + " and " +  a.slice(-1): a.length === 1 ? a[0] : "";
+}
+
+
+function wordsToSentence(words) {
+	words ? words = words.filter(x => x != "") : words = "";
+	return !words || words.length < 1 ? "" : words.length == 1 ? words[0] :
+	words.slice(0, -1).join(", ") + ` and ${words.slice(-1)[0]}`;
+}
+
+
+
+const wordsToSentence = words => words ? (
+	words.filter(Boolean).join(', ').replace(/, ([^,]+)$/, ' and $1')
+) : '';
+
+wordsToSentence(["one", "two", "three", "four"]);
+wordsToSentence(["one", "two", "", "four"]);
+wordsToSentence(["one"]);
+wordsToSentence(["one", "", "three"]);
+wordsToSentence(["one", "two", ""]);
+wordsToSentence([""]);
+wordsToSentence([]);
+wordsToSentence(null);
+
+/////////////////////////////////
+// CODING CHALLENGE 742
+
+// Create a function that takes an array as an argument and return an array of the sum of each of its slices. An array's slices are groups of consecutive values that add up to a maximum of 100. No slice's total sum should exceed 100.
+
+
+function sumOfSlices(arr) {
+	const a = [0];
+	for (let i = 0; i < arr.length; i++) {
+		if (a[a.length - 1] + arr[i] <= 100) {
+			a[a.length - 1] += arr[i];
+		} else {
+			a.push(arr[i]);
+		}
+	}
+	return a;
+}
+
+
+const sumOfSlices = arr =>
+	arr.reduce((a, b) => 
+	a[a.length-1] + b <= 100 
+	 	? (a[a.length-1] += b, a) 
+	 	: (a.push(b), a) , [0]
+	)
+;
+
+
+
+function sumOfSlices(arr) {
+	let list = [], sum = 0;
+	for (let num of arr) {
+		if (sum + num <= 100) {
+			sum += num;
+		} else {
+			list.push(sum);
+			sum = num;
+		}
+	}
+	return list.concat(sum);
+}
+
+
+sumOfSlices([10, 29, 13, 14, 15, 16, 17, 31, 20, 10, 29, 13, 14, 15, 16, 17, 31, 20, 100]);
+sumOfSlices([58,3,	38,	99,	10]);
+sumOfSlices([13]);
+sumOfSlices([62,	406,	343,	234,	244,	200,	304,	462,	212,	48,	166,	71,	80,	51,	307,	442,	368,	235,	199,	411,	100,	203,	330,	437,	226,	365,	337,	464,	14,	350]);
+sumOfSlices([315,	47]);
+
+/////////////////////////////////
+// CODING CHALLENGE 743
+
+// Create the instance properties fullname and email in the Employee class. Given a person's first and last names:
+
+// Form the fullname by simply joining the first and last name together, separated by a space.
+// Form the email by joining the first and last name together with a . in between, and follow it with @company.com at the end. Make sure everything is in lowercase.
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.fullname = this.firstname + ' ' + this.lastname;
+		this.email = `${this.firstname}.${this.lastname}@company.com`.toLowerCase();
+	}
+}
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		// Complete the code!
+		this.fullname = `${firstname} ${lastname}`;
+		this.email = `${firstname}.${lastname}@company.com`.toLowerCase();
+	}
+}
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.fullname = `${firstname} ${lastname}`;
+		this.email = `${firstname}.${lastname}@company.com`.toLowerCase();
+	}
+}
+
+emp1 = new Employee('John', 'Smith');
+emp2 = new Employee('Mary',  'Sue');
+emp3 = new Employee('Antony', 'Walker');
+emp4 = new Employee('Joshua', 'Senoron');
+
+emp3.firstname;
+emp3.lastname;
+emp3.fullname;
+emp3.email;
+emp4.firstname;
+emp4.lastname;
+emp4.fullname;
+emp4.email;
