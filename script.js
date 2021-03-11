@@ -33367,3 +33367,45 @@ median([1, 1, 2, 2, 2, 4, 5, 6, 8]);
 median([2, 4, 5, 5, 7, 7, 9, 10]);
 median([1, 3, 4, 8, 8, 10, 10]);
 median([1, 1, 4, 5, 5, 9, 9, 10]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 745
+
+// Create a function that creates a box based on dimension n.
+
+
+
+function makeBox(n) {
+	const a = [];
+	for (let i = 0; i < n; i++) {
+		if (i > 0 && i < n - 1 && n > 1) {
+			a.push("#" + ' '.repeat(n - 2) + "#");
+		} else {
+			a.push('#'.repeat(n));
+		}
+	}
+	return a;
+}
+
+
+const makeBox = num =>
+  Array.from({ length: num }, (_, i) =>
+    [0, num - 1].includes(i) ? '#'.repeat(num) : `#${' '.repeat(num - 2)}#`
+  );
+
+
+function makeBox(n) {
+	ret=[]
+	for (i=0;i<n;i++){i==0|i==n-1?ret[i]='#'.repeat(n):
+        ret[i]='#'+' '.repeat(n-2)+'#'}
+	return ret	
+}
+
+
+
+makeBox(5);
+makeBox(6);
+makeBox(4);
+makeBox(2);
+makeBox(1);
