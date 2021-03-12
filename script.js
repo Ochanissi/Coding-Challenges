@@ -33409,3 +33409,61 @@ makeBox(6);
 makeBox(4);
 makeBox(2);
 makeBox(1);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 746
+
+// Create a function which constructs a rectangular birthday cake, based on someone's name and age! Build it out of strings in an array and makes sure to surround the birthday message with the character that fits the rule:
+
+// If the age is an even number, surround the message with "#".
+// If the age is an odd number, surround the message with "*".
+// Other important rules:
+
+// The message should be in the format: {age} Happy Birthday {name}! {age}
+// Leave a space between the edge of the cake and the age numbers.
+
+
+function getBirthdayCake(name, age) {
+	let x;
+	age % 2 === 0 ? x = "#" : x = "*";
+	const a = `${x} ${age} Happy Birthday ${name}! ${age} ${x}`;
+	return [x.repeat(a.length), a, x.repeat(a.length)]
+}
+
+const getBirthdayCake = (name, age) => {
+	let chr = age % 2 ? "*" : "#",
+			mss = `${chr} ${age} Happy Birthday ${name}! ${age} ${chr}`,
+			frm = chr.repeat(mss.length);
+	return [frm, mss, frm];
+}
+
+
+function getBirthdayCake(name, age) {
+    let b = (age%2)?'*':'#';
+   let msg = `${b} ${age} Happy Birthday ${name}! ${age} ${b}`;
+   return	[b.repeat(msg.length),msg,b.repeat(msg.length)];	 
+
+}
+
+
+const getBirthdayCake = (name, age) => {
+	const symbol = (age % 2) ? '*' : '#';
+	const msg = Array(2).fill(symbol).join(
+		` ${age} Happy Birthday ${name}! ${age} `
+	);
+	const layer = symbol.repeat(msg.length);
+	return [layer, msg, layer];
+};
+
+
+getBirthdayCake("Jack", 10);
+getBirthdayCake("Russell", 19);
+getBirthdayCake("Isabelle", 2);
+getBirthdayCake("Jacqulyn", 52);
+getBirthdayCake("Lucrecia", 95);
+getBirthdayCake("Shelia", 75);
+getBirthdayCake("Gayle", 59);
+getBirthdayCake("Margot", 25);
+getBirthdayCake("Hulda", 55);
+getBirthdayCake("Adrian", 23);
