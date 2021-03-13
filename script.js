@@ -33467,3 +33467,109 @@ getBirthdayCake("Gayle", 59);
 getBirthdayCake("Margot", 25);
 getBirthdayCake("Hulda", 55);
 getBirthdayCake("Adrian", 23);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 747
+
+// Abigail and Benson are playing Rock, Paper, Scissors.
+
+// Each game is represented by an array of length 2, where the first element represents what Abigail played and the second element represents what Benson played.
+
+// Given a sequence of games, determine who wins the most number of matches. If they tie, output "Tie".
+
+// R stands for Rock
+// P stands for Paper
+// S stands for Scissors
+
+
+function calculateScore(games) {
+	const a = [0, 0]
+	const x = games.map(x => {
+		if (x[0] === "R" && x[1] === "P" || x[0] === "P" && x[1] === "S" || x[0] === "S" && x[1] === "R") return "B";
+		if (x[0] === "R" && x[1] === "S" || x[0] === "S" && x[1] === "P" || x[0] === "P" && x[1] === "R") return "A";
+		if (x[0] === "R" && x[1] === "R" || x[0] === "S" && x[1] === "S" || x[0] === "P" && x[1] === "P") return "T";
+	})
+	for (let i = 0; i < x.length; i++) {
+		if (x[i] === "A") a[0]++;
+		if (x[i] === "B") a[1]++;
+	}
+	return a[0] > a[1] ? "Abigail" : a[0] < a[1] ? "Benson" : "Tie";
+}
+
+
+function calculateScore(games) {
+	var d = {
+		'R': {'R':0, 'S':1, 'P':-1},
+		'S': {'R':-1, 'S':0, 'P':1},
+		'P': {'R':1, 'S':-1, 'P':0}
+	}
+	var r = 0;
+	for (var i in games) {
+		r += d[games[i][0]][games[i][1]];
+	}
+	if (r == 0) return "Tie";
+	if (r > 0) return "Abigail";
+	return "Benson";
+}
+
+
+function calculateScore (array) {
+	Abigail = 0
+	Benson = 0
+	for (let i =0; i < array.length; i++) {
+		if (array[i][0] === "R" && array[i][1] === "S") Abigail += 1
+		if (array[i][0] === "S" && array[i][1] === "P") Abigail += 1
+		if (array[i][0] === "P" && array[i][1] === "R") Abigail += 1
+		if (array[i][0] === "S" && array[i][1] === "R") Benson += 1
+		if (array[i][0] === "P" && array[i][1] === "S") Benson += 1
+		if (array[i][0] === "R" && array[i][1] === "P") Benson += 1
+	}
+return Abigail === Benson ? "Tie" : Abigail > Benson ? "Abigail" : "Benson"
+
+}
+
+function calculateScore(games) {
+	let scores = [0, 0]
+	for (i of games) {
+		if (i[0] === i[1]) continue
+		if (i.includes('R') && i.includes('P')) scores[i.indexOf('P')] += 1
+		if (i.includes('R') && i.includes('S')) scores[i.indexOf('R')] += 1
+		if (i.includes('P') && i.includes('S')) scores[i.indexOf('S')] += 1
+	}
+	if (scores[0] === scores[1]) return 'Tie'
+	return scores[1] > scores[0] ? 'Benson' : 'Abigail'
+}
+
+
+const scoreTable = {
+    RS: [1, 0],
+    RP: [0, 1],
+    RR: [0, 0],
+    SR: [0, 1],
+    SP: [1, 0],
+    SS: [0, 0],
+    PR: [1, 0],
+    PS: [0, 1],
+    PP: [0, 0],
+  };
+  
+  const calculateScore = games => {
+    const [abigail, benson] = games.reduce(
+      ([totalA, totalB], [a, b]) => {
+        const [scoreA, scoreB] = scoreTable[`${a}${b}`];
+        return [totalA + scoreA, totalB + scoreB];
+      },
+      [0, 0]
+    );
+  
+    return abigail > benson ? 'Abigail' : abigail < benson ? 'Benson' : 'Tie';
+  };
+
+
+calculateScore([['R', 'P'], ['R', 'S'], ['S', 'P']]);
+calculateScore([['R', 'R'], ['S', 'S']]);
+calculateScore([['S', 'R'], ['R', 'S'], ['R', 'R']]);
+calculateScore([['S', 'R'], ['P', 'R']]);
+calculateScore([['S', 'S'], ['S', 'P'], ['R', 'S'], ['S', 'R'], ['R', 'R']]);
+calculateScore([['S', 'R'], ['S', 'R'], ['S', 'R'], ['R', 'S'], ['R', 'S']]);
