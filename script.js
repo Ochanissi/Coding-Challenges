@@ -33573,3 +33573,27 @@ calculateScore([['S', 'R'], ['R', 'S'], ['R', 'R']]);
 calculateScore([['S', 'R'], ['P', 'R']]);
 calculateScore([['S', 'S'], ['S', 'P'], ['R', 'S'], ['S', 'R'], ['R', 'R']]);
 calculateScore([['S', 'R'], ['S', 'R'], ['S', 'R'], ['R', 'S'], ['R', 'S']]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 748
+
+// Something which is not true is false, but something which is not not true is true! Create a function where given n number of "not", evaluate whether it's true or false.
+
+
+function notNotNot(n, bool) {
+	return n % 6 === 0 || n % 2 === 0 ? bool : !bool;
+}
+
+
+const notNotNot = (n, bool) => !(n % 2) === bool;
+
+
+notNotNot(1, true);
+notNotNot(2, false);
+notNotNot(7, true);
+notNotNot(7, false);
+notNotNot(3, true);
+notNotNot(13, true);
+notNotNot(24, false);
+notNotNot(6, false);
