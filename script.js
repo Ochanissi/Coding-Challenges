@@ -33597,3 +33597,37 @@ notNotNot(3, true);
 notNotNot(13, true);
 notNotNot(24, false);
 notNotNot(6, false);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 749
+
+// A fuse melts when a current in an electrical device exceeds the fuse's rating, breaking the circuit and preventing the heat from building up too much (which can cause a fire). The ideal fuse to choose is higher than the device's current output, yet as close as possible to it as well.
+
+// Given an array of fuse ratings, and the device's current output, return which of the fuses is the best for the device.
+
+
+function chooseFuse(fuses, current) {
+	return fuses.map(x => +x.slice(0, -1)).filter(x => x >= +current.slice(0, -1)).sort((a, b) => a - b)[0] + 'V';
+}
+
+
+const chooseFuse = (fuses, voltage) => {
+	fuses.push(voltage);
+	fuses.sort((a,b) => +a.slice(0, -1) - +b.slice(0, -1));
+	return fuses[fuses.indexOf(voltage) + 1];
+}
+
+
+const p = parseFloat;
+const chooseFuse = (fuses, current) => fuses.sort((a, b) => p(a) - p(b)).find(v => p(v) >= p(current));
+
+chooseFuse(["3V", "5V", "12V"], "4.5V");
+chooseFuse(["5V", "14V", "2V"], "5.5V");
+chooseFuse(["17V", "15V", "12V"], "9V");
+chooseFuse(["1V", "2V", "3V"], "2.5V");
+chooseFuse(["17V", "15V", "12V"], "1V");
+chooseFuse(["7V", "135V", "12V"], "9.5V");
+chooseFuse(["17V", "15V", "12V"], "17V");
+chooseFuse(["3V", "11V", "12V"], "4.5V");
+chooseFuse(["3V", "5V", "12V"], "0.5V");
