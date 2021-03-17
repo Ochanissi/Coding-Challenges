@@ -33672,3 +33672,38 @@ camelCasing("snake_case");
 camelCasing("low high_HIGH");
 camelCasing("unEcEsSARilY_loNG_vArIablE_NaME");
 camelCasing("camel casing");
+
+/////////////////////////////////
+// CODING CHALLENGE 751
+
+// Create a function which validates whether a number n is exclusively within the bounds of lower and upper. Return false if n is not an integer.
+
+
+function intWithinBounds(n, lower, upper) {
+	return n >= lower && n < upper && Number.isInteger(n);
+}
+
+
+const intWithinBounds = (n, l, u) => (Number.isInteger(n) && l<=n && u>n)
+
+
+function intWithinBounds(n, lower, upper) {
+	return lower <= n && n < upper && Number.isSafeInteger(n);
+}
+
+intWithinBounds(3, 1, 9);
+intWithinBounds(6, 1, 6);
+intWithinBounds(4.5, 3, 8);
+intWithinBounds(-5, -10, 6);
+intWithinBounds(4, 0, 0);
+intWithinBounds(10, 9, 11);
+intWithinBounds(6.3, 2, 6);
+intWithinBounds(6.3, 2, 10);
+intWithinBounds(9, 2, 3);
+intWithinBounds(9, 9, 9);
+intWithinBounds(-3, -5, -2);
+intWithinBounds(-3, -5, -3);
+intWithinBounds(-3, -10, 10);
+intWithinBounds(0, -3, 3);
+intWithinBounds(0, 0, 1);
+intWithinBounds(7, 7, 12);
