@@ -33707,3 +33707,49 @@ intWithinBounds(-3, -10, 10);
 intWithinBounds(0, -3, 3);
 intWithinBounds(0, 0, 1);
 intWithinBounds(7, 7, 12);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 752
+
+// A man named Thomas Malthus described what is now called a Malthusian Catastrophe. According to him, food production grows by a fixed amount, but population grows by a percentage. So, the food supply would soon be insufficient for the population.
+
+// Your job is to find out when that will occur. For this challenge, assume 1 population needs 1 unit of food production. Food production & population both start at 100. The year starts at 0.
+
+// The catastrophe happens when the population is larger than food production.
+
+// The function will pass: foodGrowth - an integer - Food production increase per year; and popMult - a floating-point number - The population growth multiplier per year.
+
+
+function malthusian(foodGrowth, popMult) {	
+	let x = 0;
+	let a =  100;
+	let b = 100;
+	while (a >= b ) {
+		a += foodGrowth;
+		b *= popMult;
+		
+		x++;
+	}
+	return x;
+}
+
+
+
+const malthusian = (f, p, F = 100, P = 100, Y = 0) => (
+	P > F ? Y : malthusian(f, p, f + F, p * P, ++Y)
+);
+
+
+const malthusian = (g, r, P = 100, F = 100, t = 0) => (P > F) ? t : malthusian(g, r, P*=r, F+=g, ++t)
+
+
+malthusian(3900, 1.26);
+malthusian(3367, 1.16);
+malthusian(2393, 1.86);
+malthusian(6560, 1.66);
+malthusian(8481, 1.35);
+malthusian(3805, 1.98);
+malthusian(9492, 1.06);
+malthusian(8278, 1.35);
+malthusian(1228, 1.91);
