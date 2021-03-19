@@ -33753,3 +33753,47 @@ malthusian(3805, 1.98);
 malthusian(9492, 1.06);
 malthusian(8278, 1.35);
 malthusian(1228, 1.91);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 753
+// Create a function that accepts a string as an argument. Find its shortest word(s) and return them as an array sorted alphabetically (if there are multiple shortest words).
+
+
+function findShortestWords(str) {
+	return str.toLowerCase().replace(/[^\w\s$]/g, "").split(" ").sort((a, b) => a.length - b.length).filter((x, i, arr) => x.length === arr[0].length && isNaN(x)).sort();
+}
+
+
+const findShortestWords = str => str.toLowerCase().split(' ').map(s => s.replace(/[^a-z]/i, '')).filter(s => s.length === str.split(' ').sort((a,b) => a.length - b.length)[0].length).sort()
+
+
+
+function findShortestWords(str) {
+    let arr = str.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
+    let lowest = Math.min(...arr.map(x => x.length));
+    return arr.filter(x => x.length === lowest).sort();
+}
+
+
+function findShortestWords(str) {
+    const regex = /([A-Za-z’])+/g;
+    return str.match(regex)
+      .sort((a, b) => a.length - b.length)
+      .filter((el, i, arr) => el.length <= arr[0].length)
+        .map(el => el.toLowerCase())
+        .sort();
+  }
+
+
+
+findShortestWords("Strive not to be a success, but rather to be of value.");
+findShortestWords("You miss 100% of the shots you don’t take.");
+findShortestWords("Life is what happens to you while you’re busy making other plans.");
+findShortestWords("We become what we think about.");
+findShortestWords("The most common way people give up their power is by thinking they don’t have any.");
+findShortestWords("The best time to plant the tree was 20 years ago. The second best time is now.");
+findShortestWords("Your time is limited, so don’t waste it living someone else’s life.");
+findShortestWords("You can never cross the ocean until you have the courage to lose sight of the shore.");
+findShortestWords("There is only one way to avoid criticism: do nothing, say nothing, and be nothing.");
+findShortestWords("The only person you are destined to become is the person you decide to be.");
