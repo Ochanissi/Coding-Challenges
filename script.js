@@ -33797,3 +33797,22 @@ findShortestWords("Your time is limited, so don’t waste it living someone else
 findShortestWords("You can never cross the ocean until you have the courage to lose sight of the shore.");
 findShortestWords("There is only one way to avoid criticism: do nothing, say nothing, and be nothing.");
 findShortestWords("The only person you are destined to become is the person you decide to be.");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 754
+
+// Create a function that takes voltage and current and returns the calculated power.
+
+
+function circuitPower(voltage, current) {
+	return voltage * current;
+}
+
+
+const circuitPower=(voltage, current)=>voltage*current
+
+
+circuitPower(110, 3);
+circuitPower(230, 10);
+circuitPower(480, 20);
