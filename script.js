@@ -33816,3 +33816,57 @@ const circuitPower=(voltage, current)=>voltage*current
 circuitPower(110, 3);
 circuitPower(230, 10);
 circuitPower(480, 20);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 755
+
+// Create the instance properties fullname and email in the Employee class. Given a person's first and last names:
+
+// Form the fullname by simply joining the first and last name together, separated by a space.
+// Form the email by joining the first and last name together with a . in between, and follow it with @company.com at the end. Make sure everything is in lowercase.
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.fullname = this.firstname + ' ' + this.lastname;
+		this.email = `${this.firstname}.${this.lastname}@company.com`.toLowerCase();
+	}
+}
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		// Complete the code!
+		this.fullname = `${firstname} ${lastname}`;
+		this.email = `${firstname}.${lastname}@company.com`.toLowerCase();
+	}
+}
+
+
+class Employee {
+	constructor (firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.fullname = `${firstname} ${lastname}`;
+		this.email = `${firstname}.${lastname}@company.com`.toLowerCase();
+	}
+}
+
+emp1 = new Employee('John', 'Smith');
+emp2 = new Employee('Mary',  'Sue');
+emp3 = new Employee('Antony', 'Walker');
+emp4 = new Employee('Joshua', 'Senoron');
+
+emp3.firstname;
+emp3.lastname;
+emp3.fullname;
+emp3.email;
+emp4.firstname;
+emp4.lastname;
+emp4.fullname;
+emp4.email;
