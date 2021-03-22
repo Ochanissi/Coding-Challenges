@@ -33870,3 +33870,47 @@ emp4.firstname;
 emp4.lastname;
 emp4.fullname;
 emp4.email;
+
+
+/////////////////////////////////
+// CODING CHALLENGE 757
+
+// Write a function that selects all words that have all the same vowels (in any order and/or number) as the first word, including the first word.
+
+
+function sameVowelGroup(w) {
+	return w.filter(x => [...new Set(x.match(/[aeiou]/gi))].sort().join("") === [...new Set(w[0].match(/[aeiou]/gi))].sort().join(""));
+}
+
+
+function sameVowelGroup(w) {
+    var keys =  w[0].match(/[aouie]/gi).sort().join('') || [];
+    return w.filter((word) => word.match(/[aouie]/gi).every((letter) => keys.indexOf(letter) != -1))
+
+}
+
+
+  
+function sameVowelGroup(w) {
+	const vowels = x => [...'aeiou'].map((v, i) => x.includes(v) * Math.pow(2,i)).reduce((a, v) => a + v, 0);
+	return w.filter(v => vowels(v) === vowels(w[0]));
+}
+
+
+const sameVowelGroup = words => {
+    const consonants = /[^aeiou]+/g;
+    const vowels = Array.from(new Set(words[0].replace(consonants, ''))).sort();
+  
+    return words.filter(word => {
+      const wordVowels = Array.from(new Set(word.replace(consonants, ''))).sort();
+      return vowels.join('') === wordVowels.join('');
+    });
+  };
+
+sameVowelGroup(["hoops", "chuff", "bot", "bottom"]);
+sameVowelGroup(["crop", "nomnom", "bolo", "yodeller"]);
+sameVowelGroup(["semantic", "aimless", "beautiful", "meatless icecream"]);
+sameVowelGroup(["many", "carriage", "emit", "apricot", "animal"]);
+sameVowelGroup(["toe", "ocelot", "maniac"]);
+sameVowelGroup(["a", "apple", "flat", "map", "shark"]);
+sameVowelGroup(["a", "aa", "ab", "abc", "aaac", "abe"]);
