@@ -33914,3 +33914,57 @@ sameVowelGroup(["many", "carriage", "emit", "apricot", "animal"]);
 sameVowelGroup(["toe", "ocelot", "maniac"]);
 sameVowelGroup(["a", "apple", "flat", "map", "shark"]);
 sameVowelGroup(["a", "aa", "ab", "abc", "aaac", "abe"]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 758
+
+// In this challenge, you have to establish if an integer num is Alternating. To be Alternating, num must be positive and every digit in its sequence must have a different parity than its next and its previous digit.
+
+// Given an integer num, implement a function that returns true is num is an Alternating number, or false if it's not.
+
+
+function isAlternating(num) {
+	const a = num.toString().split("").map(x => x % 2 === 0).every((x, i, arr) => x !== arr[i+1]);
+	return num > 0 ? a : false; 
+}
+
+
+function isAlternating(num) {
+	if(num<=0)
+		return false
+	let numArr=[...String(num)].map(Number)
+	for(let i=0;i<numArr.length-1;i++)
+		 if(numArr[i]%2===numArr[i+1]%2)
+			 return false
+	return true
+}
+
+
+const isAlternating = n => n <= 0 ? false : (digits = [...`${n}`])[`length`] == 1 ? true :
+    /^([01])(?!\1)([01])(?:\1\2)*\1?$/g.test(digits.reduce((b,n) => [...b, n % 2], []).join(``))
+
+
+const isAlternating = num => {
+const arr = [...String(num)]
+return num > 0 && arr
+    .slice(1)
+    .every((number,i) => number % 2 !== arr[i] % 2)
+}
+
+
+const isAlternating = num => num > 0 && [...`${num}`].every((d, i, n) => !i || d % 2 - n[i - 1] % 2);
+
+
+isAlternating(123);
+isAlternating(67);
+isAlternating(2380);
+isAlternating(75);
+isAlternating(3);
+isAlternating(903);
+isAlternating(444);
+isAlternating(0);
+isAlternating(14589);
+isAlternating(1234566789);
+isAlternating(-12);
+isAlternating(10);
