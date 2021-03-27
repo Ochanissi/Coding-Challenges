@@ -34145,3 +34145,46 @@ consecutiveCombo([4, 3, 1], [2, 5, 7, 6]);
 consecutiveCombo([4, 3, 1], [7, 6, 5]);
 consecutiveCombo([4, 3, 1], [0, 7, 6, 5]);
 consecutiveCombo([44, 46], [45]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 762
+
+// Create a left rotation and a right rotation function that returns all the left rotations and right rotations of a string.
+
+
+function leftRotations(str) {
+	const a = [str];
+	for (let i = 0; i < str.length - 1; i++) {
+		a.push(a[i].slice(1, a[i].length) + a[i].slice(0,1));
+	}
+	return a;	
+}
+
+function rightRotations(str) {
+	const a = [str];
+	for (let i = 0; i < str.length - 1; i++) {
+		a.push(a[i].slice(-1) + a[i].slice(0, -1));
+	}
+	return a;	
+}
+
+
+function leftRotations(str) {
+	return str.split("").map((a,i)=>str.slice(i)+str.slice(0,i))
+}
+
+function rightRotations(str) {
+	return str.split("").map((a,i)=>str.slice(-i)+str.slice(0,-i))
+}
+
+
+
+leftRotations("abc");
+leftRotations("abcdef");
+leftRotations("himalaya");
+leftRotations("aab");
+rightRotations("abc");
+rightRotations("abcdef");
+rightRotations("himalaya");
+rightRotations("aab");
