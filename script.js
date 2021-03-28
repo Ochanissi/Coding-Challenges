@@ -34225,3 +34225,70 @@ getLength([2, [3], 4, [7]]);
 getLength([2, [3, [5, 7]], 4, [7]]);
 getLength([2, [3, [4, [5]]], [9]]);
 getLength([]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 764
+
+// Create a function that calculates what percentage of the box is filled in. Give your answer as a string percentage rounded to the nearest integer.
+
+
+// Only "o" will fill the box and also "o" will not be found outside of the box.
+// Don't focus on how much physical space an element takes up, pretend that each element occupies one whole unit (which you can judge according to the number of "#" on the sides).
+
+
+function percentFilled(box) {
+	return parseInt(box.flat().join("").split("").filter(x => x === "o").length * 100 / box.flat().join("").split("").filter(x => x === "o" || x === " ").length) + "%";
+}
+
+
+function percentFilled(box) {
+	const max = (box.length - 2) * (box[0].length - 2);
+	const o = (box.join('').match(/o/g) || []).length;
+	return `${Math.round(o / max * 100)}%`;
+}
+
+
+
+const percentFilled = box => {
+	let arr = [...box.join("")],
+			fil = arr.filter(v => v === "o").length,
+			tot = arr.filter(v => v !== "#").length;
+	return `${Math.round(fil / tot * 100)}%`;
+}
+
+
+percentFilled([
+	"####",
+	"#  #",
+	"#o #",
+	"####"
+]);
+
+percentFilled([
+	"#######",
+	"#o oo #",
+	"#######"
+]);
+
+percentFilled([
+	"######",
+	"#ooo #",
+	"#oo  #",
+	"#    #",
+	"#    #",
+	"######"
+]);
+
+percentFilled([
+	"####",
+	"#  #",
+	"####"
+]);
+
+percentFilled([
+	"###",
+	"#o#",
+	"###"
+]);
+
