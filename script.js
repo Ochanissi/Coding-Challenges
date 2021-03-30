@@ -34292,3 +34292,71 @@ percentFilled([
 	"###"
 ]);
 
+/////////////////////////////////
+// CODING CHALLENGE 765
+
+// Given an integer, return "odd" if the sum of all odd digits is greater than the sum of all even digits. Return "even" if the sum of even digits is greater than the sum of odd digits, and "equal" if both sums are the same.
+
+
+
+function oddsVsEvens(num) {
+	const even = num.toString().split("").filter(x => x % 2 === 0);
+	const odd = num.toString().split("").filter(x => x % 2 !== 0);
+	
+	let sumEven, sumOdd = 0;
+	
+	if (even.length > 0) {
+		sumEven = even.reduce((x, i) => Number(x) + Number(i));
+	}
+	
+	if (odd.length > 0) {
+		sumOdd = odd.reduce((x, i) => Number(x) + Number(i));
+	}
+	
+	if (sumEven > sumOdd) {
+		return "even";	
+	} else if (sumEven < sumOdd) {
+		return "odd";
+	} else if (sumEven === sumOdd) {
+		return "equal";
+	}
+}
+
+
+
+function oddsVsEvens(num) {
+	let even = 0, odd = 0; 
+	num.toString().split('')
+  .map((x) => Number(x) % 2 == 0 ? even += Number(x) : odd += Number(x));
+	return even == odd ? "equal" : even > odd ? "even" : "odd";
+}
+
+
+
+function oddsVsEvens(num) {
+	var even = String(num).split('').map(v => +v).filter(v => [2,4,6,8].includes(v)).reduce( (a,c) => a+c,0)
+	var odd = String(num).split('').map(v => +v).filter(v => [1,3,5,7,9].includes(v)).reduce( (a,c) => a+c,0)
+	return even > odd ? 'even' : even === odd ? 'equal' : 'odd'
+}
+
+
+oddsVsEvens(44547);
+oddsVsEvens(412420);
+oddsVsEvens(128797);
+oddsVsEvens(838768);
+oddsVsEvens(371910);
+oddsVsEvens(769431);
+oddsVsEvens(221294);
+oddsVsEvens(859307);
+oddsVsEvens(847617);
+oddsVsEvens(348466);
+oddsVsEvens(50236);
+oddsVsEvens(133987);
+oddsVsEvens(698570);
+oddsVsEvens(822406);
+oddsVsEvens(54313);
+oddsVsEvens(17788);
+oddsVsEvens(72083);
+oddsVsEvens(649924);
+oddsVsEvens(968740);
+oddsVsEvens(942674);
