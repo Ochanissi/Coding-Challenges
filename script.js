@@ -34360,3 +34360,31 @@ oddsVsEvens(72083);
 oddsVsEvens(649924);
 oddsVsEvens(968740);
 oddsVsEvens(942674);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 766
+
+// A set is a collection of unique items. A set can be formed from an array from removing all duplicate items.
+
+
+function set(arr) {
+	return [...new Set(arr)];
+}
+
+
+const set = arr => Array.from(new Set(arr));
+
+
+function set(arr) {
+	return arr.filter((n, index) => arr.indexOf(n) == index);
+}
+
+set([1, 3, 3, 5, 5]);
+set([4, 4, 4, 4]);
+set([5, 7, 8, 9, 10, 15]);
+set([5, 9, 9]);
+set([1, 2, 3, 4, 5, 5, 6, 6, 7]);
+set([1, 1, 2, 2, 2]);
+set(['A', 'A', 'A', 'A']);
+set(['A', 'B', 'C', 'D']);
