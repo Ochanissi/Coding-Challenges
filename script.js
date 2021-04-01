@@ -34419,3 +34419,18 @@ isSastry(652333983478884);
 isSastry(718717107443715);
 isSastry(752199872453889);
 isSastry(786704531939448);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 768
+
+// Create a function that takes a string and returns a new string with all vowels removed.
+
+function removeVowels(str) {
+	return str.replace(/[aeiou]/gi, "");
+}
+
+
+removeVowels("If Obama resigns from office NOW, thereby doing a great service to the country—I will give him free lifetime golf at any one of my courses!");
+removeVowels("This election is a total sham and a travesty. We are not a democracy!");
+removeVowels("I have never seen a thin person drinking Diet Coke.");
