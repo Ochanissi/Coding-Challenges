@@ -34388,3 +34388,34 @@ set([1, 2, 3, 4, 5, 5, 6, 6, 7]);
 set([1, 1, 2, 2, 2]);
 set(['A', 'A', 'A', 'A']);
 set(['A', 'B', 'C', 'D']);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 767
+
+// In this challenge, you have to establish if a given integer n is a Sastry number. If the number resulting from the concatenation of an integer n with its successor is a perfect square, then n is a Sastry Number.
+
+// Given a positive integer n, implement a function that returns true if n is a Sastry number, or false if it's not.
+
+function isSastry(number) {
+	return "" + number + (number + 1) > 0 && Math.sqrt("" + number + (number + 1)) % 1 === 0;
+}
+
+
+const isSastry = n => !(Math.sqrt(+`${n}${n+1}`) % 1);
+
+
+
+
+isSastry(183);
+isSastry(184);
+isSastry(106755);
+isSastry(129987253440921);
+isSastry(157175907513603);
+isSastry(206611570247935);
+isSastry(338752188230098);
+isSastry(433610247875715);
+isSastry(652333983478884);
+isSastry(718717107443715);
+isSastry(752199872453889);
+isSastry(786704531939448);
