@@ -34434,3 +34434,42 @@ function removeVowels(str) {
 removeVowels("If Obama resigns from office NOW, thereby doing a great service to the country—I will give him free lifetime golf at any one of my courses!");
 removeVowels("This election is a total sham and a travesty. We are not a democracy!");
 removeVowels("I have never seen a thin person drinking Diet Coke.");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 769
+
+// Create a function that returns the selected filename from a path. Include the extension in your answer.
+
+
+function getFilename(path) {
+	return path.split("/").slice(-1).toString();
+}
+
+function getFilename(path){
+    return path.split('/').pop();
+}
+
+
+const getFilename = p => p.split('/').slice(-1)[0]
+
+
+function getFilename(path){
+	let f=path.split("/");
+	return f[f.length-1];
+}
+
+
+function getFilename(path){
+	return path.split('/').reverse()[0]
+	
+}
+
+
+
+getFilename("C:/Projects/pil_tests/ascii/edabit.txt");
+getFilename("C:/Users/johnsmith/Music/Beethoven_5.mp3");
+getFilename("ffprobe.exe");
+getFilename("Music/Drafts/unfinished2.midi");
+getFilename("C:/Users/chad/OneDrive/Desktop/Atom.lnk");
+getFilename("senoron/OneDrive/Desktop/DDLC-1.1.1-pc/lib/windows-i686/DDLC.exe");
