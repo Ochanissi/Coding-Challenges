@@ -34554,3 +34554,59 @@ countAll('H3LL0');
 countAll('149990');
 countAll('edabit 2018');
 countAll('    ');
+
+
+/////////////////////////////////
+// CODING CHALLENGE 772
+
+// Create a function that outputs the results of a flashcard. A flashcard is an array of three elements: a number, an operator symbol, and another number. Return the mathematical result of that expression.
+
+// There are 4 operators: + (addition), - (subtraction), x (multiplication), and / (division). If the flashcard displays a number being divided by zero, e.g. [3, "/", 0], then return undefined. For division, round to the hundredths place. So [10, "/", 3] should return 3.33.
+
+
+function flash([num1, op, num2]) {
+	switch (op) {
+		case "+":
+			return num1 + num2;
+		case "-":
+			return num1 - num2;
+		case "/":
+			if (num2 !== 0) {
+				return Number((num1 / num2).toFixed(2));
+			} else return undefined;
+		case "x":
+			return num1 * num2;
+	}
+}
+
+
+function flash([num1, op, num2]) {
+    switch (op) {
+      case '+':
+        return num1 + num2;
+      case '-':
+        return num1 - num2;
+      case 'x':
+        return num1 * num2;
+      case '/':
+        const result = num1 / num2;
+        return Number.isFinite(result) ? Number(result.toFixed(2)) : undefined;
+    }
+  
+    return undefined;
+}
+
+
+
+flash([3, 'x', 7]);
+flash([5, '+', 7]);
+flash([10, '-', 9]);
+flash([10, '/', 0]);
+flash([10, '/', 3]);
+flash([2, 'x', 0]);
+flash([0, '/', 5]);
+flash([0, '+', 0]);
+flash([0, '-', 0]);
+flash([8, '-', 0]);
+flash([0, '/', 0]);
+flash([3, '/', 8]);
