@@ -34668,3 +34668,42 @@ mergeArrays(["u", "k", "c"], [2, 8, 30]);
 mergeArrays(["e"], [1, 2, 3, 4, 5, 6, 7]);
 mergeArrays([1, 2, 3, 4, 5, 6, 7], ["e"]);
 mergeArrays([123, 456], ["c", "b", "a"]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 774
+
+// Write a function that converts an object into an array of keys and values.
+
+
+function objectToArray(obj) {
+	return Object.entries(obj);
+}
+
+
+function objectToArray(obj) {
+	return Object.keys(obj).map(key => [key, obj[key]]);
+}
+
+
+function objectToArray(obj) {
+	var r = [];
+  for (var i in obj) {
+		r.push([i, obj[i]]);
+	}
+	return r;
+}
+
+
+
+objectToArray({
+  D: 1, 
+  B: 2, 
+  C: 3
+});
+
+objectToArray({
+	likes: 2, 
+  dislikes: 3, 
+  followers: 10
+});
