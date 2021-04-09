@@ -15793,8 +15793,8 @@ getIndices([1, 5, 5, 2, 7], 5);
 getIndices([1, 5, 5, 2, 7], 8);
 getIndices([8, 8, 8, 8, 8], 8);
 getIndices([8, 8, 7, 8, 8], 8);
-getIndices([true, false, true, false];;
-getIndices([true, false, true, false];;
+getIndices([true, false, true, false];
+getIndices([true, false, true, false];
 
 
 
@@ -34707,3 +34707,43 @@ objectToArray({
   dislikes: 3, 
   followers: 10
 });
+
+
+/////////////////////////////////
+// CODING CHALLENGE 775
+
+// Create a function that returns the indices of all occurrences of an item in the array.
+
+
+function getIndices(arr, el) {
+	const a = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] === el) {
+			a.push(i)
+		}
+	}
+	return a;
+}
+
+
+function getIndices(arr, el) {
+	ret=[]
+	arr.forEach((a,b)=>a==el?ret.push(b):null)
+	return ret
+}
+
+
+const getIndices = (arr, el) =>
+  arr.reduce(
+    (indices, item, i) => (item === el ? indices.concat(i) : indices),
+    []
+  );
+
+getIndices(['a', 'a', 'b', 'a', 'b', 'a'], 'a');
+getIndices([1, 5, 5, 2, 7], 7);
+getIndices([1, 5, 5, 2, 7], 5);
+getIndices([1, 5, 5, 2, 7], 8);
+getIndices([8, 8, 8, 8, 8], 8);
+getIndices([8, 8, 7, 8, 8], 8);
+getIndices([true, false, true, false];
+getIndices([true, false, true, false];
