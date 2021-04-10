@@ -34747,3 +34747,57 @@ getIndices([8, 8, 8, 8, 8], 8);
 getIndices([8, 8, 7, 8, 8], 8);
 getIndices([true, false, true, false];
 getIndices([true, false, true, false];
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 776
+
+// Create a function that replaces "the" in the sentence with "an" or "a". Remember that if the next word begins with a vowel, use "an". In the case of a consonant, use "a".
+
+
+
+function replaceThe(str) {
+	const a = [];
+	for (let i = 0; i < str.split(" ").length; i++) {
+		if (str.split(" ")[i] === "the" && /[aeiou]/.test(str.split(" ")[i+1][0])) {
+			a.push("an");
+		} else if (str.split(" ")[i] === "the" && /([b-df-hj-np-tv-z])/.test(str.split(" ")[i+1][0])) {
+			a.push("a");
+		} else a.push(str.split(" ")[i])
+	}
+	return a.join(" ");
+}
+
+
+const replaceThe = str => str.replace(/the(?= [aeiou])/g, "an").replace(/the/g, "a");
+
+
+const replaceThe = str => {
+	return str.replace(/(the\s)(\w+)/g, (__,_,noun) => (
+		`${/^[aeiou]/g.test(noun) ? "an" : "a"} ${noun}`
+	));
+}
+
+
+const replaceThe = str =>
+	str
+		.replace(/the(?= [^aeiou])/g, 'a')
+        .replace(/the(?= [aeiou])/g, 'an')
+        
+
+const replaceThe = str => str.replace(/the ./g, v =>
+    (/[aeiou]/.test(v[4]) ? 'an ' : 'a ') + v[4]);
+
+
+replaceThe("the dog and the envelope");
+replaceThe("the boy ran at the wall");
+replaceThe("the egg, the spoon and the espionage");
+replaceThe("where is the spoon");
+replaceThe("the quick brown fox jumps over the lazy dog");
+replaceThe("this edabit thing is quite neat");
+replaceThe("the lion, witch and the wardrobe");
+replaceThe("enter the correct password to access the epic program");
+replaceThe("the man blew the final candle out and all was dark");
+replaceThe("the ant ate the egg salad which the eel had been intending to eat over the weekend");
+replaceThe("this the random english sentence which you have to pass");
