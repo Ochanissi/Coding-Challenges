@@ -34889,3 +34889,56 @@ xPronounce("Max bax pax");
 xPronounce("Anti vax");
 xPronounce("Who is xavier and why does he have my car");
 xPronounce("OMG xylem unboxing video x D");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 779
+
+// Given a number, return a string of the word "Boom", which varies in the following ways:
+
+// The string should include n number of "o"s, unless n is below 2 (in that case, return "boom").
+// If n is evenly divisible by 2, add an exclamation mark to the end.
+// If n is evenly divisible by 5, return the string in ALL CAPS.
+// If n is evenly divisible by both 2 and 5, return the string in ALL CAPS and add an exclamation mark to the end.
+
+
+function boomIntensity(n) {
+	if (n < 2) return "boom";
+	if (n % 2 === 0 && n % 5 === 0) return `B${"O".repeat(n)}M!`;
+	if (n % 5 === 0) return `B${"O".repeat(n)}M`;
+	if (n % 2 === 0) return `B${"o".repeat(n)}m!`;
+	return `B${"o".repeat(n)}m`;
+}
+
+
+const boomIntensity = n => {
+	if (n < 2) return 'boom';
+	const boom = 'B' + 'o'.repeat(n) + 'm' + (!(n % 2) ? '!' : '');
+	return !(n % 5) ? boom.toUpperCase() : boom;
+};
+
+
+const boomIntensity = n => {
+	let i = [n<2, !(n%10), !(n%5), !(n%2), true].indexOf(true);
+	switch(i) {
+		case 0: return `boom`;
+		case 1: return `B${"O".repeat(n)}M!`;
+		case 2: return `B${"O".repeat(n)}M`;
+		case 3: return `B${"o".repeat(n)}m!`;
+		case 4: return `B${"o".repeat(n)}m`;
+	}
+}
+
+
+boomIntensity(0);
+boomIntensity(1);
+boomIntensity(2);
+boomIntensity(3);
+boomIntensity(4);
+boomIntensity(5);
+boomIntensity(6);
+boomIntensity(7);
+boomIntensity(8);
+boomIntensity(9);
+boomIntensity(10);
+boomIntensity(11);
