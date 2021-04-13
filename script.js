@@ -34942,3 +34942,41 @@ boomIntensity(8);
 boomIntensity(9);
 boomIntensity(10);
 boomIntensity(11);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 780
+
+// Given a fraction as a string, return whether or not it is greater than 1 when evaluated.
+
+
+
+function greaterThanOne(frac) {
+	return eval(frac) > 1;
+}
+
+
+const greaterThanOne = fraction => {
+	const [numerator, denominator] = fraction.split('/');
+	return numerator / denominator > 1;
+};
+
+
+greaterThanOne("1/2");
+greaterThanOne("7/4");
+greaterThanOne("10/10");
+greaterThanOne("12/30");
+greaterThanOne("28/3");
+greaterThanOne("35/31");
+greaterThanOne("11/27");
+greaterThanOne("42/32");
+greaterThanOne("34/15");
+greaterThanOne("16/16");
+greaterThanOne("38/41");
+greaterThanOne("45/43");
+greaterThanOne("13/38");
+greaterThanOne("43/2");
+greaterThanOne("16/31");
+greaterThanOne("41/15");
+greaterThanOne("2/38");
+greaterThanOne("37/21");
