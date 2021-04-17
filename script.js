@@ -35081,3 +35081,90 @@ mdFormat("JavaScript", "b");
 mdFormat("Python", "i");
 mdFormat("C++", "c");
 mdFormat("Strikethrough", "s");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 783
+
+// The median of a group of numbers is the middle number when the group is sorted. If the size of the group is even, the median is the average of the middle two numbers. Given a sorted array of numbers, return the median (rounded to one decimal place if the median isn't an integer).
+
+
+function median(nums) {
+	for (let i = 0; i <= nums.length; i++) {
+		if (nums.length > 2) {
+			nums.pop();
+			nums.shift();
+		}
+	}
+	return nums.length === 2 ? (nums[0] + nums[1]) / 2 : nums[0]
+}
+
+
+
+function median(nums) {
+
+	if(nums.length%2 == 0){
+		let b = nums.length/2 -1
+		return (nums[b] + nums[b+1])/2
+	}else{
+		return nums[Math.floor(nums.length/2)]
+	}
+}
+
+
+const median=n=>
+n.length%2?n[(n.length-1)/2]:(n[n.length/2-1]+n[n.length/2])/2
+
+
+
+function median(nums) {
+	let len = nums.length;
+	let mid = Math.floor(len / 2);
+	return len % 2 === 1 ? nums[mid] : 
+		+(((nums[mid] + nums[mid-1]) / 2).toFixed(1));
+}
+
+
+function median(nums) {
+	if(nums.length % 2) {return nums.splice(nums.length/2,1)[0]}
+	else {
+		return nums
+			.splice((nums.length/2)-1,2)
+			.reduce((acc,v) => acc + v) / 2
+	}
+}
+
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const average = arr => sum(arr) / arr.length;
+
+const median = arr => {
+  const half = Math.floor(arr.length / 2);
+  return arr.length % 2 !== 0
+    ? arr[half]
+    : average(arr.slice(half - 1, half + 1));
+};
+
+
+median([3, 4, 4, 5, 6, 8]);
+median([1, 4, 4, 9, 9, 10]);
+median([1, 2, 4, 4, 4, 7, 7, 9, 10]);
+median([1, 7, 8, 8, 10, 10, 10]);
+median([2, 3, 3, 3, 3, 5]);
+median([1, 1, 3, 4, 6, 6, 6, 7, 10]);
+median([3, 4, 6, 6, 6, 7, 9, 10, 10]);
+median([3, 3, 4, 5, 6, 6, 7, 9]);
+median([3, 4, 4, 6, 9, 9, 9]);
+median([3, 4, 4, 5, 7, 8]);
+median([2, 4, 4, 5, 5, 8, 8, 9, 10]);
+median([4, 5, 5, 6, 8, 10]);
+median([1, 4, 4, 5, 8, 9]);
+median([1, 4, 8, 8, 8, 8, 9, 10]);
+median([1, 1, 2, 2, 10, 10]);
+median([3, 4, 4, 5, 7, 8, 9]);
+median([1, 1, 2, 2, 2, 4, 5, 6, 8]);
+median([2, 4, 5, 5, 7, 7, 9, 10]);
+median([1, 3, 4, 8, 8, 10, 10]);
+median([1, 1, 4, 5, 5, 9, 9, 10]);
