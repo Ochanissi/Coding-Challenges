@@ -35168,3 +35168,44 @@ median([1, 1, 2, 2, 2, 4, 5, 6, 8]);
 median([2, 4, 5, 5, 7, 7, 9, 10]);
 median([1, 3, 4, 8, 8, 10, 10]);
 median([1, 1, 4, 5, 5, 9, 9, 10]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 784
+
+// Google's logo can be stretched depending on how many pages it lets you skip forward to.
+
+// Let's say we wanted to change the amount of pages that Google could skip to. Create a function where given a number of pages n, return the word 'Google' but with the correct number of 'o's.
+
+
+
+function googlify(n) {
+	return n <= 1 ? 'invalid' : `G${'o'.repeat(n)}gle`;
+}
+
+
+function googlify(n) {
+	return n > 1 ? `G${"o".repeat(n)}gle` : "invalid"
+}
+
+
+function googlify(n) {
+	return n > 1 ? 'G'+'o'.repeat(n)+'gle' : 'invalid' ;
+}
+
+
+googlify(-5);
+googlify(-4);
+googlify(-3);
+googlify(-2);
+googlify(-1);
+googlify(0);
+googlify(1);
+googlify(2);
+googlify(3);
+googlify(4);
+googlify(5);
+googlify(6);
+googlify(7);
+googlify(8);
+googlify(9);
