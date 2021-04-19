@@ -35209,3 +35209,58 @@ googlify(6);
 googlify(7);
 googlify(8);
 googlify(9);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 785
+
+// Given any number, we can create a new number by adding the sums of squares of digits of that number. For example, given 203, our new number is 4 + 0 + 9 = 13. If we repeat this process, we get a sequence of numbers:
+
+// 203 -> 13 -> 10 -> 1 -> 1
+// Sometimes, like with 203, the sequence reaches (and stays at) 1. Numbers like this are called happy.
+
+// Not all numbers are happy. If we started with 11, the sequence would be:
+
+// 11 -> 2 -> 4 -> 16 -> ...
+// This sequence will never reach 1, and so the number 11 is called unhappy.
+
+// Given a positive whole number, you have to determine whether that number is happy or unhappy.
+
+
+function happy(n) {
+	const a = +n.toString().split("").reduce((x, i) => +x + +i).toString().split("").reduce((x, i) => +x + +i);
+	return a === 1 || a === 4;
+}
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const getDigits = num => String(num).split('').map(Number);
+
+const happy = num => {
+  if (num === 1) return true;
+  if (num === 4) return false;
+  return happy(sum(getDigits(num).map(digit => Math.pow(digit, 2))));
+};
+
+
+function happy(n) {
+	if (n == 1) return true;
+	if (n == 4) return false;
+	return happy([...n.toString()]
+		.reduce((sum, v) => Math.pow(Number(v), 2) + sum, 0))
+}
+
+
+// Between 100 and 110 the happy numbers are 100, 103, 109
+happy(100);
+happy(101);
+happy(102);
+happy(103);
+happy(104);
+happy(105);
+happy(106);
+happy(107);
+happy(108);
+happy(109);
+happy(110);
