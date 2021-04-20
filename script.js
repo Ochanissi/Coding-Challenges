@@ -35264,3 +35264,49 @@ happy(107);
 happy(108);
 happy(109);
 happy(110);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 786
+
+// Given an array of words, return the longest word which can fit on a 7 segment display.
+
+// Image of a 7 segment display
+
+// Letters which do not fit on a 7 segment display are K, M, V, W and X.
+// Therefore, do not count words which include these letters.
+
+
+function longest7SegmentWord(arr) {
+	return arr.filter(x => !(/[kmvwx]/.test(x))).sort((a, b) => b.length - a.length)[0] || '';
+}
+
+
+const longest7SegmentWord = arr => {
+	return arr
+		.sort((a,b) => b.length - a.length)
+		.filter(wrd => !/[kmvwx]/gi.test(wrd))[0] || "";
+}
+
+const longest7SegmentWord = arr =>
+	arr
+		.sort((a, b) => b.length - a.length)
+        .find(word => /^[^kmvwx]+$/.test(word)) || ''
+        
+function longest7SegmentWord(arr) {
+    return arr.filter(x => !(/[kmvwx]/.test(x))).sort((a, b) => b.length - a.length)[0] || '';
+}
+
+longest7SegmentWord(["knighthood", "parental", "fridge", "clingfilm"]);
+longest7SegmentWord(["coding", "crackers", "edabit", "celebration"]);
+longest7SegmentWord(["velocity", "mackerel", "woven", "kingsmen"]);
+longest7SegmentWord(["embarrassment", "perceive", "front"]);
+longest7SegmentWord(["truck", "accessible", "undermine", "unique", "tear", "cat", "avenue", "labour", "goat", "dance", "rise", "scale"]);
+longest7SegmentWord(["act", "adjust", "proud", "battery", "tear", "beautiful", "avenue", "thoughtful", "victory", "mobile", "straight"]);
+longest7SegmentWord(["fair", "tear", "truck"]);
+longest7SegmentWord(["scale", "pass", "act", "sector", "vain", "scale"]);
+longest7SegmentWord(["vegetarian", "unique", "sensitivity", "goat", "nature", "attract", "suntan", "mobile", "pillow", "economist", "arrest", "galaxy", "proud", "proud"]);
+longest7SegmentWord(["vat", "suntan", "murder", "dance", "course", "institution"]);
+longest7SegmentWord(["adjust", "garlic", "preoccupation", "nature", "garlic", "undermine", "pavement", "payment", "fair", "twin", "expertise", "pillow", "dance", "economist", "establish", "nervous", "sector"]);
+longest7SegmentWord(["embarrassment", "bell", "obese", "width", "singer", "strikebreaker", "width", "preoccupation", "nervous"]);
+longest7SegmentWord(["winner", "twin", "establish"]);
