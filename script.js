@@ -35528,3 +35528,32 @@ greaterThanSum([25, 34, 68, 128, 262]);
 greaterThanSum([18, 34, 77, 129, 270, 544, 1075, -2148]);
 greaterThanSum([14, 34, 70, 123, 263, 506]);
 greaterThanSum([24, 29, 58, 115, 236, 468, 950, 1905, 3787, 7575]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 791
+
+// If you've completed this RegEx series from I to XXII then you have been exposed to all of MDN's documentation on regular expressions special characters. You can check my Collections under Basic Reg Ex in my profile if you missed any. This next part of the series is to help solidify what you've learned. In order to save time I will be searching the web to find regular expression exercises to post here.
+
+// You can test for empty string like this:
+
+// "".length === 0 ➞ true
+
+
+const REGEXP = /^$/
+
+
+
+const str = "";
+
+const validate = (REGEXP) => {
+	 // if(!//.test(String(REGEXP))) return () => "invalid" 
+	 return function testReg(str) {
+		 return REGEXP.test(str)
+	 }
+}
+
+const testExp = validate(REGEXP)
+
+testExp(str);
+testExp(str);
