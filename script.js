@@ -35557,3 +35557,19 @@ const testExp = validate(REGEXP)
 
 testExp(str);
 testExp(str);
+
+/////////////////////////////////
+// CODING CHALLENGE 792
+
+// Create a function that takes an array of words and transforms it into an array of each word's length.
+
+
+function wordLengths(arr) {
+  return arr.map(x => x.length);
+}
+
+wordLengths(["hello", "world"]);
+wordLengths(["Halloween", "Thanksgiving", "Christmas"]);
+wordLengths(["She", "sells", "seashells", "down", "by", "the", "seashore"]);
+wordLengths(["Indiana", "Jones", "and", "the", "Temple", "of", "Doom"]);
+wordLengths(["Programming", "is", "fun"]);
