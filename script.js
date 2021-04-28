@@ -35643,3 +35643,68 @@ oddsVsEvens(72083);
 oddsVsEvens(649924);
 oddsVsEvens(968740);
 oddsVsEvens(942674);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 794
+
+// Create a method in the Person class which returns how another person's age compares. Given the instances p1, p2 and p3, which will be initialised with the attributes name and age, return a sentence in the following format:
+
+// {other person name} is {older than / younger than / the same age as} me.
+
+
+class Person {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+		
+	compareAge(other) {
+		this.name2 = other.name;
+		this.age2 = other.age;
+		
+		return `${this.name2} is ${this.age > this.age2 ? 'younger than' : this.age < this.age2 ? 'older than' : 'the same age as'} me.`;
+	}
+}
+
+
+class Person {
+	constructor(name, age) {
+		this.name = name
+		this.age = age
+	}
+		
+	compareAge(other) {
+		let i = Math.sign(other.age - this.age),
+				x = ["the same age as", "older than"][i] || "younger than";
+		return `${other.name} is ${x} me.`;
+	}
+}
+
+
+class Person {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+		
+	compareAge(other) {
+		let options = ['older than','the same age as','younger than'];
+		let text = options[Math.sign(this.age - other.age) + 1];
+		return `${other.name} is ${text} me.`;
+	}
+}
+
+
+p1 = new Person("Samuel", 24);
+p2 = new Person("Joel", 36);
+p3 = new Person("Lily", 24);
+
+p1.compareAge(p2);
+p1.compareAge(p3);
+
+p2.compareAge(p1);
+p2.compareAge(p3);
+
+p3.compareAge(p1);
+p3.compareAge(p2);
