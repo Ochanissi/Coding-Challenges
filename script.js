@@ -35708,3 +35708,28 @@ p2.compareAge(p3);
 
 p3.compareAge(p1);
 p3.compareAge(p2);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 795
+
+// Create a function that calculates the number of different squares in an n * n square grid. Check the Resources tab.
+
+
+function numberSquares(n) {
+	return n * (n + 1 ) * (2 * n + 1) / 6;
+}
+
+
+function numberSquares(n) {
+	return Math.ceil((n*n*n)/3 + (n*n)/2 + n/6)
+}
+
+
+numberSquares(3);
+numberSquares(10);
+numberSquares(12);
+numberSquares(5);
+numberSquares(9);
+numberSquares(11);
+numberSquares(15);
