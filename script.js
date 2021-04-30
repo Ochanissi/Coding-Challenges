@@ -35733,3 +35733,32 @@ numberSquares(5);
 numberSquares(9);
 numberSquares(11);
 numberSquares(15);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 796
+
+// Create a function that takes an angle in radians and converts it into degrees.
+
+
+function toDegree(radian) {
+	return Math.round(radian * 180 * Math.PI / 10 / 15) * 15;
+}
+
+
+function toDegree(radian){
+	return (radian/Math.PI) * 180;
+}
+
+
+const toDegree = r => Math.round(r * (180/Math.PI));
+
+
+const toDegree = radian => (radian/Math.PI) * 180;
+
+
+toDegree(2 * Math.PI);
+toDegree(Math.PI);
+toDegree(Math.PI / 2);
+toDegree(Math.PI / 4);
+toDegree(Math.PI / 3);
