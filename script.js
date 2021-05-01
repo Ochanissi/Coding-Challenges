@@ -35762,3 +35762,61 @@ toDegree(Math.PI);
 toDegree(Math.PI / 2);
 toDegree(Math.PI / 4);
 toDegree(Math.PI / 3);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 797
+
+// Create a function that counts the number of blocks of two or more adjacent 1s in an array.
+
+
+function countOnes(arr) {
+	return arr.join("").split("0").filter(x => x.length > 1).length
+}
+
+
+const countOnes = arr =>
+  arr
+    .join('')
+    .split(/0+/)
+    .filter(str => str && str.length > 1).length;
+
+
+function countOnes(arr) {
+    let consecutiveOnes = arr.join("").match(/1{2,}/g);
+    return consecutiveOnes ?  consecutiveOnes.length : 0;
+}
+
+
+function countOnes(arr) {
+	var a = arr.join('').split(/0+/);
+	var c = 0;
+	for (var i in a) {
+		if (a[i].length > 1) c++;
+	}
+	return c;
+}
+
+
+function countOnes(arr) {
+	return arr.join("").split(/[^1]/g).filter(x => x.length > 1).length;
+}
+
+
+function countOnes(arr) {
+	return (arr.toString().match(/(1,1)(,0|$)/g)||[]).length
+}
+
+
+countOnes([1, 1, 1, 1, 1]);
+countOnes([1, 1, 1, 1, 0]);
+countOnes([0, 0, 0, 0, 0]);
+countOnes([1, 0, 0, 0, 0]);
+countOnes([1, 0, 1, 0, 1]);
+countOnes([1, 0, 0, 0, 1, 0, 0, 1, 1]);
+countOnes([1, 1, 0, 1, 1, 0, 0, 1, 1]);
+countOnes([1, 0, 0, 1, 1, 0, 0, 1, 1]);
+countOnes([1, 0, 0, 1, 1, 0, 1, 1, 1]);
+countOnes([1, 0, 1, 0, 1, 0, 1, 0]);
+countOnes([1, 1, 1, 1, 0, 0, 0, 0]);
+countOnes([1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1]);
