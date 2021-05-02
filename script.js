@@ -35820,3 +35820,53 @@ countOnes([1, 0, 0, 1, 1, 0, 1, 1, 1]);
 countOnes([1, 0, 1, 0, 1, 0, 1, 0]);
 countOnes([1, 1, 1, 1, 0, 0, 0, 0]);
 countOnes([1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 798
+
+// Create a function that takes an array as an argument and return an array of the sum of each of its slices. An array's slices are groups of consecutive values that add up to a maximum of 100. No slice's total sum should exceed 100.
+
+
+function sumOfSlices(arr) {
+	const a = [0];
+	for (let i = 0; i < arr.length; i++) {
+		if (a[a.length - 1] + arr[i] <= 100) {
+			a[a.length - 1] += arr[i];
+		} else {
+			a.push(arr[i]);
+		}
+	}
+	return a;
+}
+
+
+const sumOfSlices = arr =>
+	arr.reduce((a, b) => 
+	a[a.length-1] + b <= 100 
+	 	? (a[a.length-1] += b, a) 
+	 	: (a.push(b), a) , [0]
+	)
+;
+
+
+
+function sumOfSlices(arr) {
+	let list = [], sum = 0;
+	for (let num of arr) {
+		if (sum + num <= 100) {
+			sum += num;
+		} else {
+			list.push(sum);
+			sum = num;
+		}
+	}
+	return list.concat(sum);
+}
+
+
+sumOfSlices([10, 29, 13, 14, 15, 16, 17, 31, 20, 10, 29, 13, 14, 15, 16, 17, 31, 20, 100]);
+sumOfSlices([58,3,	38,	99,	10]);
+sumOfSlices([13]);
+sumOfSlices([62,	406,	343,	234,	244,	200,	304,	462,	212,	48,	166,	71,	80,	51,	307,	442,	368,	235,	199,	411,	100,	203,	330,	437,	226,	365,	337,	464,	14,	350]);
+sumOfSlices([315,	47]);
