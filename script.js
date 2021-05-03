@@ -35870,3 +35870,29 @@ sumOfSlices([58,3,	38,	99,	10]);
 sumOfSlices([13]);
 sumOfSlices([62,	406,	343,	234,	244,	200,	304,	462,	212,	48,	166,	71,	80,	51,	307,	442,	368,	235,	199,	411,	100,	203,	330,	437,	226,	365,	337,	464,	14,	350]);
 sumOfSlices([315,	47]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 799
+
+// Create a function that takes an angle in radians and returns the corresponding angle in degrees.
+
+
+function radiansToDegrees(rad) {
+	return rad * 180 / Math.PI;
+}
+
+
+const radiansToDegrees = rad => (180 * rad) / Math.PI;
+
+
+const radiansToDegrees = r => r * 180/Math.PI
+
+
+
+radiansToDegrees(1);
+radiansToDegrees(5);
+radiansToDegrees(7);
+radiansToDegrees(60);
+radiansToDegrees(100);
+radiansToDegrees(180);
