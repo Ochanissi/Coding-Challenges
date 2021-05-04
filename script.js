@@ -35896,3 +35896,54 @@ radiansToDegrees(7);
 radiansToDegrees(60);
 radiansToDegrees(100);
 radiansToDegrees(180);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 800
+
+// Create a function that takes an array of students and returns an array of their top notes. If student does not have notes then let's assume their top note is equal to 0.
+
+
+function getStudentTopNotes(students) {
+	return students.map(x => Math.max(...x.notes, 0));
+}
+
+
+
+function getStudentTopNotes(students) {
+    return students.map(s => s.notes.length ? Math.max(...s.notes) : 0)
+}
+
+
+
+function getStudentTopNotes(students) {
+    return students.map((a) => a.notes).map((v) => {
+        if(v.length === 0) return 0;
+        else return Math.max(...v)
+    })
+
+}
+
+
+const areEqual = (actual, expected) => expected.every(
+    (item, index) => item === actual[index]
+  )
+  const sets = [
+    [[5, 4, 3], [5], [4]],
+    [[1, 2, 3], [1, 1, 1], []],
+    [[], []],
+    []
+  ].map(
+    set => ({ 
+      actual: getStudentTopNotes(
+        set.map(notes => ({ notes }))
+      ), 
+      expected: set.map(notes => Math.max(...notes, 0))
+    })   
+  ).forEach(
+    ({ actual, expected }) => {
+      'Result should be an array', () => {
+        areEqual(actual, expected)
+      }
+    }
+  )
