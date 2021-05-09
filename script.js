@@ -36088,3 +36088,42 @@ sumMissingNumbers([7, 3, 8, 5, 12]);
 sumMissingNumbers([99, 2, 45, 4, 17]);
 sumMissingNumbers([10, 7, 5, 3, 1]);
 sumMissingNumbers([7, 8, 9, 10]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 805
+
+// Given what is supposed to be typed and what is actually typed, write a function that returns the broken key(s). The function looks like:
+
+// findBrokenKeys(correct phrase, what you actually typed)
+
+
+function findBrokenKeys(str1, str2) {
+	const a = [];
+	for (let i = 0; i < str1.length; i++) {
+		if (str1[i] !== str2[i]) a.push(str1[i])
+	}
+	return [...new Set(a)];
+}
+
+
+function findBrokenKeys(str1, str2) {
+	return [...new Set(str1.split("").filter((a, index) => a !== str2[index]))];
+}
+
+
+function findBrokenKeys(str1, str2) {
+	return [...new Set([...str1].filter((val, i) => val !== str2[i]))]
+}
+
+
+
+let findBrokenKeys=(str1, str2)=>(ret=[],str1.split('').forEach((x,i)=>{if(x!=str2[i]&&!ret.includes(x)) ret.push(x);}),ret);
+
+
+findBrokenKeys("happy birthday", "hawwy birthday");
+findBrokenKeys("starry night", "starrq light");
+findBrokenKeys("beethoven", "affthoif5");
+findBrokenKeys("mozart", "aiwgvx");
+findBrokenKeys("5678", "4678");
+findBrokenKeys("!!??$$", "$$!!??");
