@@ -36164,3 +36164,36 @@ newWord("itahari");
 newWord("rasuwa");
 newWord("rolpa");
 
+
+/////////////////////////////////
+// CODING CHALLENGE 807
+
+// After an amazing performance, the crowd goes wild! People clap enthusiastically and most claps overlap with each other to create one homogeneous sound.
+
+// An overlapped clap is a clap which starts but doesn't finish, as in "ClaClap" (The first clap is cut short and there are overall 2 claps)
+
+// Given a string of what the overlapping claps sounded like, return how many claps were made in total.
+
+
+function countClaps(str) {
+	return str.split("").filter(x => x === "C").length;
+}
+
+
+function countClaps(txt) {
+	return txt.split("C").length-1;
+}
+
+
+
+const countClaps = t => (t.match(/[A-Z]/g) || []).length;
+
+
+
+countClaps("ClaClaClaClap!");
+countClaps("ClClClaClaClaClap!");
+countClaps("CCClaClClap!Clap!ClClClap!");
+countClaps("ClCCClaClaClaClCClap!CClaClap!Clap!ClClClClaClaClap!Clap!ClClCClap!Clap!ClClap!ClaCClClap!ClClap!Clap!CClClaClaClaCClaCClaClClaCCCClaClap!Clap!ClaClaClap!ClaClap!CClap!Clap!ClClap!");
+countClaps("Clap!ClClaClap!ClaClap!CClap!ClClClap!CClaClap!CClap!ClClap!ClaClaClClap!ClaClap!ClClCClaClaCClaCCCCClClCClap!ClaCClaClCClap!Clap!ClaClaClaCClaClap!");
+countClaps("Clap!CClaClClap!ClCClCCClaCClap!ClCCClCClClap!ClClClap!CClap!CClCClap!ClCClap!Clap!Clap!Clap!ClClap!Clap!CClaClClap!ClaClaClaClCClClaClClap!ClaClClaClap!ClaClap!CClClClap!ClClaClClap!Clap!ClaClaClaClaClClap!CClaClClaCClap!ClClClClClap!Clap!CClClap!ClClap!ClaClap!CClClaClaClap!Clap!");
+
