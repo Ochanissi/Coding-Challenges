@@ -36127,3 +36127,40 @@ findBrokenKeys("beethoven", "affthoif5");
 findBrokenKeys("mozart", "aiwgvx");
 findBrokenKeys("5678", "4678");
 findBrokenKeys("!!??$$", "$$!!??");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 806
+
+// Create a function that takes a word and returns the new word without including the first character.
+
+
+function newWord(txt) {
+	return txt.slice(1);
+}
+
+
+function newWord(txt){
+    return txt.substr(1)
+}
+
+
+function newWord(txt){
+	let str = txt.substring(1);
+	return str
+}
+
+
+function newWord(txt){
+	return [...txt].slice(1).join('');
+}
+
+
+newWord("pokhara");
+newWord("biratnagar");
+newWord("nepal");
+newWord("damak");
+newWord("itahari");
+newWord("rasuwa");
+newWord("rolpa");
+
