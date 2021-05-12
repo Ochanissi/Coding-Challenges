@@ -36197,3 +36197,48 @@ countClaps("ClCCClaClaClaClCClap!CClaClap!Clap!ClClClClaClaClap!Clap!ClClCClap!C
 countClaps("Clap!ClClaClap!ClaClap!CClap!ClClClap!CClaClap!CClap!ClClap!ClaClaClClap!ClaClap!ClClCClaClaCClaCCCCClClCClap!ClaCClaClCClap!Clap!ClaClaClaCClaClap!");
 countClaps("Clap!CClaClClap!ClCClCCClaCClap!ClCCClCClClap!ClClClap!CClap!CClCClap!ClCClap!Clap!Clap!Clap!ClClap!Clap!CClaClClap!ClaClaClaClCClClaClClap!ClaClClaClap!ClaClap!CClClClap!ClClaClClap!Clap!ClaClaClaClaClClap!CClaClClaCClap!ClClClClClap!Clap!CClClap!ClClap!ClaClap!CClClaClaClap!Clap!");
 
+
+/////////////////////////////////
+// CODING CHALLENGE 808
+
+// Create a function that returns the sum of missing numbers.
+
+
+function sumMissingNumbers(arr) {
+	const a = [];
+	for (let i = Math.min(...arr); i < Math.max(...arr); i++) {
+		if (!arr.includes(i)) a.push(i);
+	}
+	return a.reduce((x, i) => x + i, 0);
+}
+
+
+const sumMissingNumbers = a => {
+	let tot = 0;
+	for (let i = Math.min(...a) + 1, j = Math.max(...a); i < j; i++)
+		if (!a.includes(i)) tot += i;
+	return tot;
+}
+
+
+const sumAB = (a, b) => ((b - a + 1) * (a + b)) >> 1;
+const sum = ar => ar.reduce((a,v) => a + v, 0);
+const sumMissingNumbers = arr => sumAB(Math.min(...arr), Math.max(...arr)) - sum(arr);
+
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const sumMissingNumbers = arr => {
+  const min = Math.min(...arr);
+  const max = Math.max(...arr);
+
+  return (max - min + 1) * ((min + max) / 2) - sum(arr);
+};
+
+
+sumMissingNumbers([1, 3, 5, 7, 10]);
+sumMissingNumbers([10, 20, 30, 40, 50, 60]);
+sumMissingNumbers([7, 3, 8, 5, 12]);
+sumMissingNumbers([99, 2, 45, 4, 17]);
+sumMissingNumbers([10, 7, 5, 3, 1]);
+sumMissingNumbers([7, 8, 9, 10]);
