@@ -36286,3 +36286,38 @@ findOccurrences("Create a nice JUICY function", "c");
 findOccurrences("An APPLE a day keeps an Archeologist AWAY...", "a");
 findOccurrences("hello people of the planet Earth", "g");
 findOccurrences("Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.", "R");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 810
+
+// Your job is to make a 'Twitter Link' regex expression rx. This regex searches a tweet to find the @handle and the #handle.
+
+// The function is already written in the test tab, so you only provide the Regex variable.
+// Only return the @ and # handles.
+
+
+
+const rx = /(?<!\w)@\w+|(?<!\w)#\w+/g;
+
+
+const rx = /[@#]\w+/gi
+
+
+const rx = /([@][A-z]+)|([#][A-z]+)/g;
+
+
+const tweet = str => str.match(rx).join` `;
+
+[
+[ 'Visit us at @edabit', '@edabit' ],
+[ 'This is #definitely, the @second test', '#definitely @second' ],
+[ '#Finally, a test!', '#Finally' ],
+[ '#Paris is the capital of #France.', '#Paris #France' ],
+[ 'The @committee consists of #eminent #jurists.',
+  '@committee #eminent #jurists'],
+[ '#Honesty is the best @policy!!', '#Honesty @policy' ],
+[ '@RonaldRoss was awarded the Nobel Prize for his work on the transmission of #malaria.',
+  '@RonaldRoss #malaria'],
+[ 'Follow @JavaScript', '@JavaScript' ]]
+    .forEach(x => tweet(x[0]), x[1]);
