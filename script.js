@@ -36321,3 +36321,85 @@ const tweet = str => str.match(rx).join` `;
   '@RonaldRoss #malaria'],
 [ 'Follow @JavaScript', '@JavaScript' ]]
     .forEach(x => tweet(x[0]), x[1]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 811
+
+// Given a pH value, return whether that value is 'alkaline', 'acidic', or 'neutral'. Return 'invalid' if the value given is less than 0 or greater than 14.
+
+
+function pHName(pH) {
+	return pH < 7 && pH >= 0 ? "acidic" : pH > 7 && pH <= 14 ? "alkaline" : pH === 7 ? "neutral" : 'invalid';
+}
+
+
+const pHName = pH => pH < 0 || pH > 14 ? 'invalid' :
+    pH < 7 ? 'acidic' : pH > 7 ? 'alkaline' : 'neutral';
+    
+
+function pHName(ph) {
+    if (ph>14||ph<0) return 'invalid';
+    if (ph<7) return 'acidic';
+    if (ph>7) return 'alkaline';
+    return 'neutral';
+}
+
+
+function pHName(pH) {
+	return pH < 0 || pH > 14 ? "invalid" : pH === 7 ? "neutral" : pH <= 6 ? "acidic" : "alkaline"  
+}
+
+
+pHName(7.0);
+pHName(7);
+pHName(13.52);
+pHName(-4.33);
+pHName(8.27);
+pHName(9.72);
+pHName(-4.58);
+pHName(14.85);
+pHName(17.76);
+pHName(3.9);
+pHName(14.21);
+pHName(-2.35);
+pHName(2.66);
+pHName(16.45);
+pHName(3.46);
+pHName(7.26);
+pHName(12.46);
+pHName(17.51);
+pHName(19.7);
+pHName(10.46);
+pHName(-4.83);
+pHName(3.13);
+pHName(11.38);
+pHName(5.23);
+pHName(18.85);
+pHName(15.82);
+pHName(9.17);
+pHName(2.73);
+pHName(10.99);
+pHName(-3.86);
+pHName(17.59);
+pHName(5.5);
+pHName(-3.35);
+pHName(16.02);
+pHName(8.78);
+pHName(18.94);
+pHName(-4.69);
+pHName(0.86);
+pHName(-3.45);
+pHName(19.05);
+pHName(5.41);
+pHName(0.44);
+pHName(8.82);
+pHName(-1.24);
+pHName(1.72);
+pHName(10.01);
+pHName(3.49);
+pHName(13.62);
+pHName(3.43);
+pHName(4.35);
+pHName(17.07);
+pHName(14.64);
