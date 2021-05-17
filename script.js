@@ -36445,3 +36445,37 @@ testExp(str3);
 testExp(str1);
 testExp(str2);
 testExp(str3);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 813
+
+// You call your spouse in anger and a "little" argument takes place. Count the total amount of adjectives used. Given an object with a list of adjectives, return the total amount of adjectives used.
+
+
+function totalAmountAdjectives(obj) {
+	return Object.values(obj).length;
+}
+
+
+function totalAmountAdjectives(obj) {
+    return Object.keys(obj).length
+
+}
+
+
+const totalAmountAdjectives = o => Object.keys(o).length;
+
+
+const obj = { a: "moron" }
+const obj2 = { a: "moron", b: "scumbag", c: "moron", d: "dirtbag" } 
+const obj3 = {b: "scumbag", c: "moron", d: "dirtbag" } 
+let dynamic = {}
+const random = Test.randomNumber()
+let arr = new Array(random).fill(".")
+arr.forEach((item, i) => dynamic[i] = item)
+
+totalAmountAdjectives(obj);
+totalAmountAdjectives(obj2);
+totalAmountAdjectives(obj3);
+totalAmountAdjectives(dynamic);
