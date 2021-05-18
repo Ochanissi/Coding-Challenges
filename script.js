@@ -36479,3 +36479,26 @@ totalAmountAdjectives(obj);
 totalAmountAdjectives(obj2);
 totalAmountAdjectives(obj3);
 totalAmountAdjectives(dynamic);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 814
+
+// Create a function that converts a string of letters to their respective number in the alphabet.
+
+
+function alphNum(str) {
+	return str.split("").map(x => x.charCodeAt(0) - 65).join(" ");
+}
+
+
+const alphNum = str =>
+	[...str]
+		.map(value => value.charCodeAt() - 65)
+		.join(' ')
+
+
+alphNum("ABCD");
+alphNum("BCDA");
+alphNum("AAA");
+alphNum("XYZ");
