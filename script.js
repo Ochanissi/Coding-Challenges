@@ -36502,3 +36502,37 @@ alphNum("ABCD");
 alphNum("BCDA");
 alphNum("AAA");
 alphNum("XYZ");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 815
+
+// Create a function that takes an array of two numbers and checks if the square root of the first number is equal to the cube root of the second number.
+
+
+function checkSquareAndCube(arr) {
+	return Math.sqrt(arr[0]) === Math.cbrt(arr[1]);
+}
+
+
+const checkSquareAndCube = ([a, b]) => Math.sqrt(a) === Math.cbrt(b);
+
+
+const checkSquareAndCube = ns => Math.sqrt(ns[0]) ** 3 === ns[1];
+
+
+function checkSquareAndCube(arr) {
+	return Math.sqrt(arr[0]) === Math.cbrt(arr[1]);
+}
+
+
+checkSquareAndCube([4, 8]);
+checkSquareAndCube([5, 12]);
+checkSquareAndCube([9, 27]);
+checkSquareAndCube([25, 120]);
+checkSquareAndCube([25, 125]);
+checkSquareAndCube([36, 215]);
+checkSquareAndCube([36, 217]);
+checkSquareAndCube([144, 1728]);
+checkSquareAndCube([1, 1]);
+checkSquareAndCube([676, 17576]);
