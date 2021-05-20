@@ -36536,3 +36536,132 @@ checkSquareAndCube([36, 217]);
 checkSquareAndCube([144, 1728]);
 checkSquareAndCube([1, 1]);
 checkSquareAndCube([676, 17576]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 816
+
+// Given a string, create a function which outputs an array, building and deconstructing the string letter by letter. See the examples below for some helpful guidance.
+
+// Examples
+// constructDeconstruct("Hello") ➞ [
+//   "H",
+//   "He",
+//   "Hel",
+//   "Hell",
+//   "Hello",
+//   "Hell",
+//   "Hel",
+//   "He",
+//   "H"
+// ]
+
+// constructDeconstruct("edabit") ➞ [
+//   "e",
+//   "ed",
+//   "eda",
+//   "edab",
+//   "edabi",
+//   "edabit",
+//   "edabi",
+//   "edab",
+//   "eda",
+//   "ed",
+//   "e"
+// ]
+
+// constructDeconstruct("the sun") ➞ [
+//   "t",
+//   "th",
+//   "the",
+//   "the ",
+//   "the s",
+//   "the su",
+//   "the sun",
+//   "the su",
+//   "the s",
+//   "the ",
+//   "the",
+//   "th",
+//   "t"
+// ]
+
+
+function constructDeconstruct(str) {
+	const a = [];
+
+	for (let i = 1; i < str.length; i++) {
+		a.push(str.slice(0, i));
+	}
+	const b = [...a];
+	if (a.length > 1) b.push(str);
+	return [...b, ...a.reverse()];
+}
+
+
+
+const constructDeconstruct = (str, x = str.length) => {
+	return Array.from({length: x * 2 - 1}, (_, i) => (
+		i >= x ? str.slice(0, x - i - 1) : str.slice(0, i + 1)
+	));
+}
+
+
+function constructDeconstruct(str) {
+	function range(n) {
+		let r = [...Array(n-1)].map((_,i) => i+1);
+		return r.concat(n).concat([...r].reverse());
+	}
+	return str.length ? range(str.length).map(v => str.slice(0, v)) : [];
+}
+
+
+constructDeconstruct("Hello"), [
+    "H",
+    "He",
+    "Hel",
+    "Hell",
+    "Hello",
+    "Hell",
+    "Hel",
+    "He",
+    "H"
+  ];
+  
+constructDeconstruct("edabit"), [
+    "e",
+    "ed",
+    "eda",
+    "edab",
+    "edabi",
+    "edabit",
+    "edabi",
+    "edab",
+    "eda",
+    "ed",
+    "e"
+  ];
+  
+constructDeconstruct("the sun"), [
+    "t",
+    "th",
+    "the",
+    "the ",
+    "the s",
+    "the su",
+    "the sun",
+    "the su",
+    "the s",
+    "the ",
+    "the",
+    "th",
+    "t"
+  ];
+  
+constructDeconstruct("so long partner");
+constructDeconstruct("s p a c e s");
+constructDeconstruct("edabit is a awesome");
+constructDeconstruct("123456789");
+constructDeconstruct("");
+constructDeconstruct("        ");
