@@ -36665,3 +36665,37 @@ constructDeconstruct("edabit is a awesome");
 constructDeconstruct("123456789");
 constructDeconstruct("");
 constructDeconstruct("        ");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 817
+
+// The challenge is to fix all of the bugs in this incredibly messy code, which the code in the image might've actually looked like (probably not)! The code given will output the same middle two lines as in the image shown above.
+
+// Create a function that takes two numbers and a mathematical operator and returns the result.
+
+
+function calculate(num1, num2, op) {
+	return eval(num1 + op + num2);
+}
+
+
+function calculate(num1, num2, op) {
+    return {
+      "+": num1 + num2,
+      "-": num1 - num2,
+      "*": num1 * num2,
+      "/": num1 / num2,
+      "%": num1 % num2,
+    }[op];
+  }
+
+
+const calculate = (num1, num2, op) => eval(num1 + op + num2);
+
+
+calculate(24,100, "-");
+calculate(-20,-30, "+");
+calculate(1500,5, "/");
+calculate(38,3, "*");
+calculate(49,5, "%");
