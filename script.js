@@ -36699,3 +36699,27 @@ calculate(-20,-30, "+");
 calculate(1500,5, "/");
 calculate(38,3, "*");
 calculate(49,5, "%");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 818
+
+// Write a function that returns true if two arrays have the same number of unique elements, and false otherwise.
+
+
+function same(a1, a2) {
+	const uniqueItems1 = Array.from(new Set(a1));
+	const uniqueItems2 = Array.from(new Set(a2));
+	
+	return uniqueItems1.length === uniqueItems2.length;
+}
+
+const same = (a1, a2) => new Set(a1).size === new Set(a2).size;
+
+same([1, 3, 4, 4, 4], [2, 5, 7]);
+same([9, 8, 7, 6], [4, 4, 3, 1]);
+same([2], [3, 3, 3, 3, 3]);
+same([5, 6, 7, 9], [4, 1]);
+same([5, 9, 9], [9, 5]);
+same([1, 1, 1, 4], [1, 4, 4, 4, 4, 4]);
+same([], []);
