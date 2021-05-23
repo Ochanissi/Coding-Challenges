@@ -36723,3 +36723,42 @@ same([5, 6, 7, 9], [4, 1]);
 same([5, 9, 9], [9, 5]);
 same([1, 1, 1, 4], [1, 4, 4, 4, 4, 4]);
 same([], []);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 819
+
+// The important thing when a comment is posted on Edabit is its content. But when a comment is formatted in the right way, it will be properly shown and it will be easily readable by everyone.
+
+// In this challenge, you have to format a word using four specific methods of the Markdown language that is used by Edabit to format the text in the Comments tab and the Instructions tab (during the creation, or the translation, of a challenge). Each of these four methods (or styles) is identified by the lowercased initial letter of its name:
+
+// "b" is for bold
+// "i" is for italics
+// "c" is for inline code
+// "s" is for strikethrough
+
+
+function mdFormat(word, style) {
+	if (style === 'b') return `**${word}**`;
+	if (style === 'i') return `_${word}_`;
+	if (style === 'c') return '`' + word + '`';
+	if (style === 's') return `~~${word}~~`;
+}
+
+
+const styles = {b: "**", i: "_", c: "`", s: "~~"},
+    mdFormat = (word, x) => styles[x] + word + styles[x];
+            
+
+const mdFormat = (w,s) =>
+    `${c = { b: '**', i: '_', c: '`', s: '~~' }[s]}${w}${c}`
+
+
+mdFormat("Bold", "b");
+mdFormat("Italics", "i");
+mdFormat("Code", "c");
+mdFormat("Ruby", "s");
+mdFormat("JavaScript", "b");
+mdFormat("Python", "i");
+mdFormat("C++", "c");
+mdFormat("Strikethrough", "s");
