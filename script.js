@@ -36845,3 +36845,63 @@ function roman_to_Int(str1) {
   }       
 
 console.log(roman_to_Int('XXVI'));
+
+
+/////////////////////////////////
+// CODING CHALLENGE 822
+
+// A number n is a Harshad (also called Niven) number if it is divisible by the sum of its digits.
+
+// For example, 666 is divisible by 6+6+6 so it is a Harshad number.
+
+function isHarshad(num) {
+	return num % num.toString().split("").reduce((x, i) => x + +i, 0) === 0;
+}
+
+
+const isHarshad = n => (
+	n > 0 && !(n % [...`${n}`].reduce((a,b) => a + +b, 0))
+);
+
+
+function isHarshad(n) {
+	let s = [...''+n].map(x=>+x).reduce((a,b)=>a+b)
+	return n%s == 0
+}
+
+
+function isHarshad(num) {
+	return num % [...'' + num].reduce((acc, cur)=> acc + +cur,0) == 0;
+}
+
+
+isHarshad(0);
+isHarshad(15);
+isHarshad(990);
+isHarshad(461);
+isHarshad(297);
+isHarshad(345);
+isHarshad(529);
+isHarshad(839);
+isHarshad(281);
+isHarshad(252);
+isHarshad(123);
+isHarshad(840);
+isHarshad(789);
+isHarshad(43);
+isHarshad(907);
+isHarshad(441);
+isHarshad(729);
+isHarshad(801);
+isHarshad(923);
+isHarshad(569);
+isHarshad(828);
+isHarshad(658);
+isHarshad(838);
+isHarshad(711);
+isHarshad(216);
+isHarshad(525);
+isHarshad(768);
+isHarshad(234);
+isHarshad(353);
+isHarshad(713);
