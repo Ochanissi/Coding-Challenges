@@ -36975,3 +36975,47 @@ oddsVsEvens(72083);
 oddsVsEvens(649924);
 oddsVsEvens(968740);
 oddsVsEvens(942674);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 824
+
+// Create a function that takes in a sentence and a character to find. Return an object of each word in the sentence, with the count of the specified character as the value.
+
+
+
+function findOccurrences(str, char) {
+	const obj = {};
+	for (const key of str.toLowerCase().split(" ")) {
+			obj[key] = key.toLowerCase().match(char.toLowerCase()) ? key.toLowerCase().split("").filter(x => x === char.toLowerCase()).length : 0;
+	}
+	return obj;
+}
+
+
+const findOccurrences = (str, char) => {
+	return str.toLowerCase().match(/\S+/g)
+		.reduce((o,k) => ({...o, [k]: [...k]
+			.filter(v => v === char.toLowerCase()).length}), {});
+}
+
+
+function findOccurrences(str, char) {
+    const arr = str.toLowerCase().split(' ')
+    const obj = {}
+    const rx = new RegExp(char.toLowerCase(), 'g')
+    
+    arr.forEach(word => {
+        const matches = word.match(rx)
+        obj[word] = matches == null ? 0 : matches.length
+    })
+
+    return obj
+}
+
+
+findOccurrences("Hello World", "o");
+findOccurrences("Create a nice JUICY function", "c");
+findOccurrences("An APPLE a day keeps an Archeologist AWAY...", "a");
+findOccurrences("hello people of the planet Earth", "g");
+findOccurrences("Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.", "R");
