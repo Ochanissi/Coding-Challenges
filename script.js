@@ -37252,3 +37252,29 @@ median([1, 1, 2, 2, 2, 4, 5, 6, 8]);
 median([2, 4, 5, 5, 7, 7, 9, 10]);
 median([1, 3, 4, 8, 8, 10, 10]);
 median([1, 1, 4, 5, 5, 9, 9, 10]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 829
+
+// Create a function that returns the thickness (in meters) of a piece of paper after folding it n number of times. The paper starts off with a thickness of 0.5mm.
+
+
+
+function numLayers(n) {
+	return Math.pow(2, n) * 0.001 / 2 + 'm';
+}
+
+
+numLayers(0);
+numLayers(1);
+numLayers(2);
+numLayers(3);
+numLayers(4);
+numLayers(5);
+numLayers(6);
+numLayers(7);
+numLayers(8);
+numLayers(9);
+numLayers(10);
+numLayers(24);
