@@ -37278,3 +37278,15 @@ numLayers(8);
 numLayers(9);
 numLayers(10);
 numLayers(24);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 830
+
+// Create a function that checks to see if two object arguments are equal to one another. Return true if the objects are equal, otherwise, return false.
+
+
+
+function isEqual(objOne, objTwo) {
+	return JSON.stringify(objOne) === JSON.stringify(objTwo)
+}
