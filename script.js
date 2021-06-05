@@ -37290,3 +37290,49 @@ numLayers(24);
 function isEqual(objOne, objTwo) {
 	return JSON.stringify(objOne) === JSON.stringify(objTwo)
 }
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 831
+
+// Create a function that creates a box based on dimension n.
+
+
+
+function makeBox(n) {
+	const a = [];
+	for (let i = 0; i < n; i++) {
+		if (i > 0 && i < n - 1 && n > 1) {
+			a.push("#" + ' '.repeat(n - 2) + "#");
+		} else {
+			a.push('#'.repeat(n));
+		}
+	}
+	return a;
+}
+
+
+const makeBox = num =>
+  Array.from({ length: num }, (_, i) =>
+    [0, num - 1].includes(i) ? '#'.repeat(num) : `#${' '.repeat(num - 2)}#`
+  );
+
+
+function makeBox(n) {
+	ret=[]
+	for (i=0;i<n;i++){i==0|i==n-1?ret[i]='#'.repeat(n):
+        ret[i]='#'+' '.repeat(n-2)+'#'}
+	return ret	
+}
+
+
+
+makeBox(5);
+makeBox(6);
+makeBox(4);
+makeBox(2);
+makeBox(1);
