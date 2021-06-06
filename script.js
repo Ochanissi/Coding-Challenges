@@ -37336,3 +37336,39 @@ makeBox(6);
 makeBox(4);
 makeBox(2);
 makeBox(1);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 832
+
+// Wild Roger is tasked with shooting down 6 bottles with 6 shots as fast as possible. Here are the different types of shots he could make:
+
+// He could use one pistol to shoot a bottle with a "Bang!" in 0.5 seconds.
+// Or he could use both pistols at once with a "BangBang!" to shoot two bottles in 0.5 seconds.
+// Given an array of strings, return the it took to shoot down all 6 bottles. Make sure to only count Bangs and BangBangs. Anything else doesn't count.
+
+
+function rogerShots(arr) {
+	return arr.filter(x => x === "BangBang!" || x === 'Bang!').map(x => x = 0.5).reduce((x, i) => x + i);
+}
+
+
+const rogerShots = arr => {
+	return arr.filter(v => /^(Bang){1,2}!/.test(v)).length / 2;
+}
+
+
+function rogerShots(arr) {
+	var pattern = /\b(?:Bang|BangBang)\b/g;
+	var matches = arr.filter(elem => elem.match(pattern))
+	
+	return matches.length / 2;
+}
+
+
+rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "Bang!", "Bang!"]);
+rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "BangBang!"]);
+rogerShots(["Bang!", "BangBangBang!", "Boom!", "Bang!", "BangBang!", "BangBang!"]);
+rogerShots(["BangBang!", "BangBang!", "BangBang!"]);
+rogerShots(["Bang!", "BadaBing!", "Badaboom!", "Bang!", "Bang!", "Bang!", "Bang!", "Bang!"]);
+rogerShots(["BangBang!", "BangBang!", "Bag!", "Ban!", "Tang!", "Bang!", "Bang!"]);
