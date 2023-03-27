@@ -37391,3 +37391,22 @@ function nameString(name){
 nameString("Mubashir") ➞ "MubashirEdabit"
 nameString("Matt") ➞ "MattEdabit"
 nameString("javaScript") ➞ "javaScriptEdabit"
+
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 834
+
+// Mubashir wants to swap two given numbers!
+
+// It is not returning the right values. Can you help him fix it?
+
+
+const swap = (a, b) => [b, a];
+
+swap(100, 200) ➞ [200, 100]
+
+swap(44, 33) ➞ [33, 44]
+
+swap(21, 12) ➞ [12, 21]
