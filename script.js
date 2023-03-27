@@ -37372,3 +37372,22 @@ rogerShots(["Bang!", "BangBangBang!", "Boom!", "Bang!", "BangBang!", "BangBang!"
 rogerShots(["BangBang!", "BangBang!", "BangBang!"]);
 rogerShots(["Bang!", "BadaBing!", "Badaboom!", "Bang!", "Bang!", "Bang!", "Bang!", "Bang!"]);
 rogerShots(["BangBang!", "BangBang!", "Bag!", "Ban!", "Tang!", "Bang!", "Bang!"]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 833
+
+// A student learning JavaScript was trying to make a function. His code should concatenate a passed string name with string "Edabit" and store it in a variable called result. He needs your help to fix this code.
+
+
+function nameString(name){
+	var b = "Edabit";
+	var result = name + b;
+  	return result;
+}
+
+
+nameString("Mubashir") ➞ "MubashirEdabit"
+nameString("Matt") ➞ "MattEdabit"
+nameString("javaScript") ➞ "javaScriptEdabit"
