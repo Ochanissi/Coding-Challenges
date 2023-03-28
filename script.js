@@ -37410,3 +37410,21 @@ swap(100, 200) ➞ [200, 100]
 swap(44, 33) ➞ [33, 44]
 
 swap(21, 12) ➞ [12, 21]
+
+
+/////////////////////////////////
+// CODING CHALLENGE 835
+
+// Create a function that takes a boolean variable flag and returns it as a string.
+
+// Examples
+// boolToString(true) ➞ "true"
+
+// boolToString(false) ➞ "false"
+
+
+const boolToString = (flag) => String(flag);
+
+
+Test.assertEquals(boolToString(true), "true")
+Test.assertEquals(boolToString(false), "false")
