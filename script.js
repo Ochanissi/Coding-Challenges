@@ -37428,3 +37428,20 @@ const boolToString = (flag) => String(flag);
 
 Test.assertEquals(boolToString(true), "true")
 Test.assertEquals(boolToString(false), "false")
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 836
+
+// Mubashir wants to swap two given numbers!
+
+// It is not returning the right values. Can you help him fix it?
+
+const swap = (a, b) => [b, a];
+
+Test.assertSimilar(swap(100, 200), [200, 100])
+Test.assertSimilar(swap(44, 33), [33, 44])
+Test.assertSimilar(swap(21, 12), [12, 21])
+Test.assertSimilar(swap(10, 20), [20, 10])
+
