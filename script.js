@@ -37445,3 +37445,18 @@ Test.assertSimilar(swap(44, 33), [33, 44])
 Test.assertSimilar(swap(21, 12), [12, 21])
 Test.assertSimilar(swap(10, 20), [20, 10])
 
+
+
+/////////////////////////////////
+// CODING CHALLENGE 837
+
+// Fix the code in the Code tab so the function returns true if and only if x is equal to 7.
+
+const isSeven = (x) => x === 7;
+
+Test.assertEquals(isSeven(4), false) 
+Test.assertEquals(isSeven(9), false)
+Test.assertEquals(isSeven(7),  true)
+Test.assertEquals(isSeven(10),  false)
+Test.assertEquals(isSeven(20),  false)
+Test.assertEquals(isSeven(7),  true)
