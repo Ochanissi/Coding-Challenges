@@ -37460,3 +37460,15 @@ Test.assertEquals(isSeven(7),  true)
 Test.assertEquals(isSeven(10),  false)
 Test.assertEquals(isSeven(20),  false)
 Test.assertEquals(isSeven(7),  true)
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 838
+
+// Create a function that takes a boolean variable flag and returns it as a string.
+
+const boolToString = (flag) => String(flag);
+
+Test.assertEquals(boolToString(true), "true")
+Test.assertEquals(boolToString(false), "false")
