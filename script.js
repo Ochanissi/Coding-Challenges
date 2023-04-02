@@ -37472,3 +37472,62 @@ const boolToString = (flag) => String(flag);
 
 Test.assertEquals(boolToString(true), "true")
 Test.assertEquals(boolToString(false), "false")
+
+
+/////////////////////////////////
+// CODING CHALLENGE 839
+
+// Write a function that returns the smallest N-digit number which is a multiple of the specified value.
+
+
+function smallest(digits, value) {
+	let a = '1';
+	for (let i = 1; i < digits; i++) {
+		a += 0;
+	}
+	
+	let b = parseInt(a);
+	
+	for (let i = 0; i < value; i++) {
+		if (b % value !== 0) {
+			b++;
+		}
+	}
+	return b;
+}
+
+
+function smallest(digits, value) {
+	let num = Math.pow(10,digits-1)
+	return num + value - (num%value || value) 
+}
+
+
+function smallest(digits, value) {
+	for (let i = 1; true; i++) {
+		var x = value * i;
+		if ((""+x).length == digits) {
+			return x;
+		}
+	}
+}
+
+
+
+const smallest = (digits, value) => {
+    const start = Number(`1e${digits - 1}`);
+  
+    for (let i = start; ; i++) if (i % value === 0) return i;
+  };
+
+
+smallest(3, 8);
+smallest(5, 12);
+smallest(7, 1);
+smallest(2, 3);
+smallest(9, 33);
+smallest(8, 17);
+smallest(4, 67);
+smallest(4, 432);
+smallest(3, 432);
+smallest(3, 77);
