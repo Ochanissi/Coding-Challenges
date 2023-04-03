@@ -37531,3 +37531,36 @@ smallest(4, 67);
 smallest(4, 432);
 smallest(3, 432);
 smallest(3, 77);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 840
+
+// An array is special, if every even index contains an even number and every odd index contains an odd number. Create a function that returns true if an array is special, and false otherwise.
+
+function isSpecialArray(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] % 2 === 0 && i % 2 === 0 || arr[i] % 2 === 1 && i % 2 === 1) {
+			continue;
+		} else return false;
+	}
+	return true;
+}
+
+
+const isSpecialArray = a => a.every((v, i) => v%2 == i%2);
+
+
+function isSpecialArray(arr) {
+    return arr.every((element, index) => element%2 === index%2)
+}
+
+
+isSpecialArray([2, 7, 4, 9, 6, 1, 6, 3]);
+isSpecialArray([2, 7, 9, 1, 6, 1, 6, 3]);
+isSpecialArray([2, 7, 8, 8, 6, 1, 6, 3]);
+isSpecialArray([1, 1, 1, 2]);
+isSpecialArray([2, 2, 2, 2]);
+isSpecialArray([2, 1, 2, 1]);
+isSpecialArray([4, 5, 6, 7]);
+isSpecialArray([4, 5, 6, 7, 0, 5]);
