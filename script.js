@@ -37622,3 +37622,64 @@ mergeArrays(["u", "k", "c"], [2, 8, 30]);
 mergeArrays(["e"], [1, 2, 3, 4, 5, 6, 7]);
 mergeArrays([1, 2, 3, 4, 5, 6, 7], ["e"]);
 mergeArrays([123, 456], ["c", "b", "a"]);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 842
+
+// Create a function that counts the number of times a particular letter shows up in the word search.
+
+
+
+function letterCounter(arr, letter) {
+	return arr.flat().filter(x => x === letter).length;
+}
+
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'D');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'H');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'Z');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'R');
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'X');
+
+letterCounter([
+	['D', 'E', 'Y', 'H', 'A', 'D'],
+	['C', 'B', 'Z', 'Y', 'J', 'K'],
+	['D', 'B', 'C', 'A', 'M', 'N'],
+	['F', 'G', 'G', 'R', 'S', 'R'],
+	['V', 'X', 'H', 'A', 'S', 'S']
+], 'S');
