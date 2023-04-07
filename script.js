@@ -37683,3 +37683,85 @@ letterCounter([
 	['F', 'G', 'G', 'R', 'S', 'R'],
 	['V', 'X', 'H', 'A', 'S', 'S']
 ], 'S');
+
+
+/////////////////////////////////
+// CODING CHALLENGE 843
+
+// Write a function that returns the least common multiple (LCM) of two integers.
+ 
+
+const lcm=(n1, n2)=>n2%n1?n1*n2:n2
+
+
+function lcm(a, b) 
+{
+	return a * (b / gcd(a,b));
+}
+
+function gcd(a, b)
+{ 
+	return !b ? a : gcd(b, a % b);
+} 
+
+function range_lcm(arr)
+{
+	if(arr[0] > arr[1]) (arr = [arr[1], arr[0]]);
+
+	for(x = result = arr[0]; x <= arr[1]; x++) {
+		result = lcm(x, result);
+	}
+	
+	return result; 
+}
+
+
+function lcm(a, b) {
+	for(var i = 1; i <= a* b;i++){
+		if(i % a == 0 && i % b == 0){
+			return i;
+		}
+	}
+}
+
+
+const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+
+const lcm = (a, b) => a * (b / gcd(a, b));
+
+
+
+const gcd = (a, b) => b? gcd(b, a%b) : a;
+const lcm = (a, b) => a * b / gcd(a, b);
+
+
+
+function lcm(a, b) {
+	const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+    return (!a || !b) ? 0 : Math.abs((a * b) / gcd(a, b))}
+    
+
+
+function gcd(a, b){
+    let min = Math.min(a, b),
+            max = Math.max(a, b);
+    if (max % min === 0) return min;
+    return gcd(min, max % min);
+}
+function lcm(a, b) {
+    return a * b / gcd(a, b);
+}
+
+
+lcm(6, 10);
+lcm(30, 60);
+lcm(10000, 333);
+lcm(75, 135);
+lcm(102, 2);
+lcm(9, 18);
+lcm(8, 5);
+lcm(17, 11);
+lcm(17, 5);
+lcm(3, 12);
+lcm(9, 9);
+
