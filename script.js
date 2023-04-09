@@ -37765,3 +37765,48 @@ lcm(17, 5);
 lcm(3, 12);
 lcm(9, 9);
 
+/////////////////////////////////
+// CODING CHALLENGE 844
+
+// You are given three inputs: a string, one letter, and a second letter.
+
+// Write a function that returns true if every instance of the first letter occurs before every instance of the second letter.
+
+function firstBeforeSecond(s, first, second) {
+	return s.lastIndexOf(first) < s.indexOf(second);
+}
+
+
+firstBeforeSecond("a rabbit jumps joyfully", "a", "j");
+firstBeforeSecond("knaves knew about waterfalls", "k", "w");
+firstBeforeSecond("maria makes money", "m", "o");
+firstBeforeSecond("the hostess made pecan pie", "h", "p");
+firstBeforeSecond("barry the butterfly flew away", "b", "f");
+firstBeforeSecond("moody muggles", "m", "g");
+firstBeforeSecond("happy birthday", "a", "y");
+firstBeforeSecond("precarious kangaroos", "k", "a");
+firstBeforeSecond("maria makes money", "m", "i");
+firstBeforeSecond("taken by the beautiful sunrise", "u", "s");
+firstBeforeSecond("sharp cheddar biscuit", "t", "s");
+firstBeforeSecond("moody muggles", "m", "o");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 845
+
+// Write a function that takes a positive integer and return its factorial.
+
+
+function factorial(z) {
+	let a = 1;
+	for (let i = z; i > 0; i--) {
+		a *= i;
+	}	
+	return a;
+}
+
+factorial(4);
+factorial(0);
+factorial(9);
+factorial(1);
+factorial(2);
