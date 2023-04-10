@@ -37810,3 +37810,62 @@ factorial(0);
 factorial(9);
 factorial(1);
 factorial(2);
+
+
+
+/////////////////////////////////
+// CODING CHALLENGE 846
+
+// Create a function that takes two arrays and combines them by alternatingly taking elements from each array in turn.
+
+// The arrays may be of different lengths, with at least one character / digit.
+// The first array will contain string characters (lowercase, a-z).
+// The second array will contain integers (all positive).
+
+
+function mergeArrays(a, b) {
+	const x = [];
+	for (let i = 0; i < Math.max(a.length, b.length); i++) {
+		if (a[i]) {
+			x.push(a[i]);
+		}
+		if (b[i]) {
+			x.push(b[i]);
+		}
+	}
+	return x;
+}
+
+
+function mergeArrays(a, b) {
+    var result = []
+    for (var i = 0; i < Math.max(a.length, b.length); i++) {
+      if (a[i]) result.push(a[i])
+      if (b[i]) result.push(b[i])
+    }
+    return result
+}
+
+
+function mergeArrays(a, b) {
+    return a.reduce((arr, c, i) => {
+      return arr.concat(c).concat(b.slice(i, i+1))
+    }, []).concat(b.slice(a.length))
+}
+
+
+function mergeArrays(a, b) {
+	return [].concat(...a.map((v,i)=>(b[0])?[v,b.shift()]:v),b)
+}
+
+
+mergeArrays(["a", "b", "c", "d", "e"], [1, 2, 3, 4, 5]);
+mergeArrays([1, 2, 3], ["a", "b", "c", "d", "e", "f"]);
+mergeArrays(["f", "d", "w", "t"], [5, 3, 7, 8]);
+mergeArrays([4, 54, 7, 87], ["t", "d", "t"]);
+mergeArrays(["c"], [3]);
+mergeArrays([4, 3, 2, 1], ["r", "d"]);
+mergeArrays(["u", "k", "c"], [2, 8, 30]);
+mergeArrays(["e"], [1, 2, 3, 4, 5, 6, 7]);
+mergeArrays([1, 2, 3, 4, 5, 6, 7], ["e"]);
+mergeArrays([123, 456], ["c", "b", "a"]);
