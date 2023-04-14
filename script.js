@@ -37869,3 +37869,35 @@ mergeArrays(["u", "k", "c"], [2, 8, 30]);
 mergeArrays(["e"], [1, 2, 3, 4, 5, 6, 7]);
 mergeArrays([1, 2, 3, 4, 5, 6, 7], ["e"]);
 mergeArrays([123, 456], ["c", "b", "a"]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 847
+
+// Create a function that takes an array of numbers and returns an array where each number is the sum of itself + all previous numbers in the array.
+
+
+
+function cumulativeSum(arr) {
+	let a = 0;
+	let x = [];
+	
+	for (let i = 0; i < arr.length; i++) {
+		x.push(a + arr[i]);
+		a += arr[i];
+	}
+	return x;
+}
+
+function cumulativeSum(array) {
+    var sum=0;
+    return array.map(x=>(sum+=x))
+}
+
+
+cumulativeSum([]);
+cumulativeSum([1]);
+cumulativeSum([1, 2, 3]);
+cumulativeSum([-1, -2, -3]);
+cumulativeSum([1, -2, 3]);
+cumulativeSum([3, 3, -2, 408, 3, 3, 0, 66, 2, -2, 2, 3, 4, 2, -47, 3, 3, 2]);
