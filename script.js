@@ -37901,3 +37901,28 @@ cumulativeSum([1, 2, 3]);
 cumulativeSum([-1, -2, -3]);
 cumulativeSum([1, -2, 3]);
 cumulativeSum([3, 3, -2, 408, 3, 3, 0, 66, 2, -2, 2, 3, 4, 2, -47, 3, 3, 2]);
+
+
+/////////////////////////////////
+// CODING CHALLENGE 848
+
+// Create a function that takes a string and returns a string with its letters in alphabetical order.
+
+function AlphabetSoup(str) {
+	return str.split("").sort().join("");
+}
+
+function AlphabetSoup(str) {
+    return [...str].sort().join('');
+}
+
+AlphabetSoup("hello");
+AlphabetSoup("edabit");
+AlphabetSoup("hacker");
+AlphabetSoup("geek");
+AlphabetSoup("javascript");
+AlphabetSoup("credibility");
+AlphabetSoup("apostrophe");
+AlphabetSoup("determination");
+AlphabetSoup("win");
+AlphabetSoup("synthesis");
