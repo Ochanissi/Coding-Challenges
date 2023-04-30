@@ -37950,3 +37950,21 @@ getCounter();
 getCounter();
 
 console.dir(getCounter);
+
+/////////////////////////////////
+// CODING CHALLENGE 849
+
+// Another example of a closure
+
+
+const timer = (fruits, wait) => {
+  const perBasket = fruits / 3;
+
+  setTimeout(() => {
+    console.log(`There are ${fruits} fruits packed in ${perBasket} baskets!`);
+  }, wait * 1000)
+
+  console.log(`There are ${fruits} in total!`);
+}
+
+timer(90, 5);
