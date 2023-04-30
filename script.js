@@ -37926,3 +37926,27 @@ AlphabetSoup("apostrophe");
 AlphabetSoup("determination");
 AlphabetSoup("win");
 AlphabetSoup("synthesis");
+
+
+/////////////////////////////////
+// CODING CHALLENGE 849
+
+// A closure
+
+
+const counter = () => {
+  let count = 0;
+
+  return () => {
+    count++;
+    console.log(count);
+  }
+}
+
+const getCounter = counter();
+
+getCounter();
+getCounter();
+getCounter();
+
+console.dir(getCounter);
