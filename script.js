@@ -37968,3 +37968,31 @@ const timer = (fruits, wait) => {
 }
 
 timer(90, 5);
+
+
+// ***************************************************************************
+console.log('**************************************************************');
+// ***************************************************************************
+
+/////////////////////////////////
+// CODING CHALLENGE 850
+
+// Write a function that returns the first n vowels of a string.
+
+// Return "invalid" if the n exceeds the number of vowels in a string.
+// Vowels are: a, e, i, o, u
+
+
+
+function firstNVowels(s, n) {
+	const x = s.match(/[aeiou]/gi).join('').slice(0, n);
+	return n > x.length ? 'invalid' : x;
+}
+
+
+firstNVowels("sharpening skills", 3);
+firstNVowels("major league", 5);
+firstNVowels("crabby patty", 2);
+firstNVowels("shrimp", 1);
+firstNVowels("shrimpy", 2);
+firstNVowels("hostess", 5);
